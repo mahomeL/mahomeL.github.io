@@ -349,8 +349,39 @@
 <p><br> </p>
 <h2 id="Adaboost&#x8BAD;&#x7EC3;&#x8BEF;&#x5DEE;&#x5206;&#x6790;"><a href="#Adaboost&#x8BAD;&#x7EC3;&#x8BEF;&#x5DEE;&#x5206;&#x6790;" class="headerlink" title="Adaboost&#x8BAD;&#x7EC3;&#x8BEF;&#x5DEE;&#x5206;&#x6790;"></a>Adaboost&#x8BAD;&#x7EC3;&#x8BEF;&#x5DEE;&#x5206;&#x6790;</h2><p><br> </p>
 <h2 id="&#x7B97;&#x6CD5;&#x5B9E;&#x4F8B;"><a href="#&#x7B97;&#x6CD5;&#x5B9E;&#x4F8B;" class="headerlink" title="&#x7B97;&#x6CD5;&#x5B9E;&#x4F8B;"></a>&#x7B97;&#x6CD5;&#x5B9E;&#x4F8B;</h2><h4 id="&#x5B9E;&#x4F8B;&#x4E00;"><a href="#&#x5B9E;&#x4F8B;&#x4E00;" class="headerlink" title="&#x5B9E;&#x4F8B;&#x4E00;"></a>&#x5B9E;&#x4F8B;&#x4E00;</h4><p><strong>&#x8BAD;&#x7EC3;&#x6570;&#x636E;</strong>  </p>
-<p>&#x8BAD;&#x7EC3;&#x6570;&#x636E;&#x5982;&#x4E0A;&#xFF0C;&#x5047;&#x8BBE;&#x5F31;&#x5206;&#x7C7B;&#x5668;&#x7531;$x<v,x>v$&#x4EA7;&#x751F;&#x3002;  </v,x></p>
-<p>$m=1$<br>$\qquad$a. &#x5219;&#x521D;&#x59CB;&#x5316;&#x6570;&#x636E;&#x6743;&#x503C;&#x5206;&#x5E03;:$\qquad$$D_1=(w_{1,1},w_{1,2},&#x2026;,w_{1,10})=(0.1,&#x2026;,0.1)$  </p>
+<table>
+<thead>
+<tr>
+<th>x</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>y</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>-1</td>
+<td>-1</td>
+<td>-1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>-1</td>
+</tr>
+</tbody>
+</table>
+<p>&#x89E3;&#xFF1A;<br>$m=1$<br>$\qquad$a. &#x5219;&#x521D;&#x59CB;&#x5316;&#x6570;&#x636E;&#x6743;&#x503C;&#x5206;&#x5E03;:$\qquad$$D_1=(w_{1,1},w_{1,2},&#x2026;,w_{1,10})=(0.1,&#x2026;,0.1)$  </p>
 <p>$\qquad$b. &#x904D;&#x5386;v=1.5&#x5230;v=9.5&#x627E;&#x5230;&#x8BEF;&#x5DEE;&#x7387;&#x6700;&#x4F4E;&#x7684;&#x5206;&#x7C7B;&#x70B9;(&#x8BEF;&#x5DEE;&#x7387;=&#x6240;&#x6709;&#x8BEF;$\qquad$&#x5206;&#x7C7B;&#x70B9;&#x6743;&#x503C;&#x4E4B;&#x548C;)  </p>
 <p>$\qquad$c. v=2.5&#xFF0C;&#x8BEF;&#x5206;&#x7C7B;&#x70B9;x=6,7,8,&#x6743;&#x503C;&#x548C;&#x4E3A;0.3,&#x8BEF;&#x5DEE;&#x7387;&#x6700;&#x4F4E;,&#x5F31;$\qquad$&#x5206;&#x7C7B;&#x5668;&#xFF1A;&#x9519;&#x8BEF;&#x7387;$e_1=P(G_1(x_i)\neq y_i)=0.3$ $$G_1=\begin{cases} +1,x<2.5\\-1,x>2.5\\\end{cases}$$<br>$\qquad$d. &#x8BA1;&#x7B97;$G_1(x)$&#x7684;&#x7CFB;&#x6570;:$\alpha_1=\frac 1 2 log{\frac {1-e_1} {e_1}}=0.4236$  </2.5\\-1,x></p>
 <p>$\qquad$e. &#x66F4;&#x65B0;&#x8BAD;&#x7EC3;&#x6570;&#x636E;&#x6743;&#x503C;&#x5206;&#x5E03;:$$w_{2,i}=\frac {w_{1i}} {Z_1}exp(-\alpha_1y_iG_1(X_i)),\quad i=1,2,&#x2026;,10$$<br>$$\begin{align}D_{2}&amp;=(w_{2,1},&#x2026;,w_{2,10})\\<br>&amp;=(0.0715, 0.0715, 0.0715, 0.0715, 0.0715, 0.0715,0.1666,0.1666,0.1666,0.0715)\\<br>\end{align}$$</p>
@@ -405,6 +436,14 @@
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     
     <!-- Prev Nav -->
+    
+        <a href="/2016/12/12/Adaboost_2/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
     
 
     <!-- Section Spacer -->
@@ -498,7 +537,7 @@
         </a>
         <ul class="dropdown-menu">
             <li>
-            <a class="sidebar_archives-link" href="/archives/2016/12/">十二月 2016<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/10/">十月 2016<span class="sidebar_archives-count">1</span></a>
+            <a class="sidebar_archives-link" href="/archives/2016/12/">十二月 2016<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/10/">十月 2016<span class="sidebar_archives-count">1</span></a>
         </ul>
     </li>
 
@@ -513,7 +552,7 @@
     <li>
         <a href="/archives">
              文章总数
-             <span class="sidebar-badge">4</span>
+             <span class="sidebar-badge">5</span>
         </a>
     </li>
 </ul>
