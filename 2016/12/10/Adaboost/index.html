@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Title -->
+    
+    <title>
+        Adaboost 自适应增强 | AI
+    </title>
+    
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/zebra.png">
+    <link rel="icon" sizes="192x192" href="/img/zebra.png">
+    <link rel="apple-touch-icon" href="/img/zebra.png">
+    
+    <!-- Meta & INfo -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="Mahome.liao">
+    <meta name="description" content="You know nothong.">
+    <meta name="keywords" content="跟着我走，你会降维">
+    
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+    
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="AI">
+    
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://yoursite.com">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Adaboost 自适应增强 | AI">
+    <meta property="og:description" content="You know nothong.">
+    
+     <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+        
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+    
+    <!-- Import CSS -->
+    <link rel="stylesheet" href="/css/material.min.css">
+    <link rel="stylesheet" href="/css/style.min.css">
+    <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+	body, html{
+		font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+	}
+	
+    a{
+        color: #00838F
+    }
+    
+    .mdl-card__media,
+    #search-label,
+    #search-form-label:after,
+    #scheme-Paradox .hot_tags-count,
+    #scheme-Paradox .sidebar_archives-count,
+    #scheme-Paradox .sidebar-colored .sidebar-header,
+    #scheme-Paradox .sidebar-colored .sidebar-badge{
+        background-color: #0097A7 !important
+    }
+    
+	/* Sidebar User Drop Down Menu Text Color */
+	#scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+    #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus{
+        color: #0097A7 !important
+    }
+    
+    #post_entry-right-info,
+    .sidebar-colored .sidebar-nav li:hover > a,
+    .sidebar-colored .sidebar-nav li:hover > a i,
+    .sidebar-colored .sidebar-nav li > a:hover,
+    .sidebar-colored .sidebar-nav li > a:hover i,
+    .sidebar-colored .sidebar-nav li > a:focus i,
+    .sidebar-colored .sidebar-nav > .open > a,
+    .sidebar-colored .sidebar-nav > .open > a:hover,
+    .sidebar-colored .sidebar-nav > .open > a:focus,
+    #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a{
+        color: #0097A7 !important
+    }
+    
+    .toTop{
+        background: #757575 !important
+    }
+		
+	.material-layout .material-post>.material-nav,
+	.material-layout .material-index>.material-nav,
+	.material-nav a{
+		color: #757575;
+	}
+		
+	#scheme-Paradox .MD-burger-layer {
+		background-color: #757575;
+	}
+
+	#scheme-Paradox #post-toc-trigger-btn{
+		color: #757575;
+	}
+	
+	.post-toc a:hover{
+		color: #00838F;
+		text-decoration: underline;
+	}
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+        body{
+            background-color: #F5F5F5
+        }
+		
+		/* blog_info bottom background */
+        #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+            background-color: #fff;
+        }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+        .fade {
+            transition: all 800ms linear;
+            -webkit-transform: translate3d(0,0,0);
+            -moz-transform: translate3d(0,0,0);
+            -ms-transform: translate3d(0,0,0);
+            -o-transform: translate3d(0,0,0);
+            transform: translate3d(0,0,0);
+            opacity: 1;
+        }
+
+        .fade.out{
+            opacity: 0;
+        }
+    </style>
+
+	<script src="/js/jquery.min.js"></script>
+	
+	<link rel="stylesheet" href="/css/highlight/solarized-white.css">
+	
+	<!-- UC Browser Compatible-->
+	<script>
+		var agent = navigator.userAgent.toLowerCase();
+		if(agent.indexOf('ucbrowser')>0) {
+			document.write('<link rel="stylesheet" href="/css/uc.css">');
+		   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+		}
+	</script>
+    
+    <!-- Custom Head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+</head>
+	
+	
+
+    <body id="scheme-Paradox">
+
+		
+        <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+				
+			
+			
+            <!-- Main Container -->
+            <main class="material-layout__content" id="main">
+				
+                <!-- Top Anchor -->
+                <div id="top"></div>
+				
+				
+                <!-- Hamburger Button -->
+                <button class="MD-burger-icon sidebar-toggle">
+                    <span class="MD-burger-layer"></span>
+                </button>
+				
+				
+                
+	<!-- Back Button -->
+<!--
+	<div class="material-back" id="backhome-div" tabindex="0">
+		<a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" href="#" onclick="window.history.back();return false;" target="_self" role="button" data-upgraded=",MaterialButton,MaterialRipple">
+			<i class="material-icons" role="presentation">arrow_back</i>
+			<span class="mdl-button__ripple-container">
+				<span class="mdl-ripple"></span>
+			</span>
+		</a>
+	</div>			
+-->
+	<!-- Left aligned menu below button -->
+	<button id="post-toc-trigger-btn"
+			class="mdl-button mdl-js-button mdl-button--icon">
+	  <i class="material-icons">format_list_numbered</i>
+	</button>
+
+	<ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
+		for="post-toc-trigger-btn">
+			
+			<ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Adaboost-自适应增强"><span class="post-toc-number">1.</span> <span class="post-toc-text">Adaboost 自适应增强</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#算法流程"><span class="post-toc-number">2.</span> <span class="post-toc-text">算法流程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#算法流程说明"><span class="post-toc-number">2.0.1.</span> <span class="post-toc-text">算法流程说明</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Adaboost训练误差分析"><span class="post-toc-number">3.</span> <span class="post-toc-text">Adaboost训练误差分析</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#算法实例"><span class="post-toc-number">4.</span> <span class="post-toc-text">算法实例</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#实例一"><span class="post-toc-number">4.0.1.</span> <span class="post-toc-text">实例一</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#实例二"><span class="post-toc-number">4.0.2.</span> <span class="post-toc-text">实例二</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#跟着我走，你会降维"><span class="post-toc-number">5.</span> <span class="post-toc-text">跟着我走，你会降维</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#强可学习，弱可学习"><span class="post-toc-number">5.0.1.</span> <span class="post-toc-text">强可学习，弱可学习</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#boost方法的两个问题"><span class="post-toc-number">5.0.2.</span> <span class="post-toc-text">boost方法的两个问题</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Adaboost的自适应"><span class="post-toc-number">5.0.3.</span> <span class="post-toc-text">Adaboost的自适应</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Adaboost缺点"><span class="post-toc-number">5.0.4.</span> <span class="post-toc-text">Adaboost缺点</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Adaboost"><span class="post-toc-number">5.0.5.</span> <span class="post-toc-text">Adaboost</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#参考文献"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">参考文献</span></a></li></ol></li></ol>
+		
+<!--			<li class="mdl-menu__item">Some Action</li>-->
+	</ul>
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+		
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+	<!-- Paradox Post Header -->
+	
+		
+			<!-- Random Thumbnail -->
+			<div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+				<script>
+    
+    var randomNum;
+    randomNum = Math.floor(Math.random() * 45 + 1);
+    
+    $(".post_thumbnail-random").css('background-image', 'url(' + '/img/random/' + randomNum + '.png' + ')');
+    
+</script>
+
+		
+	
+        <p class="article-headline-p">
+            Adaboost 自适应增强
+        </p>
+    </div>
+
+	
+
+				
+				
+					<!-- Paradox Post Info -->
+					<div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+    
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/zebra.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Mahome.liao</strong>
+        <span>12月 10, 2016</span>
+    </div>
+    
+    <div class="section-spacer"></div>
+	
+    <!-- Favorite -->
+<!--
+    <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+        <i class="material-icons" role="presentation">favorite</i>
+        <span class="visuallyhidden">favorites</span>
+    </button>
+-->
+    
+    <!-- Tags (bookmark) -->
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        
+    </ul>
+    
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+    
+    
+    
+    
+    <!-- Share Twitter -->
+    <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Adaboost 自适应增强&url=http://yoursite.com//2016/12/10/Adaboost/index.html&via=Mahome.liao" target="_blank">
+        <li class="mdl-menu__item">
+            分享到 Twitter
+        </li>
+    </a>
+    
+    <!-- Share Google+ -->
+    <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com//2016/12/10/Adaboost/index.html" target="_blank">
+        <li class="mdl-menu__item">
+            分享到 Google+
+        </li>
+    </a>
+    
+    <!-- Share Weibo -->
+    <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Adaboost 自适应增强&url=http://yoursite.com//2016/12/10/Adaboost/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <li class="mdl-menu__item">
+            分享到微博
+        </li>
+    </a>
+</ul>
+</div>
+				
+
+                <!-- Post Content -->
+                <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+	
+		<p><br></p>
+<h2 id="Adaboost-&#x81EA;&#x9002;&#x5E94;&#x589E;&#x5F3A;"><a href="#Adaboost-&#x81EA;&#x9002;&#x5E94;&#x589E;&#x5F3A;" class="headerlink" title="Adaboost &#x81EA;&#x9002;&#x5E94;&#x589E;&#x5F3A;"></a>Adaboost &#x81EA;&#x9002;&#x5E94;&#x589E;&#x5F3A;</h2><p><img src="/2016/12/10/Adaboost/adaboost_&#x9876;&#x90E8;&#x56FE;&#x7247;.jpg" alt="&#x201C;Adaboost_&#x9876;&#x90E8;&#x56FE;&#x7247;&#x201D;">  </p>
+<blockquote>
+<p>&#x9488;&#x5BF9;&#x540C;&#x4E00;&#x4E2A;&#x8BAD;&#x7EC3;&#x96C6;&#x8BAD;&#x7EC3;&#x4E0D;&#x540C;&#x7684;&#x5F31;&#x5206;&#x7C7B;&#x5668;&#xFF0C;&#x7136;&#x540E;boost&#x6210;&#x4E00;&#x4E2A;&#x5F3A;&#x5206;&#x7C7B;&#x5668;</p>
+<blockquote>
+<p>&#x7B97;&#x6CD5;&#x901A;&#x8FC7;&#x6539;&#x53D8;&#x6570;&#x636E;&#x5206;&#x5E03;&#x6765;&#x5B9E;&#x73B0;&#x7684;&#x3002;&#x5B83;&#x6839;&#x636E;&#x6BCF;&#x6B21;&#x8BAD;&#x7EC3;&#x96C6;&#x4E4B;&#x4E2D;&#x7684;&#x6837;&#x672C;&#x5206;&#x7C7B;&#x662F;&#x5426;&#x6B63;&#x786E;&#xFF0C;&#x4EE5;&#x53CA;&#x4E0A;&#x6B21;&#x7684;&#x603B;&#x4F53;&#x5206;&#x7C7B;&#x7684;&#x51C6;&#x786E;&#x7387;&#xFF0C;&#x6765;&#x786E;&#x5B9A;&#x6BCF;&#x4E2A;&#x6837;&#x672C;&#x7684;&#x6743;&#x503C;&#x3002;&#x5C06;&#x4FEE;&#x6539;&#x8FC7;&#x7684;&#x6743;&#x503C;&#x7684;&#x65B0;&#x6570;&#x636E;&#x96C6;&#x9001;&#x7ED9;&#x4E0B;&#x5C42;&#x5206;&#x7C7B;&#x5668;&#x8FDB;&#x884C;&#x8BAD;&#x7EC3;&#xFF0C;&#x6700;&#x540E;&#x5C06;&#x6BCF;&#x6B21;&#x8BAD;&#x7EC3;&#x5F97;&#x5230;&#x7684;&#x5206;&#x7C7B;&#x5668;&#x6700;&#x540E;&#x878D;&#x5408;&#xFF0C;&#x4F5C;&#x4E3A;&#x6700;&#x540E;&#x7684;&#x51B3;&#x7B56;&#x5206;&#x7C7B;&#x5668;&#x3002;</p>
+</blockquote>
+</blockquote>
+<p><br> </p>
+<h2 id="&#x7B97;&#x6CD5;&#x6D41;&#x7A0B;"><a href="#&#x7B97;&#x6CD5;&#x6D41;&#x7A0B;" class="headerlink" title="&#x7B97;&#x6CD5;&#x6D41;&#x7A0B;"></a>&#x7B97;&#x6CD5;&#x6D41;&#x7A0B;</h2><p><strong>&#x8F93;&#x5165;&#xFF1A;</strong>&#x7ED9;&#x5B9A;&#x4E00;&#x4E2A;&#x8BAD;&#x7EC3;&#x6570;&#x636E;&#x96C6;$T=\{(x_1,y_1),(x_2,y_2)&#x2026;(x_N,y_N)\}$,&#x5B9E;&#x4F8B;$x\in\mathcal{X}$,&#x5B9E;&#x4F8B;&#x7A7A;&#x95F4;$\mathcal{X}\in\Re^n$, $y_i\in\mathcal{Y}=\{-1,+1\}$.</p>
+<p><strong>&#x8F93;&#x51FA;&#xFF1A;</strong>&#x6700;&#x7EC8;&#x5206;&#x7C7B;&#x5668;$G(x)$.</p>
+<p>1.&#x521D;&#x59CB;&#x5316;&#x8BAD;&#x7EC3;&#x6570;&#x636E;&#x7684;&#x6743;&#x503C;&#x5206;&#x5E03;$$<br>D_1=(w_{11},&#x2026;,w_{1i},&#x2026;,w_{1N}),w_{1i}=\frac 1 N,\quad i=1,2,&#x2026;,N<br>$$<br>2.&#x5BF9;$m=1,2,&#x2026;,M$ <br><br>$\qquad$(a)&#x4F7F;&#x7528;&#x5177;&#x6709;&#x6743;&#x503C;&#x5206;&#x5E03;$D_M$&#x7684;&#x8BAD;&#x7EC3;&#x6570;&#x636E;&#x96C6;&#x5B66;&#x4E60;&#xFF0C;&#x5F97;&#x5230;&#x57FA;&#x672C;&#x5206;&#x7C7B;&#x5668;<br>$$G_m(x):\mathcal{X}\rightarrow\{-1,+1\}$$</p>
+<p>$\qquad$(b)&#x8BA1;&#x7B97;$G_m$&#x8BAD;&#x7EC3;&#x6570;&#x636E;&#x96C6;&#x4E0A;&#x7684;&#x5206;&#x7C7B;&#x8BEF;&#x5DEE;&#x7387;<br>$$ e_m=P(G_m(x_i)\neq y_i)=\sum_{i=1}^N{w_{mi}I(G_m(x_i)\neq y_i)}$$</p>
+<p>$\qquad$(c)&#x8BA1;&#x7B97;$G_m(x)$&#x7684;&#x7CFB;&#x6570;<br>$$\alpha_m=\frac 1 2 log{\frac {1-e_m} {e_m}}$$</p>
+<p>$\qquad$(d)&#x66F4;&#x65B0;&#x8BAD;&#x7EC3;&#x6570;&#x636E;&#x96C6;&#x7684;&#x6743;&#x503C;&#x5206;&#x5E03;<br>$$D_{m+1}=(w_{m+1,1},&#x2026;,w_{m+1,i},&#x2026;,w_{m+1,N})$$<br>$$w_{m+1,i}=\frac {w_{mi}} {Z_m}exp(-\alpha_my_iG_m(X_i)),\quad i=1,2,&#x2026;,N$$<br>$\qquad\qquad Z_m$&#x89C4;&#x8303;&#x5316;&#x56E0;&#x5B50;: $Zm=\sum_{i=1}^N exp(-\alpha_my_iG_m(X_i))$</p>
+<p>3.&#x6784;&#x5EFA;&#x57FA;&#x672C;&#x5206;&#x7C7B;&#x5668;&#x7684;&#x7EBF;&#x6027;&#x7EC4;&#x5408;<br>$$f(x)=\sum_{m=1}^M\alpha_mG_m(x)$$<br>$$G(x)=sign(f(x))=sign(\sum_{m=1}^M\alpha_mG_m(x))$$</p>
+<h4 id="&#x7B97;&#x6CD5;&#x6D41;&#x7A0B;&#x8BF4;&#x660E;"><a href="#&#x7B97;&#x6CD5;&#x6D41;&#x7A0B;&#x8BF4;&#x660E;" class="headerlink" title="&#x7B97;&#x6CD5;&#x6D41;&#x7A0B;&#x8BF4;&#x660E;"></a>&#x7B97;&#x6CD5;&#x6D41;&#x7A0B;&#x8BF4;&#x660E;</h4><p>1.&#x521D;&#x59CB;&#x5316;&#x8BAD;&#x7EC3;&#x6570;&#x636E;&#x7684;&#x6743;&#x503C;&#x5206;&#x5E03;&#x3002;<br>&#x5982;&#x679C;N&#x4E2A;&#x6837;&#x672C;&#xFF0C;&#x5219;&#x6BCF;&#x4E00;&#x4E2A;&#x8BAD;&#x7EC3;&#x6837;&#x672C;&#x6700;&#x5F00;&#x59CB;&#x65F6;&#x90FD;&#x88AB;&#x8D4B;&#x4E88;&#x76F8;&#x540C;&#x7684;&#x6743;&#x91CD;:1\N  </p>
+<p>2.&#x8BAD;&#x7EC3;&#x5F31;&#x5206;&#x7C7B;&#x5668;&#x3002;<br>&#x5982;&#x679C;&#x67D0;&#x4E2A;&#x6837;&#x672C;&#x70B9;&#x5DF2;&#x7ECF;&#x88AB;&#x51C6;&#x786E;&#x5730;&#x5206;&#x7C7B;&#xFF0C;&#x90A3;&#x4E48;&#x5728;&#x6784;&#x9020;&#x4E0B;&#x4E00;&#x4E2A;&#x8BAD;&#x7EC3;&#x96C6;&#x4E2D;&#xFF0C;&#x5B83;&#x7684;&#x6743;&#x91CD;&#x5C31;&#x88AB;&#x964D;&#x4F4E;&#xFF1B;&#x76F8;&#x53CD;&#xFF0C;&#x5982;&#x679C;&#x67D0;&#x4E2A;&#x70B9;&#x6CA1;&#x6709;&#x88AB;&#x51C6;&#x786E;&#x5730;&#x5206;&#x7C7B;&#xFF0C;&#x90A3;&#x4E48;&#x5B83;&#x7684;&#x6743;&#x91CD;&#x5C31;&#x5F97;&#x5230;&#x63D0;&#x9AD8;&#x3002;&#x7136;&#x540E;&#xFF0C;&#x6743;&#x91CD;&#x66F4;&#x65B0;&#x8FC7;&#x7684;&#x6837;&#x672C;&#x96C6;&#x88AB;&#x7528;&#x4E8E;&#x8BAD;&#x7EC3;&#x4E0B;&#x4E00;&#x4E2A;&#x5206;&#x7C7B;&#x5668;&#xFF0C;&#x6574;&#x4E2A;&#x8BAD;&#x7EC3;&#x8FC7;&#x7A0B;&#x5982;&#x6B64;&#x8FED;&#x4EE3;&#x8FDB;&#x884C;&#x4E0B;&#x53BB;&#x3002;  </p>
+<p>3.&#x5C06;&#x5404;&#x4E2A;&#x8BAD;&#x7EC3;&#x5F97;&#x5230;&#x7684;&#x5F31;&#x5206;&#x7C7B;&#x5668;&#x7EC4;&#x5408;&#x6210;&#x5F3A;&#x5206;&#x7C7B;&#x5668;&#x3002;<br>&#x5404;&#x4E2A;&#x5F31;&#x5206;&#x7C7B;&#x5668;&#x7684;&#x8BAD;&#x7EC3;&#x8FC7;&#x7A0B;&#x7ED3;&#x675F;&#x540E;&#xFF0C;&#x52A0;&#x5927;&#x5206;&#x7C7B;&#x8BEF;&#x5DEE;&#x7387;&#x5C0F;&#x7684;&#x82E5;&#x5206;&#x7C7B;&#x5668;&#x7684;&#x6743;&#x91CD;&#xFF0C;&#x4F7F;&#x5176;&#x5728;&#x6700;&#x7EC8;&#x7684;&#x5206;&#x7C7B;&#x51FD;&#x6570;&#x4E2D;&#x8D77;&#x7740;&#x8F83;&#x5927;&#x7684;&#x51B3;&#x5B9A;&#x4F5C;&#x7528;&#xFF0C;&#x800C;&#x964D;&#x4F4E;&#x5206;&#x7C7B;&#x8BEF;&#x5DEE;&#x7387;&#x5927;&#x7684;&#x5F31;&#x5206;&#x7C7B;&#x5668;&#x7684;&#x6743;&#x91CD;&#xFF0C;&#x4F7F;&#x5176;&#x5728;&#x6700;&#x7EC8;&#x7684;&#x5206;&#x7C7B;&#x51FD;&#x6570;&#x4E2D;&#x8D77;&#x8F83;&#x5C0F;&#x7684;&#x51B3;&#x5B9A;&#x4F5C;&#x7528;&#x3002;&#x5373;&#xFF0C;&#x8BEF;&#x5DEE;&#x7387;&#x4F4E;&#x7684;&#x5F31;&#x5206;&#x7C7B;&#x5668;&#x5728;&#x6700;&#x7EC8;&#x5206;&#x7C7B;&#x5668;&#x4E2D;&#x5360;&#x7684;&#x6743;&#x91CD;&#x8F83;&#x5927;&#xFF0C;&#x5426;&#x5219;&#x8F83;&#x5C0F;&#x3002;</p>
+<p><br> </p>
+<h2 id="Adaboost&#x8BAD;&#x7EC3;&#x8BEF;&#x5DEE;&#x5206;&#x6790;"><a href="#Adaboost&#x8BAD;&#x7EC3;&#x8BEF;&#x5DEE;&#x5206;&#x6790;" class="headerlink" title="Adaboost&#x8BAD;&#x7EC3;&#x8BEF;&#x5DEE;&#x5206;&#x6790;"></a>Adaboost&#x8BAD;&#x7EC3;&#x8BEF;&#x5DEE;&#x5206;&#x6790;</h2><p><br> </p>
+<h2 id="&#x7B97;&#x6CD5;&#x5B9E;&#x4F8B;"><a href="#&#x7B97;&#x6CD5;&#x5B9E;&#x4F8B;" class="headerlink" title="&#x7B97;&#x6CD5;&#x5B9E;&#x4F8B;"></a>&#x7B97;&#x6CD5;&#x5B9E;&#x4F8B;</h2><h4 id="&#x5B9E;&#x4F8B;&#x4E00;"><a href="#&#x5B9E;&#x4F8B;&#x4E00;" class="headerlink" title="&#x5B9E;&#x4F8B;&#x4E00;"></a>&#x5B9E;&#x4F8B;&#x4E00;</h4><p><strong>&#x8BAD;&#x7EC3;&#x6570;&#x636E;</strong>  </p>
+<p>&#x8BAD;&#x7EC3;&#x6570;&#x636E;&#x5982;&#x4E0A;&#xFF0C;&#x5047;&#x8BBE;&#x5F31;&#x5206;&#x7C7B;&#x5668;&#x7531;$x<v,x>v$&#x4EA7;&#x751F;&#x3002;  </v,x></p>
+<p>$m=1$<br>$\qquad$a. &#x5219;&#x521D;&#x59CB;&#x5316;&#x6570;&#x636E;&#x6743;&#x503C;&#x5206;&#x5E03;:$\qquad$$D_1=(w_{1,1},w_{1,2},&#x2026;,w_{1,10})=(0.1,&#x2026;,0.1)$  </p>
+<p>$\qquad$b. &#x904D;&#x5386;v=1.5&#x5230;v=9.5&#x627E;&#x5230;&#x8BEF;&#x5DEE;&#x7387;&#x6700;&#x4F4E;&#x7684;&#x5206;&#x7C7B;&#x70B9;(&#x8BEF;&#x5DEE;&#x7387;=&#x6240;&#x6709;&#x8BEF;$\qquad$&#x5206;&#x7C7B;&#x70B9;&#x6743;&#x503C;&#x4E4B;&#x548C;)  </p>
+<p>$\qquad$c. v=2.5&#xFF0C;&#x8BEF;&#x5206;&#x7C7B;&#x70B9;x=6,7,8,&#x6743;&#x503C;&#x548C;&#x4E3A;0.3,&#x8BEF;&#x5DEE;&#x7387;&#x6700;&#x4F4E;,&#x5F31;$\qquad$&#x5206;&#x7C7B;&#x5668;&#xFF1A;&#x9519;&#x8BEF;&#x7387;$e_1=P(G_1(x_i)\neq y_i)=0.3$ $$G_1=\begin{cases} +1,x<2.5\\-1,x>2.5\\\end{cases}$$<br>$\qquad$d. &#x8BA1;&#x7B97;$G_1(x)$&#x7684;&#x7CFB;&#x6570;:$\alpha_1=\frac 1 2 log{\frac {1-e_1} {e_1}}=0.4236$  </2.5\\-1,x></p>
+<p>$\qquad$e. &#x66F4;&#x65B0;&#x8BAD;&#x7EC3;&#x6570;&#x636E;&#x6743;&#x503C;&#x5206;&#x5E03;:$$w_{2,i}=\frac {w_{1i}} {Z_1}exp(-\alpha_1y_iG_1(X_i)),\quad i=1,2,&#x2026;,10$$<br>$$\begin{align}D_{2}&amp;=(w_{2,1},&#x2026;,w_{2,10})\\<br>&amp;=(0.0715, 0.0715, 0.0715, 0.0715, 0.0715, 0.0715,0.1666,0.1666,0.1666,0.0715)\\<br>\end{align}$$</p>
+<p>$f_1(x)=0.4236G_1(x)$<br>&#x5206;&#x7C7B;&#x5668;&#x4E3A;:$sign(f_1(x))$</p>
+<p>$m=2$<br>$\qquad$&#x9519;&#x8BEF;&#x7387;&#xFF1A;$e_2=P(G_2(x_i)\neq y_i)=0.2143$ $$G_2=\begin{cases} +1,x<8.5\\-1,x>8.5\\\end{cases}$$<br>$\qquad$$G_2(x)$&#x7684;&#x7CFB;&#x6570;:$\alpha_2=\frac 1 2 log{\frac {1-e_2} {e_2}}=0.6496$  </8.5\\-1,x></p>
+<p>$D_3=(0.0455, 0.0455, 0.0455, 0.0455, 0.1667, 0.1667, 0.1667, 0.1060, 0.1060, 0.1060, 0.0455)$<br>$f_2(x)=0.4236G_1(x)+0.6496G_2(x)$<br>&#x5206;&#x7C7B;&#x5668;&#x4E3A;:$sign(f_2(x))$  </p>
+<p>$m=3$<br>$f_2(x)=0.4236G_1(x)+0.6496G_2(x)+0.7514G_3(x)$</p>
+<p>&#x6240;&#x4EE5;&#xFF0C;<em>&#x6700;&#x7EC8;&#x5206;&#x7C7B;&#x5668;:</em> $G(x)=sign[f_3(x)]=sign[0.4236G_1(x)+0.6496G_2(x)+0.7514G_3(x)]$<br><br></p>
+<h4 id="&#x5B9E;&#x4F8B;&#x4E8C;"><a href="#&#x5B9E;&#x4F8B;&#x4E8C;" class="headerlink" title="&#x5B9E;&#x4F8B;&#x4E8C;"></a>&#x5B9E;&#x4F8B;&#x4E8C;</h4><p>&#x6570;&#x636E;&#x96C6;<br><img src="/2016/12/10/Adaboost/&#x5B9E;&#x4F8B;&#x5206;&#x6790;1.png" alt="&#x201C;&#x5B9E;&#x4F8B;&#x5206;&#x6790;1&#x201D;"><br><br><br>&#x5F31;&#x5206;&#x7C7B;&#x5668;<br><img src="/2016/12/10/Adaboost/&#x5B9E;&#x4F8B;&#x5206;&#x6790;2.png" alt="&#x201C;&#x5B9E;&#x4F8B;&#x5206;&#x6790;2&#x201D;"><br><img src="/2016/12/10/Adaboost/&#x5B9E;&#x4F8B;&#x5206;&#x6790;3.png" alt="&#x201C;&#x5B9E;&#x4F8B;&#x5206;&#x6790;3&#x201D;"><br><br><br>  &#x6700;&#x7EC8;&#x5206;&#x7C7B;&#x5668;<br><img src="/2016/12/10/Adaboost/&#x5B9E;&#x4F8B;&#x5206;&#x6790;4.png" alt="&#x201C;&#x5B9E;&#x4F8B;&#x5206;&#x6790;4&#x201D;">  </p>
+<p><br></p>
+<h2 id="&#x8DDF;&#x7740;&#x6211;&#x8D70;&#xFF0C;&#x4F60;&#x4F1A;&#x964D;&#x7EF4;"><a href="#&#x8DDF;&#x7740;&#x6211;&#x8D70;&#xFF0C;&#x4F60;&#x4F1A;&#x964D;&#x7EF4;" class="headerlink" title="&#x8DDF;&#x7740;&#x6211;&#x8D70;&#xFF0C;&#x4F60;&#x4F1A;&#x964D;&#x7EF4;"></a>&#x8DDF;&#x7740;&#x6211;&#x8D70;&#xFF0C;&#x4F60;&#x4F1A;&#x964D;&#x7EF4;</h2><h4 id="&#x5F3A;&#x53EF;&#x5B66;&#x4E60;&#xFF0C;&#x5F31;&#x53EF;&#x5B66;&#x4E60;"><a href="#&#x5F3A;&#x53EF;&#x5B66;&#x4E60;&#xFF0C;&#x5F31;&#x53EF;&#x5B66;&#x4E60;" class="headerlink" title="&#x5F3A;&#x53EF;&#x5B66;&#x4E60;&#xFF0C;&#x5F31;&#x53EF;&#x5B66;&#x4E60;"></a>&#x5F3A;&#x53EF;&#x5B66;&#x4E60;&#xFF0C;&#x5F31;&#x53EF;&#x5B66;&#x4E60;</h4><blockquote>
+<p>&#x5728;&#x6982;&#x7387;&#x8FD1;&#x4F3C;&#x6B63;&#x786E;(probably approximately correct&#xFF0C;PAC)&#x5B66;&#x4E60;&#x6846;&#x67B6;&#x4E2D;&#xFF0C;&#x4E00;&#x4E2A;&#x6982;&#x5FF5;&#xFF0C;&#x5982;&#x679C;&#x5B58;&#x5728;&#x4E00;&#x4E2A;&#x591A;&#x9879;&#x5F0F;&#x7684;&#x5B66;&#x4E60;&#x7B97;&#x6CD5;&#x80FD;&#x591F;&#x5B66;&#x4E60;&#x5B83;&#xFF0C;&#x5E76;&#x4E14;&#x6B63;&#x786E;&#x7387;&#x5F88;&#x9AD8;&#xFF0C;&#x90A3;&#x4E48;&#x79F0;&#x8FD9;&#x4E2A;&#x6982;&#x7387;&#x662F;&#x5F3A;&#x53EF;&#x5B66;&#x4E60;&#x7684;&#xFF1B;<br>&#x4E00;&#x4E2A;&#x6982;&#x5FF5;&#xFF0C;&#x5982;&#x679C;&#x5B58;&#x5728;&#x4E00;&#x4E2A;&#x591A;&#x9879;&#x5F0F;&#x7684;&#x5B66;&#x4E60;&#x7B97;&#x6CD5;&#x80FD;&#x591F;&#x5B66;&#x4E60;&#x5B83;&#xFF0C;&#x5B66;&#x4E60;&#x7684;&#x6B63;&#x786E;&#x7387;&#x4EC5;&#x6BD4;&#x968F;&#x673A;&#x731C;&#x6D4B;&#x7565;&#x597D;&#xFF0C;&#x90A3;&#x4E48;&#x79F0;&#x8FD9;&#x4E2A;&#x6982;&#x5FF5;&#x662F;&#x5F31;&#x53EF;&#x5B66;&#x4E60;&#x7684;&#x3002;</p>
+</blockquote>
+<h4 id="boost&#x65B9;&#x6CD5;&#x7684;&#x4E24;&#x4E2A;&#x95EE;&#x9898;"><a href="#boost&#x65B9;&#x6CD5;&#x7684;&#x4E24;&#x4E2A;&#x95EE;&#x9898;" class="headerlink" title="boost&#x65B9;&#x6CD5;&#x7684;&#x4E24;&#x4E2A;&#x95EE;&#x9898;"></a>boost&#x65B9;&#x6CD5;&#x7684;&#x4E24;&#x4E2A;&#x95EE;&#x9898;</h4><blockquote>
+<p>&#x5728;&#x6BCF;&#x4E00;&#x8F6E;&#x5982;&#x4F55;&#x6539;&#x53D8;&#x8BAD;&#x7EC3;&#x6570;&#x636E;&#x7684;&#x6743;&#x503C;&#x6216;&#x6982;&#x7387;&#x5206;&#x5E03;&#xFF1F;&#x5982;&#x4F55;&#x5C06;&#x5F31;&#x5206;&#x7C7B;&#x5668;&#x7EC4;&#x5408;&#x6210;&#x4E00;&#x4E2A;&#x5F3A;&#x5206;&#x7C7B;&#x5668;&#xFF1F;</p>
+<blockquote>
+<p>Adaboost&#x7684;&#x505A;&#x6CD5;&#x662F;&#xFF1A;&#x63D0;&#x9AD8;&#x90A3;&#x4E9B;&#x88AB;&#x524D;&#x4E00;&#x8F6E;&#x5F31;&#x5206;&#x7C7B;&#x5668;&#x9519;&#x8BEF;&#x5206;&#x7C7B;&#x6837;&#x672C;&#x7684;&#x6743;&#x503C;&#xFF0C;&#x800C;&#x964D;&#x4F4E;&#x90A3;&#x4E9B;&#x88AB;&#x6B63;&#x786E;&#x5206;&#x7C7B;&#x6837;&#x672C;&#x7684;&#x6743;&#x503C;&#x3002;&#x8FD9;&#x6837;&#x4E00;&#x6765;&#xFF0C;&#x90A3;&#x4E9B;&#x6CA1;&#x6709;&#x5F97;&#x5230;&#x6B63;&#x786E;&#x5206;&#x7C7B;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x7531;&#x4E8E;&#x5176;&#x6743;&#x503C;&#x7684;&#x52A0;&#x5927;&#x800C;&#x53D7;&#x5230;&#x540E;&#x4E00;&#x8F6E;&#x7684;&#x5F31;&#x5206;&#x7C7B;&#x5668;&#x7684;&#x66F4;&#x5927;&#x5173;&#x6CE8;&#x3002;&#x5206;&#x7C7B;&#x95EE;&#x9898;&#x88AB;&#x4E00;&#x7CFB;&#x5217;&#x5F31;&#x5206;&#x7C7B;&#x5668;&#x2019;&#x5206;&#x800C;&#x6CBB;&#x4E4B;&#x2019;&#x3002;<br>Adaboost&#x91C7;&#x53D6;&#x52A0;&#x6743;&#x591A;&#x6570;&#x8868;&#x51B3;&#x7684;&#x65B9;&#x6CD5;&#x3002;&#x52A0;&#x5927;&#x5206;&#x7C7B;&#x8BEF;&#x5DEE;&#x7387;&#x5C0F;&#x7684;&#x5F31;&#x5206;&#x7C7B;&#x5668;&#x7684;&#x6743;&#x503C;&#xFF0C;&#x4F7F;&#x5176;&#x5728;&#x8868;&#x8FBE;&#x4E2D;&#x8D77;&#x8F83;&#x5927;&#x7684;&#x4F5C;&#x7528;&#xFF0C;&#x51CF;&#x5C0F;&#x5206;&#x7C7B;&#x8BEF;&#x5DEE;&#x7387;&#x5927;&#x7684;&#x5F31;&#x5206;&#x7C7B;&#x5668;&#x7684;&#x6743;&#x503C;&#xFF0C;&#x4F7F;&#x5176;&#x5728;&#x8868;&#x51B3;&#x4E2D;&#x8D77;&#x8F83;&#x5C0F;&#x7684;&#x4F5C;&#x7528;&#x3002;</p>
+</blockquote>
+</blockquote>
+<h4 id="Adaboost&#x7684;&#x81EA;&#x9002;&#x5E94;"><a href="#Adaboost&#x7684;&#x81EA;&#x9002;&#x5E94;" class="headerlink" title="Adaboost&#x7684;&#x81EA;&#x9002;&#x5E94;"></a>Adaboost&#x7684;&#x81EA;&#x9002;&#x5E94;</h4><blockquote>
+<p>&#x524D;&#x4E00;&#x4E2A;&#x57FA;&#x672C;&#x5206;&#x7C7B;&#x5668;&#x5206;&#x9519;&#x7684;&#x6837;&#x672C;&#x5F97;&#x5230;&#x52A0;&#x5F3A;&#xFF0C;&#x52A0;&#x6743;&#x540E;&#x7684;&#x5168;&#x4F53;&#x6837;&#x672C;&#x518D;&#x6B21;&#x88AB;&#x7528;&#x6765;&#x8BAD;&#x7EC3;&#x4E0B;&#x4E00;&#x4E2A;&#x57FA;&#x672C;&#x5206;&#x7C7B;&#x5668;&#x3002;&#x540C;&#x65F6;&#xFF0C;&#x5728;&#x6BCF;&#x4E00;&#x8F6E;&#x4E2D;&#x52A0;&#x5165;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x5206;&#x7C7B;&#x5668;&#xFF0C;&#x76F4;&#x5230;&#x8FBE;&#x5230;&#x67D0;&#x4E2A;&#x9884;&#x5B9A;&#x7684;&#x8DB3;&#x591F;&#x5C0F;&#x7684;&#x9519;&#x8BEF;&#x7387;&#x6216;&#x8FBE;&#x5230;&#x9884;&#x5148;&#x6307;&#x5B9A;&#x7684;&#x6700;&#x5927;&#x8FED;&#x4EE3;&#x6B21;&#x6570;&#x3002;</p>
+</blockquote>
+<h4 id="Adaboost&#x7F3A;&#x70B9;"><a href="#Adaboost&#x7F3A;&#x70B9;" class="headerlink" title="Adaboost&#x7F3A;&#x70B9;"></a>Adaboost&#x7F3A;&#x70B9;</h4><blockquote>
+<p>&#x5BF9;&#x4E8E;&#x566A;&#x58F0;&#x6570;&#x636E;&#x548C;&#x5F02;&#x5E38;&#x6570;&#x636E;&#x5341;&#x5206;&#x654F;&#x611F;</p>
+</blockquote>
+<h4 id="Adaboost"><a href="#Adaboost" class="headerlink" title="Adaboost"></a>Adaboost</h4><blockquote>
+<p>Adaboost&#x7B97;&#x6CD5;&#x4E0D;&#x9700;&#x8981;&#x9884;&#x5148;&#x77E5;&#x9053;&#x5F31;&#x5B66;&#x4E60;&#x7B97;&#x6CD5;&#x5B66;&#x4E60;&#x6B63;&#x786E;&#x7387;&#x7684;&#x4E0B;&#x9650;(&#x5F31;&#x5206;&#x7C7B;&#x5668;&#x7684;&#x8BEF;&#x5DEE;)&#xFF0C;&#x5E76;&#x4E14;&#x6700;&#x540E;&#x5F97;&#x5230;&#x7684;&#x5F3A;&#x5206;&#x7C7B;&#x5668;&#x7684;&#x5206;&#x7C7B;&#x7CBE;&#x5EA6;&#x4F9D;&#x8D56;&#x4E8E;&#x6240;&#x6709;&#x5F31;&#x5206;&#x7C7B;&#x5668;&#x7684;&#x5206;&#x7C7B;&#x7CBE;&#x5EA6;&#xFF0C;&#x6DF1;&#x5165;&#x6316;&#x6398;&#x5F31;&#x5206;&#x7C7B;&#x5668;&#x7B97;&#x6CD5;&#x7684;&#x80FD;&#x529B;&#x3002;</p>
+<p>Adaboost&#x7684;&#x8BAD;&#x7EC3;&#x8BEF;&#x5DEE;&#x662F;&#x4EE5;<strong>&#x6307;&#x6570;&#x6570;&#x7387;</strong>&#x4E0B;&#x964D;&#x7684;</p>
+<p>Adaboost&#x7B97;&#x6CD5;&#x672C;&#x8EAB;&#x7B80;&#x5355;&#x9AD8;&#x6548;&#xFF0C;&#x4E0D;&#x505A;&#x7279;&#x5F81;&#x7B5B;&#x9009;&#xFF0C;&#x6613;&#x4E8E;&#x7F16;&#x5199;&#x4E14;&#x8BAD;&#x7EC3;&#x8FC7;&#x7A0B;&#x662F;&#x6CA1;&#x6709;&#x53C2;&#x6570;&#x9700;&#x8981;&#x8C03;&#x8282;&#x7684;&#x3002;</p>
+<p>&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x5404;&#x79CD;&#x65B9;&#x6CD5;&#x6784;&#x5EFA;&#x5B50;&#x5206;&#x7C7B;&#x5668;&#xFF0C;Adaboost&#x63D0;&#x4F9B;&#x7684;&#x662F;&#x6846;&#x67B6;</p>
+</blockquote>
+<p><br></p>
+<h3 id="&#x53C2;&#x8003;&#x6587;&#x732E;"><a href="#&#x53C2;&#x8003;&#x6587;&#x732E;" class="headerlink" title="&#x53C2;&#x8003;&#x6587;&#x732E;"></a>&#x53C2;&#x8003;&#x6587;&#x732E;</h3><ul>
+<li>&#x674E;&#x822A; &#x7EDF;&#x8BA1;&#x5B66;&#x4E60;&#x65B9;&#x6CD5;</li>
+</ul>
+
+	
+	
+	
+	
+</div>
+				
+				
+
+                <!-- Post Comments -->
+                
+
+
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    
+    <!-- Prev Nav -->
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2016/12/09/GBDT与XGBOOST/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+        </div>
+    </div>
+
+				
+				
+					<!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay "></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored  sidebar-fixed-left" role="navigation">
+	<div id="sidebar-main">
+	    <!-- Sidebar Header -->
+		<div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+    <i class="material-icons">clear_all</i>
+    <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/zebra.png" alt="Mahome.liao's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        liao.mahome@gmail.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+		<!-- Sidebar Navigation  -->
+		<ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+			
+                <li>
+                    <a href="#" target="_blank" title="Email Me">
+						<i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    <li id="sidebar-first-li">
+        <a href="/" target="_self">
+            <i class="material-icons sidebar-material-icons">home</i>
+             主页
+        </a>
+    </li>
+
+    <!-- I'm Feeling Lucky -->
+<!--
+    <li class="dropdown">
+        <a href="" target="_self">
+            <i class="material-icons sidebar-material-icons">explore</i>
+             sidebar.imlucky
+        </a>
+    </li>
+-->
+
+	
+    <!-- Archives  -->
+    <li class="dropdown">
+        <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+            <i class="material-icons sidebar-material-icons">inbox</i>
+             归档
+            <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+            <a class="sidebar_archives-link" href="/archives/2016/12/">十二月 2016<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/10/">十月 2016<span class="sidebar_archives-count">1</span></a>
+        </ul>
+    </li>
+
+    <!-- Divider -->
+    <li class="divider"></li>
+
+
+    <!-- Pages  -->
+	
+
+    <!-- Article Numebr  -->
+    <li>
+        <a href="/archives">
+             文章总数
+             <span class="sidebar-badge">4</span>
+        </a>
+    </li>
+</ul>
+
+		<!-- Sidebar Divider -->
+		<div class="sidebar-divider"></div>
+
+		<!-- Sidebar Footer -->
+		<!-- 
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持。 :) 
+-->
+
+<!-- Theme Material -->
+<a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+	<div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+		主题 - Material
+		<span class="sidebar-badge badge-circle">i</span>
+	</div>
+</a>
+
+<!-- Help & Support -->
+<!--
+<a href="mailto:hiviosey@gmail.com" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+		sidebar.help
+		<span class="mdl-button__ripple-container">
+			<span class="mdl-ripple"></span>
+		</span>
+	</div>
+</a>
+-->
+
+<!-- Feedback -->
+<!--
+<a href="https://github.com/viosey/hexo-theme-material/issues" target="_blank" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+         sidebar.feedback
+                    <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+</a>
+-->
+
+<!-- Abount Theme -->
+<!--
+<a href="https://blog.viosey.com/index.php/Material.html" target="_blank" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+         sidebar.about_theme
+        <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+</a>-->
+
+	</div>
+    
+    <!-- Sidebar Sponsor -->
+    
+
+
+</aside>
+
+				
+				
+				
+					<!-- Footer Top Button -->
+					<div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+				
+				
+				<!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+	
+	
+		<!-- Paradox Footer Left Section -->
+		<div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+    <a href="https://twitter.com/twitter" target="view_window"><button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-twitter.png);">
+        <span class="visuallyhidden">Twitter</span>
+    </button></a>
+    
+    
+    <!-- Facebook -->
+    
+    <a href="https://www.facebook.com/facebook" target="view_window"><button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-facebook.png);">
+        <span class="visuallyhidden">Facebook</span>
+    </button></a>
+    
+    
+    <!-- Google + -->
+    
+    <a href="https://www.google.com/" target="view_window"><button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-gplus.png);">
+        <span class="visuallyhidden">Google Plus</span>
+    </button></a>
+    
+    
+    <!-- Weibo -->
+    
+    
+    
+    <!-- Instagram -->
+    
+    
+    
+    <!-- Tumblr -->
+    
+    
+    
+    <!-- Github -->
+    
+    
+</div>
+
+
+		<!--Copyright-->
+		<div id="copyright">Copyright&nbsp;©&nbsp;<script type="text/javascript">var fd = new Date();document.write(fd.getFullYear());</script>&nbsp;AI</div>
+
+		<!-- Paradox Footer Right Section -->
+
+		<!-- 
+		I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+		It will not impact the appearance and can give developers a lot of support :)
+
+		很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+		它不会影响美观并可以给开发者很大的支持。 :) 
+		-->
+
+		<div class="mdl-mini-footer--right-section">
+			<div>
+				<div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+				<div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+			</div>
+		</div>
+	
+</footer>
+                
+				<!-- Import File -->
+<script src="/js/highlight.min.js"></script>
+<script src="/js/js.min.js"></script>
+<script src="/js/nprogress.js"></script>
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    
+    $('#nprogress .bar').css({
+        'background': '#FF4081'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #FF4081, 0 0 15px #FF4081'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#FF4081',
+        'border-left-color': '#FF4081'
+    });
+    
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Swiftye -->
+
+
+<!-- Local Search-->
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $(".post-toc-wrap").parent(".mdl-menu__container").css("position", "fixed");
+    });
+</script>
+
+<!-- MathJax Load-->
+
+            </main>
+        </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+		
+    </body>
+		
+	
+</html>
