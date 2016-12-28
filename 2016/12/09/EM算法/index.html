@@ -4,7 +4,7 @@
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Title -->
     
     <title>
-        混合高斯与EM算法 | AI
+        EM(Expectation-Maximization) 算法 | AI
     </title>
     
     <!-- Favicons -->
@@ -40,7 +40,7 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://yoursite.com">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="混合高斯与EM算法 | AI">
+    <meta property="og:title" content="EM(Expectation-Maximization) 算法 | AI">
     <meta property="og:description" content="You know nothong.">
     
      <!--[if lte IE 9]>
@@ -215,7 +215,7 @@
 	<ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
 		for="post-toc-trigger-btn">
 			
-			<ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#EM（Expectation-Maximization）算法"><span class="post-toc-number">1.</span> <span class="post-toc-text">EM（Expectation-Maximization）算法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#从最大似然到EM算法浅解"><span class="post-toc-number">2.</span> <span class="post-toc-text">从最大似然到EM算法浅解</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#请问如何用数学方法证明K-means是EM算法的特例？"><span class="post-toc-number">3.</span> <span class="post-toc-text">请问如何用数学方法证明K-means是EM算法的特例？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#K-means聚类算法"><span class="post-toc-number">4.</span> <span class="post-toc-text">K-means聚类算法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#GMM与EM"><span class="post-toc-number">5.</span> <span class="post-toc-text">GMM与EM</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#EM算法"><span class="post-toc-number">6.</span> <span class="post-toc-text">EM算法</span></a></li></ol>
+			<ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#EM-Expectation-Maximization-算法"><span class="post-toc-number">1.</span> <span class="post-toc-text">EM(Expectation-Maximization) 算法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#从最大似然到EM算法浅解"><span class="post-toc-number">2.</span> <span class="post-toc-text">从最大似然到EM算法浅解</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#请问如何用数学方法证明K-means是EM算法的特例？"><span class="post-toc-number">3.</span> <span class="post-toc-text">请问如何用数学方法证明K-means是EM算法的特例？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#K-means聚类算法"><span class="post-toc-number">4.</span> <span class="post-toc-text">K-means聚类算法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#GMM与EM"><span class="post-toc-number">5.</span> <span class="post-toc-text">GMM与EM</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#EM算法"><span class="post-toc-number">6.</span> <span class="post-toc-text">EM算法</span></a></li></ol>
 		
 <!--			<li class="mdl-menu__item">Some Action</li>-->
 	</ul>
@@ -248,7 +248,7 @@
 		
 	
         <p class="article-headline-p">
-            混合高斯与EM算法
+            EM(Expectation-Maximization) 算法
         </p>
     </div>
 
@@ -301,7 +301,7 @@
     
     
     <!-- Share Twitter -->
-    <a class="post_share-link" href="https://twitter.com/intent/tweet?text=混合高斯与EM算法&url=http://yoursite.com//2016/12/09/EM算法/index.html&via=Mahome.liao" target="_blank">
+    <a class="post_share-link" href="https://twitter.com/intent/tweet?text=EM(Expectation-Maximization) 算法&url=http://yoursite.com//2016/12/09/EM算法/index.html&via=Mahome.liao" target="_blank">
         <li class="mdl-menu__item">
             分享到 Twitter
         </li>
@@ -315,7 +315,7 @@
     </a>
     
     <!-- Share Weibo -->
-    <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=混合高斯与EM算法&url=http://yoursite.com//2016/12/09/EM算法/index.html&pic=&searchPic=false&style=simple" target="_blank">
+    <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=EM(Expectation-Maximization) 算法&url=http://yoursite.com//2016/12/09/EM算法/index.html&pic=&searchPic=false&style=simple" target="_blank">
         <li class="mdl-menu__item">
             分享到微博
         </li>
@@ -328,7 +328,7 @@
                 <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
 	
 		<p>#&#x6DF7;&#x5408;&#x9AD8;&#x65AF;&#x6A21;&#x578B;&#x3001;&#x6700;&#x5927;&#x4F3C;&#x7136;&#x3001;EM&#x7B97;&#x6CD5;</p>
-<h3 id="EM&#xFF08;Expectation-Maximization&#xFF09;&#x7B97;&#x6CD5;"><a href="#EM&#xFF08;Expectation-Maximization&#xFF09;&#x7B97;&#x6CD5;" class="headerlink" title="EM&#xFF08;Expectation-Maximization&#xFF09;&#x7B97;&#x6CD5;"></a>EM&#xFF08;Expectation-Maximization&#xFF09;&#x7B97;&#x6CD5;</h3><p><a href="http://blog.csdn.net/livecoldsun/article/details/40833829" target="_blank" rel="external">http://blog.csdn.net/livecoldsun/article/details/40833829</a></p>
+<h3 id="EM-Expectation-Maximization-&#x7B97;&#x6CD5;"><a href="#EM-Expectation-Maximization-&#x7B97;&#x6CD5;" class="headerlink" title="EM(Expectation-Maximization) &#x7B97;&#x6CD5;"></a>EM(Expectation-Maximization) &#x7B97;&#x6CD5;</h3><p><a href="http://blog.csdn.net/livecoldsun/article/details/40833829" target="_blank" rel="external">http://blog.csdn.net/livecoldsun/article/details/40833829</a></p>
 <h3 id="&#x4ECE;&#x6700;&#x5927;&#x4F3C;&#x7136;&#x5230;EM&#x7B97;&#x6CD5;&#x6D45;&#x89E3;"><a href="#&#x4ECE;&#x6700;&#x5927;&#x4F3C;&#x7136;&#x5230;EM&#x7B97;&#x6CD5;&#x6D45;&#x89E3;" class="headerlink" title="&#x4ECE;&#x6700;&#x5927;&#x4F3C;&#x7136;&#x5230;EM&#x7B97;&#x6CD5;&#x6D45;&#x89E3;"></a>&#x4ECE;&#x6700;&#x5927;&#x4F3C;&#x7136;&#x5230;EM&#x7B97;&#x6CD5;&#x6D45;&#x89E3;</h3><p><a href="http://blog.csdn.net/zouxy09/article/details/8537620" target="_blank" rel="external">http://blog.csdn.net/zouxy09/article/details/8537620</a></p>
 <h3 id="&#x8BF7;&#x95EE;&#x5982;&#x4F55;&#x7528;&#x6570;&#x5B66;&#x65B9;&#x6CD5;&#x8BC1;&#x660E;K-means&#x662F;EM&#x7B97;&#x6CD5;&#x7684;&#x7279;&#x4F8B;&#xFF1F;"><a href="#&#x8BF7;&#x95EE;&#x5982;&#x4F55;&#x7528;&#x6570;&#x5B66;&#x65B9;&#x6CD5;&#x8BC1;&#x660E;K-means&#x662F;EM&#x7B97;&#x6CD5;&#x7684;&#x7279;&#x4F8B;&#xFF1F;" class="headerlink" title="&#x8BF7;&#x95EE;&#x5982;&#x4F55;&#x7528;&#x6570;&#x5B66;&#x65B9;&#x6CD5;&#x8BC1;&#x660E;K-means&#x662F;EM&#x7B97;&#x6CD5;&#x7684;&#x7279;&#x4F8B;&#xFF1F;"></a>&#x8BF7;&#x95EE;&#x5982;&#x4F55;&#x7528;&#x6570;&#x5B66;&#x65B9;&#x6CD5;&#x8BC1;&#x660E;K-means&#x662F;EM&#x7B97;&#x6CD5;&#x7684;&#x7279;&#x4F8B;&#xFF1F;</h3><p><a href="https://www.zhihu.com/question/49972233" target="_blank" rel="external">https://www.zhihu.com/question/49972233</a></p>
 <h3 id="K-means&#x805A;&#x7C7B;&#x7B97;&#x6CD5;"><a href="#K-means&#x805A;&#x7C7B;&#x7B97;&#x6CD5;" class="headerlink" title="K-means&#x805A;&#x7C7B;&#x7B97;&#x6CD5;"></a>K-means&#x805A;&#x7C7B;&#x7B97;&#x6CD5;</h3><p><a href="http://www.cnblogs.com/jerrylead/archive/2011/04/06/2006910" target="_blank" rel="external">http://www.cnblogs.com/jerrylead/archive/2011/04/06/2006910</a>.</p>
@@ -454,7 +454,7 @@
         </a>
         <ul class="dropdown-menu">
             <li>
-            <a class="sidebar_archives-link" href="/archives/2016/12/">十二月 2016<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/11/">十一月 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/09/">九月 2015<span class="sidebar_archives-count">1</span></a>
+            <a class="sidebar_archives-link" href="/archives/2016/12/">十二月 2016<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/11/">十一月 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/09/">九月 2015<span class="sidebar_archives-count">1</span></a>
         </ul>
     </li>
 
@@ -469,7 +469,7 @@
     <li>
         <a href="/archives">
              文章总数
-             <span class="sidebar-badge">9</span>
+             <span class="sidebar-badge">10</span>
         </a>
     </li>
 </ul>
