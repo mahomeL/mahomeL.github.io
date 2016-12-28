@@ -358,8 +358,10 @@
 </blockquote>
 </blockquote>
 </blockquote>
-<p>(TODO) <code>![&apos;&#x63A8;&#x5230;&#x68AF;&#x5EA6;y-p&apos;](GBDT/)</code><br>e.g: &#x5171;&#x6709;5&#x4E2A;&#x7C7B;&#x522B;&#xFF0C;&#x8F93;&#x5165;&#x6570;&#x636E;x&#x5C5E;&#x4E8E;&#x7C7B;&#x522B;3&#xFF0C;&#x5219;y=(0,0,1,0,0),&#x5047;&#x8BBE;&#x6A21;&#x578B;&#x4F30;&#x8BA1;&#x5F97;&#x5230;F(x)=(0,0.3,0.6,0,0),&#x5219;&#x7ECF;&#x8FC7;logistic&#x53D8;&#x6362;&#x5F97;p(x)=(016,0.21,0.29,0.16,0.16),y-p&#x5F97;&#x5230;&#x68AF;&#x5EA6;g:(-0.16,-0.21,0.71,-0.16,-0.16)&#x3002;  </p>
-<p><strong>&#x8BE5;&#x7B97;&#x6CD5;&#x4F1A;&#x4E25;&#x91CD;&#x5173;&#x6CE8;&#x90A3;&#x4E9B;&#x68AF;&#x5EA6;&#x6BD4;&#x8F83;&#x5927;&#x7684;&#x6837;&#x672C;</strong></p>
+<p> <strong>&#x8BE5;&#x7B97;&#x6CD5;&#x4F1A;&#x4E25;&#x91CD;&#x5173;&#x6CE8;&#x90A3;&#x4E9B;&#x68AF;&#x5EA6;&#x6BD4;&#x8F83;&#x5927;&#x7684;&#x6837;&#x672C;</strong>  </p>
+<p>e.g: &#x5171;&#x6709;5&#x4E2A;&#x7C7B;&#x522B;&#xFF0C;&#x8F93;&#x5165;&#x6570;&#x636E;x&#x5C5E;&#x4E8E;&#x7C7B;&#x522B;3&#xFF0C;&#x5219;y=(0,0,1,0,0),&#x5047;&#x8BBE;&#x6A21;&#x578B;&#x4F30;&#x8BA1;&#x5F97;&#x5230;F(x)=(0,0.3,0.6,0,0),&#x5219;&#x7ECF;&#x8FC7;logistic&#x53D8;&#x6362;&#x5F97;p(x)=(016,0.21,0.29,0.16,0.16),y-p&#x5F97;&#x5230;&#x68AF;&#x5EA6;g:(-0.16,-0.21,0.71,-0.16,-0.16)&#x3002;    </p>
+<p><strong>&#x68AF;&#x5EA6;&#x7684;&#x63A8;&#x5BFC;</strong><br>$$loss=-\log[\prod_{i=1}^N \prod_{k=1}^K p_k(x_i)^{y_{ik}} ]=-\sum_{k=1}^K y_k log{p_k(x)}, \quad p_k(x_i)=\frac {exp(F_k(x))} {\sum_{k=1}^K {exp({F_k(x)})}}<br>$$</p>
+<p>$$\begin {align}<br>\frac {\partial {L(\{y_k,F_k(x)\}_1^k)}} {\partial {F_k(x)}} &amp;=<br>\frac {\partial {[-\sum_{k=1}^K {(y_k F_k(x))}+\sum_{k=1}^K {(y_k \cdot \log{\sum_{l=1}^K {exp(F_l(x))}}]} }} {\partial {F_k(x)}} \\<br>&amp;= -y_k + \sum_{k=1}^K {y_k \cdot {\frac {exp(F_k(x))} {\sum_{l=1}^K {exp(F_l(x))} }} } \\<br>&amp;= -y_k + 1 \cdot p_k \\<br>&amp;= -y_k +p_k<br>\end {align}<br>$$</p>
 <p><br></p>
 <h3 id="&#x5B9E;&#x4F8B;&#x5206;&#x6790;"><a href="#&#x5B9E;&#x4F8B;&#x5206;&#x6790;" class="headerlink" title="&#x5B9E;&#x4F8B;&#x5206;&#x6790;"></a>&#x5B9E;&#x4F8B;&#x5206;&#x6790;</h3><p><img src="/2016/12/09/GBDT/GBDT_exp1.png" alt="&apos;exp1&apos;">   </p>
 <p><img src="/2016/12/09/GBDT/GBDT_exp2.png" alt="&apos;exp2&apos;">   </p>
