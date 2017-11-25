@@ -327,8 +327,7 @@
                 <!-- Post Content -->
                 <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
 	
-		<p><img src="/2017/11/24/&#x652F;&#x6301;&#x5411;&#x91CF;&#x673A;SVM/SVM.jpg" alt="&apos;&#x9876;&#x90E8;&apos;"></p>
-<h2 id="SVM"><a href="#SVM" class="headerlink" title="SVM"></a>SVM</h2><p>&#x652F;&#x6301;&#x5411;&#x91CF;&#x673A; = &#x95F4;&#x9694;&#x6700;&#x5927; + &#x6838;&#x6280;&#x5DE7; = &#x6B63;&#x5219;&#x5316; + &#x5408;&#x9875;&#x635F;&#x5931;</p>
+		<h2 id="SVM"><a href="#SVM" class="headerlink" title="SVM"></a>SVM</h2><p>&#x652F;&#x6301;&#x5411;&#x91CF;&#x673A; = &#x95F4;&#x9694;&#x6700;&#x5927; + &#x6838;&#x6280;&#x5DE7; = &#x6B63;&#x5219;&#x5316; + &#x5408;&#x9875;&#x635F;&#x5931;</p>
 <blockquote>
 <p>&#x5F53;&#x6570;&#x636E;&#x7EBF;&#x6027;&#x53EF;&#x5206;&#x65F6;&#xFF0C;&#x901A;&#x8FC7;&#x786C;&#x95F4;&#x9694;&#x6700;&#x5927;&#x5316;(hard margin maximization)&#xFF0C;&#x5B66;&#x4E60;&#x5F97;&#x5230;&#x7EBF;&#x6027;&#x53EF;&#x5206;&#x652F;&#x6301;&#x5411;&#x91CF;&#x673A;&#x3002;<br>&#x5F53;&#x6570;&#x636E;&#x8FD1;&#x4F3C;&#x7EBF;&#x6027;&#x53EF;&#x5206;&#x65F6;&#xFF0C;&#x901A;&#x8FC7;&#x8F6F;&#x95F4;&#x9694;&#x6700;&#x5927;&#x5316;(soft margin maximization)&#xFF0C;&#x5B66;&#x4E60;&#x5F97;&#x5230;&#x8F6F;&#x95F4;&#x9694;&#x652F;&#x6301;&#x5411;&#x91CF;&#x673A;&#x3002;<br>&#x5F53;&#x8BAD;&#x7EC3;&#x6570;&#x636E;&#x7EBF;&#x6027;&#x4E0D;&#x53EF;&#x5206;&#x65F6;&#xFF0C;&#x901A;&#x8FC7;&#x4F7F;&#x7528;&#x6838;&#x6280;&#x5DE7;(kernel trick)&#x53CA;&#x8F6F;&#x95F4;&#x9694;&#x6700;&#x5927;&#x5316;&#xFF0C;&#x5B66;&#x4E60;&#x5F97;&#x5230;&#x975E;&#x7EBF;&#x6027;&#x652F;&#x6301;&#x5411;&#x91CF;&#x673A;&#x3002; </p>
 </blockquote>
@@ -368,7 +367,7 @@
 <li>&#x6C42;$\min_{w,b} \ L(w,b,\alpha)$&#x5BF9;$\alpha$&#x7684;&#x6781;&#x5927;<br>$$\max_{\alpha} \  - \frac 1 2 \sum_{i=1}^N \sum_{j=1}^N \alpha_i \alpha_j y_i y_j (x_i \cdot x_j) + \sum_{i=1}^N \alpha_i \\<br>s.t. \ \sum_{i=1}^N \alpha_i y_i=0\\<br>\alpha_i \geq 0, \ i=1,2,&#x2026;,N$$ &#x7B49;&#x4EF7;&#x4E8E;<br>$$\min_{\alpha} \  \frac 1 2 \sum_{i=1}^N \sum_{j=1}^N \alpha_i \alpha_j y_i y_j (x_i \cdot x_j) - \sum_{i=1}^N \alpha_i \\<br>s.t. \ \sum_{i=1}^N \alpha_i y_i=0\\<br>\alpha_i \geq 0, \ i=1,2,&#x2026;,N$$ </li>
 </ol>
 <p><strong>KKT&#x6761;&#x4EF6;</strong><br>&#x8BBE;$\alpha^<em>=(\alpha_1^</em>,\alpha_2^<em>,&#x2026;,\alpha_N^</em>)^T$&#x662F;&#x4E0A;&#x9762;&#x5BF9;&#x5076;&#x95EE;&#x9898;&#x7684;&#x89E3;&#xFF0C;&#x5219;&#x5B58;&#x5728;&#x4E0B;&#x6807;$j$&#xFF0C;&#x4F7F;&#x5F97;$\alpha_j^<em> &gt; 0$.<br>&#x7531;&#x4E8E;KKT&#x6761;&#x4EF6;&#x6210;&#x7ACB;&#xFF0C;&#x4E14;$y_j^2=1$&#xFF0C;&#x5F97;&#xFF1A;<br>$$w^</em> = \sum_{i=1}^N \alpha_i^<em> y_i x_i\\<br>b^</em> = y_j - \sum_{i=1}^N \alpha_i^<em> y_i (x_i \cdot x_j)$$<br>&#x5206;&#x79BB;&#x8D85;&#x5E73;&#x9762;&#xFF0C;&#x51B3;&#x7B56;&#x51FD;&#x6570;&#xFF0C;&#x4E3A;:<br>$$\sum_{i=1}^N \alpha_i^</em> y_i (x_i \cdot x_j) + b^<em> =0\\<br>f(x) = sign (\sum_{i=1}^N \alpha_i^</em> y_i (x_i \cdot x_j) + b^*)$$</p>
-<p><br></p>
+<p><br><br><img src="/2017/11/24/&#x652F;&#x6301;&#x5411;&#x91CF;&#x673A;SVM/SVM.jpg" alt="&apos;&#x9876;&#x90E8;&apos;"></p>
 <h3 id="SVM&#x635F;&#x5931;&#x51FD;&#x6570;&#x4E0E;&#x6B63;&#x5219;&#x9879;"><a href="#SVM&#x635F;&#x5931;&#x51FD;&#x6570;&#x4E0E;&#x6B63;&#x5219;&#x9879;" class="headerlink" title="SVM&#x635F;&#x5931;&#x51FD;&#x6570;&#x4E0E;&#x6B63;&#x5219;&#x9879;"></a>SVM&#x635F;&#x5931;&#x51FD;&#x6570;&#x4E0E;&#x6B63;&#x5219;&#x9879;</h3><h4 id="&#x60E9;&#x7F5A;&#x7CFB;&#x6570;C&#x7684;&#x7406;&#x89E3;"><a href="#&#x60E9;&#x7F5A;&#x7CFB;&#x6570;C&#x7684;&#x7406;&#x89E3;" class="headerlink" title="&#x60E9;&#x7F5A;&#x7CFB;&#x6570;C&#x7684;&#x7406;&#x89E3;"></a>&#x60E9;&#x7F5A;&#x7CFB;&#x6570;C&#x7684;&#x7406;&#x89E3;</h4><p>SVM&#x4F7F;&#x7528;&#x7684;&#x662F;hinge loss&#xFF0C;regularized optimization &#x95EE;&#x9898;&#x5B9E;&#x9645;&#x4E0A;&#x53EF;&#x5199;&#x6210;&#xFF1A;$$\frac {1} {2} ||w||^2 + C \sum_{i=1}^N \max [0, 1-y_i({w} \cdot x_i + {b} ) ]$$<br>&#x6574;&#x7406;&#x53D8;&#x52A8;&#x540E;&#x4E3A;&#xFF1A;$$\sum_{i=1}^N \max [0, 1-y_i({w} \cdot x_i + {b} ) ] + \frac {1} {2C} ||w||^2 $$<br>&#x6240;&#x4EE5;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x628A;SVM&#x76EE;&#x6807;&#x51FD;&#x6570;&#x7406;&#x89E3;&#x6210;&#x4F7F;&#x7528;l2 regularization&#x7684;hinge loss&#xFF0C;&#x800C;l2 regularization coefficient&#x548C;C &#x662F;&#x53CD;&#x6BD4;&#x5173;&#x7CFB;&#x3002;</p>
 <p>&#x539F;&#x5219;&#x4E0A;C&#x53EF;&#x4EE5;&#x6839;&#x636E;&#x9700;&#x8981;&#x9009;&#x62E9;&#x6240;&#x6709;&#x5927;&#x4E8E;0&#x7684;&#x6570;&#x3002;C&#x8D8A;&#x5927;&#x8868;&#x793A;&#x6574;&#x4E2A;&#x4F18;&#x5316;&#x8FC7;&#x7A0B;&#x4E2D;&#x5BF9;&#x4E8E;&#x603B;&#x8BEF;&#x5DEE;$\sum_{i=1}^N \xi_i$&#x7684;&#x5173;&#x6CE8;&#x7A0B;&#x5EA6;&#x8D8A;&#x9AD8;&#xFF0C;&#x5BF9;&#x4E8E;&#x51CF;&#x5C0F;&#x8BEF;&#x5DEE;&#x7684;&#x8981;&#x6C42;&#x8D8A;&#x9AD8;&#xFF0C;&#x751A;&#x81F3;&#x4E0D;&#x60DC;&#x4F7F;&#x95F4;&#x9694;&#x51CF;&#x5C0F;&#x3002;<br>&#x5F53;C&#x8D8B;&#x4E8E;&#x65E0;&#x7A77;&#x5927;&#x65F6;&#xFF0C;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x4E5F;&#x5C31;&#x662F;&#x4E0D;&#x5141;&#x8BB8;&#x51FA;&#x73B0;&#x5206;&#x7C7B;&#x8BEF;&#x5DEE;&#x7684;&#x6837;&#x672C;&#x5B58;&#x5728;&#xFF0C;&#x90A3;&#x8FD9;&#x5C31;&#x662F;&#x4E00;&#x4E2A;hard-marginSVM&#x95EE;&#x9898;<br>&#x5F53;C&#x8D8B;&#x4E8E;0&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x4E0D;&#x518D;&#x5173;&#x6CE8;&#x5206;&#x7C7B;&#x662F;&#x5426;&#x6B63;&#x786E;&#xFF0C;&#x53EA;&#x8981;&#x6C42;&#x95F4;&#x9694;&#x8D8A;&#x5927;&#x8D8A;&#x597D;&#xFF0C;&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x5C06;&#x65E0;&#x6CD5;&#x5F97;&#x5230;&#x6709;&#x610F;&#x4E49;&#x7684;&#x89E3;&#x4E14;&#x7B97;&#x6CD5;&#x4E0D;&#x4F1A;&#x6536;&#x655B;&#x3002;<br>C&#x8D8A;&#x5C0F;&#xFF0C;&#x60E9;&#x7F5A;&#x8D8A;&#x5C0F;&#xFF0C;&#x5BF9;outlier&#x5FCD;&#x53D7;&#x8D8A;&#x5F3A;&#xFF0C;&#x53EF;&#x80FD;&#x6B20;&#x62DF;&#x5408;&#x3002;<br>C&#x503C;&#x8D8A;&#x5927;&#x5BF9;&#x4E8E;&#x8BAD;&#x7EC3;&#x96C6;&#x7684;&#x8868;&#x73B0;&#x8D8A;&#x597D;&#xFF0C;&#x4F46;&#x662F;&#x95F4;&#x9694;&#x51CF;&#x5C0F;&#x4E5F;&#x5C31;&#x662F;&#x5BF9;&#x4E8E;&#x566A;&#x58F0;&#x7B49;&#x5E72;&#x6270;&#x7684;&#x5BB9;&#x5FCD;&#x5EA6;&#x51CF;&#x5C0F;&#xFF0C;&#x53EF;&#x80FD;&#x5F15;&#x53D1;&#x8FC7;&#x5EA6;&#x62DF;&#x5408;&#xFF08;overfitting&#xFF09;&#xFF0C;&#x8FD9;&#x65F6;&#x8BF4;&#x660E;&#x5BF9;&#x4E8E;&#x566A;&#x58F0;&#x7684;&#x60E9;&#x7F5A;&#x529B;&#x5EA6;&#x592A;&#x5927;&#x3002;</p>
 <p><br></p>
@@ -421,7 +420,7 @@
 
     <!-- Next Nav -->
     
-        <a href="/2017/11/24/逻辑斯蒂回归/" id="post_nav-older" class="next-content">
+        <a href="/2016/12/30/K-means、GMM、EM/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
@@ -507,7 +506,7 @@
         </a>
         <ul class="dropdown-menu">
             <li>
-            <a class="sidebar_archives-link" href="/archives/2017/11/">十一月 2017<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/12/">十二月 2016<span class="sidebar_archives-count">10</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/09/">九月 2015<span class="sidebar_archives-count">1</span></a>
+            <a class="sidebar_archives-link" href="/archives/2017/11/">十一月 2017<span class="sidebar_archives-count">9</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/12/">十二月 2016<span class="sidebar_archives-count">10</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/09/">九月 2015<span class="sidebar_archives-count">1</span></a>
         </ul>
     </li>
 
@@ -522,7 +521,7 @@
     <li>
         <a href="/archives">
              文章总数
-             <span class="sidebar-badge">19</span>
+             <span class="sidebar-badge">20</span>
         </a>
     </li>
 </ul>
