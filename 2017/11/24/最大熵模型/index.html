@@ -4,7 +4,7 @@
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Title -->
     
     <title>
-        生成式模型与判别式模型 | AI
+        最大熵模型 | AI
     </title>
     
     <!-- Favicons -->
@@ -40,7 +40,7 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://yoursite.com">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="生成式模型与判别式模型 | AI">
+    <meta property="og:title" content="最大熵模型 | AI">
     <meta property="og:description" content="You know nothing.">
     
      <!--[if lte IE 9]>
@@ -215,7 +215,7 @@
 	<ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
 		for="post-toc-trigger-btn">
 			
-			<ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#生成式模型与判别式模型"><span class="post-toc-number">1.</span> <span class="post-toc-text">生成式模型与判别式模型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#实例"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">实例</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#对比"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">对比</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#应用"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">应用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#参考文献"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">参考文献</span></a></li></ol></li></ol>
+			<ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#熵"><span class="post-toc-number">1.</span> <span class="post-toc-text">熵</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#最大熵原理"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">最大熵原理</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#最大熵模型"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">最大熵模型</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#最大熵模型与逻辑斯蒂回归模型"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">最大熵模型与逻辑斯蒂回归模型</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Reference"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">Reference</span></a></li></ol></li></ol>
 		
 <!--			<li class="mdl-menu__item">Some Action</li>-->
 	</ul>
@@ -248,7 +248,7 @@
 		
 	
         <p class="article-headline-p">
-            生成式模型与判别式模型
+            最大熵模型
         </p>
     </div>
 
@@ -266,7 +266,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>Mahome.liao</strong>
-        <span>12月 30, 2016</span>
+        <span>11月 24, 2017</span>
     </div>
     
     <div class="section-spacer"></div>
@@ -301,21 +301,21 @@
     
     
     <!-- Share Twitter -->
-    <a class="post_share-link" href="https://twitter.com/intent/tweet?text=生成式模型与判别式模型&url=http://yoursite.com//2016/12/30/生成式模型与判别式模型/index.html&via=Mahome.liao" target="_blank">
+    <a class="post_share-link" href="https://twitter.com/intent/tweet?text=最大熵模型&url=http://yoursite.com//2017/11/24/最大熵模型/index.html&via=Mahome.liao" target="_blank">
         <li class="mdl-menu__item">
             分享到 Twitter
         </li>
     </a>
     
     <!-- Share Google+ -->
-    <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com//2016/12/30/生成式模型与判别式模型/index.html" target="_blank">
+    <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com//2017/11/24/最大熵模型/index.html" target="_blank">
         <li class="mdl-menu__item">
             分享到 Google+
         </li>
     </a>
     
     <!-- Share Weibo -->
-    <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=生成式模型与判别式模型&url=http://yoursite.com//2016/12/30/生成式模型与判别式模型/index.html&pic=&searchPic=false&style=simple" target="_blank">
+    <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=最大熵模型&url=http://yoursite.com//2017/11/24/最大熵模型/index.html&pic=&searchPic=false&style=simple" target="_blank">
         <li class="mdl-menu__item">
             分享到微博
         </li>
@@ -327,72 +327,35 @@
                 <!-- Post Content -->
                 <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
 	
-		<h2 id="&#x751F;&#x6210;&#x5F0F;&#x6A21;&#x578B;&#x4E0E;&#x5224;&#x522B;&#x5F0F;&#x6A21;&#x578B;"><a href="#&#x751F;&#x6210;&#x5F0F;&#x6A21;&#x578B;&#x4E0E;&#x5224;&#x522B;&#x5F0F;&#x6A21;&#x578B;" class="headerlink" title="&#x751F;&#x6210;&#x5F0F;&#x6A21;&#x578B;&#x4E0E;&#x5224;&#x522B;&#x5F0F;&#x6A21;&#x578B;"></a>&#x751F;&#x6210;&#x5F0F;&#x6A21;&#x578B;&#x4E0E;&#x5224;&#x522B;&#x5F0F;&#x6A21;&#x578B;</h2><p>&#x751F;&#x6210;&#x6A21;&#x578B;&#xFF0C;&#x5C31;&#x662F;&#x751F;&#x6210;&#xFF08;&#x6570;&#x636E;&#x7684;&#x5206;&#x5E03;&#xFF09;&#x7684;&#x6A21;&#x578B;&#xFF1B;<br>&#x5224;&#x522B;&#x6A21;&#x578B;&#xFF0C;&#x5C31;&#x662F;&#x5224;&#x522B;&#xFF08;&#x6570;&#x636E;&#x8F93;&#x51FA;&#x91CF;&#xFF09;&#x7684;&#x6A21;&#x578B;&#xFF1B;<br><img src="/2016/12/30/&#x751F;&#x6210;&#x5F0F;&#x6A21;&#x578B;&#x4E0E;&#x5224;&#x522B;&#x5F0F;&#x6A21;&#x578B;/&#x9876;&#x90E8;&#x56FE;&#x7247;_compressed.jpg" alt="&#x9876;&#x90E8;&#x56FE;&#x7247;"></p>
-<p><br></p>
-<h3 id="&#x5B9E;&#x4F8B;"><a href="#&#x5B9E;&#x4F8B;" class="headerlink" title="&#x5B9E;&#x4F8B;"></a>&#x5B9E;&#x4F8B;</h3><p>&#x5047;&#x8BBE;&#x73B0;&#x5728;&#x6709;&#x4E00;&#x4E2A;&#x5206;&#x7C7B;&#x95EE;&#x9898;&#xFF0C;x&#x662F;&#x7279;&#x5F81;&#xFF0C;y&#x662F;&#x7C7B;&#x6807;&#x8BB0;&#x3002;&#x7528;&#x751F;&#x6210;&#x6A21;&#x578B;&#x5B66;&#x4E60;&#x4E00;&#x4E2A;&#x8054;&#x5408;&#x6982;&#x7387;&#x5206;&#x5E03;P&#xFF08;x&#xFF0C;y&#xFF09;&#xFF0C;&#x800C;&#x7528;&#x5224;&#x522B;&#x6A21;&#x578B;&#x5B66;&#x4E60;&#x4E00;&#x4E2A;&#x6761;&#x4EF6;&#x6982;&#x7387;&#x5206;&#x5E03;P&#xFF08;y|x&#xFF09;&#x3002;<br>&#x5047;&#x8BBE;x&#x5C31;&#x662F;&#x4E24;&#x4E2A;&#xFF08;1&#x6216;2&#xFF09;&#xFF0C;y&#x6709;&#x4E24;&#x7C7B;&#xFF08;0&#x6216;1&#xFF09;&#xFF0C;&#x6709;&#x5982;&#x4E0B;&#x5982;&#x4E0B;&#x6837;&#x672C;&#xFF08;1&#xFF0C;0&#xFF09;&#x3001;&#xFF08;1&#xFF0C;0&#xFF09;&#x3001;&#xFF08;1&#xFF0C;1&#xFF09;&#x3001;&#xFF08;2&#xFF0C;1&#xFF09;<br>&#x5219;&#x5B66;&#x4E60;&#x5230;&#x7684;&#x8054;&#x5408;&#x6982;&#x7387;&#x5206;&#x5E03;&#xFF08;&#x751F;&#x6210;&#x6A21;&#x578B;&#xFF09;&#x5982;&#x4E0B;&#xFF1A;   </p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>0</th>
-<th>1</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>1/2</td>
-<td>1/4</td>
-</tr>
-<tr>
-<td>2</td>
-<td>0</td>
-<td>1/4</td>
-</tr>
-</tbody>
-</table>
-<p>&#x800C;&#x5B66;&#x4E60;&#x5230;&#x7684;&#x6761;&#x4EF6;&#x6982;&#x7387;&#x5206;&#x5E03;&#xFF08;&#x5224;&#x522B;&#x6A21;&#x578B;&#xFF09;&#x5982;&#x4E0B;&#xFF1A;  </p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>0</th>
-<th>1</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>2/3</td>
-<td>1/3</td>
-</tr>
-<tr>
-<td>2</td>
-<td>0</td>
-<td>1</td>
-</tr>
-</tbody>
-</table>
-<p>&#x5728;&#x5B9E;&#x9645;&#x5206;&#x7C7B;&#x95EE;&#x9898;&#x4E2D;&#xFF0C;&#x5224;&#x522B;&#x6A21;&#x578B;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x7528;&#x6765;&#x5224;&#x65AD;&#x7279;&#x5F81;&#x7684;&#x7C7B;&#x522B;&#x60C5;&#x51B5;&#xFF0C;&#x800C;&#x751F;&#x6210;&#x6A21;&#x578B;&#xFF0C;&#x9700;&#x8981;&#x52A0;&#x4E0A;&#x8D1D;&#x8036;&#x65AF;&#x6CD5;&#x5219;&#xFF0C;&#x7136;&#x540E;&#x5E94;&#x7528;&#x5230;&#x5206;&#x7C7B;&#x4E2D;&#x3002;&#x4F46;&#x662F;&#xFF0C;&#x751F;&#x6210;&#x6A21;&#x578B;&#x7684;&#x6982;&#x7387;&#x5206;&#x5E03;&#x53EF;&#x4EE5;&#x8FD8;&#x6709;&#x5176;&#x4ED6;&#x5E94;&#x7528;&#xFF0C;&#x5C31;&#x662F;&#x8BF4;&#x751F;&#x6210;&#x6A21;&#x578B;&#x66F4;&#x4E00;&#x822C;&#x66F4;&#x666E;&#x9002;&#x3002;&#x4E0D;&#x8FC7;&#x5224;&#x522B;&#x6A21;&#x578B;&#x66F4;&#x76F4;&#x63A5;&#xFF0C;&#x66F4;&#x7B80;&#x5355;  </p>
-<p><br></p>
-<h3 id="&#x5BF9;&#x6BD4;"><a href="#&#x5BF9;&#x6BD4;" class="headerlink" title="&#x5BF9;&#x6BD4;"></a>&#x5BF9;&#x6BD4;</h3><p><strong>&#x5224;&#x522B;&#x5F0F;&#x6A21;&#x578B;</strong><br>&#x76F4;&#x63A5;&#x5BF9;y&#x57FA;&#x4E8E;x&#x7684;&#x6761;&#x4EF6;&#x5206;&#x5E03;$p(y|x)$&#x8FDB;&#x884C;&#x5EFA;&#x6A21;&#x3002;&#x5BF9;&#x5206;&#x5E03;&#x51FD;&#x6570;$p(y|x;\theta)$&#x7684;&#x8868;&#x73B0;&#x5F62;&#x5F0F;&#x4F5C;&#x5047;&#x8BBE;&#x3002;</p>
-<p><strong>&#x4EA7;&#x751F;&#x5F0F;&#x6A21;&#x578B;</strong><br><em>y&#x51B3;&#x5B9A;&#x4E86;x</em>&#x3002;&#x4E0D;&#x80FD;&#x76F4;&#x63A5;&#x5BF9;$p(y|x)$&#x7684;&#x5206;&#x5E03;&#x5F62;&#x5F0F;&#x8FDB;&#x884C;&#x5047;&#x8BBE;&#xFF0C;&#x800C;&#x662F;&#x7528;&#x8D1D;&#x53F6;&#x65AF;&#x516C;&#x5F0F;&#xFF0C;&#x51B3;&#x7B56;&#x76EE;&#x6807;&#xFF1A;<br>$$\begin{align} y* &amp;= \arg \max_y p(y|x) = \arg \max_y \frac {p(x|y) p(y)} {p(x)}\\<br>&amp;= \arg \max_y p(x|y) p(y) = \arg \max_y p(x,y)<br>\end{align}$$</p>
-<p><strong>&#x5BF9;&#x6BD4;</strong></p>
+		<p><img src="/2017/11/24/&#x6700;&#x5927;&#x71B5;&#x6A21;&#x578B;/&#x6700;&#x5927;&#x71B5;&#x9876;&#x90E8;&#x56FE;&#x7247;.jpg" alt="&#x9876;&#x90E8;&#x56FE;&#x7247;"></p>
+<h2 id="&#x71B5;"><a href="#&#x71B5;" class="headerlink" title="&#x71B5;"></a>&#x71B5;</h2><p><strong>&#x71B5;</strong></p>
 <blockquote>
-<p>&#x751F;&#x6210;&#x5F0F;&#x6A21;&#x578B;&#x5BF9;&#x7C7B;&#x6761;&#x4EF6;&#x5BC6;&#x5EA6;(class conditional density) $p(x|y_i)$&#x8FDB;&#x884C;&#x5EFA;&#x6A21;&#x3002;&#x5224;&#x522B;&#x5F0F;&#x6A21;&#x578B;&#x53EA;&#x9700;&#x8981;&#x5BF9;&#x7C7B;&#x540E;&#x9A8C;&#x6982;&#x7387;(class-posteriordensity)&#x8FDB;&#x884C;&#x5EFA;&#x6A21;&#x3002;&#x524D;&#x8005;&#x901A;&#x5E38;&#x4F1A;&#x6BD4;&#x540E;&#x8005;&#x590D;&#x6742;&#x3002;&#x66F4;&#x96BE;&#x4EE5;&#x5EFA;&#x6A21;&#x3002;</p>
-<p>&#x5F53;&#x6DFB;&#x52A0;&#x65B0;&#x7684;&#x7C7B;&#x522B;&#x65F6;,&#x751F;&#x6210;&#x5F0F;&#x6A21;&#x578B;&#x4E0D;&#x9700;&#x8981;&#x5168;&#x90E8;&#x91CD;&#x65B0;&#x8BAD;&#x7EC3;, &#x53EA;&#x9700;&#x8981;&#x8BA1;&#x7B97;&#x65B0;&#x7684;&#x7C7B;&#x522B;$y_{new}$&#x548C;$x$&#x7684;&#x8054;&#x5408;&#x5206;&#x5E03;$p(y_{new},x)&#x5373;&#x53EF;,&#x800C;&#x5224;&#x522B;&#x5F0F;&#x6A21;&#x578B;&#x5219;&#x9700;&#x8981;&#x5168;&#x90E8;&#x91CD;&#x65B0;&#x8BAD;&#x7EC3;&#x3002;</p>
-<p>&#x751F;&#x6210;&#x5F0F;&#x6A21;&#x578B;&#x53EF;&#x4EE5;&#x751F;&#x6210;$x$,&#x56E0;&#x4E3A;&#x5224;&#x522B;&#x5F0F;&#x6A21;&#x578B;&#x662F;&#x5BF9;$p(x,y)$&#x8FDB;&#x884C;&#x5EFA;&#x6A21;, &#x800C;&#x5224;&#x522B;&#x5F0F;&#x6A21;&#x578B;&#x4E0D;&#x53EF;&#x4EE5;&#x751F;&#x6210;$x$.</p>
-<p>&#x5224;&#x522B;&#x5F0F;&#x6A21;&#x578B;&#x53EF;&#x4EE5;&#x5BF9;&#x8F93;&#x5165;&#x6570;&#x636E;$x$&#x8FDB;&#x884C;&#x9884;&#x5904;&#x7406;, &#x4F7F;&#x7528;$\phi(x)$&#x6765;&#x4EE3;&#x66FF;$x$,&#x800C;&#x751F;&#x6210;&#x5F0F;&#x6A21;&#x578B;&#x4E0D;&#x662F;&#x5F88;&#x65B9;&#x4FBF;&#x8FDB;&#x884C;&#x66FF;&#x6362;.</p>
-<p>&#x751F;&#x6210;&#x6A21;&#x578B;&#x6536;&#x655B;&#x901F;&#x5EA6;&#x6BD4;&#x8F83;&#x5FEB;&#xFF0C;&#x5373;&#x5F53;&#x6837;&#x672C;&#x6570;&#x91CF;&#x8F83;&#x591A;&#x65F6;&#xFF0C;&#x751F;&#x6210;&#x6A21;&#x578B;&#x80FD;&#x66F4;&#x5FEB;&#x5730;&#x6536;&#x655B;&#x4E8E;&#x771F;&#x5B9E;&#x6A21;&#x578B;&#x3002;</p>
-<p>&#x751F;&#x6210;&#x6A21;&#x578B;&#x80FD;&#x591F;&#x5E94;&#x4ED8;&#x5B58;&#x5728;&#x9690;&#x53D8;&#x91CF;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x6BD4;&#x5982;&#x6DF7;&#x5408;&#x9AD8;&#x65AF;&#x6A21;&#x578B;&#x5C31;&#x662F;&#x542B;&#x6709;&#x9690;&#x53D8;&#x91CF;&#x7684;&#x751F;&#x6210;&#x65B9;&#x6CD5;&#x3002;</p>
-<p>&#x8054;&#x5408;&#x5206;&#x5E03;&#x662F;&#x80FD;&#x63D0;&#x4F9B;&#x66F4;&#x591A;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x4F46;&#x4E5F;&#x9700;&#x8981;&#x66F4;&#x591A;&#x7684;&#x6837;&#x672C;&#x548C;&#x66F4;&#x591A;&#x8BA1;&#x7B97;&#xFF0C;&#x5C24;&#x5176;&#x662F;&#x4E3A;&#x4E86;&#x66F4;&#x51C6;&#x786E;&#x4F30;&#x8BA1;&#x7C7B;&#x522B;&#x6761;&#x4EF6;&#x5206;&#x5E03;&#xFF0C;&#x9700;&#x8981;&#x589E;&#x52A0;&#x6837;&#x672C;&#x7684;&#x6570;&#x76EE;&#xFF0C;&#x800C;&#x4E14;&#x7C7B;&#x522B;&#x6761;&#x4EF6;&#x6982;&#x7387;&#x7684;&#x8BB8;&#x591A;&#x4FE1;&#x606F;&#x662F;&#x6211;&#x4EEC;&#x505A;&#x5206;&#x7C7B;&#x7528;&#x4E0D;&#x5230;&#xFF0C;&#x56E0;&#x800C;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x53EA;&#x9700;&#x8981;&#x505A;&#x5206;&#x7C7B;&#x4EFB;&#x52A1;&#xFF0C;&#x5C31;&#x6D6A;&#x8D39;&#x4E86;&#x8BA1;&#x7B97;&#x8D44;&#x6E90;&#x3002;</p>
-<p>&#x7531;&#x4E8E;&#x76F4;&#x63A5;&#x5B66;&#x4E60;$p(y|x)$&#xFF0C;&#x800C;&#x4E0D;&#x9700;&#x8981;&#x6C42;&#x89E3;&#x7C7B;&#x522B;&#x6761;&#x4EF6;&#x6982;&#x7387;&#xFF0C;&#x6240;&#x4EE5;&#x5141;&#x8BB8;&#x6211;&#x4EEC;&#x5BF9;&#x8F93;&#x5165;&#x8FDB;&#x884C;&#x62BD;&#x8C61;&#xFF08;&#x6BD4;&#x5982;&#x964D;&#x7EF4;&#x3001;&#x6784;&#x9020;&#x7B49;&#xFF09;&#xFF0C;&#x4ECE;&#x800C;&#x80FD;&#x591F;&#x7B80;&#x5316;&#x5B66;&#x4E60;&#x95EE;&#x9898;&#x3002;</p>
+<p>&#x6DF7;&#x4E71;&#x5EA6;&#xFF0C;&#x5C31;&#x662F;&#x6982;&#x7387;&#x6700;&#x5927;&#x7684;&#x72B6;&#x6001;&#x3002;&#x8D8A;&#x6DF7;&#x4E71;(&#x65E0;&#x5E8F;)&#xFF0C;&#x8BF4;&#x660E;&#x8FD9;&#x4E2A;&#x72B6;&#x6001;&#x51FA;&#x73B0;&#x7684;&#x6982;&#x7387;&#x8D8A;&#x5927;&#x3002;<br>&#x201C;&#x4F60;&#x4EFB;&#x610F;&#x6254;&#x51FA;&#x4E00;&#x5806;&#x79EF;&#x6728;&#xFF0C;&#x51E0;&#x4E4E;&#x4E0D;&#x53EF;&#x80FD;&#x51FA;&#x73B0;&#x4E00;&#x4E2A;&#x623F;&#x5B50;&#xFF0C;&#x56E0;&#x4E3A;&#x8FD9;&#x4E2A;&#x6982;&#x7387;&#x592A;&#x4F4E;&#x4E86;&#x3002;&#x4E3A;&#x4EC0;&#x4E48;&#x51FA;&#x73B0;&#x623F;&#x5B50;&#x7684;&#x6982;&#x7387;&#x4F4E;&#x5462;&#xFF0C;&#x56E0;&#x4E3A;&#x4ED6;&#x7684;&#x72B6;&#x6001;&#x6570;&#x4F4E;&#x3002;&#x4EC0;&#x4E48;&#x662F;&#x72B6;&#x6001;&#x6570;&#xFF1A;&#x5F88;&#x7B80;&#x5355;&#x7684;&#xFF0C;&#x5047;&#x8BBE;&#x4F60;&#x6295;&#x63B7;10&#x679A;&#x9AB0;&#x5B50;&#xFF0C;&#x5168;&#x90E8;&#x662F;1&#x7684;&#x72B6;&#x6001;&#x6570;&#x53EA;&#x6709;1&#x4E2A;&#xFF0C;&#x56E0;&#x4E3A;&#x5FC5;&#x987B;&#x6240;&#x6709;&#x7684;&#x9AB0;&#x5B50;&#x90FD;&#x662F;1&#x3002;&#x800C;5&#x4E2A;&#x9AB0;&#x5B50;&#x662F;1&#xFF0C;5&#x4E2A;&#x9AB0;&#x5B50;&#x662F;2&#x7684;&#x72B6;&#x6001;&#x6570;&#x5C31;&#x8981;&#x591A;&#x5F97;&#x591A;&#xFF0C;&#x56E0;&#x4E3A;&#x53EA;&#x8981;&#x5728;10&#x4E2A;&#x91CC;&#x9762;&#x9009;&#x51FA;5&#x4E2A;&#x662F;1&#xFF0C;&#x5176;&#x4ED6;5&#x4E2A;&#x662F;2&#x5C31;&#x53EF;&#x4EE5;&#x4E86;&#xFF0C;&#x5C31;&#x662F;&#x7EC4;&#x5408;&#x6570;C(5,10);&#x201D;</p>
 </blockquote>
-<h3 id="&#x5E94;&#x7528;"><a href="#&#x5E94;&#x7528;" class="headerlink" title="&#x5E94;&#x7528;"></a>&#x5E94;&#x7528;</h3><p>&#x751F;&#x6210;&#x5F0F;&#x6A21;&#x578B;:<br>&#x5224;&#x522B;&#x5F0F;&#x5206;&#x6790;<br>&#x6734;&#x7D20;&#x8D1D;&#x53F6;&#x65AF;<br>K&#x8FD1;&#x90BB;(KNN)<br>&#x6DF7;&#x5408;&#x9AD8;&#x65AF;&#x6A21;&#x578B;<br>&#x9690;&#x9A6C;&#x5C14;&#x79D1;&#x592B;&#x6A21;&#x578B;(HMM)<br>&#x8D1D;&#x53F6;&#x65AF;&#x7F51;&#x7EDC;<br>Sigmoid Belief Networks<br>&#x9A6C;&#x5C14;&#x79D1;&#x592B;&#x968F;&#x673A;&#x573A;(Markov Random Fields)<br>&#x6DF1;&#x5EA6;&#x4FE1;&#x5FF5;&#x7F51;&#x7EDC;(DBN)</p>
-<p>&#x5224;&#x522B;&#x5F0F;&#x6A21;&#x578B;:<br>&#x7EBF;&#x6027;&#x56DE;&#x5F52;(Linear Regression)<br>&#x903B;&#x8F91;&#x65AF;&#x8482;&#x56DE;&#x5F52;(Logistic Regression)<br>&#x795E;&#x7ECF;&#x7F51;&#x7EDC;(NN)<br>&#x652F;&#x6301;&#x5411;&#x91CF;&#x673A;(SVM)<br>&#x9AD8;&#x65AF;&#x8FC7;&#x7A0B;(Gaussian Process)<br>&#x6761;&#x4EF6;&#x968F;&#x673A;&#x573A;(CRF)<br>CART(Classification and Regression Tree)</p>
-<h3 id="&#x53C2;&#x8003;&#x6587;&#x732E;"><a href="#&#x53C2;&#x8003;&#x6587;&#x732E;" class="headerlink" title="&#x53C2;&#x8003;&#x6587;&#x732E;"></a>&#x53C2;&#x8003;&#x6587;&#x732E;</h3><p><a href="http://www.cnblogs.com/kemaswill/p/3427422.html" target="_blank" rel="external">http://www.cnblogs.com/kemaswill/p/3427422.html</a></p>
-<p><a href="https://www.zhihu.com/question/20446337" target="_blank" rel="external">https://www.zhihu.com/question/20446337</a></p>
-<p><a href="https://zhuanlan.zhihu.com/p/23103686" target="_blank" rel="external">https://zhuanlan.zhihu.com/p/23103686</a></p>
+<p>&#x6240;&#x4EE5;&#x5728;&#x5B9A;&#x4E49;&#x71B5;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5C31;&#x7528;&#x4E86;&#x72B6;&#x6001;&#x6570;&#x3002;&#x90A3;&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x53D6;&#x5BF9;&#x6570;&#x5462;&#xFF0C;&#x5927;&#x6982;&#x6709;&#x4E24;&#x4E2A;&#x539F;&#x56E0;&#xFF1A;<br>&#x7B2C;&#x4E00;&#xFF1A;&#x5FAE;&#x89C2;&#x7684;&#x72B6;&#x6001;&#x6570;&#x592A;&#x5927;&#x4E86;&#xFF0C;&#x6240;&#x4EE5;&#x53D6;&#x4E2A;&#x5BF9;&#x6570;,&#x800C;&#x4E14;&#x548C;&#x72B6;&#x6001;&#x6570;&#x662F;&#x6B63;&#x76F8;&#x5173;&#x3002;<br>&#x7B2C;&#x4E8C;&#xFF1A;&#x53D6;&#x4E2A;&#x5BF9;&#x6570;&#xFF0C;&#x8BF4;&#x660E;&#x5C31;&#x53EF;&#x4EE5;&#x7528;&#x5BF9;&#x5E94;&#x7684;&#x591A;&#x5C11;&#x4F4D;&#x6570;&#x636E;&#x53BB;&#x8868;&#x793A;&#x8FD9;&#x4E2A;&#x7ED3;&#x679C;&#xFF0C;&#x6211;&#x4EEC;&#x8BF4;&#x7684;bit&#x5176;&#x5B9E;&#x5C31;&#x662F;&#x53D6;2&#x7684;&#x5BF9;&#x6570;&#x7684;&#x3002;<br>&#x7B2C;&#x4E09;&#xFF1A;&#x53D6;&#x5BF9;&#x6570;&#xFF0C;&#x5219;&#x4EE5;&#x524D;&#x7684;&#x72B6;&#x6001;&#x6570;&#x5C31;&#x53EF;&#x4EE5;&#x7531;&#x4E58;&#x53D8;&#x4E3A;&#x52A0;&#x4E86;&#x3002;(&#x4E00;&#x4E2A;&#x9AB0;&#x5B50;$W=6$,&#x4E24;&#x4E2A;&#x9AB0;&#x5B50;$W^2 = 36$, &#x800C; $\ln (W^2) = 2*\ln(W)+\ln(W)$)  </p>
+<p>&#x6240;&#x4EE5;&#x5C31;&#x51FA;&#x73B0;&#x4E86;&#x4E2A;&#x516C;&#x5F0F;&#xFF1A;$$H = k * \ln(W)$$<br>&#x7269;&#x7406;&#x4E0A;&#x9762;&#x7684;&#x71B5;&#x589E;&#x5B9A;&#x5F8B;&#x53EF;&#x4EE5;&#x8FD9;&#x4E48;&#x7406;&#x89E3;:&#x56E0;&#x4E3A;&#x71B5;&#x8D8A;&#x5927;&#xFF0C;&#x8BF4;&#x660E;&#x8FD9;&#x4E2A;&#x968F;&#x673A;&#x4E8B;&#x4EF6;&#x7684;&#x72B6;&#x6001;&#x6570;&#x8D8A;&#x5927;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x6982;&#x7387;&#x8D8A;&#x5927;&#xFF0C;&#x6240;&#x4EE5;&#x4E00;&#x4E2A;&#x968F;&#x673A;&#x4E8B;&#x4EF6;&#x4F1A;&#x671D;&#x7740;&#x6982;&#x7387;&#x589E;&#x5927;&#x7684;&#x65B9;&#x5411;&#x53D8;&#x5316;&#x3002;  </p>
+<p><strong>&#x4EA4;&#x53C9;&#x71B5;&#x3001;&#x76F8;&#x5BF9;&#x71B5;</strong>  </p>
+<p>&#x4EA4;&#x53C9;&#x71B5;$$H(p,q)=-\sum p*\log(q)$$&#x8868;&#x793A;&#x7528;&#x5206;&#x5E03;q&#x6A21;&#x62DF;&#x771F;&#x5B9E;&#x5206;&#x5E03;p&#x6240;&#x9700;&#x7684;&#x4FE1;&#x606F;&#x3002;  </p>
+<p>&#x76F8;&#x5BF9;&#x71B5;&#x53C8;&#x79F0;KL&#x8DDD;&#x79BB;<br>$$KL(p||q)=H(p,q)-H(p,p)&#xFF0C;KL = -\int p(x) \ln q(x) dx - (-\int p(x) \ln p(x) dx) $$&#x8868;&#x793A;&#x7528;&#x5206;&#x5E03;q&#x6A21;&#x62DF;&#x771F;&#x5B9E;&#x5206;&#x5E03;p&#x76F8;&#x6BD4;&#x7528;p&#x6A21;&#x62DF;p&#xFF0C;&#x6240;&#x9700;&#x7684;&#x989D;&#x5916;&#x4FE1;&#x606F;&#xFF0C;&#x7528;&#x4E8E;&#x8861;&#x91CF;&#x4E24;&#x4E2A;&#x6982;&#x7387;&#x5206;&#x5E03;&#x4E4B;&#x95F4;&#x7684;&#x5DEE;&#x5F02;&#x3002;  </p>
+<p>&#x673A;&#x5668;&#x5B66;&#x4E60;&#x7684;&#x76EE;&#x7684;&#x5C31;&#x662F;&#x5E0C;&#x671B;$q(x)$&#x5C3D;&#x53EF;&#x80FD;&#x5730;&#x903C;&#x8FD1;&#x751A;&#x81F3;&#x7B49;&#x4E8E;$p(x)$&#xFF0C;&#x4ECE;&#x800C;&#x4F7F;&#x5F97;&#x76F8;&#x5BF9;&#x71B5;&#x63A5;&#x8FD1;&#x6700;&#x5C0F;&#x503C;0&#x3002;&#x7531;&#x4E8E;&#x771F;&#x5B9E;&#x7684;&#x6982;&#x7387;&#x5206;&#x5E03;&#x662F;&#x56FA;&#x5B9A;&#x7684;&#xFF0C;&#x76F8;&#x5BF9;&#x71B5;&#x516C;&#x5F0F;&#x7684;&#x540E;&#x534A;&#x90E8;&#x5206;$H(p,p)$&#x5C31;&#x6210;&#x4E86;&#x4E00;&#x4E2A;&#x5E38;&#x6570;&#x3002;&#x90A3;&#x4E48;&#x76F8;&#x5BF9;&#x71B5;&#x8FBE;&#x5230;&#x6700;&#x5C0F;&#x503C;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4E5F;&#x610F;&#x5473;&#x7740;&#x4EA4;&#x53C9;&#x71B5;&#x8FBE;&#x5230;&#x4E86;&#x6700;&#x5C0F;&#x503C;&#x3002;&#x5BF9;$q(x)$&#x7684;&#x4F18;&#x5316;&#x5C31;&#x7B49;&#x6548;&#x4E8E;&#x6C42;&#x4EA4;&#x53C9;&#x71B5;&#x7684;&#x6700;&#x5C0F;&#x503C;&#x3002;&#x53E6;&#x5916;&#xFF0C;&#x5BF9;&#x4EA4;&#x53C9;&#x71B5;&#x6C42;&#x6700;&#x5C0F;&#x503C;&#xFF0C;&#x4E5F;&#x7B49;&#x6548;&#x4E8E;&#x6C42;&#x6700;&#x5927;&#x4F3C;&#x7136;&#x4F30;&#x8BA1;&#xFF08;maximum likelihood estimation&#xFF09;&#x3002;</p>
+<p><br></p>
+<h3 id="&#x6700;&#x5927;&#x71B5;&#x539F;&#x7406;"><a href="#&#x6700;&#x5927;&#x71B5;&#x539F;&#x7406;" class="headerlink" title="&#x6700;&#x5927;&#x71B5;&#x539F;&#x7406;"></a>&#x6700;&#x5927;&#x71B5;&#x539F;&#x7406;</h3><p>&#x6700;&#x5927;&#x71B5;&#x539F;&#x7406;&#x662F;&#x6982;&#x7387;&#x6A21;&#x578B;&#x5B66;&#x4E60;&#x7684;&#x4E00;&#x4E2A;&#x51C6;&#x5219;&#x3002;&#x6700;&#x5927;&#x71B5;&#x539F;&#x7406;&#x8BA4;&#x4E3A;&#xFF0C;&#x71B5;&#x6700;&#x5927;&#x7684;&#x6A21;&#x578B;&#x662F;&#x6700;&#x597D;&#x7684;&#x6A21;&#x578B;&#x3002;<br>&#x5047;&#x8BBE;&#x79BB;&#x6563;&#x968F;&#x673A;&#x53D8;&#x91CF;$X$&#x7684;&#x6982;&#x7387;&#x5206;&#x5E03;&#x662F;$P(x)$&#xFF0C;&#x5219;&#x71B5;&#x662F;$$H(P)=-\sum P(x)\log P(x)$$<br>&#x5176;&#x4E2D;&#xFF0C;$0 \leq H(P) \leq \log |X| $&#xFF0C;$|X|$&#x662F;$X$&#x7684;&#x53D6;&#x503C;&#x4E2A;&#x6570;&#x3002;&#x5F53;&#x4E14;&#x4EC5;&#x5F53;$X$&#x7684;&#x5206;&#x5E03;&#x662F;&#x5747;&#x5300;&#x5206;&#x5E03;&#x65F6;&#x53F3;&#x8FB9;&#x7684;&#x7B49;&#x53F7;&#x6210;&#x7ACB;&#xFF0C;&#x6B64;&#x65F6;&#x71B5;&#x6700;&#x5927;&#x3002;  </p>
+<p>&#x6700;&#x5927;&#x71B5;&#x539F;&#x7406;&#x8BA4;&#x4E3A;&#xFF1A;</p>
+<blockquote>
+<p>&#x5728;&#x7EA6;&#x675F;&#x6761;&#x4EF6;&#x4E0B;&#xFF0C;&#x5728;&#x6CA1;&#x6709;&#x66F4;&#x591A;&#x4FE1;&#x606F;&#x7684;&#x6761;&#x4EF6;&#x5929;&#xFF0C;&#x90A3;&#x4E9B;&#x4E0D;&#x786E;&#x5B9A;&#x7684;&#x90E8;&#x5206;&#x90FD;&#x662F;&#x201D;&#x7B49;&#x53EF;&#x80FD;&#x7684;&#x201D;. &#x6240;&#x4EE5;&#xFF0C;&#x901A;&#x8FC7;&#x71B5;&#x7684;&#x6700;&#x5927;&#x5316;&#x6765;&#x8868;&#x793A;&#x7B49;&#x53EF;&#x80FD;&#x6027;&#x3002;&#x71B5;&#x662F;&#x4E00;&#x4E2A;&#x53EF;&#x4F18;&#x5316;&#x7684;&#x6570;&#x503C;&#x6307;&#x6807;&#x3002;</p>
+</blockquote>
+<h3 id="&#x6700;&#x5927;&#x71B5;&#x6A21;&#x578B;"><a href="#&#x6700;&#x5927;&#x71B5;&#x6A21;&#x578B;" class="headerlink" title="&#x6700;&#x5927;&#x71B5;&#x6A21;&#x578B;"></a>&#x6700;&#x5927;&#x71B5;&#x6A21;&#x578B;</h3><p>&#x5B9A;&#x4E49;&#x5728;&#x6761;&#x4EF6;&#x6982;&#x7387;&#x5206;&#x5E03;$P(Y|X)$&#x4E0A;&#x7684;&#x6761;&#x4EF6;&#x71B5;&#x4E3A;&#xFF1A;<br>$$H(P) = \sum_{x,y} P(x)P(y|x)\ln P(y|x)$$&#x5219;&#x6761;&#x4EF6;&#x71B5;&#x6700;&#x5927;&#x7684;&#x6A21;&#x578B;&#x79F0;&#x4E3A;&#x6700;&#x5927;&#x71B5;&#x6A21;&#x578B;&#x3002;  </p>
+<p><strong>&#x6700;&#x5927;&#x71B5;&#x6A21;&#x578B;&#x6C42;&#x89E3;</strong><br>&#x5C06;&#x7EA6;&#x675F;&#x6700;&#x4F18;&#x5316;&#x7684;&#x539F;&#x59CB;&#x95EE;&#x9898;&#x8F6C;&#x6362;&#x4E3A;&#x65E0;&#x7EA6;&#x675F;&#x6700;&#x4F18;&#x5316;&#x7684;&#x5BF9;&#x5076;&#x95EE;&#x9898;(&#x5F15;&#x8FDB;&#x62C9;&#x683C;&#x6717;&#x65E5;&#x51FD;&#x6570;)&#x3002;&#x6C42;&#x89E3;&#x5F97;&#xFF1A;<br>$$P_w(y|x) = \frac 1 {\sum_y \exp (\sum_{i=1}^n w_i f_i(x,y))} \exp {\sum_{i=1}^n w_i f_i(x,y)}$$</p>
+<p>&#x6700;&#x5927;&#x71B5;&#x6A21;&#x578B;&#x4E0E;&#x903B;&#x8F91;&#x65AF;&#x8482;&#x56DE;&#x5F52;&#x6A21;&#x578B;&#x6709;&#x7C7B;&#x4F3C;&#x7684;&#x5F62;&#x5F0F;&#xFF0C;&#x4ED6;&#x4EEC;&#x53C8;&#x79F0;&#x4E3A;&#x5BF9;&#x6570;&#x7EBF;&#x6027;&#x6A21;&#x578B;(log linear model).</p>
+<p><br></p>
+<h3 id="&#x6700;&#x5927;&#x71B5;&#x6A21;&#x578B;&#x4E0E;&#x903B;&#x8F91;&#x65AF;&#x8482;&#x56DE;&#x5F52;&#x6A21;&#x578B;"><a href="#&#x6700;&#x5927;&#x71B5;&#x6A21;&#x578B;&#x4E0E;&#x903B;&#x8F91;&#x65AF;&#x8482;&#x56DE;&#x5F52;&#x6A21;&#x578B;" class="headerlink" title="&#x6700;&#x5927;&#x71B5;&#x6A21;&#x578B;&#x4E0E;&#x903B;&#x8F91;&#x65AF;&#x8482;&#x56DE;&#x5F52;&#x6A21;&#x578B;"></a>&#x6700;&#x5927;&#x71B5;&#x6A21;&#x578B;&#x4E0E;&#x903B;&#x8F91;&#x65AF;&#x8482;&#x56DE;&#x5F52;&#x6A21;&#x578B;</h3><p>&#x6700;&#x5927;&#x71B5;&#x6A21;&#x578B;&#x5B9A;&#x4E49;&#x4E86;&#x5728;&#x7ED9;&#x5B9A;&#x8F93;&#x5165;&#x53D8;&#x91CF;$x$&#x65F6;&#xFF0C;&#x8F93;&#x51FA;&#x53D8;&#x91CF;$y$&#x7684;&#x6761;&#x4EF6;&#x5206;&#x5E03;&#xFF1A;<br>$$P_w(y|x) = \frac 1 {\sum_y \exp (\sum_{i=1}^n w_i f_i(x,y))} \exp {\sum_{i=1}^n w_i f_i(x,y)}$$</p>
+<p>&#x5047;&#x8BBE;y&#x4E3A;&#x4E8C;&#x5143;&#x53D8;&#x91CF;&#xFF0C;&#x5B9A;&#x4E49;&#x7279;&#x5F81;&#x51FD;&#x6570;&#x4E3A;:<br>$$f(x,y) = \begin{cases}<br>g(x), &amp; y=y_1 \\<br>0, &amp; y=y_0 \\<br>\end{cases}$$</p>
+<p>&#x5373;&#x4EC5;&#x5728;$y=y_1$&#x65F6;&#x62BD;&#x53D6;$x$&#x7684;&#x7279;&#x5F81;&#xFF0C;&#x5728;$y=y_0$&#x65F6;&#x4E0D;&#x62BD;&#x4EFB;&#x4F55;&#x7279;&#x5F81;&#xFF08;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;&#x5168;&#x4E3A;0&#x7684;&#x7279;&#x5F81;&#x5411;&#x91CF;&#xFF09;&#x3002;</p>
+<p>&#x7279;&#x5F81;&#x51FD;&#x6570;&#x5E26;&#x56DE;&#x6700;&#x5927;&#x71B5;&#x6A21;&#x578B;&#xFF1A;<br>$$\begin{align}<br>P_w(y_1|x)  &amp;= \frac {\exp {\sum_{i=1}^n w_i f_i(x,y_1)}}  {\exp (\sum_{i=1}^n w_i f_i(x,y_0)) + \exp (\sum_{i=1}^n w_i f_i(x,y_1))}\\<br>&amp;= \frac {\exp {\sum_{i=1}^n w_i g(x)}}  {1 + \exp (\sum_{i=1}^n w_i g(x))} \\<br>&amp;= \frac {1}  {1 + \exp (\sum_{i=1}^n -w_i g(x))}<br>\end{align}$$</p>
+<p><br></p>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><ul>
+<li>&#x300A;&#x7EDF;&#x8BA1;&#x5B66;&#x4E60;&#x65B9;&#x6CD5;&#x300B;&#x674E;&#x822A;</li>
+</ul>
 
 	
 	
@@ -413,7 +376,7 @@
     
     <!-- Prev Nav -->
     
-        <a href="/2017/11/24/逻辑斯蒂回归/" id="post_nav-newer" class="prev-content">
+        <a href="/2017/11/24/评价指标/" id="post_nav-newer" class="prev-content">
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
                 <i class="material-icons">arrow_back</i>
             </button>
@@ -427,7 +390,7 @@
 
     <!-- Next Nav -->
     
-        <a href="/2016/12/30/EM算法 (Expectation-Maximization  Algorithm)/" id="post_nav-older" class="next-content">
+        <a href="/2017/11/24/随机森林/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">

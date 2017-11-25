@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Title -->
+    
+    <title>
+        支持向量机SVM | AI
+    </title>
+    
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/zebra.png">
+    <link rel="icon" sizes="192x192" href="/img/zebra.png">
+    <link rel="apple-touch-icon" href="/img/zebra.png">
+    
+    <!-- Meta & INfo -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="Mahome.liao">
+    <meta name="description" content="You know nothing.">
+    <meta name="keywords" content="跟着我走，你会降维">
+    
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+    
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="AI">
+    
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://yoursite.com">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="支持向量机SVM | AI">
+    <meta property="og:description" content="You know nothing.">
+    
+     <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+        
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+    
+    <!-- Import CSS -->
+    <link rel="stylesheet" href="/css/material.min.css">
+    <link rel="stylesheet" href="/css/style.min.css">
+    <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+	body, html{
+		font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+	}
+	
+    a{
+        color: #00838F
+    }
+    
+    .mdl-card__media,
+    #search-label,
+    #search-form-label:after,
+    #scheme-Paradox .hot_tags-count,
+    #scheme-Paradox .sidebar_archives-count,
+    #scheme-Paradox .sidebar-colored .sidebar-header,
+    #scheme-Paradox .sidebar-colored .sidebar-badge{
+        background-color: #0097A7 !important
+    }
+    
+	/* Sidebar User Drop Down Menu Text Color */
+	#scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+    #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus{
+        color: #0097A7 !important
+    }
+    
+    #post_entry-right-info,
+    .sidebar-colored .sidebar-nav li:hover > a,
+    .sidebar-colored .sidebar-nav li:hover > a i,
+    .sidebar-colored .sidebar-nav li > a:hover,
+    .sidebar-colored .sidebar-nav li > a:hover i,
+    .sidebar-colored .sidebar-nav li > a:focus i,
+    .sidebar-colored .sidebar-nav > .open > a,
+    .sidebar-colored .sidebar-nav > .open > a:hover,
+    .sidebar-colored .sidebar-nav > .open > a:focus,
+    #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a{
+        color: #0097A7 !important
+    }
+    
+    .toTop{
+        background: #757575 !important
+    }
+		
+	.material-layout .material-post>.material-nav,
+	.material-layout .material-index>.material-nav,
+	.material-nav a{
+		color: #757575;
+	}
+		
+	#scheme-Paradox .MD-burger-layer {
+		background-color: #757575;
+	}
+
+	#scheme-Paradox #post-toc-trigger-btn{
+		color: #757575;
+	}
+	
+	.post-toc a:hover{
+		color: #00838F;
+		text-decoration: underline;
+	}
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+        body{
+            background-color: #F5F5F5
+        }
+		
+		/* blog_info bottom background */
+        #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+            background-color: #fff;
+        }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+        .fade {
+            transition: all 800ms linear;
+            -webkit-transform: translate3d(0,0,0);
+            -moz-transform: translate3d(0,0,0);
+            -ms-transform: translate3d(0,0,0);
+            -o-transform: translate3d(0,0,0);
+            transform: translate3d(0,0,0);
+            opacity: 1;
+        }
+
+        .fade.out{
+            opacity: 0;
+        }
+    </style>
+
+	<script src="/js/jquery.min.js"></script>
+	
+	<link rel="stylesheet" href="/css/highlight/solarized-white.css">
+	
+	<!-- UC Browser Compatible-->
+	<script>
+		var agent = navigator.userAgent.toLowerCase();
+		if(agent.indexOf('ucbrowser')>0) {
+			document.write('<link rel="stylesheet" href="/css/uc.css">');
+		   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+		}
+	</script>
+    
+    <!-- Custom Head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+</head>
+	
+	
+
+    <body id="scheme-Paradox">
+
+		
+        <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+				
+			
+			
+            <!-- Main Container -->
+            <main class="material-layout__content" id="main">
+				
+                <!-- Top Anchor -->
+                <div id="top"></div>
+				
+				
+                <!-- Hamburger Button -->
+                <button class="MD-burger-icon sidebar-toggle">
+                    <span class="MD-burger-layer"></span>
+                </button>
+				
+				
+                
+	<!-- Back Button -->
+<!--
+	<div class="material-back" id="backhome-div" tabindex="0">
+		<a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" href="#" onclick="window.history.back();return false;" target="_self" role="button" data-upgraded=",MaterialButton,MaterialRipple">
+			<i class="material-icons" role="presentation">arrow_back</i>
+			<span class="mdl-button__ripple-container">
+				<span class="mdl-ripple"></span>
+			</span>
+		</a>
+	</div>			
+-->
+	<!-- Left aligned menu below button -->
+	<button id="post-toc-trigger-btn"
+			class="mdl-button mdl-js-button mdl-button--icon">
+	  <i class="material-icons">format_list_numbered</i>
+	</button>
+
+	<ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
+		for="post-toc-trigger-btn">
+			
+			<ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#SVM"><span class="post-toc-number">1.</span> <span class="post-toc-text">SVM</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#硬间隔最大化、线性可分支持向量机"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">硬间隔最大化、线性可分支持向量机</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#线性可分支持向量机–最大间隔法"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">线性可分支持向量机–最大间隔法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#线性支持向量机–软间隔最大化"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">线性支持向量机–软间隔最大化</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#对偶学习"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">对偶学习</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#SVM损失函数与正则项"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">SVM损失函数与正则项</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#惩罚系数C的理解"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">惩罚系数C的理解</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Logistic-regression-到-SVM"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">Logistic regression 到 SVM</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#SMO算法"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">SMO算法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#参考文献"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">参考文献</span></a></li></ol></li></ol>
+		
+<!--			<li class="mdl-menu__item">Some Action</li>-->
+	</ul>
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+		
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+	<!-- Paradox Post Header -->
+	
+		
+			<!-- Random Thumbnail -->
+			<div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+				<script>
+    
+    var randomNum;
+    randomNum = Math.floor(Math.random() * 45 + 1);
+    
+    $(".post_thumbnail-random").css('background-image', 'url(' + '/img/random/' + randomNum + '.png' + ')');
+    
+</script>
+
+		
+	
+        <p class="article-headline-p">
+            支持向量机SVM
+        </p>
+    </div>
+
+	
+
+				
+				
+					<!-- Paradox Post Info -->
+					<div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+    
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/zebra.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Mahome.liao</strong>
+        <span>11月 24, 2017</span>
+    </div>
+    
+    <div class="section-spacer"></div>
+	
+    <!-- Favorite -->
+<!--
+    <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+        <i class="material-icons" role="presentation">favorite</i>
+        <span class="visuallyhidden">favorites</span>
+    </button>
+-->
+    
+    <!-- Tags (bookmark) -->
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        
+    </ul>
+    
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+    
+    
+    
+    
+    <!-- Share Twitter -->
+    <a class="post_share-link" href="https://twitter.com/intent/tweet?text=支持向量机SVM&url=http://yoursite.com//2017/11/24/支持向量机SVM/index.html&via=Mahome.liao" target="_blank">
+        <li class="mdl-menu__item">
+            分享到 Twitter
+        </li>
+    </a>
+    
+    <!-- Share Google+ -->
+    <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com//2017/11/24/支持向量机SVM/index.html" target="_blank">
+        <li class="mdl-menu__item">
+            分享到 Google+
+        </li>
+    </a>
+    
+    <!-- Share Weibo -->
+    <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=支持向量机SVM&url=http://yoursite.com//2017/11/24/支持向量机SVM/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <li class="mdl-menu__item">
+            分享到微博
+        </li>
+    </a>
+</ul>
+</div>
+				
+
+                <!-- Post Content -->
+                <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+	
+		<p><img src="/2017/11/24/&#x652F;&#x6301;&#x5411;&#x91CF;&#x673A;SVM/SVM.jpg" alt="&apos;&#x9876;&#x90E8;&apos;"></p>
+<h2 id="SVM"><a href="#SVM" class="headerlink" title="SVM"></a>SVM</h2><p>&#x652F;&#x6301;&#x5411;&#x91CF;&#x673A; = &#x95F4;&#x9694;&#x6700;&#x5927; + &#x6838;&#x6280;&#x5DE7; = &#x6B63;&#x5219;&#x5316; + &#x5408;&#x9875;&#x635F;&#x5931;</p>
+<blockquote>
+<p>&#x5F53;&#x6570;&#x636E;&#x7EBF;&#x6027;&#x53EF;&#x5206;&#x65F6;&#xFF0C;&#x901A;&#x8FC7;&#x786C;&#x95F4;&#x9694;&#x6700;&#x5927;&#x5316;(hard margin maximization)&#xFF0C;&#x5B66;&#x4E60;&#x5F97;&#x5230;&#x7EBF;&#x6027;&#x53EF;&#x5206;&#x652F;&#x6301;&#x5411;&#x91CF;&#x673A;&#x3002;<br>&#x5F53;&#x6570;&#x636E;&#x8FD1;&#x4F3C;&#x7EBF;&#x6027;&#x53EF;&#x5206;&#x65F6;&#xFF0C;&#x901A;&#x8FC7;&#x8F6F;&#x95F4;&#x9694;&#x6700;&#x5927;&#x5316;(soft margin maximization)&#xFF0C;&#x5B66;&#x4E60;&#x5F97;&#x5230;&#x8F6F;&#x95F4;&#x9694;&#x652F;&#x6301;&#x5411;&#x91CF;&#x673A;&#x3002;<br>&#x5F53;&#x8BAD;&#x7EC3;&#x6570;&#x636E;&#x7EBF;&#x6027;&#x4E0D;&#x53EF;&#x5206;&#x65F6;&#xFF0C;&#x901A;&#x8FC7;&#x4F7F;&#x7528;&#x6838;&#x6280;&#x5DE7;(kernel trick)&#x53CA;&#x8F6F;&#x95F4;&#x9694;&#x6700;&#x5927;&#x5316;&#xFF0C;&#x5B66;&#x4E60;&#x5F97;&#x5230;&#x975E;&#x7EBF;&#x6027;&#x652F;&#x6301;&#x5411;&#x91CF;&#x673A;&#x3002; </p>
+</blockquote>
+<p><br></p>
+<h3 id="&#x786C;&#x95F4;&#x9694;&#x6700;&#x5927;&#x5316;&#x3001;&#x7EBF;&#x6027;&#x53EF;&#x5206;&#x652F;&#x6301;&#x5411;&#x91CF;&#x673A;"><a href="#&#x786C;&#x95F4;&#x9694;&#x6700;&#x5927;&#x5316;&#x3001;&#x7EBF;&#x6027;&#x53EF;&#x5206;&#x652F;&#x6301;&#x5411;&#x91CF;&#x673A;" class="headerlink" title="&#x786C;&#x95F4;&#x9694;&#x6700;&#x5927;&#x5316;&#x3001;&#x7EBF;&#x6027;&#x53EF;&#x5206;&#x652F;&#x6301;&#x5411;&#x91CF;&#x673A;"></a>&#x786C;&#x95F4;&#x9694;&#x6700;&#x5927;&#x5316;&#x3001;&#x7EBF;&#x6027;&#x53EF;&#x5206;&#x652F;&#x6301;&#x5411;&#x91CF;&#x673A;</h3><p><strong>&#x51FD;&#x6570;&#x95F4;&#x9694;</strong><br>&#x5728;&#x8D85;&#x5E73;&#x9762;$w \cdot x +b =0$&#x786E;&#x5B9A;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;$|w \cdot x +b|$&#x8868;&#x793A;&#x70B9;x&#x8DDD;&#x79BB;&#x8D85;&#x5E73;&#x9762;&#x7684;&#x8DDD;&#x79BB;&#x3002;$y(w \cdot x +b)$&#x8868;&#x793A;&#x5206;&#x7C7B;&#x7684;&#x6B63;&#x786E;&#x6027;&#x4E0E;&#x786E;&#x5B9A;&#x5EA6;($y$&#x4E0E;$w \cdot x +b$ &#x7B26;&#x53F7;&#x662F;&#x5426;&#x4E00;&#x81F4;&#x8868;&#x793A;&#x5206;&#x7C7B;&#x662F;&#x5426;&#x6B63;&#x786E;,&#x8DDD;&#x79BB;&#x8D85;&#x5E73;&#x9762;&#x8D8A;&#x8FDC;&#x8868;&#x793A;&#x786E;&#x4FE1;&#x5EA6;&#x8D8A;&#x9AD8;)&#x3002;<br>&#x51FD;&#x6570;&#x95F4;&#x9694;&#x5B9A;&#x4E49;&#x4E3A;:$$\widetilde \gamma = \min_{i=1,&#x2026;,N}  \  y_i(w \cdot x_i + b)$$</p>
+<p><strong>&#x51E0;&#x4F55;&#x95F4;&#x9694;</strong><br>&#x7531;&#x4E8E;&#x8D85;&#x5E73;&#x9762;&#x53C2;&#x6570;$w$&#x548C;$b$&#x6210;&#x6BD4;&#x4F8B;&#x6539;&#x53D8;&#xFF0C;&#x8D85;&#x5E73;&#x9762;&#x4E0D;&#x53D8;&#xFF0C;&#x51FD;&#x6570;&#x95F4;&#x9694;&#x4E5F;&#x6309;&#x6B64;&#x6BD4;&#x4F8B;&#x6539;&#x53D8;&#xFF0C;&#x4F46;&#x51E0;&#x4F55;&#x95F4;&#x9694;&#x4E0D;&#x53D8;&#x3002;<br>&#x51E0;&#x4F55;&#x95F4;&#x9694;&#x5B9A;&#x4E49;&#x4E3A;:$$\gamma = \min_{i=1,&#x2026;,N} \ y_i(\frac {w} {||w||} \cdot x_i + \frac {b} {||w||})$$</p>
+<p><strong>&#x95F4;&#x9694;&#x6700;&#x5927;&#x5316;</strong><br>&#x51E0;&#x4F55;&#x95F4;&#x9694;&#x6700;&#x5927;&#x7684;&#x5206;&#x79BB;&#x8D85;&#x5E73;&#x9762;&#xFF1A;<br>$$\max_{w,b} \  \gamma \\<br>s.t. \  y_i(\frac {w} {||w||} \cdot x_i + \frac {b} {||w||}) \geq \gamma , i=1,&#x2026;,N$$</p>
+<p>&#x8F6C;&#x4E3A;&#x51FD;&#x6570;&#x95F4;&#x9694;&#xFF1A;<br>$$\max_{w,b}  \ \frac {\widetilde \gamma} {||w||} \\<br>s.t. \  y_i({w} \cdot x_i + {b} ) \geq \widetilde \gamma , i=1,&#x2026;,N$$&#x56E0;&#x4E3A;&#x51FD;&#x6570;&#x95F4;&#x9694;$\widetilde \gamma$&#x7684;&#x53D6;&#x503C;&#x5E76;&#x4E0D;&#x5F71;&#x54CD;&#x4E0A;&#x9762;&#x7684;&#x6700;&#x4F18;&#x5316;&#x95EE;&#x9898;&#x7684;&#x89E3;($w$&#x548C;$b$&#x6309;&#x6BD4;&#x4F8B;&#x6539;&#x53D8;$\lambda w$&#x548C;$\lambda b$&#xFF0C;&#x51FD;&#x6570;&#x95F4;&#x9694;&#x53D8;&#x4E3A;$\lambda \widetilde \gamma$)&#x3002; </p>
+<p>&#x53D6;$\widetilde \gamma = 1$&#xFF1A;$$\max_{w,b} \  \frac {1} {2} ||w||^2 \\<br>s.t. \  y_i({w} \cdot x_i + {b} ) - 1 \geq 0 , i=1,&#x2026;,N$$<br><br></p>
+<h4 id="&#x7EBF;&#x6027;&#x53EF;&#x5206;&#x652F;&#x6301;&#x5411;&#x91CF;&#x673A;&#x2013;&#x6700;&#x5927;&#x95F4;&#x9694;&#x6CD5;"><a href="#&#x7EBF;&#x6027;&#x53EF;&#x5206;&#x652F;&#x6301;&#x5411;&#x91CF;&#x673A;&#x2013;&#x6700;&#x5927;&#x95F4;&#x9694;&#x6CD5;" class="headerlink" title="&#x7EBF;&#x6027;&#x53EF;&#x5206;&#x652F;&#x6301;&#x5411;&#x91CF;&#x673A;&#x2013;&#x6700;&#x5927;&#x95F4;&#x9694;&#x6CD5;"></a>&#x7EBF;&#x6027;&#x53EF;&#x5206;&#x652F;&#x6301;&#x5411;&#x91CF;&#x673A;&#x2013;&#x6700;&#x5927;&#x95F4;&#x9694;&#x6CD5;</h4><p><strong>&#x7B97;&#x6CD5;&#x6D41;&#x7A0B;</strong>  </p>
+<p>&#x8F93;&#x5165;&#xFF1A;&#x7EBF;&#x6027;&#x53EF;&#x5206;&#x8BAD;&#x7EC3;&#x6570;&#x636E;&#x96C6;$T = \{(x_1,y_1),(x_2,y_2),&#x2026;,(x_N,y_N)\}$&#xFF0C;&#x5176;&#x4E2D;,$x_i \in \mathcal {X}=R^n&#xFF0C;y_i \in \mathcal {Y}=\{-1,+1\},i=1,2,&#x2026;,N$;</p>
+<p>&#x8F93;&#x51FA;&#xFF1A;&#x6700;&#x5927;&#x95F4;&#x9694;&#x5206;&#x79BB;&#x8D85;&#x5E73;&#x9762;&#x548C;&#x5206;&#x7C7B;&#x51B3;&#x7B56;&#x51FD;&#x6570;.  </p>
+<ul>
+<li><p>&#x6784;&#x9020;&#x5E76;&#x6C42;&#x89E3;&#x7EA6;&#x675F;&#x6700;&#x4F18;&#x5316;&#x95EE;&#x9898;&#xFF1A;$$\max_{w,b} \  \frac {1} {2} ||w||^2 \\<br>s.t. \  y_i({w} \cdot x_i + {b} ) - 1 \geq 0 , i=1,&#x2026;,N$$&#x6C42;&#x5F97;&#x6700;&#x4F18;&#x89E3;$w^<em>,b^</em>$.  </p>
+</li>
+<li><p>&#x5F97;&#x5230;&#x5206;&#x79BB;&#x8D85;&#x5E73;&#x9762;&#xFF1A;$${w^<em>} \cdot x + {b^</em>} = 0$$ &#x5206;&#x79BB;&#x51B3;&#x7B56;&#x51FD;&#x6570;&#xFF1A;$$f(x)=sign ({w^<em>} \cdot x + {b^</em>})$$  </p>
+</li>
+</ul>
+<p><br>  </p>
+<blockquote>
+<p>&#x6700;&#x5927;&#x95F4;&#x9694;&#x5206;&#x79BB;&#x8D85;&#x5E73;&#x9762;&#x5B58;&#x5728;&#x552F;&#x4E00;&#x6027;</p>
+<p>&#x652F;&#x6301;&#x5411;&#x91CF;&#xFF1A;&#x7EBF;&#x6027;&#x53EF;&#x5206;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x8BAD;&#x7EC3;&#x6570;&#x636E;&#x96C6;&#x7684;&#x6837;&#x672C;&#x70B9;&#x4E2D;&#x4E0E;&#x5206;&#x79BB;&#x8D85;&#x5E73;&#x9762;&#x8DDD;&#x79BB;&#x6700;&#x8FD1;&#x7684;&#x6837;&#x672C;&#x70B9;&#x7684;&#x5B9E;&#x4F8B;&#x3002;&#x5373;&#xFF1A;&#x4F7F;&#x7EA6;&#x675F;&#x6761;&#x4EF6;$ y_i({w} \cdot x_i + {b} ) - 1 = 0$&#x7B49;&#x53F7;&#x6210;&#x7ACB;&#x7684;&#x70B9;&#x3002;</p>
+</blockquote>
+<p><br></p>
+<h4 id="&#x7EBF;&#x6027;&#x652F;&#x6301;&#x5411;&#x91CF;&#x673A;&#x2013;&#x8F6F;&#x95F4;&#x9694;&#x6700;&#x5927;&#x5316;"><a href="#&#x7EBF;&#x6027;&#x652F;&#x6301;&#x5411;&#x91CF;&#x673A;&#x2013;&#x8F6F;&#x95F4;&#x9694;&#x6700;&#x5927;&#x5316;" class="headerlink" title="&#x7EBF;&#x6027;&#x652F;&#x6301;&#x5411;&#x91CF;&#x673A;&#x2013;&#x8F6F;&#x95F4;&#x9694;&#x6700;&#x5927;&#x5316;"></a>&#x7EBF;&#x6027;&#x652F;&#x6301;&#x5411;&#x91CF;&#x673A;&#x2013;&#x8F6F;&#x95F4;&#x9694;&#x6700;&#x5927;&#x5316;</h4><p>&#x7EBF;&#x6027;&#x4E0D;&#x53EF;&#x5206;&#x610F;&#x5473;&#x7740;&#x67D0;&#x4E9B;&#x6837;&#x672C;&#x70B9;$(x_i,y_i)$&#x4E0D;&#x80FD;&#x6EE1;&#x8DB3;&#x51FD;&#x6570;&#x95F4;&#x9694;&#x5927;&#x4E8E;&#x7B49;&#x4E8E;1&#x7684;&#x7EA6;&#x675F;&#x6761;&#x4EF6;$ y_i({w} \cdot x_i + {b} ) - 1 \geq 0$&#x3002;<br>&#x4E3A;&#x4E86;&#x89E3;&#x51B3;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x53EF;&#x4EE5;&#x5BF9;&#x6BCF;&#x4E2A;&#x6837;&#x672C;&#x70B9;$(x_i,y_i)$&#x5F15;&#x8FDB;&#x4E00;&#x4E2A;&#x677E;&#x5F1B;&#x53D8;&#x91CF;$\xi_i \geq 0$&#xFF0C;&#x4F7F;&#x51FD;&#x6570;&#x95F4;&#x9694;&#x52A0;&#x4E0A;&#x677E;&#x5F1B;&#x53D8;&#x91CF;&#x5927;&#x4E8E;&#x7B49;&#x4E8E;1&#x3002;&#x8FD9;&#x6837;&#xFF0C;&#x7EA6;&#x675F;&#x6761;&#x4EF6;&#x53D8;&#x4E3A;&#xFF1A;$$y_i({w} \cdot x_i + {b} ) \geq 1 - \xi_i$$</p>
+<p>&#x540C;&#x65F6;&#xFF0C;&#x5BF9;&#x6BCF;&#x4E2A;&#x677E;&#x5F1B;&#x53D8;&#x91CF;$\xi_i$&#xFF0C;&#x652F;&#x4ED8;&#x4E00;&#x4E2A;&#x4EE3;&#x4EF7;$\xi_i$&#xFF0C;&#x76EE;&#x6807;&#x51FD;&#x6570;&#x53D8;&#x4E3A;&#xFF1A;<br>$$\frac {1} {2} ||w||^2 + C \sum_{i=1}^N \xi_i$$</p>
+<p>&#x5176;&#x4E2D;&#xFF0C;$C&gt;0$&#x79F0;&#x4E3A;&#x60E9;&#x7F5A;&#x7CFB;&#x6570;&#x3002;<br><br></p>
+<h4 id="&#x5BF9;&#x5076;&#x5B66;&#x4E60;"><a href="#&#x5BF9;&#x5076;&#x5B66;&#x4E60;" class="headerlink" title="&#x5BF9;&#x5076;&#x5B66;&#x4E60;"></a>&#x5BF9;&#x5076;&#x5B66;&#x4E60;</h4><p>&#x5BF9;&#x539F;&#x59CB;&#x6700;&#x4F18;&#x5316;&#x95EE;&#x9898;&#xFF0C;&#x5E94;&#x7528;&#x62C9;&#x683C;&#x6717;&#x65E5;&#x5BF9;&#x5076;&#x6027;&#xFF0C;&#x901A;&#x8FC7;&#x6C42;&#x89E3;&#x5BF9;&#x5076;&#x95EE;&#x9898;&#x5F97;&#x5230;&#x539F;&#x59CB;&#x95EE;&#x9898;&#x7684;&#x6700;&#x4F18;&#x89E3;&#x3002;  </p>
+<blockquote>
+<p>&#x5BF9;&#x5076;&#x95EE;&#x9898;&#x66F4;&#x5BB9;&#x6613;&#x6C42;&#x89E3;&#x3002;<br>&#x81EA;&#x7136;&#x5F15;&#x5165;&#x6838;&#x51FD;&#x6570;&#xFF0C;&#x8FDB;&#x800C;&#x63A8;&#x5E7F;&#x5230;&#x975E;&#x7EBF;&#x6027;&#x5206;&#x7C7B;&#x95EE;&#x9898;&#x3002;</p>
+</blockquote>
+<p>&#x5BF9;&#x6BCF;&#x4E2A;&#x7EA6;&#x675F;&#x5F15;&#x8FDB;&#x62C9;&#x683C;&#x6717;&#x65E5;&#x4E58;&#x5B50;(Lagrange multiplier)&#xFF0C;&#x5B9A;&#x4E49;&#x62C9;&#x683C;&#x6717;&#x65E5;&#x51FD;&#x6570;(Lagrange function)&#xFF1A;$$L(w,b,\alpha) = \frac {1} {2} ||w||^2 - \sum_{i=1}^N \alpha_i y_i (w \cdot x_i + b) + \sum_{i=1}^N \alpha_i $$&#x6839;&#x636E;&#x62C9;&#x683C;&#x6717;&#x65E5;&#x5BF9;&#x5076;&#x6027;&#xFF0C;&#x539F;&#x59CB;&#x95EE;&#x9898;&#x7684;&#x5BF9;&#x5076;&#x95EE;&#x9898;&#x662F;&#x6781;&#x5927;&#x6781;&#x5C0F;&#x95EE;&#x9898;&#xFF1A;$$\max_{\alpha} \ \min_{w,b} \ L(w,b,\alpha)$$</p>
+<ol>
+<li>&#x6C42;$\min_{w,b} \ L(w,b,\alpha)$<br>&#x5C06;&#x62C9;&#x683C;&#x6717;&#x65E5;&#x51FD;&#x6570;$L(w,b,\alpha)$&#x5206;&#x522B;&#x5BF9;$w,b$&#x6C42;&#x504F;&#x5BFC;&#x6570;&#x5E76;&#x4EE4;&#x5176;&#x7B49;&#x4E8E;0.<br>$$\nabla_w L(w,b,\alpha) = w - \sum_{i=1}^N \alpha_i y_ix_i =0\\<br>\nabla_b L(w,b,\alpha) = \sum_{i=1}^N \alpha_i y_i =0$$&#x5F97;&#xFF1A;<br>$$ w = \sum_{i=1}^N \alpha_i y_ix_i\\<br>\sum_{i=1}^N \alpha_i y_i =0$$<br>&#x5C06;&#x4E0A;&#x5F0F;&#x5E26;&#x5165;&#x62C9;&#x683C;&#x6717;&#x65E5;&#x51FD;&#x6570;&#xFF0C;&#x5F97;&#xFF1A;<br>$$\begin {align}<br>\min_{w,b} \ L(w,b,\alpha) &amp;=\frac 1 2 \sum_{i=1}^N \sum_{j=1}^N \alpha_i \alpha_j y_i y_j (x_i \cdot x_j) - \sum_{i=1}^N \alpha_j y_i [( \sum_{j=1}^N \alpha_j y_j x_j) \cdot x_j] \cdot x_i + b) + \sum_{i=1}^N \alpha_i \\<br>&amp; = - \frac 1 2 \sum_{i=1}^N \sum_{j=1}^N \alpha_i \alpha_j y_i y_j (x_i \cdot x_j) + \sum_{i=1}^N \alpha_i<br>\end{align}$$</li>
+</ol>
+<ol>
+<li>&#x6C42;$\min_{w,b} \ L(w,b,\alpha)$&#x5BF9;$\alpha$&#x7684;&#x6781;&#x5927;<br>$$\max_{\alpha} \  - \frac 1 2 \sum_{i=1}^N \sum_{j=1}^N \alpha_i \alpha_j y_i y_j (x_i \cdot x_j) + \sum_{i=1}^N \alpha_i \\<br>s.t. \ \sum_{i=1}^N \alpha_i y_i=0\\<br>\alpha_i \geq 0, \ i=1,2,&#x2026;,N$$ &#x7B49;&#x4EF7;&#x4E8E;<br>$$\min_{\alpha} \  \frac 1 2 \sum_{i=1}^N \sum_{j=1}^N \alpha_i \alpha_j y_i y_j (x_i \cdot x_j) - \sum_{i=1}^N \alpha_i \\<br>s.t. \ \sum_{i=1}^N \alpha_i y_i=0\\<br>\alpha_i \geq 0, \ i=1,2,&#x2026;,N$$ </li>
+</ol>
+<p><strong>KKT&#x6761;&#x4EF6;</strong><br>&#x8BBE;$\alpha^<em>=(\alpha_1^</em>,\alpha_2^<em>,&#x2026;,\alpha_N^</em>)^T$&#x662F;&#x4E0A;&#x9762;&#x5BF9;&#x5076;&#x95EE;&#x9898;&#x7684;&#x89E3;&#xFF0C;&#x5219;&#x5B58;&#x5728;&#x4E0B;&#x6807;$j$&#xFF0C;&#x4F7F;&#x5F97;$\alpha_j^<em> &gt; 0$.<br>&#x7531;&#x4E8E;KKT&#x6761;&#x4EF6;&#x6210;&#x7ACB;&#xFF0C;&#x4E14;$y_j^2=1$&#xFF0C;&#x5F97;&#xFF1A;<br>$$w^</em> = \sum_{i=1}^N \alpha_i^<em> y_i x_i\\<br>b^</em> = y_j - \sum_{i=1}^N \alpha_i^<em> y_i (x_i \cdot x_j)$$<br>&#x5206;&#x79BB;&#x8D85;&#x5E73;&#x9762;&#xFF0C;&#x51B3;&#x7B56;&#x51FD;&#x6570;&#xFF0C;&#x4E3A;:<br>$$\sum_{i=1}^N \alpha_i^</em> y_i (x_i \cdot x_j) + b^<em> =0\\<br>f(x) = sign (\sum_{i=1}^N \alpha_i^</em> y_i (x_i \cdot x_j) + b^*)$$</p>
+<p><br></p>
+<h3 id="SVM&#x635F;&#x5931;&#x51FD;&#x6570;&#x4E0E;&#x6B63;&#x5219;&#x9879;"><a href="#SVM&#x635F;&#x5931;&#x51FD;&#x6570;&#x4E0E;&#x6B63;&#x5219;&#x9879;" class="headerlink" title="SVM&#x635F;&#x5931;&#x51FD;&#x6570;&#x4E0E;&#x6B63;&#x5219;&#x9879;"></a>SVM&#x635F;&#x5931;&#x51FD;&#x6570;&#x4E0E;&#x6B63;&#x5219;&#x9879;</h3><h4 id="&#x60E9;&#x7F5A;&#x7CFB;&#x6570;C&#x7684;&#x7406;&#x89E3;"><a href="#&#x60E9;&#x7F5A;&#x7CFB;&#x6570;C&#x7684;&#x7406;&#x89E3;" class="headerlink" title="&#x60E9;&#x7F5A;&#x7CFB;&#x6570;C&#x7684;&#x7406;&#x89E3;"></a>&#x60E9;&#x7F5A;&#x7CFB;&#x6570;C&#x7684;&#x7406;&#x89E3;</h4><p>SVM&#x4F7F;&#x7528;&#x7684;&#x662F;hinge loss&#xFF0C;regularized optimization &#x95EE;&#x9898;&#x5B9E;&#x9645;&#x4E0A;&#x53EF;&#x5199;&#x6210;&#xFF1A;$$\frac {1} {2} ||w||^2 + C \sum_{i=1}^N \max [0, 1-y_i({w} \cdot x_i + {b} ) ]$$<br>&#x6574;&#x7406;&#x53D8;&#x52A8;&#x540E;&#x4E3A;&#xFF1A;$$\sum_{i=1}^N \max [0, 1-y_i({w} \cdot x_i + {b} ) ] + \frac {1} {2C} ||w||^2 $$<br>&#x6240;&#x4EE5;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x628A;SVM&#x76EE;&#x6807;&#x51FD;&#x6570;&#x7406;&#x89E3;&#x6210;&#x4F7F;&#x7528;l2 regularization&#x7684;hinge loss&#xFF0C;&#x800C;l2 regularization coefficient&#x548C;C &#x662F;&#x53CD;&#x6BD4;&#x5173;&#x7CFB;&#x3002;</p>
+<p>&#x539F;&#x5219;&#x4E0A;C&#x53EF;&#x4EE5;&#x6839;&#x636E;&#x9700;&#x8981;&#x9009;&#x62E9;&#x6240;&#x6709;&#x5927;&#x4E8E;0&#x7684;&#x6570;&#x3002;C&#x8D8A;&#x5927;&#x8868;&#x793A;&#x6574;&#x4E2A;&#x4F18;&#x5316;&#x8FC7;&#x7A0B;&#x4E2D;&#x5BF9;&#x4E8E;&#x603B;&#x8BEF;&#x5DEE;$\sum_{i=1}^N \xi_i$&#x7684;&#x5173;&#x6CE8;&#x7A0B;&#x5EA6;&#x8D8A;&#x9AD8;&#xFF0C;&#x5BF9;&#x4E8E;&#x51CF;&#x5C0F;&#x8BEF;&#x5DEE;&#x7684;&#x8981;&#x6C42;&#x8D8A;&#x9AD8;&#xFF0C;&#x751A;&#x81F3;&#x4E0D;&#x60DC;&#x4F7F;&#x95F4;&#x9694;&#x51CF;&#x5C0F;&#x3002;<br>&#x5F53;C&#x8D8B;&#x4E8E;&#x65E0;&#x7A77;&#x5927;&#x65F6;&#xFF0C;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x4E5F;&#x5C31;&#x662F;&#x4E0D;&#x5141;&#x8BB8;&#x51FA;&#x73B0;&#x5206;&#x7C7B;&#x8BEF;&#x5DEE;&#x7684;&#x6837;&#x672C;&#x5B58;&#x5728;&#xFF0C;&#x90A3;&#x8FD9;&#x5C31;&#x662F;&#x4E00;&#x4E2A;hard-marginSVM&#x95EE;&#x9898;<br>&#x5F53;C&#x8D8B;&#x4E8E;0&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x4E0D;&#x518D;&#x5173;&#x6CE8;&#x5206;&#x7C7B;&#x662F;&#x5426;&#x6B63;&#x786E;&#xFF0C;&#x53EA;&#x8981;&#x6C42;&#x95F4;&#x9694;&#x8D8A;&#x5927;&#x8D8A;&#x597D;&#xFF0C;&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x5C06;&#x65E0;&#x6CD5;&#x5F97;&#x5230;&#x6709;&#x610F;&#x4E49;&#x7684;&#x89E3;&#x4E14;&#x7B97;&#x6CD5;&#x4E0D;&#x4F1A;&#x6536;&#x655B;&#x3002;<br>C&#x8D8A;&#x5C0F;&#xFF0C;&#x60E9;&#x7F5A;&#x8D8A;&#x5C0F;&#xFF0C;&#x5BF9;outlier&#x5FCD;&#x53D7;&#x8D8A;&#x5F3A;&#xFF0C;&#x53EF;&#x80FD;&#x6B20;&#x62DF;&#x5408;&#x3002;<br>C&#x503C;&#x8D8A;&#x5927;&#x5BF9;&#x4E8E;&#x8BAD;&#x7EC3;&#x96C6;&#x7684;&#x8868;&#x73B0;&#x8D8A;&#x597D;&#xFF0C;&#x4F46;&#x662F;&#x95F4;&#x9694;&#x51CF;&#x5C0F;&#x4E5F;&#x5C31;&#x662F;&#x5BF9;&#x4E8E;&#x566A;&#x58F0;&#x7B49;&#x5E72;&#x6270;&#x7684;&#x5BB9;&#x5FCD;&#x5EA6;&#x51CF;&#x5C0F;&#xFF0C;&#x53EF;&#x80FD;&#x5F15;&#x53D1;&#x8FC7;&#x5EA6;&#x62DF;&#x5408;&#xFF08;overfitting&#xFF09;&#xFF0C;&#x8FD9;&#x65F6;&#x8BF4;&#x660E;&#x5BF9;&#x4E8E;&#x566A;&#x58F0;&#x7684;&#x60E9;&#x7F5A;&#x529B;&#x5EA6;&#x592A;&#x5927;&#x3002;</p>
+<p><br></p>
+<h4 id="Logistic-regression-&#x5230;-SVM"><a href="#Logistic-regression-&#x5230;-SVM" class="headerlink" title="Logistic regression &#x5230; SVM"></a>Logistic regression &#x5230; SVM</h4><p>Logistic regression &#x6A21;&#x578B;&#x8BA4;&#x4E3A;&#x6570;&#x636E;&#x70B9;$x$&#x5C5E;&#x4E8E;&#x7C7B;&#x522B;&#x2019;1&#x2019;&#x7684;&#x6982;&#x7387;&#x662F;:$$P(y=1|x) = \frac {1} {1+e^{-w^Tx}}$$<br>&#x8FDB;&#x884C;&#x8D1F;&#x5BF9;&#x6570;&#x4F3C;&#x7136;&#x53D8;&#x6362;&#xFF0C;&#x5219;&#x76EE;&#x6807;&#x51FD;&#x6570;&#xFF1A;<br>$$L = \sum_{i=1}^n \log (1 + e^{-w^Tx_iy_i})$$<br>&#x7531;&#x4E8E;&#xFF0C;&#x5728;&#x6570;&#x636E;&#x7EBF;&#x6027;&#x53EF;&#x5206;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;w&#x4E2D;&#x5143;&#x7D20;&#x7684;&#x7EDD;&#x5BF9;&#x503C;&#x8D8A;&#x5927;&#xFF0C;&#x76EE;&#x6807;&#x51FD;&#x6570;&#x5C31;&#x8D8A;&#x5C0F;&#xFF0C;&#x8FD9;&#x65F6;&#x5C31;&#x9700;&#x8981;&#x52A0;&#x5165;&#x6B63;&#x5219;&#x5316;&#x3002;<br>$$L = \sum_{i=1}^n \log (1 + e^{-w^Tx_iy_i}) + \frac {\lambda} {2} ||w||^2 $$</p>
+<p>SVM:$$L = \sum_{i=1}^N \max [0, 1-y_i({w} \cdot x_i + {b} ) ] + \frac {\lambda} {2} ||w||^2 $$</p>
+<blockquote>
+<p>Logistic regression:$f(x) = \log(1+{e}^{-x})$&#x79F0;&#x4E3A;log loss&#xFF1B;<br>SVM : $f(x) = \max(0, 1-x)$&#x79F0;&#x4E3A;hinge loss&#x3002;  </p>
+</blockquote>
+<p>[[[[[tu]]]]]</p>
+<p><br></p>
+<h3 id="SMO&#x7B97;&#x6CD5;"><a href="#SMO&#x7B97;&#x6CD5;" class="headerlink" title="SMO&#x7B97;&#x6CD5;"></a>SMO&#x7B97;&#x6CD5;</h3><p>[TODO]</p>
+<p><br></p>
+<h3 id="&#x53C2;&#x8003;&#x6587;&#x732E;"><a href="#&#x53C2;&#x8003;&#x6587;&#x732E;" class="headerlink" title="&#x53C2;&#x8003;&#x6587;&#x732E;"></a>&#x53C2;&#x8003;&#x6587;&#x732E;</h3><ul>
+<li>&#x300A;&#x7EDF;&#x8BA1;&#x5B66;&#x4E60;&#x65B9;&#x6CD5;&#x300B; &#x674E;&#x822A;  </li>
+<li><a href="https://www.zhihu.com/question/30230784" target="_blank" rel="external">https://www.zhihu.com/question/30230784</a></li>
+<li><a href="https://www.zhihu.com/question/40217487" target="_blank" rel="external">https://www.zhihu.com/question/40217487</a></li>
+<li><a href="https://www.zhihu.com/question/40217487" target="_blank" rel="external">https://www.zhihu.com/question/40217487</a></li>
+</ul>
+
+	
+	
+	
+	
+</div>
+				
+				
+
+                <!-- Post Comments -->
+                
+
+
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    
+    <!-- Prev Nav -->
+    
+        <a href="/2017/11/24/随机森林/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2017/11/24/逻辑斯蒂回归/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+        </div>
+    </div>
+
+				
+				
+					<!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay "></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored  sidebar-fixed-left" role="navigation">
+	<div id="sidebar-main">
+	    <!-- Sidebar Header -->
+		<div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+    <i class="material-icons">clear_all</i>
+    <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/zebra.png" alt="Mahome.liao's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        liao.mahome@gmail.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+		<!-- Sidebar Navigation  -->
+		<ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+			
+                <li>
+                    <a href="#" target="_blank" title="Email Me">
+						<i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    <li id="sidebar-first-li">
+        <a href="/" target="_self">
+            <i class="material-icons sidebar-material-icons">home</i>
+             主页
+        </a>
+    </li>
+
+    <!-- I'm Feeling Lucky -->
+<!--
+    <li class="dropdown">
+        <a href="" target="_self">
+            <i class="material-icons sidebar-material-icons">explore</i>
+             sidebar.imlucky
+        </a>
+    </li>
+-->
+
+	
+    <!-- Archives  -->
+    <li class="dropdown">
+        <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+            <i class="material-icons sidebar-material-icons">inbox</i>
+             归档
+            <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+            <a class="sidebar_archives-link" href="/archives/2017/11/">十一月 2017<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/12/">十二月 2016<span class="sidebar_archives-count">10</span></a></li><li><a class="sidebar_archives-link" href="/archives/2015/09/">九月 2015<span class="sidebar_archives-count">1</span></a>
+        </ul>
+    </li>
+
+    <!-- Divider -->
+    <li class="divider"></li>
+
+
+    <!-- Pages  -->
+	
+
+    <!-- Article Numebr  -->
+    <li>
+        <a href="/archives">
+             文章总数
+             <span class="sidebar-badge">19</span>
+        </a>
+    </li>
+</ul>
+
+		<!-- Sidebar Divider -->
+		<div class="sidebar-divider"></div>
+
+		<!-- Sidebar Footer -->
+		<!-- 
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持。 :) 
+-->
+
+<!-- Theme Material -->
+<a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+	<div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+		主题 - Material
+		<span class="sidebar-badge badge-circle">i</span>
+	</div>
+</a>
+
+<!-- Help & Support -->
+<!--
+<a href="mailto:hiviosey@gmail.com" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+		sidebar.help
+		<span class="mdl-button__ripple-container">
+			<span class="mdl-ripple"></span>
+		</span>
+	</div>
+</a>
+-->
+
+<!-- Feedback -->
+<!--
+<a href="https://github.com/viosey/hexo-theme-material/issues" target="_blank" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+         sidebar.feedback
+                    <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+</a>
+-->
+
+<!-- Abount Theme -->
+<!--
+<a href="https://blog.viosey.com/index.php/Material.html" target="_blank" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+         sidebar.about_theme
+        <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+</a>-->
+
+	</div>
+    
+    <!-- Sidebar Sponsor -->
+    
+
+
+</aside>
+
+				
+				
+				
+					<!-- Footer Top Button -->
+					<div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+				
+				
+				<!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+	
+	
+		<!-- Paradox Footer Left Section -->
+		<div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+    <a href="https://twitter.com/twitter" target="view_window"><button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-twitter.png);">
+        <span class="visuallyhidden">Twitter</span>
+    </button></a>
+    
+    
+    <!-- Facebook -->
+    
+    <a href="https://www.facebook.com/facebook" target="view_window"><button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-facebook.png);">
+        <span class="visuallyhidden">Facebook</span>
+    </button></a>
+    
+    
+    <!-- Google + -->
+    
+    <a href="https://www.google.com/" target="view_window"><button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-gplus.png);">
+        <span class="visuallyhidden">Google Plus</span>
+    </button></a>
+    
+    
+    <!-- Weibo -->
+    
+    
+    
+    <!-- Instagram -->
+    
+    
+    
+    <!-- Tumblr -->
+    
+    
+    
+    <!-- Github -->
+    
+    
+</div>
+
+
+		<!--Copyright-->
+		<div id="copyright">Copyright&nbsp;©&nbsp;<script type="text/javascript">var fd = new Date();document.write(fd.getFullYear());</script>&nbsp;AI</div>
+
+		<!-- Paradox Footer Right Section -->
+
+		<!-- 
+		I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+		It will not impact the appearance and can give developers a lot of support :)
+
+		很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+		它不会影响美观并可以给开发者很大的支持。 :) 
+		-->
+
+		<div class="mdl-mini-footer--right-section">
+			<div>
+				<div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+				<div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+			</div>
+		</div>
+	
+</footer>
+                
+				<!-- Import File -->
+<script src="/js/highlight.min.js"></script>
+<script src="/js/js.min.js"></script>
+<script src="/js/nprogress.js"></script>
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    
+    $('#nprogress .bar').css({
+        'background': '#FF4081'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #FF4081, 0 0 15px #FF4081'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#FF4081',
+        'border-left-color': '#FF4081'
+    });
+    
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Swiftye -->
+
+
+<!-- Local Search-->
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $(".post-toc-wrap").parent(".mdl-menu__container").css("position", "fixed");
+    });
+</script>
+
+<!-- MathJax Load-->
+
+            </main>
+        </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+		
+    </body>
+		
+	
+</html>
