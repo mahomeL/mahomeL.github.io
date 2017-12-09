@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Title -->
+    
+    <title>
+        python常用方法 | AI
+    </title>
+    
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/zebra.png">
+    <link rel="icon" sizes="192x192" href="/img/zebra.png">
+    <link rel="apple-touch-icon" href="/img/zebra.png">
+    
+    <!-- Meta & INfo -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="Mahome.liao">
+    <meta name="description" content="You know nothing.">
+    <meta name="keywords" content="跟着我走，你会降维">
+    
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+    
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="AI">
+    
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://yoursite.com">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="python常用方法 | AI">
+    <meta property="og:description" content="You know nothing.">
+    
+     <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+        
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+    
+    <!-- Import CSS -->
+    <link rel="stylesheet" href="/css/material.min.css">
+    <link rel="stylesheet" href="/css/style.min.css">
+    <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+	body, html{
+		font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+	}
+	
+    a{
+        color: #00838F
+    }
+    
+    .mdl-card__media,
+    #search-label,
+    #search-form-label:after,
+    #scheme-Paradox .hot_tags-count,
+    #scheme-Paradox .sidebar_archives-count,
+    #scheme-Paradox .sidebar-colored .sidebar-header,
+    #scheme-Paradox .sidebar-colored .sidebar-badge{
+        background-color: #0097A7 !important
+    }
+    
+	/* Sidebar User Drop Down Menu Text Color */
+	#scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+    #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus{
+        color: #0097A7 !important
+    }
+    
+    #post_entry-right-info,
+    .sidebar-colored .sidebar-nav li:hover > a,
+    .sidebar-colored .sidebar-nav li:hover > a i,
+    .sidebar-colored .sidebar-nav li > a:hover,
+    .sidebar-colored .sidebar-nav li > a:hover i,
+    .sidebar-colored .sidebar-nav li > a:focus i,
+    .sidebar-colored .sidebar-nav > .open > a,
+    .sidebar-colored .sidebar-nav > .open > a:hover,
+    .sidebar-colored .sidebar-nav > .open > a:focus,
+    #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a{
+        color: #0097A7 !important
+    }
+    
+    .toTop{
+        background: #757575 !important
+    }
+		
+	.material-layout .material-post>.material-nav,
+	.material-layout .material-index>.material-nav,
+	.material-nav a{
+		color: #757575;
+	}
+		
+	#scheme-Paradox .MD-burger-layer {
+		background-color: #757575;
+	}
+
+	#scheme-Paradox #post-toc-trigger-btn{
+		color: #757575;
+	}
+	
+	.post-toc a:hover{
+		color: #00838F;
+		text-decoration: underline;
+	}
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+        body{
+            background-color: #F5F5F5
+        }
+		
+		/* blog_info bottom background */
+        #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+            background-color: #fff;
+        }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+        .fade {
+            transition: all 800ms linear;
+            -webkit-transform: translate3d(0,0,0);
+            -moz-transform: translate3d(0,0,0);
+            -ms-transform: translate3d(0,0,0);
+            -o-transform: translate3d(0,0,0);
+            transform: translate3d(0,0,0);
+            opacity: 1;
+        }
+
+        .fade.out{
+            opacity: 0;
+        }
+    </style>
+
+	<script src="/js/jquery.min.js"></script>
+	
+	<link rel="stylesheet" href="/css/highlight/solarized-white.css">
+	
+	<!-- UC Browser Compatible-->
+	<script>
+		var agent = navigator.userAgent.toLowerCase();
+		if(agent.indexOf('ucbrowser')>0) {
+			document.write('<link rel="stylesheet" href="/css/uc.css">');
+		   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+		}
+	</script>
+    
+    <!-- Custom Head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+</head>
+	
+	
+
+    <body id="scheme-Paradox">
+
+		
+        <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+				
+			
+			
+            <!-- Main Container -->
+            <main class="material-layout__content" id="main">
+				
+                <!-- Top Anchor -->
+                <div id="top"></div>
+				
+				
+                <!-- Hamburger Button -->
+                <button class="MD-burger-icon sidebar-toggle">
+                    <span class="MD-burger-layer"></span>
+                </button>
+				
+				
+                
+	<!-- Back Button -->
+<!--
+	<div class="material-back" id="backhome-div" tabindex="0">
+		<a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" href="#" onclick="window.history.back();return false;" target="_self" role="button" data-upgraded=",MaterialButton,MaterialRipple">
+			<i class="material-icons" role="presentation">arrow_back</i>
+			<span class="mdl-button__ripple-container">
+				<span class="mdl-ripple"></span>
+			</span>
+		</a>
+	</div>			
+-->
+	<!-- Left aligned menu below button -->
+	<button id="post-toc-trigger-btn"
+			class="mdl-button mdl-js-button mdl-button--icon">
+	  <i class="material-icons">format_list_numbered</i>
+	</button>
+
+	<ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
+		for="post-toc-trigger-btn">
+			
+			<ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#读取csv"><span class="post-toc-number">1.</span> <span class="post-toc-text">读取csv</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#多线程"><span class="post-toc-number">2.</span> <span class="post-toc-text">多线程</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#如何在列表、字典、集合中根据条件筛选数据"><span class="post-toc-number">3.</span> <span class="post-toc-text">如何在列表、字典、集合中根据条件筛选数据</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#map-与-异常检测"><span class="post-toc-number">4.</span> <span class="post-toc-text">map 与 异常检测</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#统计序列中元素的出现频度"><span class="post-toc-number">5.</span> <span class="post-toc-text">统计序列中元素的出现频度</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#对字典的值大小进行排序"><span class="post-toc-number">6.</span> <span class="post-toc-text">对字典的值大小进行排序</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#在指定目录寻找文件"><span class="post-toc-number">7.</span> <span class="post-toc-text">在指定目录寻找文件</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#字典转字符串"><span class="post-toc-number">8.</span> <span class="post-toc-text">字典转字符串</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#txt转dataframe"><span class="post-toc-number">9.</span> <span class="post-toc-text">txt转dataframe</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#对字符串等进行编码-pandas-factorize"><span class="post-toc-number">10.</span> <span class="post-toc-text">对字符串等进行编码 pandas.factorize</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#pandas的join-concat-需要return"><span class="post-toc-number">11.</span> <span class="post-toc-text">pandas的join concat 需要return</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#对dataframe属性进行groupby分析"><span class="post-toc-number">12.</span> <span class="post-toc-text">对dataframe属性进行groupby分析</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#xgboost候选重要特征"><span class="post-toc-number">13.</span> <span class="post-toc-text">xgboost候选重要特征</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#数据归一化"><span class="post-toc-number">14.</span> <span class="post-toc-text">数据归一化</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#信息熵-Gini"><span class="post-toc-number">15.</span> <span class="post-toc-text">信息熵 Gini</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#pandas-data-data-‘a’-0-的复制"><span class="post-toc-number">16.</span> <span class="post-toc-text">pandas: data[data[‘a’]==0]的复制</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#时间戳处理"><span class="post-toc-number">17.</span> <span class="post-toc-text">时间戳处理</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#pandas：drop与del"><span class="post-toc-number">18.</span> <span class="post-toc-text">pandas：drop与del</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#pandas：pivot-table-将某列的values选转为columns"><span class="post-toc-number">19.</span> <span class="post-toc-text">pandas：pivot_table  将某列的values选转为columns</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#pandas：unstack-reset-index-groupby后将格式重置为dataframe"><span class="post-toc-number">20.</span> <span class="post-toc-text">pandas：unstack(),reset_index(),groupby后将格式重置为dataframe</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#pandas：set-index-与-reset-index-有助于数据合并"><span class="post-toc-number">21.</span> <span class="post-toc-text">pandas：set_index 与 reset_index 有助于数据合并</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#map-与-reduce"><span class="post-toc-number">22.</span> <span class="post-toc-text">map 与 reduce</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#离群点检测"><span class="post-toc-number">23.</span> <span class="post-toc-text">离群点检测</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#pandas：all-any-查看全局是否有nan-lt-0"><span class="post-toc-number">24.</span> <span class="post-toc-text">pandas：all(),any()查看全局是否有nan,<0</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#pandas：修改数据用loc-index-column-…"><span class="post-toc-number">25.</span> <span class="post-toc-text">pandas：修改数据用loc[index,column]=…</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#pandas：行迭代iterrows"><span class="post-toc-number">26.</span> <span class="post-toc-text">pandas：行迭代iterrows()</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#numpy：data-i-shape-2000-一位-不等于-2000-1-二维"><span class="post-toc-number">27.</span> <span class="post-toc-text">numpy：data[i,:]    shape(2000,) 一位 不等于 (2000,1) 二维</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#pandas：ix"><span class="post-toc-number">28.</span> <span class="post-toc-text">pandas：ix</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#pandas：merge"><span class="post-toc-number">29.</span> <span class="post-toc-text">pandas：merge</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#pandas：修改index的name"><span class="post-toc-number">30.</span> <span class="post-toc-text">pandas：修改index的name</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#numpy：reshape的行列填充"><span class="post-toc-number">31.</span> <span class="post-toc-text">numpy：reshape的行列填充</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#list与set的交差并"><span class="post-toc-number">32.</span> <span class="post-toc-text">list与set的交差并</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#numpy：hstack-vstack-dstack-concatenate"><span class="post-toc-number">33.</span> <span class="post-toc-text">numpy：hstack,vstack,dstack,concatenate</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#numpy：random-choice"><span class="post-toc-number">34.</span> <span class="post-toc-text">numpy：random choice</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#h5py：读取matlab-v7-3"><span class="post-toc-number">35.</span> <span class="post-toc-text">h5py：读取matlab -v7.3</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#numpy-nan，inf的替换"><span class="post-toc-number">36.</span> <span class="post-toc-text">numpy:nan，inf的替换</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#移动文件"><span class="post-toc-number">37.</span> <span class="post-toc-text">移动文件:</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#re模块的match与search"><span class="post-toc-number">38.</span> <span class="post-toc-text">re模块的match与search</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#collections：defaultdict"><span class="post-toc-number">39.</span> <span class="post-toc-text">collections：defaultdict</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#scipy-io-loadmat-savemat"><span class="post-toc-number">40.</span> <span class="post-toc-text">scipy.io:loadmat savemat</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#os-makedirs-path"><span class="post-toc-number">41.</span> <span class="post-toc-text">os.makedirs(path):</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#py2与py3"><span class="post-toc-number">42.</span> <span class="post-toc-text">py2与py3</span></a></li></ol>
+		
+<!--			<li class="mdl-menu__item">Some Action</li>-->
+	</ul>
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+		
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+	<!-- Paradox Post Header -->
+	
+		
+			<!-- Random Thumbnail -->
+			<div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+				<script>
+    
+    var randomNum;
+    randomNum = Math.floor(Math.random() * 8 + 1);
+    
+    $(".post_thumbnail-random").css('background-image', 'url(' + '/img/random/' + randomNum + '.png' + ')');
+    
+</script>
+
+		
+	
+        <p class="article-headline-p">
+            python常用方法
+        </p>
+    </div>
+
+	
+
+				
+				
+					<!-- Paradox Post Info -->
+					<div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+    
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/zebra.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Mahome.liao</strong>
+        <span>7月 19, 2016</span>
+    </div>
+    
+    <div class="section-spacer"></div>
+	
+    <!-- Favorite -->
+<!--
+    <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+        <i class="material-icons" role="presentation">favorite</i>
+        <span class="visuallyhidden">favorites</span>
+    </button>
+-->
+    
+    <!-- Tags (bookmark) -->
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        
+    </ul>
+    
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+    
+    
+    
+    
+    <!-- Share Twitter -->
+    <a class="post_share-link" href="https://twitter.com/intent/tweet?text=python常用方法&url=http://yoursite.com//2016/07/19/Python常用方法/index.html&via=Mahome.liao" target="_blank">
+        <li class="mdl-menu__item">
+            分享到 Twitter
+        </li>
+    </a>
+    
+    <!-- Share Google+ -->
+    <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com//2016/07/19/Python常用方法/index.html" target="_blank">
+        <li class="mdl-menu__item">
+            分享到 Google+
+        </li>
+    </a>
+    
+    <!-- Share Weibo -->
+    <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=python常用方法&url=http://yoursite.com//2016/07/19/Python常用方法/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <li class="mdl-menu__item">
+            分享到微博
+        </li>
+    </a>
+</ul>
+</div>
+				
+
+                <!-- Post Content -->
+                <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+	
+		<h4 id="&#x8BFB;&#x53D6;csv"><a href="#&#x8BFB;&#x53D6;csv" class="headerlink" title="&#x8BFB;&#x53D6;csv"></a>&#x8BFB;&#x53D6;csv</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="number">1</span> &#x8BFB;&#x53D6;csv&#x6307;&#x5B9A;&#x884C;</div><div class="line">test = pd.read_csv(<span class="string">r&apos;E:\Lliao\Kaggle\GuessYouLike\RSdata\test.csv&apos;</span>, nrows=<span class="number">100</span>)</div><div class="line"></div><div class="line"><span class="number">2</span> &#x8BFB;&#x53D6;csv&#x4E22;&#x5F03;&#x6307;&#x5B9A;&#x5217;</div><div class="line">test = pd.read_csv(<span class="string">r&apos;E:\Lliao\Kaggle\GuessYouLike\RSdata\test.csv&apos;</span>, index_col=<span class="number">0</span>)</div></pre></td></tr></table></figure>
+<h4 id="&#x591A;&#x7EBF;&#x7A0B;"><a href="#&#x591A;&#x7EBF;&#x7A0B;" class="headerlink" title="&#x591A;&#x7EBF;&#x7A0B;"></a>&#x591A;&#x7EBF;&#x7A0B;</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">result = []</div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> some_list:</div><div class="line">    result.append(do something <span class="keyword">with</span> i)</div><div class="line"></div><div class="line">&#x6539;&#x5BEB;&#x6210;</div><div class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Pool</div><div class="line">p = Pool( number of workers )</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">work</span><span class="params">(item)</span>:</span></div><div class="line">    <span class="keyword">return</span> do something <span class="keyword">with</span> item</div><div class="line"></div><div class="line">result = p.map(work, some_list)</div></pre></td></tr></table></figure>
+<h4 id="&#x5982;&#x4F55;&#x5728;&#x5217;&#x8868;&#x3001;&#x5B57;&#x5178;&#x3001;&#x96C6;&#x5408;&#x4E2D;&#x6839;&#x636E;&#x6761;&#x4EF6;&#x7B5B;&#x9009;&#x6570;&#x636E;"><a href="#&#x5982;&#x4F55;&#x5728;&#x5217;&#x8868;&#x3001;&#x5B57;&#x5178;&#x3001;&#x96C6;&#x5408;&#x4E2D;&#x6839;&#x636E;&#x6761;&#x4EF6;&#x7B5B;&#x9009;&#x6570;&#x636E;" class="headerlink" title="&#x5982;&#x4F55;&#x5728;&#x5217;&#x8868;&#x3001;&#x5B57;&#x5178;&#x3001;&#x96C6;&#x5408;&#x4E2D;&#x6839;&#x636E;&#x6761;&#x4EF6;&#x7B5B;&#x9009;&#x6570;&#x636E;"></a>&#x5982;&#x4F55;&#x5728;&#x5217;&#x8868;&#x3001;&#x5B57;&#x5178;&#x3001;&#x96C6;&#x5408;&#x4E2D;&#x6839;&#x636E;&#x6761;&#x4EF6;&#x7B5B;&#x9009;&#x6570;&#x636E;</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"> &#x5217;&#x8868;&#x89E3;&#x6790;</div><div class="line"><span class="comment"># &#x7B5B;&#x9009;&#x51FA;&#x5217;&#x8868;&#x4E2D;&#x6240;&#x6709;&#x7684;&#x975E;&#x8D1F;&#x6570;</span></div><div class="line">data = [<span class="number">2</span>, <span class="number">-2</span>, <span class="number">3</span>, <span class="number">-2</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">-10</span>, <span class="number">10</span>, <span class="number">9</span>, <span class="number">-8</span>]</div><div class="line"><span class="comment"># &#x7B2C;&#x4E00;&#x79CD;&#x89E3;&#x6CD5;&#xFF1A;&#x4F7F;&#x7528; filter() &#x51FD;&#x6570;</span></div><div class="line">filter(<span class="keyword">lambda</span> x: x &gt;= <span class="number">0</span>, data)</div><div class="line"><span class="comment"># &#x7B2C;&#x4E8C;&#x79CD;&#x89E3;&#x6CD5;&#xFF1A;&#x5217;&#x8868;&#x89E3;&#x6790;</span></div><div class="line">[x <span class="keyword">for</span> x <span class="keyword">in</span> data <span class="keyword">if</span> x &gt;= <span class="number">0</span>]</div><div class="line">&#x5B57;&#x5178;&#x89E3;&#x6790;</div><div class="line"></div><div class="line"><span class="comment"># &#x7B5B;&#x9009;&#x51FA;&#x5B57;&#x5178;&#x4E2D;&#x6240;&#x6709;&#x503C;&#x5927;&#x4E8E;90&#x7684;&#x5143;&#x7D20;</span></div><div class="line">d = {<span class="number">1</span>: <span class="number">70</span>, <span class="number">2</span>: <span class="number">90</span>, <span class="number">3</span>: <span class="number">44</span>, <span class="number">4</span>: <span class="number">55</span>, <span class="number">6</span>: <span class="number">100</span>, <span class="number">7</span>: <span class="number">14</span>, <span class="number">8</span>: <span class="number">88</span>, <span class="number">9</span>: <span class="number">96</span>, <span class="number">10</span>: <span class="number">70</span>}</div><div class="line">{k: v <span class="keyword">for</span> k, v <span class="keyword">in</span> d.iteritems() <span class="keyword">if</span> v &gt; <span class="number">90</span>}</div><div class="line"></div><div class="line">&#x96C6;&#x5408;&#x89E3;&#x6790;</div><div class="line"><span class="comment">#&#x7B5B;&#x9009;&#x51FA;&#x96C6;&#x5408;&#x4E2D;&#x6240;&#x6709;&#x53EF;&#x4EE5;&#x88AB;3&#x6574;&#x9664;&#x7684;&#x6570;</span></div><div class="line">s = {<span class="number">2</span>, <span class="number">-2</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">1</span>, <span class="number">-3</span>, <span class="number">3</span>, <span class="number">0</span>, <span class="number">3</span>}</div><div class="line">{x <span class="keyword">for</span> x <span class="keyword">in</span> s <span class="keyword">if</span> x % <span class="number">3</span> == <span class="number">0</span>}</div></pre></td></tr></table></figure>
+<h4 id="map-&#x4E0E;-&#x5F02;&#x5E38;&#x68C0;&#x6D4B;"><a href="#map-&#x4E0E;-&#x5F02;&#x5E38;&#x68C0;&#x6D4B;" class="headerlink" title="map &#x4E0E; &#x5F02;&#x5E38;&#x68C0;&#x6D4B;"></a>map &#x4E0E; &#x5F02;&#x5E38;&#x68C0;&#x6D4B;</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">sqr</span><span class="params">(x)</span>:</span></div><div class="line">    <span class="keyword">return</span> x ** <span class="number">2</span></div><div class="line">a = [<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]<span class="keyword">print</span> map(sqr, a)        [<span class="number">4</span>,<span class="number">9</span>,<span class="number">16</span>]</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(x, y)</span>:</span></div><div class="line">    <span class="keyword">return</span> x + y</div><div class="line"></div><div class="line">a = (<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>)b = [<span class="number">10</span>,<span class="number">5</span>,<span class="number">3</span>]<span class="keyword">print</span> map(add,a,b)    [<span class="number">12</span>,<span class="number">8</span>,<span class="number">7</span>]</div><div class="line"></div><div class="line"><span class="keyword">try</span>:</div><div class="line">    <span class="keyword">print</span> <span class="number">1</span> / <span class="number">0</span></div><div class="line"><span class="keyword">except</span> ZeroDivisionError:</div><div class="line">    <span class="keyword">print</span> <span class="string">&apos;divide by 0.&apos;</span></div><div class="line"><span class="keyword">finally</span>:</div><div class="line">    <span class="keyword">print</span> <span class="string">&apos;finally was called.&apos;</span></div></pre></td></tr></table></figure>
+<h4 id="&#x7EDF;&#x8BA1;&#x5E8F;&#x5217;&#x4E2D;&#x5143;&#x7D20;&#x7684;&#x51FA;&#x73B0;&#x9891;&#x5EA6;"><a href="#&#x7EDF;&#x8BA1;&#x5E8F;&#x5217;&#x4E2D;&#x5143;&#x7D20;&#x7684;&#x51FA;&#x73B0;&#x9891;&#x5EA6;" class="headerlink" title="&#x7EDF;&#x8BA1;&#x5E8F;&#x5217;&#x4E2D;&#x5143;&#x7D20;&#x7684;&#x51FA;&#x73B0;&#x9891;&#x5EA6;"></a>&#x7EDF;&#x8BA1;&#x5E8F;&#x5217;&#x4E2D;&#x5143;&#x7D20;&#x7684;&#x51FA;&#x73B0;&#x9891;&#x5EA6;</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># &#x9996;&#x5148;&#x5148;&#x6765;&#x4F7F;&#x7528;&#x5217;&#x8868;&#x89E3;&#x6790;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x968F;&#x673A;&#x7684;&#x5E8F;&#x5217;</span></div><div class="line"><span class="keyword">from</span> random <span class="keyword">import</span> randint</div><div class="line"><span class="comment"># &#x751F;&#x6210;&#x4E00;&#x4E2A;&#x542B;&#x6709;30&#x4E2A;&#x5143;&#x7D20;&#x8303;&#x56F4;&#x4E3A;0-20&#x7684;&#x968F;&#x673A;&#x5E8F;&#x5217;</span></div><div class="line">data = [randint(<span class="number">0</span>, <span class="number">20</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> xrange(<span class="number">30</span>)]</div><div class="line"><span class="comment"># &#x7EDF;&#x8BA1;&#x7ED3;&#x679C;&#x662F;&#x4E00;&#x4E2A;&#x5B57;&#x5178;&#xFF0C;&#x5176;&#x4E2D;data&#x4E2D;&#x7684;&#x5143;&#x7D20;&#x4E3A;&#x952E;&#xFF0C;0&#x4E3A;&#x521D;&#x59CB;&#x503C;</span></div><div class="line">c = dict.fromkeys(data, <span class="number">0</span>)</div><div class="line"><span class="comment"># &#x8FED;&#x4EE3;</span></div><div class="line"><span class="keyword">for</span> x <span class="keyword">in</span> data:</div><div class="line">     c[x] += <span class="number">1</span></div><div class="line"><span class="keyword">print</span> c</div><div class="line">&#x5229;&#x7528;counter</div><div class="line"></div><div class="line"><span class="keyword">from</span> random <span class="keyword">import</span> randint</div><div class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Counter</div><div class="line">data = [randint(<span class="number">0</span>, <span class="number">20</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> xrange(<span class="number">30</span>)]</div><div class="line">c2 = Counter(data)</div><div class="line"><span class="comment"># &#x83B7;&#x53D6;&#x6240;&#x6709;&#x5143;&#x7D20;&#x7684;&#x51FA;&#x73B0;&#x9891;&#x5EA6;&#x7684;&#x5B57;&#x5178;</span></div><div class="line"><span class="keyword">print</span> c2</div><div class="line"><span class="comment"># &#x83B7;&#x53D6;&#x51FA;&#x73B0;&#x9891;&#x5EA6;&#x6700;&#x9AD8;&#x7684;3&#x4E2A;&#x5143;&#x7D20;</span></div><div class="line"><span class="keyword">print</span> c2.most_common(<span class="number">3</span>) <span class="comment"># &#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x5217;&#x8868;&#xFF0C;&#x5982;[(5,4),(10,3),(20,3)]</span></div></pre></td></tr></table></figure>
+<h4 id="&#x5BF9;&#x5B57;&#x5178;&#x7684;&#x503C;&#x5927;&#x5C0F;&#x8FDB;&#x884C;&#x6392;&#x5E8F;"><a href="#&#x5BF9;&#x5B57;&#x5178;&#x7684;&#x503C;&#x5927;&#x5C0F;&#x8FDB;&#x884C;&#x6392;&#x5E8F;" class="headerlink" title="&#x5BF9;&#x5B57;&#x5178;&#x7684;&#x503C;&#x5927;&#x5C0F;&#x8FDB;&#x884C;&#x6392;&#x5E8F;"></a>&#x5BF9;&#x5B57;&#x5178;&#x7684;&#x503C;&#x5927;&#x5C0F;&#x8FDB;&#x884C;&#x6392;&#x5E8F;</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">d = {<span class="string">&apos;Airing&apos;</span>: <span class="number">100</span>, <span class="string">&apos;Penny&apos;</span>: <span class="number">70</span>, <span class="string">&apos;Bili&apos;</span>: <span class="number">50</span>}</div><div class="line"><span class="comment"># &#x5982;&#x679C;&#x76F4;&#x63A5;&#x5BF9;&#x5B57;&#x5178;&#x8FDB;&#x884C;&#x6392;&#x5E8F;&#xFF0C;&#x4F1A;&#x9ED8;&#x8BA4;&#x6309;&#x7167;&#x952E;&#x8FDB;&#x884C;&#x6392;&#x5E8F;</span></div><div class="line">sorted(d) <span class="comment"># =&gt; [&apos;Airing&apos;, &apos;Bili&apos;, &apos;Penny&apos;]</span></div><div class="line"><span class="comment"># &#x6240;&#x4EE5;&#x5C06;&#x5B57;&#x5178;&#x8F6C;&#x6210;&#x5143;&#x7EC4;&#x7684;&#x5217;&#x8868;&#x5904;&#x7406;</span></div><div class="line"><span class="comment"># &#x5143;&#x7EC4;&#x503C;&#x524D;&#x952E;&#x540E;&#xFF0C;&#x4F1A;&#x4F18;&#x5148;&#x6309;&#x7167;&#x503C;&#x6392;&#x5E8F;</span></div><div class="line"><span class="comment"># &#x5373;&#x8F6C;&#x6210; =&gt; [(100, &apos;Airing&apos;), (70, &apos;Penny&apos;), (50, &apos;Bili&apos;)]</span></div><div class="line"><span class="comment"># 1. &#x5229;&#x7528;`zip`&#x5C06;&#x5B57;&#x5178;&#x8F6C;&#x5316;&#x6210;&#x5143;&#x7EC4;</span></div><div class="line">f = zip(d.values(), d.keys()) <span class="comment"># =&gt; [(100, &apos;Airing&apos;), (70, &apos;Penny&apos;), (50, &apos;Bili&apos;)]</span></div><div class="line"><span class="comment"># &#x6CE8;&#xFF1A;&#x5982;&#x679C;&#x5B57;&#x5178;&#x7684;&#x9879;&#x5F88;&#x591A;&#x7684;&#x8BDD;&#xFF0C;&#x5EFA;&#x8BAE;&#x4F7F;&#x7528;&#x5176;&#x8FED;&#x4EE3;&#x7248;&#x672C;&#xFF08;Python2&#xFF09;&#xFF0C;&#x53EF;&#x4EE5;&#x5BF9;&#x5185;&#x5B58;&#x8FDB;&#x884C;&#x4F18;&#x5316;</span></div><div class="line">f = zip(d.itervalues(), d.iterkeys()) <span class="comment"># &#x7ED3;&#x679C;&#x76F8;&#x540C;</span></div><div class="line"><span class="comment"># 2. &#x4F7F;&#x7528;`sorted`&#x51FD;&#x6570;&#x8FDB;&#x884C;&#x6392;&#x5E8F;</span></div><div class="line">sorted(f) <span class="comment"># &#x6210;&#x7EE9;&#x7531;&#x5C0F;&#x5230;&#x5927; =&gt; [(50, &apos;Bili&apos;), (70, &apos;Penny&apos;), (100, &apos;Airing&apos;)]</span></div><div class="line">&#x5229;&#x7528;<span class="keyword">lambda</span></div><div class="line">d = {<span class="string">&apos;Airing&apos;</span>: <span class="number">100</span>, <span class="string">&apos;Penny&apos;</span>: <span class="number">70</span>, <span class="string">&apos;Bili&apos;</span>: <span class="number">50</span>}</div><div class="line">d.items() <span class="comment"># =&gt; [(&apos;Airing&apos;, 100), (&apos;Penny&apos;, 70), (&apos;Bili&apos;, 50)]</span></div><div class="line"><span class="comment"># &#x6B64;&#x65F6;&#x952E;&#x5728;&#x524D;&#xFF0C;&#x503C;&#x5728;&#x540E;&#xFF0C;&#x6CA1;&#x6CD5;&#x76F4;&#x63A5;&#x4F7F;&#x7528; sorted &#x51FD;&#x6570;</span></div><div class="line"><span class="comment"># &#x5C31;&#x9700;&#x8981;&#x4F7F;&#x7528; sorted &#x51FD;&#x6570;&#x7684; key &#x53C2;&#x6570;</span></div><div class="line">sorted(d.items(), key=<span class="keyword">lambda</span> x : x[<span class="number">1</span>]) <span class="comment"># &#x89C4;&#x5B9A;&#x6309;&#x7167;&#x7B2C;1&#x9879;&#xFF08;0&#x5F00;&#x59CB;&#xFF09;&#x8FDB;&#x884C;&#x6392;&#x5E8F;</span></div><div class="line"><span class="comment"># &#x6210;&#x7EE9;&#x7531;&#x5C0F;&#x5230;&#x5927; =&gt; [(50, &apos;Bili&apos;), (70, &apos;Penny&apos;), (100, &apos;Airing&apos;)]</span></div></pre></td></tr></table></figure>
+<h4 id="&#x5728;&#x6307;&#x5B9A;&#x76EE;&#x5F55;&#x5BFB;&#x627E;&#x6587;&#x4EF6;"><a href="#&#x5728;&#x6307;&#x5B9A;&#x76EE;&#x5F55;&#x5BFB;&#x627E;&#x6587;&#x4EF6;" class="headerlink" title="&#x5728;&#x6307;&#x5B9A;&#x76EE;&#x5F55;&#x5BFB;&#x627E;&#x6587;&#x4EF6;"></a>&#x5728;&#x6307;&#x5B9A;&#x76EE;&#x5F55;&#x5BFB;&#x627E;&#x6587;&#x4EF6;</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> os</div><div class="line">filelists = []</div><div class="line"></div><div class="line">rootdir = <span class="string">&apos;E:\Lliao&apos;</span></div><div class="line"><span class="keyword">for</span> root, subfolders, files <span class="keyword">in</span> os.walk(rootdir):</div><div class="line">    <span class="keyword">if</span> <span class="string">&apos;BAT&apos;</span><span class="keyword">in</span> subfolders: subfolders.remove(<span class="string">&apos;BAT&apos;</span>)</div><div class="line">    <span class="keyword">if</span> <span class="string">&apos;C++&apos;</span><span class="keyword">in</span> subfolders: subfolders.remove(<span class="string">&apos;C++&apos;</span>)</div><div class="line">    <span class="keyword">for</span> file <span class="keyword">in</span> files:</div><div class="line">        <span class="keyword">if</span> file.find(<span class="string">&apos;.pdf&apos;</span>) != <span class="number">-1</span> :</div><div class="line">            file_dir_path = os.path.join(root, file)</div><div class="line">            filelists.append(file_dir_path)</div></pre></td></tr></table></figure>
+<h4 id="&#x5B57;&#x5178;&#x8F6C;&#x5B57;&#x7B26;&#x4E32;"><a href="#&#x5B57;&#x5178;&#x8F6C;&#x5B57;&#x7B26;&#x4E32;" class="headerlink" title="&#x5B57;&#x5178;&#x8F6C;&#x5B57;&#x7B26;&#x4E32;"></a>&#x5B57;&#x5178;&#x8F6C;&#x5B57;&#x7B26;&#x4E32;</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">params = {<span class="string">&quot;server&quot;</span>:<span class="string">&quot;mpilgrim&quot;</span>, <span class="string">&quot;database&quot;</span>:<span class="string">&quot;master&quot;</span>, <span class="string">&quot;uid&quot;</span>:<span class="string">&quot;sa&quot;</span>, <span class="string">&quot;pwd&quot;</span>:<span class="string">&quot;secret&quot;</span>}</div><div class="line">[<span class="string">&quot;%s=%s&quot;</span> % (k, v) <span class="keyword">for</span> k, v <span class="keyword">in</span> params.items()]</div><div class="line"><span class="comment">## [&apos;server=mpilgrim&apos;, &apos;uid=sa&apos;, &apos;database=master&apos;, &apos;pwd=secret&apos;]</span></div><div class="line"> <span class="string">&quot;;&quot;</span>.join([<span class="string">&quot;%s=%s&quot;</span> % (k, v) <span class="keyword">for</span> k, v <span class="keyword">in</span> params.items()])</div><div class="line"><span class="comment">##&apos;server=mpilgrim;uid=sa;database=master;pwd=secret&apos;</span></div></pre></td></tr></table></figure>
+<h4 id="txt&#x8F6C;dataframe"><a href="#txt&#x8F6C;dataframe" class="headerlink" title="txt&#x8F6C;dataframe"></a>txt&#x8F6C;dataframe</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">question_info = []</div><div class="line"><span class="keyword">with</span> open(path + <span class="string">r&apos;\bytecup2016data\question_info.txt&apos;</span>) <span class="keyword">as</span> f:</div><div class="line">    <span class="comment">#f.readline() &#x8FD9;&#x4E24;&#x884C;&#x53EF;&#x4EE5;&#x770B;&#x8868;&#x5934;&#x548C;&#x6570;&#x636E; &#x66F4;&#x597D;&#x7684;&#x5206;&#x914D;&#x6570;&#x636E;&#x548C;&#x4F7F;&#x7528;split</span></div><div class="line">    <span class="comment">#print(f.readline())</span></div><div class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> f:</div><div class="line">        (question_id, question_label, word_id ) = line.strip().split(<span class="string">&apos;\t&apos;</span>)</div><div class="line">        question_info.append((question_id, question_label, word_id)&#xFF09;</div><div class="line"></div><div class="line">pd.DataFrame(question_info,columns=[<span class="string">&apos;question_id&apos;</span>, <span class="string">&apos;question_label&apos;</span>, <span class="string">&apos;word_id&apos;</span>]).to_csv(path +  <span class="string">r&apos;\bytecup2016data\question_info.csv&apos;</span>, index=<span class="number">0</span>)</div><div class="line">pd.read_csv(path +  <span class="string">r&apos;\bytecup2016data\question_info.csv&apos;</span>)</div></pre></td></tr></table></figure>
+<h4 id="&#x5BF9;&#x5B57;&#x7B26;&#x4E32;&#x7B49;&#x8FDB;&#x884C;&#x7F16;&#x7801;-pandas-factorize"><a href="#&#x5BF9;&#x5B57;&#x7B26;&#x4E32;&#x7B49;&#x8FDB;&#x884C;&#x7F16;&#x7801;-pandas-factorize" class="headerlink" title="&#x5BF9;&#x5B57;&#x7B26;&#x4E32;&#x7B49;&#x8FDB;&#x884C;&#x7F16;&#x7801; pandas.factorize"></a>&#x5BF9;&#x5B57;&#x7B26;&#x4E32;&#x7B49;&#x8FDB;&#x884C;&#x7F16;&#x7801; pandas.factorize</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">encodeId</span><span class="params">(train_b,test,column)</span>:</span></div><div class="line">    id_all = pd.concat([train_b[column],test[column]],axis=<span class="number">0</span>)</div><div class="line">    encode_all = pd.factorize(id_all)</div><div class="line">    train_id = encode_all[<span class="number">0</span>][ : len(train_b[column])]</div><div class="line">    test_id = encode_all[<span class="number">0</span>][len(train_b[column]) : ]</div><div class="line">    train_b[column+<span class="string">&apos;_encode&apos;</span>] = train_id</div><div class="line">    test[column+<span class="string">&apos;_encode&apos;</span>] = test_id</div><div class="line">    <span class="keyword">return</span> train_id ,test_id</div></pre></td></tr></table></figure>
+<h4 id="pandas&#x7684;join-concat-&#x9700;&#x8981;return"><a href="#pandas&#x7684;join-concat-&#x9700;&#x8981;return" class="headerlink" title="pandas&#x7684;join concat &#x9700;&#x8981;return"></a>pandas&#x7684;join concat &#x9700;&#x8981;return</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">    test_new = test_new.reset_index().drop([<span class="string">&apos;index&apos;</span>],axis=<span class="number">1</span>)</div><div class="line">    <span class="comment">#because of concat will merge in index\n&quot;,</span></div><div class="line">    train_b = pd.concat([train_b,encoded],axis=<span class="number">1</span>)</div><div class="line"><span class="comment">#     train_b = train_b.join(encoded.ix[:,:])</span></div><div class="line">    <span class="keyword">return</span> train_b</div></pre></td></tr></table></figure>
+<h4 id="&#x5BF9;dataframe&#x5C5E;&#x6027;&#x8FDB;&#x884C;groupby&#x5206;&#x6790;"><a href="#&#x5BF9;dataframe&#x5C5E;&#x6027;&#x8FDB;&#x884C;groupby&#x5206;&#x6790;" class="headerlink" title="&#x5BF9;dataframe&#x5C5E;&#x6027;&#x8FDB;&#x884C;groupby&#x5206;&#x6790;"></a>&#x5BF9;dataframe&#x5C5E;&#x6027;&#x8FDB;&#x884C;groupby&#x5206;&#x6790;</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># &#x7EDF;&#x8BA1;ques label&#x548C;exp id&#x8054;&#x7ACB;&#x51FA;&#x73B0;&#x7684;&#x6982;&#x7387;</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">dealExpidQueslabel</span><span class="params">(train_b,test_b)</span>:</span></div><div class="line">    train_c=train_b[train_b[<span class="string">&apos;label&apos;</span>]==<span class="number">1</span>]</div><div class="line">    id_all = dict(train_b.groupby([<span class="string">&apos;expert_id&apos;</span>,<span class="string">&apos;question_label&apos;</span>]).size())</div><div class="line">    id_all_1 = dict(train_c.groupby([<span class="string">&apos;expert_id&apos;</span>,<span class="string">&apos;question_label&apos;</span>]).size())</div><div class="line">    ques_exp_id = list(zip(train_b[<span class="string">&apos;expert_id&apos;</span>].values,train_b[<span class="string">&apos;question_label&apos;</span>].values))</div><div class="line"></div><div class="line">    result_tr = np.zeros((len(train_b),<span class="number">2</span>))</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(train_b)):</div><div class="line">        count = id_all[ques_exp_id[i]]</div><div class="line">        <span class="keyword">if</span> ques_exp_id[i] <span class="keyword">in</span> id_all_1: count_1 = id_all_1[ques_exp_id[i]]</div><div class="line">        <span class="keyword">else</span>: count_1 = <span class="number">0</span></div><div class="line">        result_tr[i,<span class="number">0</span>]=count_1/float(count)</div><div class="line">        result_tr[i,<span class="number">1</span>]=count/float(len(train_b))</div><div class="line"></div><div class="line">    result_te = np.zeros((len(test_b),<span class="number">2</span>))</div><div class="line">    test_id = list(zip(test_b[<span class="string">&apos;expert_id&apos;</span>].values,test_b[<span class="string">&apos;question_label&apos;</span>].values))</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(test_b)):</div><div class="line">        <span class="keyword">if</span> test_id[i] <span class="keyword">not</span> <span class="keyword">in</span> id_all.keys():</div><div class="line">            result_te[i,<span class="number">0</span>]=<span class="number">0</span></div><div class="line">            result_te[i,<span class="number">1</span>]=<span class="number">0</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            count = id_all[test_id[i]]</div><div class="line">            <span class="keyword">if</span> test_id[i] <span class="keyword">in</span> id_all_1: count_1 = id_all_1[test_id[i]]</div><div class="line">            <span class="keyword">else</span>: count_1 = <span class="number">0</span></div><div class="line">            result_te[i,<span class="number">0</span>]=count_1/float(count)</div><div class="line">            result_te[i,<span class="number">1</span>]=count/float(len(train_b))</div><div class="line"></div><div class="line">    test_b[<span class="string">&apos;ques_lb_exp_ip_1&apos;</span>] = result_te[:,<span class="number">0</span>]</div><div class="line">    test_b[<span class="string">&apos;ques_lb_exp_ip_2&apos;</span>] = result_te[:,<span class="number">1</span>]</div><div class="line">    train_b[<span class="string">&apos;quesexp_label_1&apos;</span>] = result_tr[:,<span class="number">0</span>]</div><div class="line">    train_b[<span class="string">&apos;quesexp_label_2&apos;</span>] = result_tr[:,<span class="number">1</span>]</div><div class="line">    <span class="keyword">return</span> result_tr,result_te</div></pre></td></tr></table></figure>
+<h4 id="xgboost&#x5019;&#x9009;&#x91CD;&#x8981;&#x7279;&#x5F81;"><a href="#xgboost&#x5019;&#x9009;&#x91CD;&#x8981;&#x7279;&#x5F81;" class="headerlink" title="xgboost&#x5019;&#x9009;&#x91CD;&#x8981;&#x7279;&#x5F81;"></a>xgboost&#x5019;&#x9009;&#x91CD;&#x8981;&#x7279;&#x5F81;</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> xgboost <span class="keyword">as</span> xgb</div><div class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_xgb_feat_importances</span><span class="params">(clf)</span>:</span></div><div class="line"></div><div class="line">    <span class="keyword">if</span> isinstance(clf, xgb.XGBModel):</div><div class="line">        <span class="comment"># clf has been created by calling</span></div><div class="line">        <span class="comment"># xgb.XGBClassifier.fit() or xgb.XGBRegressor().fit()</span></div><div class="line">        fscore = clf.booster().get_fscore()</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        <span class="comment"># clf has been created by calling xgb.train.</span></div><div class="line">        <span class="comment"># Thus, clf is an instance of xgb.Booster.</span></div><div class="line">        fscore = clf.get_fscore()</div><div class="line"></div><div class="line">    feat_importances = []</div><div class="line">    <span class="keyword">for</span> ft, score <span class="keyword">in</span> fscore.iteritems():</div><div class="line">        feat_importances.append({<span class="string">&apos;Feature&apos;</span>: ft, <span class="string">&apos;Importance&apos;</span>: score})</div><div class="line">    feat_importances = pd.DataFrame(feat_importances)</div><div class="line">    feat_importances = feat_importances.sort_values(</div><div class="line">        by=<span class="string">&apos;Importance&apos;</span>, ascending=<span class="keyword">False</span>).reset_index(drop=<span class="keyword">True</span>)</div><div class="line">    <span class="comment"># Divide the importances by the sum of all importances</span></div><div class="line">    <span class="comment"># to get relative importances. By using relative importances</span></div><div class="line">    <span class="comment"># the sum of all importances will equal to 1, i.e.,</span></div><div class="line">    <span class="comment"># np.sum(feat_importances[&apos;importance&apos;]) == 1</span></div><div class="line">    feat_importances[<span class="string">&apos;Importance&apos;</span>] /= feat_importances[<span class="string">&apos;Importance&apos;</span>].sum()</div><div class="line">    <span class="comment"># Print the most important features and their importances</span></div><div class="line">    <span class="keyword">print</span> feat_importances.head()</div><div class="line">    <span class="keyword">return</span> feat_importances</div></pre></td></tr></table></figure>
+<h4 id="&#x6570;&#x636E;&#x5F52;&#x4E00;&#x5316;"><a href="#&#x6570;&#x636E;&#x5F52;&#x4E00;&#x5316;" class="headerlink" title="&#x6570;&#x636E;&#x5F52;&#x4E00;&#x5316;"></a>&#x6570;&#x636E;&#x5F52;&#x4E00;&#x5316;</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">Normalize</span><span class="params">(train_b, test_b,method = <span class="string">&apos;norm&apos;</span>)</span>:</span></div><div class="line">    cols = np.array(train_b.columns)</div><div class="line">    <span class="keyword">if</span> method==<span class="string">&apos;norm&apos;</span>:</div><div class="line">        <span class="keyword">for</span> col <span class="keyword">in</span> cols:</div><div class="line">            temp = np.array(train_b[col].values)</div><div class="line">            temp_01 = preprocessing.scale(temp)</div><div class="line">            train_b[col] = temp_01</div><div class="line"></div><div class="line">            temp = np.array(test_b[col].values)</div><div class="line">            temp_01 = preprocessing.scale(temp)</div><div class="line">            test_b[col] = temp_01</div><div class="line">    <span class="keyword">elif</span> method==<span class="string">&apos;maxmin&apos;</span>:</div><div class="line">        <span class="keyword">for</span> col <span class="keyword">in</span> cols:</div><div class="line">            temp = np.array(train_b[col].values)</div><div class="line">            min_max_scaler = preprocessing.MinMaxScaler()</div><div class="line">            X_train_minmax = min_max_scaler.fit_transform(temp)</div><div class="line">            train_b[col] = X_train_minmax</div><div class="line"></div><div class="line">            temp = np.array(test_b[col].values)</div><div class="line">            X_test_minmax = min_max_scaler.transform(temp)</div><div class="line">            test_b[col] = X_test_minmax</div></pre></td></tr></table></figure>
+<h4 id="&#x4FE1;&#x606F;&#x71B5;-Gini"><a href="#&#x4FE1;&#x606F;&#x71B5;-Gini" class="headerlink" title="&#x4FE1;&#x606F;&#x71B5; Gini"></a>&#x4FE1;&#x606F;&#x71B5; Gini</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> minepy <span class="keyword">import</span> MINE</div><div class="line"></div><div class="line">res.append(pd.read_csv(<span class="string">&apos;xgb_7844.csv&apos;</span>).score.values)</div><div class="line"></div><div class="line">res.append(pd.read_csv(<span class="string">&apos;svm_771.csv&apos;</span>).score.values)</div><div class="line"></div><div class="line">res.append(pd.read_csv(<span class="string">&apos;xgb_787.csv&apos;</span>).score.values)</div><div class="line"></div><div class="line">cm = []</div><div class="line"></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">3</span>):</div><div class="line"></div><div class="line">     tmp = [ ]</div><div class="line"></div><div class="line">     <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">3</span>):</div><div class="line"></div><div class="line">               m = MINE()</div><div class="line"></div><div class="line">               m.compute_score(res[i], res[j])</div><div class="line"></div><div class="line">               tmp.append(m.mic())</div><div class="line"></div><div class="line">cm.append(tmp)</div></pre></td></tr></table></figure>
+<h4 id="pandas-data-data-&#x2018;a&#x2019;-0-&#x7684;&#x590D;&#x5236;"><a href="#pandas-data-data-&#x2018;a&#x2019;-0-&#x7684;&#x590D;&#x5236;" class="headerlink" title="pandas: data[data[&#x2018;a&#x2019;]==0]&#x7684;&#x590D;&#x5236;"></a>pandas: data[data[&#x2018;a&#x2019;]==0]&#x7684;&#x590D;&#x5236;</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">train[train[<span class="string">&apos;label&apos;</span>]==<span class="number">1</span>]=<span class="number">0</span> &#x8FD9;&#x662F;&#x5BF9;&#x539F;dataframe&#x7684;&#x590D;&#x5236;&#xFF0C;&#x9700;&#x8981;&#x6539;&#x53D8;&#x539F;&#x6570;&#x636E;&#xFF0C;&#x9700;&#x8981;loc</div><div class="line">train.loc[train[<span class="string">&apos;label&apos;</span>]==<span class="number">1</span>,<span class="string">&apos;label&apos;</span>]=<span class="number">0</span></div></pre></td></tr></table></figure>
+<h4 id="&#x65F6;&#x95F4;&#x6233;&#x5904;&#x7406;"><a href="#&#x65F6;&#x95F4;&#x6233;&#x5904;&#x7406;" class="headerlink" title="&#x65F6;&#x95F4;&#x6233;&#x5904;&#x7406;"></a>&#x65F6;&#x95F4;&#x6233;&#x5904;&#x7406;</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> datetime <span class="keyword">as</span> dtime</div><div class="line">dtime.datetime.strptime(user_pay.loc[<span class="number">0</span>][<span class="string">&apos;time_stamp&apos;</span>],<span class="string">&apos;%Y-%m-%d %H:%M:%S&apos;</span>)</div><div class="line"></div><div class="line"><span class="comment"># datetime.datetime(2015, 12, 25, 17, 0)</span></div></pre></td></tr></table></figure>
+<h4 id="pandas&#xFF1A;drop&#x4E0E;del"><a href="#pandas&#xFF1A;drop&#x4E0E;del" class="headerlink" title="pandas&#xFF1A;drop&#x4E0E;del"></a>pandas&#xFF1A;drop&#x4E0E;del</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">drop&#x662F;&#x590D;&#x5236;&#x5BF9;&#x8C61;&#x540E;&#x518D;&#x5220;&#x9664;</div><div class="line"><span class="keyword">del</span>&#x662F;&#x76F4;&#x63A5;&#x5BF9;&#x5BF9;&#x8C61;&#x8FDB;&#x884C;&#x5220;&#x9664;</div></pre></td></tr></table></figure>
+<h4 id="pandas&#xFF1A;pivot-table-&#x5C06;&#x67D0;&#x5217;&#x7684;values&#x9009;&#x8F6C;&#x4E3A;columns"><a href="#pandas&#xFF1A;pivot-table-&#x5C06;&#x67D0;&#x5217;&#x7684;values&#x9009;&#x8F6C;&#x4E3A;columns" class="headerlink" title="pandas&#xFF1A;pivot_table  &#x5C06;&#x67D0;&#x5217;&#x7684;values&#x9009;&#x8F6C;&#x4E3A;columns"></a>pandas&#xFF1A;pivot_table  &#x5C06;&#x67D0;&#x5217;&#x7684;values&#x9009;&#x8F6C;&#x4E3A;columns</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">temp1.columns=[<span class="string">&apos;shop_id&apos;</span>, <span class="string">&apos;time_ymd&apos;</span>,<span class="string">&apos;filter_time_ymd&apos;</span>,<span class="string">&apos;buyer_num&apos;</span>]</div><div class="line">temp1.head()</div><div class="line">shop_time_buyer=temp1.pivot_table(columns=[<span class="string">&apos;time_ymd&apos;</span>],values=<span class="string">&apos;buyer_num&apos;</span>,index=[<span class="string">&apos;shop_id&apos;</span>]).fillna(<span class="number">0</span>).astype(int)</div></pre></td></tr></table></figure>
+<h4 id="pandas&#xFF1A;unstack-reset-index-groupby&#x540E;&#x5C06;&#x683C;&#x5F0F;&#x91CD;&#x7F6E;&#x4E3A;dataframe"><a href="#pandas&#xFF1A;unstack-reset-index-groupby&#x540E;&#x5C06;&#x683C;&#x5F0F;&#x91CD;&#x7F6E;&#x4E3A;dataframe" class="headerlink" title="pandas&#xFF1A;unstack(),reset_index(),groupby&#x540E;&#x5C06;&#x683C;&#x5F0F;&#x91CD;&#x7F6E;&#x4E3A;dataframe"></a>pandas&#xFF1A;unstack(),reset_index(),groupby&#x540E;&#x5C06;&#x683C;&#x5F0F;&#x91CD;&#x7F6E;&#x4E3A;dataframe</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">zk = userpay.groupby([<span class="string">&apos;shopid&apos;</span>,<span class="string">&apos;date&apos;</span>])[<span class="string">&apos;uid&apos;</span>].count().reset_index()</div><div class="line">weekA=weekA.groupby([<span class="string">&apos;shopid&apos;</span>,<span class="string">&apos;date&apos;</span>])[<span class="string">&apos;uid&apos;</span>].sum().unstack()</div></pre></td></tr></table></figure>
+<h4 id="pandas&#xFF1A;set-index-&#x4E0E;-reset-index-&#x6709;&#x52A9;&#x4E8E;&#x6570;&#x636E;&#x5408;&#x5E76;"><a href="#pandas&#xFF1A;set-index-&#x4E0E;-reset-index-&#x6709;&#x52A9;&#x4E8E;&#x6570;&#x636E;&#x5408;&#x5E76;" class="headerlink" title="pandas&#xFF1A;set_index &#x4E0E; reset_index &#x6709;&#x52A9;&#x4E8E;&#x6570;&#x636E;&#x5408;&#x5E76;"></a>pandas&#xFF1A;set_index &#x4E0E; reset_index &#x6709;&#x52A9;&#x4E8E;&#x6570;&#x636E;&#x5408;&#x5E76;</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">A&#xFF0C;B&#x90FD;&#x6709;shopid merge&#x540E;&#xFF0C;&#x5C06;shopid set_index&#xFF0C;&#x751F;&#x6210;train_x</div><div class="line">train_x&#x4E0E;&#x5176;&#x4ED6;&#x542B;&#x6709;shopid&#x8FDB;&#x884C;merge&#x65F6;&#xFF0C;&#x5C06;train_x&#x7684;index&#x8FDB;&#x884C;reset_index</div><div class="line"></div><div class="line">train_x = (pd.merge(weekA,weekB,on=<span class="string">&apos;shopid&apos;</span>)).set_index(<span class="string">&apos;shopid&apos;</span>)</div><div class="line">train_x = pd.merge(train_x.reset_index(),shopfeature,on=<span class="string">&apos;shopid&apos;</span>).set_index(<span class="string">&apos;shopid&apos;</span>)</div></pre></td></tr></table></figure>
+<h4 id="map-&#x4E0E;-reduce"><a href="#map-&#x4E0E;-reduce" class="headerlink" title="map &#x4E0E; reduce"></a>map &#x4E0E; reduce</h4><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">map&#xFF1A;</div><div class="line">def _build_week_data(zk,shopid, time_start=&apos;2016-10-25&apos;,time_end=&apos;2016-10-31&#x2019;):</div><div class="line">      ...</div><div class="line"></div><div class="line">weeks_data = map(lambda x,y:build_week_data(zk,shopid, time_start=x,time_end=y),</div><div class="line">                     time_start_list,time_end_list)</div><div class="line"></div><div class="line">reduce:</div><div class="line">merged_data = reduce(lambda x,y:pd.merge(x,y,on=&apos;shopid&apos;,how=&apos;right&apos;),weeks_data)</div></pre></td></tr></table></figure>
+<h4 id="&#x79BB;&#x7FA4;&#x70B9;&#x68C0;&#x6D4B;"><a href="#&#x79BB;&#x7FA4;&#x70B9;&#x68C0;&#x6D4B;" class="headerlink" title="&#x79BB;&#x7FA4;&#x70B9;&#x68C0;&#x6D4B;"></a>&#x79BB;&#x7FA4;&#x70B9;&#x68C0;&#x6D4B;</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#&#x79BB;&#x7FA4;&#x70B9;&#x68C0;&#x6D4B;</span></div><div class="line"><span class="keyword">from</span> lof <span class="keyword">import</span> outliers</div><div class="line">a1 = weekabcd.set_index(<span class="string">&apos;shopid&apos;</span>).values</div><div class="line">a1</div><div class="line">a2=a1[<span class="number">1</span>,:]</div><div class="line">lof = outliers(<span class="number">5</span>,a2.reshape((len(a2),<span class="number">1</span>)))</div><div class="line"><span class="keyword">for</span> outlier <span class="keyword">in</span> lof:</div><div class="line">    <span class="keyword">print</span> outlier[<span class="string">&apos;lof&apos;</span>],outlier[<span class="string">&apos;instance&apos;</span>]</div></pre></td></tr></table></figure>
+<h4 id="pandas&#xFF1A;all-any-&#x67E5;&#x770B;&#x5168;&#x5C40;&#x662F;&#x5426;&#x6709;nan-lt-0"><a href="#pandas&#xFF1A;all-any-&#x67E5;&#x770B;&#x5168;&#x5C40;&#x662F;&#x5426;&#x6709;nan-lt-0" class="headerlink" title="pandas&#xFF1A;all(),any()&#x67E5;&#x770B;&#x5168;&#x5C40;&#x662F;&#x5426;&#x6709;nan,&lt;0"></a>pandas&#xFF1A;all(),any()&#x67E5;&#x770B;&#x5168;&#x5C40;&#x662F;&#x5426;&#x6709;nan,&lt;0</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">any():<span class="keyword">if</span> any of the above are true. &#x4EFB;&#x4E00;**&#x6210;&#x7ACB;</div><div class="line">all():&#x6240;&#x6709;**&#x6210;&#x7ACB;</div><div class="line">data.isnull().any().any()</div><div class="line">data.isnull().sum().sum()</div><div class="line">(data&lt;<span class="number">0</span>).values.any()</div><div class="line">nan&#xFF0C;&lt;<span class="number">0</span> &#x6240;&#x5728;&#x7684;&#x5177;&#x4F53;&#x7684;index&#xFF1A;</div><div class="line">np.unique(arima_week4_0920_h14[arima_week4_0920_h14.isnull().values].index)</div><div class="line">np.unique(arima_week4_0920_h14[arima_week4_0920_h14.values&lt;<span class="number">0</span>].index)</div></pre></td></tr></table></figure>
+<h4 id="pandas&#xFF1A;&#x4FEE;&#x6539;&#x6570;&#x636E;&#x7528;loc-index-column-&#x2026;"><a href="#pandas&#xFF1A;&#x4FEE;&#x6539;&#x6570;&#x636E;&#x7528;loc-index-column-&#x2026;" class="headerlink" title="pandas&#xFF1A;&#x4FEE;&#x6539;&#x6570;&#x636E;&#x7528;loc[index,column]=&#x2026;"></a>pandas&#xFF1A;&#x4FEE;&#x6539;&#x6570;&#x636E;&#x7528;loc[index,column]=&#x2026;</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">week_0614_arima.loc[index,column]=values</div><div class="line">&#x5176;&#x4E2D;index column &#x53EF;&#x4EE5;&#x662F;list array&#xFF0C;values &#x53EF;&#x4EE5;&#x662F;list ndarray</div></pre></td></tr></table></figure>
+<h4 id="pandas&#xFF1A;&#x884C;&#x8FED;&#x4EE3;iterrows"><a href="#pandas&#xFF1A;&#x884C;&#x8FED;&#x4EE3;iterrows" class="headerlink" title="pandas&#xFF1A;&#x884C;&#x8FED;&#x4EE3;iterrows()"></a>pandas&#xFF1A;&#x884C;&#x8FED;&#x4EE3;iterrows()</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> index_i,series_row <span class="keyword">in</span> week_0614_arima.iterrows():</div><div class="line">    <span class="keyword">for</span> col_name <span class="keyword">in</span> week_0614_arima.columns:</div><div class="line">        series_row[col_name]=<span class="number">1</span></div><div class="line">    week_0614_arima.loc[index_i] = series_row</div></pre></td></tr></table></figure>
+<h4 id="numpy&#xFF1A;data-i-shape-2000-&#x4E00;&#x4F4D;-&#x4E0D;&#x7B49;&#x4E8E;-2000-1-&#x4E8C;&#x7EF4;"><a href="#numpy&#xFF1A;data-i-shape-2000-&#x4E00;&#x4F4D;-&#x4E0D;&#x7B49;&#x4E8E;-2000-1-&#x4E8C;&#x7EF4;" class="headerlink" title="numpy&#xFF1A;data[i,:]    shape(2000,) &#x4E00;&#x4F4D; &#x4E0D;&#x7B49;&#x4E8E; (2000,1) &#x4E8C;&#x7EF4;"></a>numpy&#xFF1A;data[i,:]    shape(2000,) &#x4E00;&#x4F4D; &#x4E0D;&#x7B49;&#x4E8E; (2000,1) &#x4E8C;&#x7EF4;</h4><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">a=np.zeros((7,1)) #&#x6B64;&#x65F6;a&#x4E0D;&#x80FD;&#x4E3A;(1,7)</div><div class="line">data -&gt;(n,7)</div><div class="line">a[data[i,:]&gt;0] = a[data[i,:]&gt;0]+1</div></pre></td></tr></table></figure>
+<h4 id="pandas&#xFF1A;ix"><a href="#pandas&#xFF1A;ix" class="headerlink" title="pandas&#xFF1A;ix"></a>pandas&#xFF1A;ix</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">data.ix[<span class="number">0</span>,<span class="number">0</span>] &#x76F8;&#x5F53;&#x4E8E;data.values[<span class="number">0</span>,<span class="number">0</span>]</div></pre></td></tr></table></figure>
+<h4 id="pandas&#xFF1A;merge"><a href="#pandas&#xFF1A;merge" class="headerlink" title="pandas&#xFF1A;merge"></a>pandas&#xFF1A;merge</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">merge&#x65F6;&#x6CE8;&#x610F;how&#x7684;&#x4F7F;&#x7528;&#x3002;&#x5F52;&#x5E76;&#x5230;&#x7EDF;&#x4E00;&#x7684;&#xFF0C;&#x7EDF;&#x4E00;&#x5728;&#x5DE6;&#xFF0C;how=outer</div><div class="line">weeks_1025 = pd.merge(shopid,weeks_1025.reset_index(),on=<span class="string">&apos;shopid&apos;</span>,how=<span class="string">&apos;outer&apos;</span>).fillna(<span class="number">0</span>)</div></pre></td></tr></table></figure>
+<h4 id="pandas&#xFF1A;&#x4FEE;&#x6539;index&#x7684;name"><a href="#pandas&#xFF1A;&#x4FEE;&#x6539;index&#x7684;name" class="headerlink" title="pandas&#xFF1A;&#x4FEE;&#x6539;index&#x7684;name"></a>pandas&#xFF1A;&#x4FEE;&#x6539;index&#x7684;name</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">week_0614_filtered.index.rename(<span class="string">&apos;shopid&apos;</span>,inplace=<span class="keyword">True</span>)</div></pre></td></tr></table></figure>
+<h4 id="numpy&#xFF1A;reshape&#x7684;&#x884C;&#x5217;&#x586B;&#x5145;"><a href="#numpy&#xFF1A;reshape&#x7684;&#x884C;&#x5217;&#x586B;&#x5145;" class="headerlink" title="numpy&#xFF1A;reshape&#x7684;&#x884C;&#x5217;&#x586B;&#x5145;"></a>numpy&#xFF1A;reshape&#x7684;&#x884C;&#x5217;&#x586B;&#x5145;</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">a = np.arange(<span class="number">6</span>).reshape((<span class="number">3</span>,<span class="number">2</span>))</div><div class="line">a:  array([[<span class="number">0</span>,<span class="number">1</span>],  b: array([[<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>],   c: array([[<span class="number">0</span>,<span class="number">4</span> ,<span class="number">3</span> ],</div><div class="line">               [<span class="number">2</span>,<span class="number">3</span>],                [<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]])                [<span class="number">2</span>,<span class="number">1</span> ,<span class="number">5</span>]])</div><div class="line">               [<span class="number">4</span>,<span class="number">5</span>]])</div><div class="line">b = a.reshape((<span class="number">2</span>,<span class="number">3</span>))  &#x7B49;&#x4EF7;&#x4E8E; a.reshape((<span class="number">2</span>,<span class="number">-1</span>)) ,&#x9ED8;&#x8BA4;order=&#x2018;C&#x2019;,&#x6309;&#x884C;</div><div class="line">c = a.reshape((<span class="number">2</span>,<span class="number">3</span>),order = &#x2018;F&#x2019;)&#xFF0C;&#x6309;&#x5217;</div></pre></td></tr></table></figure>
+<h4 id="list&#x4E0E;set&#x7684;&#x4EA4;&#x5DEE;&#x5E76;"><a href="#list&#x4E0E;set&#x7684;&#x4EA4;&#x5DEE;&#x5E76;" class="headerlink" title="list&#x4E0E;set&#x7684;&#x4EA4;&#x5DEE;&#x5E76;"></a>list&#x4E0E;set&#x7684;&#x4EA4;&#x5DEE;&#x5E76;</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#x5DEE;&#xFF1A;set(a) - set(b)  ret = [ i <span class="keyword">for</span> i <span class="keyword">in</span> a <span class="keyword">if</span> i <span class="keyword">not</span> <span class="keyword">in</span> b ]</div><div class="line">&#x4EA4;&#xFF1A;set(a) &amp; set(b)</div><div class="line">&#x5E76;&#xFF1A;set(a) | set(b)</div><div class="line">&#x5BF9;&#x79F0;&#x5DEE;: set(a) ^ set(b) (&#x5728;t&#x6216;s&#x4E2D;&#xFF0C;&#x4E0D;&#x540C;&#x65F6;&#x51FA;&#x73B0;&#x5728;ab&#x4E2D;)</div></pre></td></tr></table></figure>
+<h4 id="numpy&#xFF1A;hstack-vstack-dstack-concatenate"><a href="#numpy&#xFF1A;hstack-vstack-dstack-concatenate" class="headerlink" title="numpy&#xFF1A;hstack,vstack,dstack,concatenate"></a>numpy&#xFF1A;hstack,vstack,dstack,concatenate</h4><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">hstask &lt;-&gt;concatenate(axis=1)</div><div class="line">vstask &lt;-&gt;concatenate(axis=0)</div><div class="line">dstask &lt;-&gt;concatenate(axis=2)</div><div class="line">axis = N &#x5219;&#x6309;&#x7167;shape&#x7684;&#x7B2C;N&#x7EF4;&#x8FDB;&#x884C;&#x5806;&#x53E0;</div></pre></td></tr></table></figure>
+<h4 id="numpy&#xFF1A;random-choice"><a href="#numpy&#xFF1A;random-choice" class="headerlink" title="numpy&#xFF1A;random choice"></a>numpy&#xFF1A;random choice</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">np.random.choice([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>],<span class="number">3</span>,replace=<span class="keyword">False</span>)</div><div class="line">replace:<span class="keyword">True</span> &#x653E;&#x56DE;&#x62BD;&#x53D6;</div></pre></td></tr></table></figure>
+<h4 id="h5py&#xFF1A;&#x8BFB;&#x53D6;matlab-v7-3"><a href="#h5py&#xFF1A;&#x8BFB;&#x53D6;matlab-v7-3" class="headerlink" title="h5py&#xFF1A;&#x8BFB;&#x53D6;matlab -v7.3"></a>h5py&#xFF1A;&#x8BFB;&#x53D6;matlab -v7.3</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">sub11.keys()&#xFF1A;&#x51FA;&#x73B0;KeyView&#x4F7F; &#xFF0C;&#x4F7F;&#x7528;list&#x67E5;&#x770B;&#x8BE6;&#x60C5;</div><div class="line">KeysView(&lt;HDF5 group <span class="string">&quot;/#refs#/b&quot;</span> (<span class="number">3</span> members)&gt;)</div><div class="line">list(sub11.keys())  &#xFF1A;</div><div class="line">[<span class="string">&apos;final_vec&apos;</span>, <span class="string">&apos;ori_data&apos;</span>, <span class="string">&apos;sim_mtx&apos;</span>]</div><div class="line">sub1: &#x51FA;&#x73B0;&lt;HDF5 object reference&gt;&#x65F6;&#xFF0C;</div><div class="line">origin_data[sub1] &#x53EF;&#x63D0;&#x53D6;&#x51FA;.</div><div class="line">&#x6CE8;&#x610F;&#xFF0C;&#x6240;&#x6709;reference&#x91CC;&#x9762;&#x5B9E;&#x9645;&#x662F;&#x539F;&#x59CB;&#x6570;&#x636E;&#x7684;index&#xFF0C;&#x6240;&#x4EE5;&#x63D0;&#x53D6;&#x65F6;&#xFF0C;</div><div class="line">&#x9700;&#x7528;origin_data</div></pre></td></tr></table></figure>
+<h4 id="numpy-nan&#xFF0C;inf&#x7684;&#x66FF;&#x6362;"><a href="#numpy-nan&#xFF0C;inf&#x7684;&#x66FF;&#x6362;" class="headerlink" title="numpy:nan&#xFF0C;inf&#x7684;&#x66FF;&#x6362;"></a>numpy:nan&#xFF0C;inf&#x7684;&#x66FF;&#x6362;</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">np.nan_to_numpy:<span class="number">0</span>&#x4EE3;&#x66FF;nan&#xFF0C;&#x6709;&#x9650;&#x6570;&#x5B57;&#x4EE3;&#x66FF;inf</div></pre></td></tr></table></figure>
+<h4 id="&#x79FB;&#x52A8;&#x6587;&#x4EF6;"><a href="#&#x79FB;&#x52A8;&#x6587;&#x4EF6;" class="headerlink" title="&#x79FB;&#x52A8;&#x6587;&#x4EF6;:"></a>&#x79FB;&#x52A8;&#x6587;&#x4EF6;:</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&#x7EDF;&#x4E00;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x5185;:os.rename</div><div class="line">&#x4E0D;&#x540C;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x5185;:shutil.move</div></pre></td></tr></table></figure>
+<h4 id="re&#x6A21;&#x5757;&#x7684;match&#x4E0E;search"><a href="#re&#x6A21;&#x5757;&#x7684;match&#x4E0E;search" class="headerlink" title="re&#x6A21;&#x5757;&#x7684;match&#x4E0E;search"></a>re&#x6A21;&#x5757;&#x7684;match&#x4E0E;search</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">match:&#x4ECE;string&#x7684;&#x5F00;&#x59CB;&#x4F4D;&#x7F6E;&#x5339;&#x914D;&#xFF0C;&#x5339;&#x914D;&#x4E0D;&#x6210;&#x529F;<span class="keyword">None</span>,&#x6210;&#x529F;&#x7528;group&#x53D6;&#x51FA;</div><div class="line">search:&#x626B;&#x63CF;&#x6574;&#x4E2A;string&#xFF0C;&#x8FD4;&#x56DE;&#x7B2C;&#x4E00;&#x4E2A;&#x6210;&#x529F;&#x7684;&#x5339;&#x914D;</div></pre></td></tr></table></figure>
+<h4 id="collections&#xFF1A;defaultdict"><a href="#collections&#xFF1A;defaultdict" class="headerlink" title="collections&#xFF1A;defaultdict"></a>collections&#xFF1A;defaultdict</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dict1 = defaultdict(list),int,function,<span class="keyword">lambda</span></div></pre></td></tr></table></figure>
+<h4 id="scipy-io-loadmat-savemat"><a href="#scipy-io-loadmat-savemat" class="headerlink" title="scipy.io:loadmat savemat"></a>scipy.io:loadmat savemat</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">savemat(&#x2018;XX.mat&#x2019;,{&#x2018;fiber&#x2019;:fiber,&#x2019;fa&#x2019;:fadata})</div><div class="line">&#x5373;&#x4F7F;fiber&#x662F;&#x5B57;&#x5178;&#xFF0C;&#x4E5F;&#x6700;&#x597D;&#x4E0D;&#x8981;&#x76F4;&#x63A5;&#x5199;&#x6210;&#x5982;&#x4E0B;&#xFF0C;&#x4F1A;&#x62A5;&#x9519;&#x53D8;&#x91CF;&#x591A;&#xFF1A;</div><div class="line">savemat(&#x2018;XX.mat&#x2019;,fiber)</div></pre></td></tr></table></figure>
+<h4 id="os-makedirs-path"><a href="#os-makedirs-path" class="headerlink" title="os.makedirs(path):"></a>os.makedirs(path):</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#x5DF2;&#x5B58;&#x5728;&#xFF0C;&#x4F1A;&#x629B;&#x51FA;OSError</div><div class="line"><span class="keyword">try</span>:</div><div class="line">    os.makedirs(path)</div><div class="line"><span class="keyword">except</span> OSError:<span class="keyword">pass</span></div></pre></td></tr></table></figure>
+<h4 id="py2&#x4E0E;py3"><a href="#py2&#x4E0E;py3" class="headerlink" title="py2&#x4E0E;py3"></a>py2&#x4E0E;py3</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">map:py3&#x7684;map&#x8981;&#x6267;&#x884C;&#xFF0C;&#x5F97;&#x52A0;list  e.g:list(map(&#x2026;))</div></pre></td></tr></table></figure>
+
+	
+	
+	
+	
+</div>
+				
+				
+
+                <!-- Post Comments -->
+                
+
+
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    
+    <!-- Prev Nav -->
+    
+        <a href="/2016/07/22/生成式模型与判别式模型/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2016/07/11/偏差与方差/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+        </div>
+    </div>
+
+				
+				
+					<!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay "></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored  sidebar-fixed-left" role="navigation">
+	<div id="sidebar-main">
+	    <!-- Sidebar Header -->
+		<div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+    <i class="material-icons">clear_all</i>
+    <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/zebra.png" alt="Mahome.liao's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        liao.mahome@gmail.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+		<!-- Sidebar Navigation  -->
+		<ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+			
+                <li>
+                    <a href="#" target="_blank" title="Email Me">
+						<i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    <li id="sidebar-first-li">
+        <a href="/" target="_self">
+            <i class="material-icons sidebar-material-icons">home</i>
+             主页
+        </a>
+    </li>
+
+    <!-- I'm Feeling Lucky -->
+<!--
+    <li class="dropdown">
+        <a href="" target="_self">
+            <i class="material-icons sidebar-material-icons">explore</i>
+             sidebar.imlucky
+        </a>
+    </li>
+-->
+
+	
+    <!-- Archives  -->
+    <li class="dropdown">
+        <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+            <i class="material-icons sidebar-material-icons">inbox</i>
+             归档
+            <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+            <a class="sidebar_archives-link" href="/archives/2017/08/">八月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/07/">七月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/06/">六月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/02/">二月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/12/">十二月 2016<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/11/">十一月 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/10/">十月 2016<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/09/">九月 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/08/">八月 2016<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/07/">七月 2016<span class="sidebar_archives-count">3</span></a>
+        </ul>
+    </li>
+
+    <!-- Divider -->
+    <li class="divider"></li>
+
+
+    <!-- Pages  -->
+	
+
+    <!-- Article Numebr  -->
+    <li>
+        <a href="/archives">
+             文章总数
+             <span class="sidebar-badge">25</span>
+        </a>
+    </li>
+</ul>
+
+		<!-- Sidebar Divider -->
+		<div class="sidebar-divider"></div>
+
+		<!-- Sidebar Footer -->
+		<!-- 
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持。 :) 
+-->
+
+<!-- Theme Material -->
+<a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+	<div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+		主题 - Material
+		<span class="sidebar-badge badge-circle">i</span>
+	</div>
+</a>
+
+<!-- Help & Support -->
+<!--
+<a href="mailto:hiviosey@gmail.com" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+		sidebar.help
+		<span class="mdl-button__ripple-container">
+			<span class="mdl-ripple"></span>
+		</span>
+	</div>
+</a>
+-->
+
+<!-- Feedback -->
+<!--
+<a href="https://github.com/viosey/hexo-theme-material/issues" target="_blank" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+         sidebar.feedback
+                    <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+</a>
+-->
+
+<!-- Abount Theme -->
+<!--
+<a href="https://blog.viosey.com/index.php/Material.html" target="_blank" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+         sidebar.about_theme
+        <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+</a>-->
+
+	</div>
+    
+    <!-- Sidebar Sponsor -->
+    
+
+
+</aside>
+
+				
+				
+				
+					<!-- Footer Top Button -->
+					<div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+				
+				
+				<!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+	
+	
+		<!-- Paradox Footer Left Section -->
+		<div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+    <a href="https://twitter.com/twitter" target="view_window"><button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-twitter.png);">
+        <span class="visuallyhidden">Twitter</span>
+    </button></a>
+    
+    
+    <!-- Facebook -->
+    
+    <a href="https://www.facebook.com/facebook" target="view_window"><button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-facebook.png);">
+        <span class="visuallyhidden">Facebook</span>
+    </button></a>
+    
+    
+    <!-- Google + -->
+    
+    <a href="https://www.google.com/" target="view_window"><button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-gplus.png);">
+        <span class="visuallyhidden">Google Plus</span>
+    </button></a>
+    
+    
+    <!-- Weibo -->
+    
+    
+    
+    <!-- Instagram -->
+    
+    
+    
+    <!-- Tumblr -->
+    
+    
+    
+    <!-- Github -->
+    
+    
+</div>
+
+
+		<!--Copyright-->
+		<div id="copyright">Copyright&nbsp;©&nbsp;<script type="text/javascript">var fd = new Date();document.write(fd.getFullYear());</script>&nbsp;AI</div>
+
+		<!-- Paradox Footer Right Section -->
+
+		<!-- 
+		I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+		It will not impact the appearance and can give developers a lot of support :)
+
+		很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+		它不会影响美观并可以给开发者很大的支持。 :) 
+		-->
+
+		<div class="mdl-mini-footer--right-section">
+			<div>
+				<div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+				<div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+			</div>
+		</div>
+	
+</footer>
+                
+				<!-- Import File -->
+<script src="/js/highlight.min.js"></script>
+<script src="/js/js.min.js"></script>
+<script src="/js/nprogress.js"></script>
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    
+    $('#nprogress .bar').css({
+        'background': '#FF4081'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #FF4081, 0 0 15px #FF4081'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#FF4081',
+        'border-left-color': '#FF4081'
+    });
+    
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Swiftye -->
+
+
+<!-- Local Search-->
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $(".post-toc-wrap").parent(".mdl-menu__container").css("position", "fixed");
+    });
+</script>
+
+<!-- MathJax Load-->
+
+            </main>
+        </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+		
+    </body>
+		
+	
+</html>

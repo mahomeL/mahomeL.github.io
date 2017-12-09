@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Title -->
+    
+    <title>
+        PageRank与马氏链 | AI
+    </title>
+    
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/zebra.png">
+    <link rel="icon" sizes="192x192" href="/img/zebra.png">
+    <link rel="apple-touch-icon" href="/img/zebra.png">
+    
+    <!-- Meta & INfo -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="Mahome.liao">
+    <meta name="description" content="You know nothing.">
+    <meta name="keywords" content="跟着我走，你会降维">
+    
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+    
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="AI">
+    
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://yoursite.com">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="PageRank与马氏链 | AI">
+    <meta property="og:description" content="You know nothing.">
+    
+     <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+        
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+    
+    <!-- Import CSS -->
+    <link rel="stylesheet" href="/css/material.min.css">
+    <link rel="stylesheet" href="/css/style.min.css">
+    <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+	body, html{
+		font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+	}
+	
+    a{
+        color: #00838F
+    }
+    
+    .mdl-card__media,
+    #search-label,
+    #search-form-label:after,
+    #scheme-Paradox .hot_tags-count,
+    #scheme-Paradox .sidebar_archives-count,
+    #scheme-Paradox .sidebar-colored .sidebar-header,
+    #scheme-Paradox .sidebar-colored .sidebar-badge{
+        background-color: #0097A7 !important
+    }
+    
+	/* Sidebar User Drop Down Menu Text Color */
+	#scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+    #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus{
+        color: #0097A7 !important
+    }
+    
+    #post_entry-right-info,
+    .sidebar-colored .sidebar-nav li:hover > a,
+    .sidebar-colored .sidebar-nav li:hover > a i,
+    .sidebar-colored .sidebar-nav li > a:hover,
+    .sidebar-colored .sidebar-nav li > a:hover i,
+    .sidebar-colored .sidebar-nav li > a:focus i,
+    .sidebar-colored .sidebar-nav > .open > a,
+    .sidebar-colored .sidebar-nav > .open > a:hover,
+    .sidebar-colored .sidebar-nav > .open > a:focus,
+    #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a{
+        color: #0097A7 !important
+    }
+    
+    .toTop{
+        background: #757575 !important
+    }
+		
+	.material-layout .material-post>.material-nav,
+	.material-layout .material-index>.material-nav,
+	.material-nav a{
+		color: #757575;
+	}
+		
+	#scheme-Paradox .MD-burger-layer {
+		background-color: #757575;
+	}
+
+	#scheme-Paradox #post-toc-trigger-btn{
+		color: #757575;
+	}
+	
+	.post-toc a:hover{
+		color: #00838F;
+		text-decoration: underline;
+	}
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+        body{
+            background-color: #F5F5F5
+        }
+		
+		/* blog_info bottom background */
+        #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+            background-color: #fff;
+        }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+        .fade {
+            transition: all 800ms linear;
+            -webkit-transform: translate3d(0,0,0);
+            -moz-transform: translate3d(0,0,0);
+            -ms-transform: translate3d(0,0,0);
+            -o-transform: translate3d(0,0,0);
+            transform: translate3d(0,0,0);
+            opacity: 1;
+        }
+
+        .fade.out{
+            opacity: 0;
+        }
+    </style>
+
+	<script src="/js/jquery.min.js"></script>
+	
+	<link rel="stylesheet" href="/css/highlight/solarized-white.css">
+	
+	<!-- UC Browser Compatible-->
+	<script>
+		var agent = navigator.userAgent.toLowerCase();
+		if(agent.indexOf('ucbrowser')>0) {
+			document.write('<link rel="stylesheet" href="/css/uc.css">');
+		   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+		}
+	</script>
+    
+    <!-- Custom Head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+</head>
+	
+	
+
+    <body id="scheme-Paradox">
+
+		
+        <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+				
+			
+			
+            <!-- Main Container -->
+            <main class="material-layout__content" id="main">
+				
+                <!-- Top Anchor -->
+                <div id="top"></div>
+				
+				
+                <!-- Hamburger Button -->
+                <button class="MD-burger-icon sidebar-toggle">
+                    <span class="MD-burger-layer"></span>
+                </button>
+				
+				
+                
+	<!-- Back Button -->
+<!--
+	<div class="material-back" id="backhome-div" tabindex="0">
+		<a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" href="#" onclick="window.history.back();return false;" target="_self" role="button" data-upgraded=",MaterialButton,MaterialRipple">
+			<i class="material-icons" role="presentation">arrow_back</i>
+			<span class="mdl-button__ripple-container">
+				<span class="mdl-ripple"></span>
+			</span>
+		</a>
+	</div>			
+-->
+	<!-- Left aligned menu below button -->
+	<button id="post-toc-trigger-btn"
+			class="mdl-button mdl-js-button mdl-button--icon">
+	  <i class="material-icons">format_list_numbered</i>
+	</button>
+
+	<ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
+		for="post-toc-trigger-btn">
+			
+			<ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#PageRank"><span class="post-toc-number">1.</span> <span class="post-toc-text">PageRank</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#马氏链"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">马氏链</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#PageRank代码"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">PageRank代码</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#缺点"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">缺点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#MapReduce框架下PageRank算法"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">MapReduce框架下PageRank算法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#REF"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">REF</span></a></li></ol></li></ol>
+		
+<!--			<li class="mdl-menu__item">Some Action</li>-->
+	</ul>
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+		
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+	<!-- Paradox Post Header -->
+	
+		
+			<!-- Random Thumbnail -->
+			<div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+				<script>
+    
+    var randomNum;
+    randomNum = Math.floor(Math.random() * 8 + 1);
+    
+    $(".post_thumbnail-random").css('background-image', 'url(' + '/img/random/' + randomNum + '.png' + ')');
+    
+</script>
+
+		
+	
+        <p class="article-headline-p">
+            PageRank与马氏链
+        </p>
+    </div>
+
+	
+
+				
+				
+					<!-- Paradox Post Info -->
+					<div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+    
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/zebra.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Mahome.liao</strong>
+        <span>3月 02, 2017</span>
+    </div>
+    
+    <div class="section-spacer"></div>
+	
+    <!-- Favorite -->
+<!--
+    <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+        <i class="material-icons" role="presentation">favorite</i>
+        <span class="visuallyhidden">favorites</span>
+    </button>
+-->
+    
+    <!-- Tags (bookmark) -->
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        
+    </ul>
+    
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+    
+    
+    
+    
+    <!-- Share Twitter -->
+    <a class="post_share-link" href="https://twitter.com/intent/tweet?text=PageRank与马氏链&url=http://yoursite.com//2017/03/02/PageRank/index.html&via=Mahome.liao" target="_blank">
+        <li class="mdl-menu__item">
+            分享到 Twitter
+        </li>
+    </a>
+    
+    <!-- Share Google+ -->
+    <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com//2017/03/02/PageRank/index.html" target="_blank">
+        <li class="mdl-menu__item">
+            分享到 Google+
+        </li>
+    </a>
+    
+    <!-- Share Weibo -->
+    <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=PageRank与马氏链&url=http://yoursite.com//2017/03/02/PageRank/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <li class="mdl-menu__item">
+            分享到微博
+        </li>
+    </a>
+</ul>
+</div>
+				
+
+                <!-- Post Content -->
+                <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+	
+		<h2 id="PageRank"><a href="#PageRank" class="headerlink" title="PageRank"></a>PageRank</h2><blockquote>
+<p>&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x7F51;&#x9875;&#x88AB;&#x5F88;&#x591A;&#x5176;&#x4ED6;&#x7F51;&#x9875;&#x94FE;&#x63A5;&#x5230;&#x7684;&#x8BDD;&#x8BF4;&#x660E;&#x8FD9;&#x4E2A;&#x7F51;&#x9875;&#x6BD4;&#x8F83;&#x91CD;&#x8981;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;PageRank&#x503C;&#x4F1A;&#x76F8;&#x5BF9;&#x8F83;&#x9AD8;<br>&#x5982;&#x679C;&#x4E00;&#x4E2A;PageRank&#x503C;&#x5F88;&#x9AD8;&#x7684;&#x7F51;&#x9875;&#x94FE;&#x63A5;&#x5230;&#x4E00;&#x4E2A;&#x5176;&#x4ED6;&#x7684;&#x7F51;&#x9875;&#xFF0C;&#x90A3;&#x4E48;&#x88AB;&#x94FE;&#x63A5;&#x5230;&#x7684;&#x7F51;&#x9875;&#x7684;PageRank&#x503C;&#x4F1A;&#x76F8;&#x5E94;&#x5730;&#x56E0;&#x6B64;&#x800C;&#x63D0;&#x9AD8;.</p>
+</blockquote>
+<p><img src="/2017/03/02/PageRank/pagerank0.png" alt="&apos;0&apos;"></p>
+<h3 id="&#x9A6C;&#x6C0F;&#x94FE;"><a href="#&#x9A6C;&#x6C0F;&#x94FE;" class="headerlink" title="&#x9A6C;&#x6C0F;&#x94FE;"></a>&#x9A6C;&#x6C0F;&#x94FE;</h3><p>&#x82E5;{A,B,C}&#x4E3A;&#x9A6C;&#x6C0F;&#x94FE;&#xFF0C;&#x5176;&#x8F6C;&#x79FB;&#x6982;&#x7387;&#x77E9;&#x9635;&#xFF1A;<br>$$\mathbf{X} =<br>    \left( \begin{array}{ccc}<br>    0.7 &amp; 0.1 &amp; 0.2 &amp; \\\<br>    0.1 &amp; 0.8 &amp; 0.1\\\<br>    0.05 &amp; 0.05 &amp; 0.9<br>    \end{array} \right) $$</p>
+<p>&#x56E0;&#x4E3A;&#x8BE5;&#x9A6C;&#x6C0F;&#x94FE;&#x662F;&#x4E0D;&#x53EF;&#x7EA6;&#x7684;&#x975E;&#x5468;&#x671F;&#x7684;&#x6709;&#x9650;&#x72B6;&#x6001;&#xFF0C;&#x5E73;&#x7A33;&#x5206;&#x5E03;&#x5B58;&#x5728;&#xFF0C;&#x5E73;&#x8861;&#x5206;&#x5E03;&#x4E3A;&#xFF1A;<br>$$X = 0.7X + 0.1Y + 0.05Z\\<br>Y = 0.1X + 0.8Y + 0.05Z\\<br>Z = 0.2X + 0.1Y + 0.9Z\\<br>X + Y + Z = 1\\$$</p>
+<p>&#x4E00;&#x822C;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x7F51;&#x9875;PR&#x503C;&#x8BA1;&#x7B97;&#x516C;&#x5F0F;&#xFF1A;<br>$$PR(p_{i}) = \alpha \sum_{p_{j} \in M_{p_{i}}} \frac{PR(p_{j})}{L(p_{j})} + \frac{(1 - \alpha)}{N}$$</p>
+<p>$\frac{(1 - \alpha)}{N}$&#x662F;&#x4E3A;&#x4E86;&#x9632;&#x6B62;&#x90E8;&#x5206;&#x7F51;&#x9875;&#x53EA;&#x6709;</p>
+<p>&#x5176;&#x4E2D;$M_pi$&#x662F;&#x6240;&#x6709;&#x5BF9;$p_i$&#x7F51;&#x9875;&#x6709;&#x51FA;&#x94FE;&#x7684;&#x7F51;&#x9875;&#x96C6;&#x5408;&#xFF0C;$L(p_j)$&#x662F;&#x7F51;&#x9875;$p_j$&#x7684;&#x51FA;&#x94FE;&#x6570;&#x76EE;&#xFF0C;N&#x662F;&#x7F51;&#x9875;&#x603B;&#x6570;&#xFF0C;&#x3B1;&#x4E00;&#x822C;&#x53D6;0.85&#x3002;<br>&#x6839;&#x636E;&#x4E0A;&#x9762;&#x7684;&#x516C;&#x5F0F;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8BA1;&#x7B97;&#x6BCF;&#x4E2A;&#x7F51;&#x9875;&#x7684;PR&#x503C;&#xFF0C;&#x5728;&#x4E0D;&#x65AD;&#x8FED;&#x4EE3;&#x8D8B;&#x4E8E;&#x5E73;&#x7A33;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5373;&#x4E3A;&#x6700;&#x7EC8;&#x7ED3;&#x679C;.</p>
+<p>&#x77E9;&#x9635;&#x5F62;&#x5F0F;&#xFF1A;<br>$$A = \alpha S + \frac{(1 - \alpha)}{N}ee^T$$<br>&#x5219;PR&#x503C;&#x7684;&#x8BA1;&#x7B97;&#x5982;&#x4E0B;&#xFF0C;&#x5176;&#x4E2D;Pn&#x4E3A;&#x7B2C;n&#x6B21;&#x8FED;&#x4EE3;&#x65F6;&#x5404;&#x7F51;&#x9875;PR&#x503C;&#x7EC4;&#x6210;&#x7684;&#x5217;&#x5411;&#x91CF;&#x3002;<br>$$P_{n+1} = A P_{n}$$</p>
+<h3 id="PageRank&#x4EE3;&#x7801;"><a href="#PageRank&#x4EE3;&#x7801;" class="headerlink" title="PageRank&#x4EE3;&#x7801;"></a>PageRank&#x4EE3;&#x7801;</h3><figure class="highlight matlab"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">n=<span class="number">6</span>;</div><div class="line"><span class="built_in">i</span>=[<span class="number">2</span> <span class="number">3</span> <span class="number">4</span> <span class="number">4</span> <span class="number">5</span> <span class="number">6</span> <span class="number">1</span> <span class="number">6</span> <span class="number">1</span>];</div><div class="line"><span class="built_in">j</span>=[<span class="number">1</span> <span class="number">2</span> <span class="number">2</span> <span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">4</span> <span class="number">5</span> <span class="number">6</span>];</div><div class="line">G=sparse(<span class="built_in">i</span>,<span class="built_in">j</span>,<span class="number">1</span>,n,n);</div><div class="line"></div><div class="line"><span class="comment">% Power method</span></div><div class="line"><span class="keyword">for</span> <span class="built_in">j</span> = <span class="number">1</span>:n</div><div class="line">   L{j} = <span class="built_in">find</span>(G(:,<span class="built_in">j</span>));</div><div class="line">   c(<span class="built_in">j</span>) = <span class="built_in">length</span>(L{j});</div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line">p = <span class="number">.85</span>;</div><div class="line">delta = (<span class="number">1</span>-p)/n;</div><div class="line">x = <span class="built_in">ones</span>(n,<span class="number">1</span>)/n;</div><div class="line">z = <span class="built_in">zeros</span>(n,<span class="number">1</span>);</div><div class="line">cnt = <span class="number">0</span>;</div><div class="line"><span class="keyword">while</span> max(<span class="built_in">abs</span>(x-z)) &gt; <span class="number">.0001</span></div><div class="line">   z = x;</div><div class="line">   x = <span class="built_in">zeros</span>(n,<span class="number">1</span>);</div><div class="line">   <span class="keyword">for</span> <span class="built_in">j</span> = <span class="number">1</span>:n</div><div class="line">      <span class="keyword">if</span> c(<span class="built_in">j</span>) == <span class="number">0</span></div><div class="line">         x = x + z(<span class="built_in">j</span>)/n;<span class="comment">%&#x51FA;&#x94FE;&#x4E3A;0&#xFF0C;&#x5219;&#x8BA4;&#x4E3A;&#x8F6C;&#x79FB;&#x5230;&#x4EFB;&#x610F;&#x4E00;&#x4E2A;&#x7F51;&#x9875;&#xFF0C;&#x9632;&#x6B62;markov&#x6536;&#x655B;&#x5230;0</span></div><div class="line">      <span class="keyword">else</span></div><div class="line">         x(L{j}) = x(L{j}) + z(<span class="built_in">j</span>)/c(<span class="built_in">j</span>);<span class="comment">%&#x5C06;&#x4E0A;&#x6B21;&#x7684;pagerank&#x503C;&#x5E73;&#x644A;&#x7ED9;&#x6240;&#x6709;&#x6307;&#x5411;&#x7684;&#x7F51;&#x9875;</span></div><div class="line">      <span class="keyword">end</span></div><div class="line">   <span class="keyword">end</span></div><div class="line">   x = p*x + delta;</div><div class="line">   cnt = cnt+<span class="number">1</span>;</div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
+<p><img src="/2017/03/02/PageRank/chatu.jpg" alt="&apos;chatu&apos;"></p>
+<h3 id="&#x7F3A;&#x70B9;"><a href="#&#x7F3A;&#x70B9;" class="headerlink" title="&#x7F3A;&#x70B9;"></a>&#x7F3A;&#x70B9;</h3><p>&#x7B2C;&#x4E00;&#xFF0C;&#x6CA1;&#x6709;&#x533A;&#x5206;&#x7AD9;&#x5185;&#x5BFC;&#x822A;&#x94FE;&#x63A5;&#x3002;&#x5F88;&#x591A;&#x7F51;&#x7AD9;&#x7684;&#x9996;&#x9875;&#x90FD;&#x6709;&#x5F88;&#x591A;&#x5BF9;&#x7AD9;&#x5185;&#x5176;&#x4ED6;&#x9875;&#x9762;&#x7684;&#x94FE;&#x63A5;&#xFF0C;&#x79F0;&#x4E3A;&#x7AD9;&#x5185;&#x5BFC;&#x822A;&#x94FE;&#x63A5;&#x3002;&#x8FD9;&#x4E9B;&#x94FE;&#x63A5;&#x4E0E;&#x4E0D;&#x540C;&#x7F51;&#x7AD9;&#x4E4B;&#x95F4;&#x7684;&#x94FE;&#x63A5;&#x76F8;&#x6BD4;&#xFF0C;&#x80AF;&#x5B9A;&#x662F;&#x540E;&#x8005;&#x66F4;&#x80FD;&#x4F53;&#x73B0;PageRank&#x503C;&#x7684;&#x4F20;&#x9012;&#x5173;&#x7CFB;&#x3002;</p>
+<p>&#x7B2C;&#x4E8C;&#xFF0C;&#x6CA1;&#x6709;&#x8FC7;&#x6EE4;&#x5E7F;&#x544A;&#x94FE;&#x63A5;&#x548C;&#x529F;&#x80FD;&#x94FE;&#x63A5;&#xFF08;&#x4F8B;&#x5982;&#x5E38;&#x89C1;&#x7684;&#x201C;&#x5206;&#x4EAB;&#x5230;&#x5FAE;&#x535A;&#x201D;&#xFF09;&#x3002;&#x8FD9;&#x4E9B;&#x94FE;&#x63A5;&#x901A;&#x5E38;&#x6CA1;&#x6709;&#x4EC0;&#x4E48;&#x5B9E;&#x9645;&#x4EF7;&#x503C;&#xFF0C;&#x524D;&#x8005;&#x94FE;&#x63A5;&#x5230;&#x5E7F;&#x544A;&#x9875;&#x9762;&#xFF0C;&#x540E;&#x8005;&#x5E38;&#x5E38;&#x94FE;&#x63A5;&#x5230;&#x67D0;&#x4E2A;&#x793E;&#x4EA4;&#x7F51;&#x7AD9;&#x9996;&#x9875;&#x3002;</p>
+<p>&#x7B2C;&#x4E09;&#xFF0C;&#x5BF9;&#x65B0;&#x7F51;&#x9875;&#x4E0D;&#x53CB;&#x597D;&#x3002;&#x4E00;&#x4E2A;&#x65B0;&#x7F51;&#x9875;&#x7684;&#x4E00;&#x822C;&#x5165;&#x94FE;&#x76F8;&#x5BF9;&#x8F83;&#x5C11;&#xFF0C;&#x5373;&#x4F7F;&#x5B83;&#x7684;&#x5185;&#x5BB9;&#x7684;&#x8D28;&#x91CF;&#x5F88;&#x9AD8;&#xFF0C;&#x8981;&#x6210;&#x4E3A;&#x4E00;&#x4E2A;&#x9AD8;PR&#x503C;&#x7684;&#x9875;&#x9762;&#x4ECD;&#x9700;&#x8981;&#x5F88;&#x957F;&#x65F6;&#x95F4;&#x7684;&#x63A8;&#x5E7F;&#x3002;</p>
+<p>&#x9488;&#x5BF9;PageRank&#x7B97;&#x6CD5;&#x7684;&#x7F3A;&#x70B9;&#xFF0C;&#x6709;&#x4EBA;&#x63D0;&#x51FA;&#x4E86;TrustRank&#x7B97;&#x6CD5;&#x3002;&#x5176;&#x6700;&#x521D;&#x6765;&#x81EA;&#x4E8E;2004&#x5E74;&#x65AF;&#x5766;&#x798F;&#x5927;&#x5B66;&#x548C;&#x96C5;&#x864E;&#x7684;&#x4E00;&#x9879;&#x8054;&#x5408;&#x7814;&#x7A76;&#xFF0C;&#x7528;&#x6765;&#x68C0;&#x6D4B;&#x5783;&#x573E;&#x7F51;&#x7AD9;&#x3002;TrustRank&#x7B97;&#x6CD5;&#x7684;&#x5DE5;&#x4F5C;&#x539F;&#x7406;&#xFF1A;&#x5148;&#x4EBA;&#x5DE5;&#x53BB;&#x8BC6;&#x522B;&#x9AD8;&#x8D28;&#x91CF;&#x7684;&#x9875;&#x9762;(&#x5373;&#x201C;&#x79CD;&#x5B50;&#x201D;&#x9875;&#x9762;)&#xFF0C;&#x90A3;&#x4E48;&#x7531;&#x201C;&#x79CD;&#x5B50;&#x201D;&#x9875;&#x9762;&#x6307;&#x5411;&#x7684;&#x9875;&#x9762;&#x4E5F;&#x53EF;&#x80FD;&#x662F;&#x9AD8;&#x8D28;&#x91CF;&#x9875;&#x9762;&#xFF0C;&#x5373;&#x5176;TR&#x503C;&#x4E5F;&#x9AD8;&#xFF0C;&#x4E0E;&#x201C;&#x79CD;&#x5B50;&#x201D;&#x9875;&#x9762;&#x7684;&#x94FE;&#x63A5;&#x8D8A;&#x8FDC;&#xFF0C;&#x9875;&#x9762;&#x7684;TR&#x503C;&#x8D8A;&#x4F4E;&#x3002;&#x201C;&#x79CD;&#x5B50;&#x201D;&#x9875;&#x9762;&#x53EF;&#x9009;&#x51FA;&#x94FE;&#x6570;&#x8F83;&#x591A;&#x7684;&#x7F51;&#x9875;&#xFF0C;&#x4E5F;&#x53EF;&#x9009;PR&#x503C;&#x8F83;&#x9AD8;&#x7684;&#x7F51;&#x7AD9;&#x3002;</p>
+<p>TrustRank&#x7B97;&#x6CD5;&#x7ED9;&#x51FA;&#x6BCF;&#x4E2A;&#x7F51;&#x9875;&#x7684;TR&#x503C;&#x3002;&#x5C06;PR&#x503C;&#x4E0E;TR&#x503C;&#x7ED3;&#x5408;&#x8D77;&#x6765;&#xFF0C;&#x53EF;&#x4EE5;&#x66F4;&#x51C6;&#x786E;&#x5730;&#x5224;&#x65AD;&#x7F51;&#x9875;&#x7684;&#x91CD;&#x8981;&#x6027;&#x3002;</p>
+<h3 id="MapReduce&#x6846;&#x67B6;&#x4E0B;PageRank&#x7B97;&#x6CD5;"><a href="#MapReduce&#x6846;&#x67B6;&#x4E0B;PageRank&#x7B97;&#x6CD5;" class="headerlink" title="MapReduce&#x6846;&#x67B6;&#x4E0B;PageRank&#x7B97;&#x6CD5;"></a>MapReduce&#x6846;&#x67B6;&#x4E0B;PageRank&#x7B97;&#x6CD5;</h3><blockquote>
+<p><a href="http://michaelnielsen.org/blog/using-mapreduce-to-compute-pagerank/" target="_blank" rel="external">http://michaelnielsen.org/blog/using-mapreduce-to-compute-pagerank/</a></p>
+</blockquote>
+<h3 id="REF"><a href="#REF" class="headerlink" title="REF"></a>REF</h3><blockquote>
+<p>wiki</p>
+</blockquote>
+
+	
+	
+	
+	
+</div>
+				
+				
+
+                <!-- Post Comments -->
+                
+
+
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    
+    <!-- Prev Nav -->
+    
+        <a href="/2017/03/11/逻辑斯蒂回归/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2017/02/02/常用优化算法/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+        </div>
+    </div>
+
+				
+				
+					<!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay "></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored  sidebar-fixed-left" role="navigation">
+	<div id="sidebar-main">
+	    <!-- Sidebar Header -->
+		<div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+    <i class="material-icons">clear_all</i>
+    <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/zebra.png" alt="Mahome.liao's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        liao.mahome@gmail.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+		<!-- Sidebar Navigation  -->
+		<ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+			
+                <li>
+                    <a href="#" target="_blank" title="Email Me">
+						<i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    <li id="sidebar-first-li">
+        <a href="/" target="_self">
+            <i class="material-icons sidebar-material-icons">home</i>
+             主页
+        </a>
+    </li>
+
+    <!-- I'm Feeling Lucky -->
+<!--
+    <li class="dropdown">
+        <a href="" target="_self">
+            <i class="material-icons sidebar-material-icons">explore</i>
+             sidebar.imlucky
+        </a>
+    </li>
+-->
+
+	
+    <!-- Archives  -->
+    <li class="dropdown">
+        <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+            <i class="material-icons sidebar-material-icons">inbox</i>
+             归档
+            <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+            <a class="sidebar_archives-link" href="/archives/2017/08/">八月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/07/">七月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/06/">六月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/02/">二月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/12/">十二月 2016<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/11/">十一月 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/10/">十月 2016<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/09/">九月 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/08/">八月 2016<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/07/">七月 2016<span class="sidebar_archives-count">3</span></a>
+        </ul>
+    </li>
+
+    <!-- Divider -->
+    <li class="divider"></li>
+
+
+    <!-- Pages  -->
+	
+
+    <!-- Article Numebr  -->
+    <li>
+        <a href="/archives">
+             文章总数
+             <span class="sidebar-badge">25</span>
+        </a>
+    </li>
+</ul>
+
+		<!-- Sidebar Divider -->
+		<div class="sidebar-divider"></div>
+
+		<!-- Sidebar Footer -->
+		<!-- 
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持。 :) 
+-->
+
+<!-- Theme Material -->
+<a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+	<div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+		主题 - Material
+		<span class="sidebar-badge badge-circle">i</span>
+	</div>
+</a>
+
+<!-- Help & Support -->
+<!--
+<a href="mailto:hiviosey@gmail.com" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+		sidebar.help
+		<span class="mdl-button__ripple-container">
+			<span class="mdl-ripple"></span>
+		</span>
+	</div>
+</a>
+-->
+
+<!-- Feedback -->
+<!--
+<a href="https://github.com/viosey/hexo-theme-material/issues" target="_blank" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+         sidebar.feedback
+                    <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+</a>
+-->
+
+<!-- Abount Theme -->
+<!--
+<a href="https://blog.viosey.com/index.php/Material.html" target="_blank" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+         sidebar.about_theme
+        <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+</a>-->
+
+	</div>
+    
+    <!-- Sidebar Sponsor -->
+    
+
+
+</aside>
+
+				
+				
+				
+					<!-- Footer Top Button -->
+					<div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+				
+				
+				<!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+	
+	
+		<!-- Paradox Footer Left Section -->
+		<div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+    <a href="https://twitter.com/twitter" target="view_window"><button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-twitter.png);">
+        <span class="visuallyhidden">Twitter</span>
+    </button></a>
+    
+    
+    <!-- Facebook -->
+    
+    <a href="https://www.facebook.com/facebook" target="view_window"><button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-facebook.png);">
+        <span class="visuallyhidden">Facebook</span>
+    </button></a>
+    
+    
+    <!-- Google + -->
+    
+    <a href="https://www.google.com/" target="view_window"><button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-gplus.png);">
+        <span class="visuallyhidden">Google Plus</span>
+    </button></a>
+    
+    
+    <!-- Weibo -->
+    
+    
+    
+    <!-- Instagram -->
+    
+    
+    
+    <!-- Tumblr -->
+    
+    
+    
+    <!-- Github -->
+    
+    
+</div>
+
+
+		<!--Copyright-->
+		<div id="copyright">Copyright&nbsp;©&nbsp;<script type="text/javascript">var fd = new Date();document.write(fd.getFullYear());</script>&nbsp;AI</div>
+
+		<!-- Paradox Footer Right Section -->
+
+		<!-- 
+		I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+		It will not impact the appearance and can give developers a lot of support :)
+
+		很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+		它不会影响美观并可以给开发者很大的支持。 :) 
+		-->
+
+		<div class="mdl-mini-footer--right-section">
+			<div>
+				<div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+				<div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+			</div>
+		</div>
+	
+</footer>
+                
+				<!-- Import File -->
+<script src="/js/highlight.min.js"></script>
+<script src="/js/js.min.js"></script>
+<script src="/js/nprogress.js"></script>
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    
+    $('#nprogress .bar').css({
+        'background': '#FF4081'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #FF4081, 0 0 15px #FF4081'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#FF4081',
+        'border-left-color': '#FF4081'
+    });
+    
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Swiftye -->
+
+
+<!-- Local Search-->
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $(".post-toc-wrap").parent(".mdl-menu__container").css("position", "fixed");
+    });
+</script>
+
+<!-- MathJax Load-->
+
+            </main>
+        </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+		
+    </body>
+		
+	
+</html>

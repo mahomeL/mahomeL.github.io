@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Title -->
+    
+    <title>
+        GBDT | AI
+    </title>
+    
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/zebra.png">
+    <link rel="icon" sizes="192x192" href="/img/zebra.png">
+    <link rel="apple-touch-icon" href="/img/zebra.png">
+    
+    <!-- Meta & INfo -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="Mahome.liao">
+    <meta name="description" content="You know nothing.">
+    <meta name="keywords" content="跟着我走，你会降维">
+    
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+    
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="AI">
+    
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://yoursite.com">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="GBDT | AI">
+    <meta property="og:description" content="You know nothing.">
+    
+     <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+        
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+    
+    <!-- Import CSS -->
+    <link rel="stylesheet" href="/css/material.min.css">
+    <link rel="stylesheet" href="/css/style.min.css">
+    <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+	body, html{
+		font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+	}
+	
+    a{
+        color: #00838F
+    }
+    
+    .mdl-card__media,
+    #search-label,
+    #search-form-label:after,
+    #scheme-Paradox .hot_tags-count,
+    #scheme-Paradox .sidebar_archives-count,
+    #scheme-Paradox .sidebar-colored .sidebar-header,
+    #scheme-Paradox .sidebar-colored .sidebar-badge{
+        background-color: #0097A7 !important
+    }
+    
+	/* Sidebar User Drop Down Menu Text Color */
+	#scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+    #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus{
+        color: #0097A7 !important
+    }
+    
+    #post_entry-right-info,
+    .sidebar-colored .sidebar-nav li:hover > a,
+    .sidebar-colored .sidebar-nav li:hover > a i,
+    .sidebar-colored .sidebar-nav li > a:hover,
+    .sidebar-colored .sidebar-nav li > a:hover i,
+    .sidebar-colored .sidebar-nav li > a:focus i,
+    .sidebar-colored .sidebar-nav > .open > a,
+    .sidebar-colored .sidebar-nav > .open > a:hover,
+    .sidebar-colored .sidebar-nav > .open > a:focus,
+    #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a{
+        color: #0097A7 !important
+    }
+    
+    .toTop{
+        background: #757575 !important
+    }
+		
+	.material-layout .material-post>.material-nav,
+	.material-layout .material-index>.material-nav,
+	.material-nav a{
+		color: #757575;
+	}
+		
+	#scheme-Paradox .MD-burger-layer {
+		background-color: #757575;
+	}
+
+	#scheme-Paradox #post-toc-trigger-btn{
+		color: #757575;
+	}
+	
+	.post-toc a:hover{
+		color: #00838F;
+		text-decoration: underline;
+	}
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+        body{
+            background-color: #F5F5F5
+        }
+		
+		/* blog_info bottom background */
+        #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+            background-color: #fff;
+        }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+        .fade {
+            transition: all 800ms linear;
+            -webkit-transform: translate3d(0,0,0);
+            -moz-transform: translate3d(0,0,0);
+            -ms-transform: translate3d(0,0,0);
+            -o-transform: translate3d(0,0,0);
+            transform: translate3d(0,0,0);
+            opacity: 1;
+        }
+
+        .fade.out{
+            opacity: 0;
+        }
+    </style>
+
+	<script src="/js/jquery.min.js"></script>
+	
+	<link rel="stylesheet" href="/css/highlight/solarized-white.css">
+	
+	<!-- UC Browser Compatible-->
+	<script>
+		var agent = navigator.userAgent.toLowerCase();
+		if(agent.indexOf('ucbrowser')>0) {
+			document.write('<link rel="stylesheet" href="/css/uc.css">');
+		   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+		}
+	</script>
+    
+    <!-- Custom Head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+</head>
+	
+	
+
+    <body id="scheme-Paradox">
+
+		
+        <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+				
+			
+			
+            <!-- Main Container -->
+            <main class="material-layout__content" id="main">
+				
+                <!-- Top Anchor -->
+                <div id="top"></div>
+				
+				
+                <!-- Hamburger Button -->
+                <button class="MD-burger-icon sidebar-toggle">
+                    <span class="MD-burger-layer"></span>
+                </button>
+				
+				
+                
+	<!-- Back Button -->
+<!--
+	<div class="material-back" id="backhome-div" tabindex="0">
+		<a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" href="#" onclick="window.history.back();return false;" target="_self" role="button" data-upgraded=",MaterialButton,MaterialRipple">
+			<i class="material-icons" role="presentation">arrow_back</i>
+			<span class="mdl-button__ripple-container">
+				<span class="mdl-ripple"></span>
+			</span>
+		</a>
+	</div>			
+-->
+	<!-- Left aligned menu below button -->
+	<button id="post-toc-trigger-btn"
+			class="mdl-button mdl-js-button mdl-button--icon">
+	  <i class="material-icons">format_list_numbered</i>
+	</button>
+
+	<ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
+		for="post-toc-trigger-btn">
+			
+			<ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#GBDT-Gradient-Boosting-Decision-Tree"><span class="post-toc-number">1.</span> <span class="post-toc-text">GBDT(Gradient Boosting Decision Tree)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Gradient-Boosting"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Gradient Boosting</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Gradient-Boost-与-Boost"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">Gradient Boost 与 Boost</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Decision-Tree"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">Decision Tree</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#多类别逻辑回归-multi-class-logistic-regression"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">多类别逻辑回归 multi-class logistic regression</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#实例分析"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">实例分析</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Regularization"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">Regularization</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#伪代码"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">伪代码</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#GBDT-并行化"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">GBDT 并行化</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#参考文献"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">参考文献</span></a></li></ol></li></ol>
+		
+<!--			<li class="mdl-menu__item">Some Action</li>-->
+	</ul>
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+		
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+	<!-- Paradox Post Header -->
+	
+		
+			<!-- Random Thumbnail -->
+			<div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+				<script>
+    
+    var randomNum;
+    randomNum = Math.floor(Math.random() * 8 + 1);
+    
+    $(".post_thumbnail-random").css('background-image', 'url(' + '/img/random/' + randomNum + '.png' + ')');
+    
+</script>
+
+		
+	
+        <p class="article-headline-p">
+            GBDT
+        </p>
+    </div>
+
+	
+
+				
+				
+					<!-- Paradox Post Info -->
+					<div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+    
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/zebra.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Mahome.liao</strong>
+        <span>11月 12, 2016</span>
+    </div>
+    
+    <div class="section-spacer"></div>
+	
+    <!-- Favorite -->
+<!--
+    <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+        <i class="material-icons" role="presentation">favorite</i>
+        <span class="visuallyhidden">favorites</span>
+    </button>
+-->
+    
+    <!-- Tags (bookmark) -->
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        
+    </ul>
+    
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+    
+    
+    
+    
+    <!-- Share Twitter -->
+    <a class="post_share-link" href="https://twitter.com/intent/tweet?text=GBDT&url=http://yoursite.com//2016/11/12/GBDT/index.html&via=Mahome.liao" target="_blank">
+        <li class="mdl-menu__item">
+            分享到 Twitter
+        </li>
+    </a>
+    
+    <!-- Share Google+ -->
+    <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com//2016/11/12/GBDT/index.html" target="_blank">
+        <li class="mdl-menu__item">
+            分享到 Google+
+        </li>
+    </a>
+    
+    <!-- Share Weibo -->
+    <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=GBDT&url=http://yoursite.com//2016/11/12/GBDT/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <li class="mdl-menu__item">
+            分享到微博
+        </li>
+    </a>
+</ul>
+</div>
+				
+
+                <!-- Post Content -->
+                <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+	
+		<h2 id="GBDT-Gradient-Boosting-Decision-Tree"><a href="#GBDT-Gradient-Boosting-Decision-Tree" class="headerlink" title="GBDT(Gradient Boosting Decision Tree)"></a>GBDT(Gradient Boosting Decision Tree)</h2><p><img src="/2016/11/12/GBDT/GBDT_&#x9876;&#x90E8;&#x56FE;&#x7247;.jpg" alt="&apos;GBDT&apos;"></p>
+<p><strong>GBDT = GB(Gradient Boosting) + DT(Decision Tree)</strong><br><br></p>
+<h3 id="Gradient-Boosting"><a href="#Gradient-Boosting" class="headerlink" title="Gradient Boosting"></a>Gradient Boosting</h3><p><img src="/2016/11/12/GBDT/GBDT_boost.jpg" alt="&apos;GBDT&apos;">   </p>
+<blockquote>
+<p>&#x5BF9;&#x6240;&#x6709;&#x6837;&#x672C;&#x635F;&#x5931;&#x51FD;&#x6570;L&#x6700;&#x5C0F;&#xFF1B;  </p>
+<p>&#x5B66;&#x4E60;&#x5F53;&#x524D;&#x7684;&#x6A21;&#x578B;m(&#x5171;M&#x4E2A;&#x6A21;&#x578B;):  </p>
+<blockquote>
+<p>&#x524D;m-1&#x4E2A;&#x6A21;&#x578B;&#x7684;&#x7EC4;&#x5408;&#x4E3A;$F(x)$,&#x4EE3;&#x5165;&#x635F;&#x5931;&#x51FD;&#x6570;$L(y_i, F(x))$&#xFF0C;L&#x5BF9;$F(x)$&#x6C42;&#x5BFC;&#xFF0C;&#x6C42;&#x5F97;&#x68AF;&#x5EA6;&#x5411;&#x91CF;$\widetilde y_i$&#xFF1B;(&#x7ECF;&#x9A8C;&#x98CE;&#x9669;&#x6700;&#x5C0F;&#x5316;&#x539F;&#x5219;&#xFF1B;&#x628A;&#x9700;&#x8981;&#x6C42;&#x5BFC;&#x7684;&#x51FD;&#x6570;&#x7406;&#x89E3;&#x6210;&#x5728;&#x8BAD;&#x7EC3;&#x96C6;&#x4E0A;&#x8BE5;&#x51FD;&#x6570;&#x5BF9;&#x5E94;&#x7684;&#x79BB;&#x6563;&#x51FD;&#x6570;&#x503C;&#xFF0C;&#x5219;&#x5BF9;&#x51FD;&#x6570;&#x7684;&#x6C42;&#x5BFC;&#x53D8;&#x6210;&#x4E86;&#x5BF9;&#x6837;&#x672C;&#x51FD;&#x6570;&#x503C;&#x5411;&#x91CF;&#x7684;&#x6C42;&#x5BFC;&#x3002;)   </p>
+<p>&#x5B66;&#x4E60;&#x5728;&#x68AF;&#x5EA6;&#x5411;&#x91CF;&#x65B9;&#x5411;&#x4E0A;&#x7684;&#x65B0;&#x7684;&#x6A21;&#x578B;&#xFF0C;&#x5229;&#x7528;&#x6700;&#x5C0F;&#x4E8C;&#x4E58;&#xFF0C;&#x5BF9;&#x6B65;&#x9AA4;4&#x7684;&#x8868;&#x8FBE;&#x5F0F;&#x6C42;&#x5BFC;&#x4EE4;&#x7B49;&#x4E8E;0&#xFF0C;&#x6C42;&#x5F97;&#x65B0;&#x6A21;&#x578B;&#x7684;&#x53C2;&#x6570;a&#xFF1B;($\beta&#x662F;&#x5B66;&#x4E60;&#x7387;$)  </p>
+<p>&#x5DF2;&#x6709;m-1&#x4E2A;&#x6A21;&#x578B;&#x7EC4;&#x5408;&#x65B0;&#x6A21;&#x578B;&#xFF0C;&#x7EC4;&#x5408;&#x6743;&#x91CD;&#x6C42;&#x5BFC;&#x4EE4;&#x7B49;&#x4E8E;0,&#x6C42;&#x5F97;&#x7EC4;&#x5408;&#x6743;&#x91CD;$\rho$&#xFF1B;(Shrinkage)  </p>
+<p>&#x6A21;&#x578B;&#x53C2;&#x6570;a&#x4E0E;&#x6A21;&#x578B;&#x6743;&#x91CD;&#x53C2;&#x6570;$\rho$&#x6C42;&#x51FA;&#x4E4B;&#x540E;&#xFF0C;&#x5B66;&#x5F97;&#x5B50;&#x6A21;&#x578B;&#xFF1B;  </p>
+</blockquote>
+<p>&#x91CD;&#x590D;M&#x6B21;&#xFF0C;&#x5B66;&#x4E60;&#x5F97;M&#x4E2A;&#x5B50;&#x6A21;&#x578B;&#xFF0C;&#x6700;&#x7EC8;&#x6A21;&#x578B;&#x5C31;&#x662F;$F_m(x)$</p>
+</blockquote>
+<h4 id="Gradient-Boost-&#x4E0E;-Boost"><a href="#Gradient-Boost-&#x4E0E;-Boost" class="headerlink" title="Gradient Boost &#x4E0E; Boost"></a>Gradient Boost &#x4E0E; Boost</h4><p>Gradient Boost &#x4E0E; Boost&#x7684;&#x533A;&#x522B;&#x662F;&#xFF1A;GB&#x6BCF;&#x4E00;&#x6B21;&#x8BA1;&#x7B97;&#x662F;&#x4E3A;&#x4E86;&#x51CF;&#x5C11;&#x4E0A;&#x4E00;&#x6B21;&#x7684;&#x6B8B;residual&#xFF0C;&#x4E3A;&#x4E86;&#x6D88;&#x9664;&#x6B8B;&#x5DEE;&#xFF0C;&#x5728;&#x6B8B;&#x5DEE;&#x51CF;&#x5C11;&#x7684;&#x68AF;&#x5EA6;&#x65B9;&#x5411;&#x4E0A;&#x5EFA;&#x7ACB;&#x65B0;&#x7684;&#x6A21;&#x578B;&#xFF0C;&#x4F7F;&#x5F97;&#x4E4B;&#x95F4;&#x6A21;&#x578B;&#x7684;&#x6B8B;&#x5DEE;&#x5F80;&#x68AF;&#x5EA6;&#x65B9;&#x5411;&#x51CF;&#x5C11;&#x3002;&#x4F20;&#x7EDF;&#x7684;Boost&#x662F;&#x5BF9;&#x6B63;&#x786E;&#x3001;&#x9519;&#x8BEF;&#x7684;&#x6837;&#x672C;&#x8FDB;&#x884C;&#x52A0;&#x6743;(&#x89C1;<a href="Adaboost.md">&#x2018;Adaboost&#x2019;</a>&#xFF0C;<a href="Adaboost_2.md">&#x2018;Adaboost_2&#x2019;</a>)&#x3002; </p>
+<p><br></p>
+<h3 id="Decision-Tree"><a href="#Decision-Tree" class="headerlink" title="Decision Tree"></a>Decision Tree</h3><p>GBDT&#x662F;&#x56DE;&#x5F52;&#x6811;&#xFF0C;&#x4E0D;&#x662F;&#x5206;&#x7C7B;&#x6811;&#x3002;<br><strong>&#x5206;&#x7C7B;&#x6811;</strong> C4.5&#x5206;&#x7C7B;&#x6811;&#x6BCF;&#x6B21;&#x8FDB;&#x884C;&#x5206;&#x679D;&#xFF0C;&#x9700;&#x904D;&#x5386;&#x6BCF;&#x4E2A;&#x7279;&#x5F81;&#x7684;&#x6BCF;&#x4E2A;&#x5206;&#x5272;&#x70B9;,&#x4F7F;&#x5206;&#x679D;&#x7684;&#x71B5;&#x6700;&#x5927;&#x3002;&#x76F4;&#x5230;&#x53F6;&#x5B50;&#x8282;&#x70B9;&#x7684;&#x7C7B;&#x522B;&#x552F;&#x4E00;&#x6216;&#x8005;&#x8FBE;&#x5230;&#x7EC8;&#x6B62;&#x6761;&#x4EF6;&#x3002;<br><strong>&#x56DE;&#x5F52;&#x6811;</strong>&#x5206;&#x679D;&#x65F6;&#x4E5F;&#x4F1A;&#x7A77;&#x4E3E;&#x6BCF;&#x4E2A;&#x7279;&#x5F81;&#x548C;&#x6BCF;&#x4E2A;&#x5206;&#x5272;&#x70B9;&#xFF0C;&#x6700;&#x4F73;&#x5206;&#x5272;&#x70B9;&#x662F;&#x4F7F;&#x5747;&#x65B9;&#x5DEE;&#x6700;&#x5C0F;(&#x4E5F;&#x53EF;&#x4F7F;&#x7528;&#x5176;&#x4ED6;&#x6807;&#x51C6;[&#x5DE6;&#x5B50;&#x6811;&#x6837;&#x672C;&#x76EE;&#x6807;&#x503C;&#x6B8B;&#x5DEE;&#x548C;&#x7684;&#x5E73;&#x65B9;&#x5747;&#x503C;+&#x53F3;&#x5B50;&#x6811;&#x6837;&#x672C;&#x76EE;&#x6807;&#x503C;&#x6B8B;&#x5DEE;&#x548C;&#x7684;&#x5E73;&#x65B9;&#x5747;&#x503C;-&#x7236;&#x7ED3;&#x70B9;&#x6240;&#x6709;&#x6837;&#x672C;&#x76EE;&#x6807;&#x503C;&#x6B8B;&#x5DEE;&#x548C;&#x7684;&#x5E73;&#x5747;&#x503C; &#x6700;&#x5927;&#x7684;&#x90A3;&#x4E2A;&#x5206;&#x88C2;&#x70B9;])&#xFF0C;&#x6BCF;&#x4E2A;&#x8282;&#x70B9;(&#x4E0D;&#x53EA;&#x662F;&#x53F6;&#x5B50;&#x8282;&#x70B9;)&#x90FD;&#x4F1A;&#x6709;&#x4E00;&#x4E2A;&#x9884;&#x6D4B;&#x503C;(&#x5176;&#x503C;&#x7B49;&#x4E8E;&#x8BE5;&#x8282;&#x70B9;&#x5185;&#x7684;&#x6240;&#x6709;&#x6837;&#x672C;&#x5728;&#x8BE5;&#x7EF4;&#x7279;&#x5F81;&#x4E0A;&#x7684;&#x5E73;&#x5747;)&#x3002;</p>
+<p> <br></p>
+<h3 id="&#x591A;&#x7C7B;&#x522B;&#x903B;&#x8F91;&#x56DE;&#x5F52;-multi-class-logistic-regression"><a href="#&#x591A;&#x7C7B;&#x522B;&#x903B;&#x8F91;&#x56DE;&#x5F52;-multi-class-logistic-regression" class="headerlink" title="&#x591A;&#x7C7B;&#x522B;&#x903B;&#x8F91;&#x56DE;&#x5F52; multi-class logistic regression"></a>&#x591A;&#x7C7B;&#x522B;&#x903B;&#x8F91;&#x56DE;&#x5F52; multi-class logistic regression</h3><p><img src="/2016/11/12/GBDT/GBDT_TreeBoost_logistic.png" alt="&apos;logistic&apos;">  </p>
+<blockquote>
+<p>&#x7ED9;&#x5B9A;&#x521D;&#x59CB;&#x503C;  </p>
+<blockquote>
+<p>1&#x2013;M&#x4E2A;&#x6811;&#xFF1A;<br>&#x5BF9;&#x51FD;&#x6570;&#x4F30;&#x8BA1;&#x503C;&#x8FDB;&#x884C;logistic&#x53D8;&#x6362;</p>
+<blockquote>
+<p>&#x5BF9;1&#x2013;K&#x4E2A;&#x7C7B;&#x522B;k:  </p>
+<blockquote>
+<p>&#x6C42;&#x6B8B;&#x5DEE;&#x51CF;&#x5C11;&#x7684;&#x68AF;&#x5EA6;&#x65B9;&#x5411;<br>&#x5B66;&#x4E60;J&#x4E2A;&#x53F6;&#x5B50;&#x7ED3;&#x70B9;&#x7684;&#x51B3;&#x7B56;&#x6811;<br>&#x8BA1;&#x7B97;&#x6BCF;&#x4E2A;&#x53F6;&#x5B50;&#x7ED3;&#x70B9;&#x5C5E;&#x4E8E;&#x5F53;&#x524D;&#x7C7B;&#x522B;k&#x7684;&#x589E;&#x76CA;<br>&#x5408;&#x5E76;&#x51B3;&#x7B56;&#x6811;</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<p> <strong>&#x8BE5;&#x7B97;&#x6CD5;&#x4F1A;&#x4E25;&#x91CD;&#x5173;&#x6CE8;&#x90A3;&#x4E9B;&#x68AF;&#x5EA6;&#x6BD4;&#x8F83;&#x5927;&#x7684;&#x6837;&#x672C;</strong>  </p>
+<p>e.g: &#x5171;&#x6709;5&#x4E2A;&#x7C7B;&#x522B;&#xFF0C;&#x8F93;&#x5165;&#x6570;&#x636E;x&#x5C5E;&#x4E8E;&#x7C7B;&#x522B;3&#xFF0C;&#x5219;y=(0,0,1,0,0),&#x5047;&#x8BBE;&#x6A21;&#x578B;&#x4F30;&#x8BA1;&#x5F97;&#x5230;F(x)=(0,0.3,0.6,0,0),&#x5219;&#x7ECF;&#x8FC7;logistic&#x53D8;&#x6362;&#x5F97;p(x)=(016,0.21,0.29,0.16,0.16),y-p&#x5F97;&#x5230;&#x68AF;&#x5EA6;g:(-0.16,-0.21,0.71,-0.16,-0.16)&#x3002;    </p>
+<p><strong>&#x68AF;&#x5EA6;&#x7684;&#x63A8;&#x5BFC;</strong><br>$$loss=-\log[\prod_{i=1}^N \prod_{k=1}^K p_k(x_i)^{y_{ik}} ]=-\sum_{k=1}^K y_k log{p_k(x)}, \quad p_k(x_i)=\frac {exp(F_k(x))} {\sum_{k=1}^K {exp({F_k(x)})}}<br>$$</p>
+<p>$$\begin {align}<br>\frac {\partial {L(\{y_k,F_k(x)\}_1^k)}} {\partial {F_k(x)}} &amp;=<br>\frac {\partial {[-\sum_{k=1}^K {(y_k F_k(x))}+\sum_{k=1}^K {(y_k \cdot \log{\sum_{l=1}^K {exp(F_l(x))}}]} }} {\partial {F_k(x)}} \\<br>&amp;= -y_k + \sum_{k=1}^K {y_k \cdot {\frac {exp(F_k(x))} {\sum_{l=1}^K {exp(F_l(x))} }} } \\<br>&amp;= -y_k + 1 \cdot p_k \\<br>&amp;= -y_k +p_k<br>\end {align}<br>$$</p>
+<p><br></p>
+<h3 id="&#x5B9E;&#x4F8B;&#x5206;&#x6790;"><a href="#&#x5B9E;&#x4F8B;&#x5206;&#x6790;" class="headerlink" title="&#x5B9E;&#x4F8B;&#x5206;&#x6790;"></a>&#x5B9E;&#x4F8B;&#x5206;&#x6790;</h3><p><img src="/2016/11/12/GBDT/GBDT_exp1.png" alt="&apos;exp1&apos;">   </p>
+<p><img src="/2016/11/12/GBDT/GBDT_exp2.png" alt="&apos;exp2&apos;">   </p>
+<p><img src="/2016/11/12/GBDT/GBDT_exp3.png" alt="&apos;exp3&apos;">   </p>
+<p>&#x5206;&#x88C2;&#x6536;&#x76CA;&#xFF1A;<br><img src="/2016/11/12/GBDT/GBDT_exp4.png" alt="&apos;exp4&apos;"><br><br></p>
+<h3 id="Regularization"><a href="#Regularization" class="headerlink" title="Regularization"></a>Regularization</h3><p> <br><br><strong>&#x7F29;&#x51CF;&#x56E0;&#x5B50; Shrinkage</strong></p>
+<blockquote>
+<p>&#x52A0;&#x5165;shrinkage&#x662F;&#x4E3A;&#x4E86;&#x903C;&#x8FD1;&#x7684;&#x8FC7;&#x7A0B;&#x662F;&#x4E00;&#x5C0F;&#x6B65;&#x4E00;&#x5C0F;&#x6B65;&#x7684;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x8FC8;&#x4E00;&#x5927;&#x6B65;&#x903C;&#x8FD1;&#xFF0C;&#x9632;&#x6B62;&#x8FC7;&#x62DF;&#x5408;&#x3002;<br>&#x5B83;&#x4EE3;&#x8868;&#x7684;&#x662F;&#x5B66;&#x4E60;&#x7684;&#x901F;&#x5EA6;&#xFF0C;&#x8D8A;&#x5C0F;&#x8868;&#x793A;&#x5B66;&#x4E60;&#x8D8A;&#x4FDD;&#x5B88;&#xFF08;&#x6162;&#xFF09;&#xFF0C;&#x800C;&#x8D8A;&#x5927;&#x5219;&#x8868;&#x793A;&#x5B66;&#x4E60;&#x8D8A;&#x5192;&#x8FDB;&#xFF08;&#x5FEB;&#xFF09;&#x3002;&#x901A;&#x5E38;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x628A;Shrinkage&#x8BBE;&#x5C0F;&#x4E00;&#x70B9;&#xFF0C;&#x628A;&#x6811;&#x7684;&#x4E2A;&#x6570;&#x8BBE;&#x5927;&#x4E00;&#x70B9;&#x3002;<br> <br>  </p>
+</blockquote>
+<p><strong>&#x968F;&#x673A;&#x68AF;&#x5EA6;&#x63D0;&#x5347; Stochastic gradient boosting</strong></p>
+<blockquote>
+<p>&#x6837;&#x672C;&#x91C7;&#x6837;&#x7387;&#xFF0C;&#x4E00;&#x6B21;&#x5B66;&#x4E60;&#x4F7F;&#x7528;&#x5168;&#x90E8;&#x7684;&#x6837;&#x672C;&#x662F;&#x6D6A;&#x8D39;&#xFF0C;&#x4E3A;&#x4E86;&#x6784;&#x9020;&#x51FA;&#x5177;&#x6709;&#x4E0D;&#x540C;&#x503E;&#x5411;&#x6027;&#x7684;&#x6A21;&#x578B;&#xFF0C;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x6837;&#x672C;&#x7684;&#x5B50;&#x96C6;&#x6765;&#x8FDB;&#x884C;&#x8BAD;&#x7EC3;&#xFF0C;&#x91C7;&#x6837;&#x7684;&#x6BD4;&#x4F8B;&#x4E00;&#x822C;&#x9009;&#x62E9;50%-80%&#x6BD4;&#x8F83;&#x5408;&#x9002;&#x3002;&#x800C;&#x8FC7;&#x591A;&#x7684;&#x6837;&#x672C;&#x5BF9;&#x7B80;&#x5355;&#x7684;&#x6A21;&#x578B;&#x65E0;&#x76CA;&#xFF0C;&#x53EA;&#x4F1A;&#x9020;&#x6210;&#x66F4;&#x591A;&#x7684;&#x8FC7;&#x62DF;&#x5408;&#x548C;&#x5C40;&#x90E8;&#x6781;&#x5C0F;&#x95EE;&#x9898;&#xFF0C;&#x4E14;&#x8F83;&#x5C11;&#x7684;&#x6837;&#x672C;&#x53EF;&#x4EE5;&#x52A0;&#x5FEB;&#x8BAD;&#x7EC3;&#x901F;&#x5EA6;&#x3002;<br><br>  </p>
+</blockquote>
+<p><strong>&#x53F6;&#x5B50;&#x6570;&#x91CF; Number of observations in leaves</strong>  </p>
+<blockquote>
+<p>&#x6709;&#x52A9;&#x4E8E;&#x51CF;&#x5C11;&#x65B9;&#x5DEE;&#x3002;<br> <br>  </p>
+</blockquote>
+<p><strong>&#x6811;&#x7684;&#x590D;&#x6742;&#x5EA6;&#x60E9;&#x7F5A; Penalize Complexity of Tree</strong></p>
+<blockquote>
+<p>&#x901A;&#x8FC7;&#x9608;&#x503C;&#xFF0C;&#x79FB;&#x9664;&#x90A3;&#x4E9B;&#x5BF9;loss&#x51CF;&#x5C11;&#x8F83;&#x5C0F;&#x7684;&#x5206;&#x679D;&#xFF0C;&#x5982;L2&#x7EA6;&#x675F;&#x3002; </p>
+</blockquote>
+<p> <strong>&#x6811;&#x7684;&#x6570;&#x91CF; tree_count</strong></p>
+<blockquote>
+<p>&#x524D;&#x9762;&#x63D0;&#x5230;&#x7684;&#x51B3;&#x7B56;&#x6811;&#x7684;&#x4E2A;&#x6570;&#xFF0C;&#x8FD9;&#x4E2A;&#x6570;&#x8BBE;&#x7684;&#x8D8A;&#x5927;&#x5B66;&#x4E60;&#x5C31;&#x8D8A;&#x5145;&#x5206;&#xFF0C;&#x4F46;&#x592A;&#x5927;&#x4E5F;&#x4F1A;&#x9020;&#x6210;&#x8FC7;&#x5EA6;&#x62DF;&#x5408;&#xFF0C;&#x800C;&#x4E14;&#x4E5F;&#x6D88;&#x8017;&#x8BAD;&#x7EC3;&#x548C;&#x9884;&#x6D4B;&#x7684;&#x65F6;&#x95F4;&#x3002;&#x53EF;&#x4EE5;&#x5148;&#x9009;&#x62E9;&#x6BD4;&#x8F83;&#x5927;&#x7684;&#x6811;&#x4E2A;&#x6570;&#xFF0C;&#x7136;&#x540E;&#x89C2;&#x5BDF;&#x8BAD;&#x7EC3;&#x8FC7;&#x7A0B;&#x4E2D;&#x7684;&#x635F;&#x5931;&#x51CF;&#x5C11;&#x8D8B;&#x52BF;&#xFF0C;&#x635F;&#x5931;&#x51CF;&#x5C11;&#x6BD4;&#x8F83;&#x5E73;&#x7F13;&#x65F6;&#xFF0C;&#x6811;&#x4E2A;&#x6570;&#x5C31;&#x6BD4;&#x8F83;&#x5408;&#x9002;&#x4E86;&#x3002;  </p>
+</blockquote>
+<p><strong>&#x7279;&#x5F81;&#x91C7;&#x6837;&#x7387; variable_sample_rate</strong>   </p>
+<blockquote>
+<p>&#x8FD9;&#x4E2A;&#x91C7;&#x6837;&#x7387;&#x662F;&#x6307;&#x4ECE;&#x6837;&#x672C;&#x7684;&#x6240;&#x6709;&#x7279;&#x5F81;&#x4E2D;&#x9009;&#x53D6;&#x90E8;&#x5206;&#x7684;&#x7279;&#x5F81;&#x6765;&#x5B66;&#x4E60;&#xFF0C;&#x800C;&#x4E0D;&#x4F7F;&#x7528;&#x5168;&#x90E8;&#x7279;&#x5F81;&#x3002;&#x4E5F;&#x80FD;&#x8D77;&#x5230;&#x9632;&#x6B62;&#x8FC7;&#x62DF;&#x5408;&#x7684;&#x4F5C;&#x7528;&#x3002;</p>
+</blockquote>
+<p><br></p>
+<h3 id="&#x4F2A;&#x4EE3;&#x7801;"><a href="#&#x4F2A;&#x4EE3;&#x7801;" class="headerlink" title="&#x4F2A;&#x4EE3;&#x7801;"></a>&#x4F2A;&#x4EE3;&#x7801;</h3><blockquote>
+<p>&#x4F30;&#x8BA1;&#x521D;&#x503C;  </p>
+<p>&#x6309;&#x5982;&#x4E0B;&#x65B9;&#x5F0F;&#x6784;&#x9020;M&#x9897;&#x6811;   </p>
+<blockquote>
+<p>&#x968F;&#x673A;&#x9009;&#x53D6;&#x90E8;&#x5206;&#x6837;&#x672C;&#x4F5C;&#x4E3A;&#x672C;&#x9897;&#x6811;&#x7684;&#x8BAD;&#x7EC3;&#x6570;&#x636E;  </p>
+<p>&#x6309;&#x5982;&#x4E0B;&#x65B9;&#x5F0F;&#x5BFB;&#x627E;&#x6700;&#x4F18;&#x5206;&#x88C2;&#x70B9;&#xFF0C;&#x8FDB;&#x884C;N&#x6B21;&#x53F6;&#x5B50;&#x8282;&#x70B9;&#x7684;&#x5206;&#x88C2;  </p>
+<blockquote>
+<p>&#x5BF9;&#x5F53;&#x524D;&#x6240;&#x6709;&#x53F6;&#x5B50;&#x8282;&#x70B9;  </p>
+<blockquote>
+<p>&#x8BA1;&#x7B97;&#x8BE5;&#x53F6;&#x5B50;&#x8282;&#x70B9;&#x7684;&#x6700;&#x4F18;&#x5212;&#x5206;&#x4EE5;&#x53CA;&#x5176;&#x589E;&#x76CA;&#xFF08;&#x635F;&#x5931;&#x51FD;&#x6570;&#x51CF;&#x5C11;&#x91CF;&#xFF09;</p>
+<p>&#x9009;&#x62E9;&#x589E;&#x76CA;&#x6700;&#x5927;&#x7684;&#x53F6;&#x5B50;&#x8282;&#x70B9;&#x53CA;&#x5176;&#x5212;&#x5206;&#x70B9;&#xFF0C;&#x8FDB;&#x884C;&#x5206;&#x88C2;&#xFF0C;&#x5C06;&#x6837;&#x672C;&#x5212;&#x5206;&#x5230;&#x5B50;&#x8282;&#x70B9;&#x4E2D;<br>&#x66F4;&#x65B0;&#x6837;&#x672C;&#x4F30;&#x8BA1;&#x503C;</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<p><br></p>
+<h3 id="GBDT-&#x5E76;&#x884C;&#x5316;"><a href="#GBDT-&#x5E76;&#x884C;&#x5316;" class="headerlink" title="GBDT &#x5E76;&#x884C;&#x5316;"></a>GBDT &#x5E76;&#x884C;&#x5316;</h3><blockquote>
+<p>&#x6309;&#x884C;&#x5E76;&#x884C;&#x5316;&#xFF0C;&#x5C06;&#x6837;&#x672C;&#x6309;&#x884C;&#x5206;&#x6210;N&#x4EFD;&#xFF0C;&#x5206;&#x522B;&#x5728;N&#x4E2A;&#x8282;&#x70B9;&#x4E0A;&#x505A;&#x8BA1;&#x7B97;;  </p>
+<p>&#x5E76;&#x884C;&#x5EFA;&#x7ACB;&#x4E00;&#x68F5;&#x7684;&#x8FC7;&#x7A0B;&#xFF1A;</p>
+<blockquote>
+<p>&#x5728;0&#x53F7;&#x8282;&#x70B9;&#x4E0A;&#x5BF9;&#x7279;&#x5F81;&#x968F;&#x673A;&#x91C7;&#x6837;&#xFF0C;&#x751F;&#x6210;&#x5EFA;&#x7ACB;&#x4E00;&#x68F5;&#x6811;&#x9700;&#x8981;&#x7528;&#x5230;&#x7684;&#x7279;&#x5F81;&#xFF0C;&#x5E76;&#x5206;&#x53D1;&#x5230;N&#x4E2A;&#x8282;&#x70B9;&#x4E0A;&#xFF1B;  </p>
+<p>&#x5728;0&#x53F7;&#x7ED3;&#x70B9;&#x4E0A;&#x7EF4;&#x62A4;&#x6BCF;&#x4E00;&#x7EF4;&#x91C7;&#x6837;&#x7279;&#x5F81;&#x6240;&#x6709;&#x53EF;&#x80FD;&#x7684;&#x7279;&#x5F81;&#x503C;&#xFF1B;  </p>
+<p>&#x5C06;&#x6BCF;&#x4E00;&#x7EF4;&#x7279;&#x5F81;&#x7684;&#x6BCF;&#x4E00;&#x4E2A;&#x53EF;&#x80FD;&#x7684;&#x7279;&#x5F81;&#x503C;&#x5206;&#x53D1;&#x5230;N&#x4E2A;&#x8282;&#x70B9;&#x4E0A;&#xFF1B;  </p>
+<p>&#x6BCF;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x5E76;&#x884C;&#x8BA1;&#x7B97;&#x8BE5;&#x8282;&#x70B9;&#x4E0A;&#x6240;&#x6709;&#x6837;&#x672C;&#x4E0E;&#x5206;&#x53D1;&#x5F97;&#x5230;&#x7684;&#x7279;&#x5F81;&#x503C;&#x7684;&#x6BD4;&#x8F83;&#x7ED3;&#x679C;&#xFF0C;&#x5206;&#x5272;&#x6210;&#x5DE6;&#x53F3;&#x5B50;&#x6811;&#xFF0C;&#x5E76;&#x8BA1;&#x7B97;&#x589E;&#x76CA;&#xFF1B;  </p>
+<p>&#x5F52;&#x5E76;&#x6240;&#x6709;&#x8282;&#x70B9;&#x7684;&#x589E;&#x76CA;&#xFF0C;&#x5728;0&#x53F7;&#x7ED3;&#x70B9;&#x5F97;&#x5230;&#x6BCF;&#x4E00;&#x4E2A;&#x7279;&#x5F81;&#x5728;&#x6BCF;&#x4E00;&#x4E2A;&#x7279;&#x5F81;&#x503C;&#x7684;&#x589E;&#x76CA;(f&#xFF0C;v&#xFF0C;incr)&#xFF1B;  </p>
+<p>&#x5728;0&#x53F7;&#x7ED3;&#x70B9;&#x4E0A;&#x627E;&#x51FA;&#x6700;&#x5927;&#x7684;(f&#xFF0C;v&#xFF0C;incr)&#xFF0C;&#x5E76;&#x4F5C;&#x4E3A;&#x672C;&#x6B21;&#x7684;&#x6700;&#x4F73;&#x88C2;&#x70B9;&#xFF0C;&#x5206;&#x53D1;&#x5230;N&#x4E2A;&#x8282;&#x70B9;&#x4E0A;&#xFF1B;  </p>
+<p>N&#x4E2A;&#x8282;&#x70B9;&#x5C06;&#x6837;&#x672C;&#x5206;&#x5272;&#x6210;&#x5DE6;&#x53F3;&#x5B50;&#x6811;&#xFF1B;  </p>
+<p>&#x5BF9;&#x5DE6;&#x53F3;&#x5B50;&#x6811;&#x7EE7;&#x7EED;&#x4E0A;&#x9762;&#x8FC7;&#x7A0B;&#xFF0C;&#x76F4;&#x5230;&#x53F6;&#x5B50;&#x8282;&#x70B9;&#x6570;&#x76EE;&#x6EE1;&#x8DB3;&#x8981;&#x6C42;&#xFF1B;</p>
+</blockquote>
+<p>&#x5E76;&#x884C;&#x5EFA;&#x7ACB;&#x7B2C;&#x4E8C;&#x68F5;&#x6811;&#xFF1B;  </p>
+</blockquote>
+<ul>
+<li>GBDT&#x5E76;&#x884C;&#x5316;&#x5305;&#x62EC;&#x4E86;&#x6837;&#x672C;&#x5E76;&#x884C;&#x5316;&#x4E0E;&#x7279;&#x5F81;&#x5206;&#x88C2;&#x70B9;&#x8BA1;&#x7B97;&#x7684;&#x5E76;&#x884C;&#x5316;&#xFF1B;&#x4E0D;&#x662F;&#x5EFA;&#x6811;&#x8FC7;&#x7A0B;&#x7684;&#x5E76;&#x884C;&#x5316;&#xFF0C;&#x5EFA;&#x7ACB;&#x65B0;&#x6811;&#x4F1A;&#x7528;&#x5230;&#x5DF2;&#x5EFA;&#x7ACB;&#x7684;&#x6240;&#x6709;&#x6811;&#xFF0C;&#x6240;&#x4EE5;&#x4E0D;&#x80FD;&#x5E76;&#x884C;&#x3002;  </li>
+<li>&#x6700;&#x8017;&#x65F6;&#x7684;&#x662F;&#x9700;&#x8981;&#x904D;&#x5386;&#x7279;&#x5F81;&#x7684;&#x6240;&#x6709;&#x53EF;&#x80FD;&#x7684;&#x7279;&#x5F81;&#x503C;&#xFF0C;&#x5E76;&#x8BA1;&#x7B97;&#x589E;&#x76CA;&#x5BFB;&#x627E;&#x6700;&#x4F18;&#x5206;&#x88C2;&#x70B9;&#x7684;&#x8FC7;&#x7A0B;&#xFF1B; &#x53EF;&#x4EE5;&#x5BF9;&#x7279;&#x5F81;&#x503C;&#x8FDB;&#x884C;&#x6392;&#x5E8F;&#x4F18;&#x5316;(xgboost)&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x91C7;&#x7528;&#x5BF9;&#x7279;&#x5F81;&#x503C;&#x76F4;&#x65B9;&#x56FE;&#x91C7;&#x6837;&#xFF0C;&#x4E0D;&#x7528;&#x904D;&#x5386;&#x6240;&#x6709;&#x7279;&#x5F81;&#x503C;&#x6765;&#x4F18;&#x5316;(LightGBM)&#x3002;  </li>
+<li><p>&#x5F53;&#x7279;&#x5F81;&#x7EF4;&#x6570;&#x5F88;&#x5927;&#x65F6;&#xFF0C;&#x4E5F;&#x53EF;&#x8003;&#x8651;&#x628A;N*1&#x7684;&#x8BA1;&#x7B97;&#x8282;&#x70B9;&#x6269;&#x5C55;&#x4E3A;N*M&#x7684;&#x8BA1;&#x7B97;&#x9635;&#x5217;&#x3002;&#x540C;&#x4E00;&#x6837;&#x672C;&#x7684;&#x7279;&#x5F81;&#x5BF9;&#x5E94;&#x8282;&#x70B9;&#x7684;&#x884C;&#x53F7;&#x76F8;&#x540C;&#xFF0C;&#x4E0D;&#x540C;&#x6837;&#x672C;&#x76F8;&#x540C;&#x7EF4;&#x5EA6;&#x7684;&#x7279;&#x5F81;&#x5BF9;&#x5E94;&#x8282;&#x70B9;&#x7684;&#x5217;&#x53F7;&#x76F8;&#x540C;&#x3002;</p>
+<p><br></p>
+<h3 id="&#x53C2;&#x8003;&#x6587;&#x732E;"><a href="#&#x53C2;&#x8003;&#x6587;&#x732E;" class="headerlink" title="&#x53C2;&#x8003;&#x6587;&#x732E;"></a>&#x53C2;&#x8003;&#x6587;&#x732E;</h3></li>
+<li><p>wiki Gradient Boosting<br><a href="https://en.wikipedia.org/wiki/Gradient_boosting#Gradient_tree_boosting" target="_blank" rel="external">https://en.wikipedia.org/wiki/Gradient_boosting#Gradient_tree_boosting</a></p>
+</li>
+<li><p><a href="http://blog.csdn.net/w28971023/article/details/43704775" target="_blank" rel="external">http://blog.csdn.net/w28971023/article/details/43704775</a></p>
+</li>
+<li><p><a href="http://www.cnblogs.com/leftnoteasy/archive/2011/03/07/random-forest-and-gbdt.html" target="_blank" rel="external">http://www.cnblogs.com/leftnoteasy/archive/2011/03/07/random-forest-and-gbdt.html</a></p>
+</li>
+<li><p><a href="http://www.cnblogs.com/rocketfan/p/4324605.html" target="_blank" rel="external">http://www.cnblogs.com/rocketfan/p/4324605.html</a></p>
+</li>
+</ul>
+
+	
+	
+	
+	
+</div>
+				
+				
+
+                <!-- Post Comments -->
+                
+
+
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    
+    <!-- Prev Nav -->
+    
+        <a href="/2016/12/27/GMM到EM/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2016/10/22/GBDT与XGBOOST/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+        </div>
+    </div>
+
+				
+				
+					<!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay "></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored  sidebar-fixed-left" role="navigation">
+	<div id="sidebar-main">
+	    <!-- Sidebar Header -->
+		<div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+    <i class="material-icons">clear_all</i>
+    <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/zebra.png" alt="Mahome.liao's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        liao.mahome@gmail.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+		<!-- Sidebar Navigation  -->
+		<ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+			
+                <li>
+                    <a href="#" target="_blank" title="Email Me">
+						<i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    <li id="sidebar-first-li">
+        <a href="/" target="_self">
+            <i class="material-icons sidebar-material-icons">home</i>
+             主页
+        </a>
+    </li>
+
+    <!-- I'm Feeling Lucky -->
+<!--
+    <li class="dropdown">
+        <a href="" target="_self">
+            <i class="material-icons sidebar-material-icons">explore</i>
+             sidebar.imlucky
+        </a>
+    </li>
+-->
+
+	
+    <!-- Archives  -->
+    <li class="dropdown">
+        <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+            <i class="material-icons sidebar-material-icons">inbox</i>
+             归档
+            <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+            <a class="sidebar_archives-link" href="/archives/2017/08/">八月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/07/">七月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/06/">六月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/02/">二月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/12/">十二月 2016<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/11/">十一月 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/10/">十月 2016<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/09/">九月 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/08/">八月 2016<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/07/">七月 2016<span class="sidebar_archives-count">3</span></a>
+        </ul>
+    </li>
+
+    <!-- Divider -->
+    <li class="divider"></li>
+
+
+    <!-- Pages  -->
+	
+
+    <!-- Article Numebr  -->
+    <li>
+        <a href="/archives">
+             文章总数
+             <span class="sidebar-badge">25</span>
+        </a>
+    </li>
+</ul>
+
+		<!-- Sidebar Divider -->
+		<div class="sidebar-divider"></div>
+
+		<!-- Sidebar Footer -->
+		<!-- 
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持。 :) 
+-->
+
+<!-- Theme Material -->
+<a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+	<div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+		主题 - Material
+		<span class="sidebar-badge badge-circle">i</span>
+	</div>
+</a>
+
+<!-- Help & Support -->
+<!--
+<a href="mailto:hiviosey@gmail.com" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+		sidebar.help
+		<span class="mdl-button__ripple-container">
+			<span class="mdl-ripple"></span>
+		</span>
+	</div>
+</a>
+-->
+
+<!-- Feedback -->
+<!--
+<a href="https://github.com/viosey/hexo-theme-material/issues" target="_blank" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+         sidebar.feedback
+                    <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+</a>
+-->
+
+<!-- Abount Theme -->
+<!--
+<a href="https://blog.viosey.com/index.php/Material.html" target="_blank" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+         sidebar.about_theme
+        <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+</a>-->
+
+	</div>
+    
+    <!-- Sidebar Sponsor -->
+    
+
+
+</aside>
+
+				
+				
+				
+					<!-- Footer Top Button -->
+					<div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+				
+				
+				<!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+	
+	
+		<!-- Paradox Footer Left Section -->
+		<div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+    <a href="https://twitter.com/twitter" target="view_window"><button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-twitter.png);">
+        <span class="visuallyhidden">Twitter</span>
+    </button></a>
+    
+    
+    <!-- Facebook -->
+    
+    <a href="https://www.facebook.com/facebook" target="view_window"><button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-facebook.png);">
+        <span class="visuallyhidden">Facebook</span>
+    </button></a>
+    
+    
+    <!-- Google + -->
+    
+    <a href="https://www.google.com/" target="view_window"><button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-gplus.png);">
+        <span class="visuallyhidden">Google Plus</span>
+    </button></a>
+    
+    
+    <!-- Weibo -->
+    
+    
+    
+    <!-- Instagram -->
+    
+    
+    
+    <!-- Tumblr -->
+    
+    
+    
+    <!-- Github -->
+    
+    
+</div>
+
+
+		<!--Copyright-->
+		<div id="copyright">Copyright&nbsp;©&nbsp;<script type="text/javascript">var fd = new Date();document.write(fd.getFullYear());</script>&nbsp;AI</div>
+
+		<!-- Paradox Footer Right Section -->
+
+		<!-- 
+		I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+		It will not impact the appearance and can give developers a lot of support :)
+
+		很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+		它不会影响美观并可以给开发者很大的支持。 :) 
+		-->
+
+		<div class="mdl-mini-footer--right-section">
+			<div>
+				<div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+				<div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+			</div>
+		</div>
+	
+</footer>
+                
+				<!-- Import File -->
+<script src="/js/highlight.min.js"></script>
+<script src="/js/js.min.js"></script>
+<script src="/js/nprogress.js"></script>
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    
+    $('#nprogress .bar').css({
+        'background': '#FF4081'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #FF4081, 0 0 15px #FF4081'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#FF4081',
+        'border-left-color': '#FF4081'
+    });
+    
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Swiftye -->
+
+
+<!-- Local Search-->
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $(".post-toc-wrap").parent(".mdl-menu__container").css("position", "fixed");
+    });
+</script>
+
+<!-- MathJax Load-->
+
+            </main>
+        </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+		
+    </body>
+		
+	
+</html>

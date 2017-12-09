@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Title -->
+    
+    <title>
+        最大熵模型 | AI
+    </title>
+    
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/zebra.png">
+    <link rel="icon" sizes="192x192" href="/img/zebra.png">
+    <link rel="apple-touch-icon" href="/img/zebra.png">
+    
+    <!-- Meta & INfo -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="Mahome.liao">
+    <meta name="description" content="You know nothing.">
+    <meta name="keywords" content="跟着我走，你会降维">
+    
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+    
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="AI">
+    
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://yoursite.com">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="最大熵模型 | AI">
+    <meta property="og:description" content="You know nothing.">
+    
+     <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+        
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+    
+    <!-- Import CSS -->
+    <link rel="stylesheet" href="/css/material.min.css">
+    <link rel="stylesheet" href="/css/style.min.css">
+    <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+	body, html{
+		font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+	}
+	
+    a{
+        color: #00838F
+    }
+    
+    .mdl-card__media,
+    #search-label,
+    #search-form-label:after,
+    #scheme-Paradox .hot_tags-count,
+    #scheme-Paradox .sidebar_archives-count,
+    #scheme-Paradox .sidebar-colored .sidebar-header,
+    #scheme-Paradox .sidebar-colored .sidebar-badge{
+        background-color: #0097A7 !important
+    }
+    
+	/* Sidebar User Drop Down Menu Text Color */
+	#scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+    #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus{
+        color: #0097A7 !important
+    }
+    
+    #post_entry-right-info,
+    .sidebar-colored .sidebar-nav li:hover > a,
+    .sidebar-colored .sidebar-nav li:hover > a i,
+    .sidebar-colored .sidebar-nav li > a:hover,
+    .sidebar-colored .sidebar-nav li > a:hover i,
+    .sidebar-colored .sidebar-nav li > a:focus i,
+    .sidebar-colored .sidebar-nav > .open > a,
+    .sidebar-colored .sidebar-nav > .open > a:hover,
+    .sidebar-colored .sidebar-nav > .open > a:focus,
+    #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a{
+        color: #0097A7 !important
+    }
+    
+    .toTop{
+        background: #757575 !important
+    }
+		
+	.material-layout .material-post>.material-nav,
+	.material-layout .material-index>.material-nav,
+	.material-nav a{
+		color: #757575;
+	}
+		
+	#scheme-Paradox .MD-burger-layer {
+		background-color: #757575;
+	}
+
+	#scheme-Paradox #post-toc-trigger-btn{
+		color: #757575;
+	}
+	
+	.post-toc a:hover{
+		color: #00838F;
+		text-decoration: underline;
+	}
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+        body{
+            background-color: #F5F5F5
+        }
+		
+		/* blog_info bottom background */
+        #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+            background-color: #fff;
+        }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+        .fade {
+            transition: all 800ms linear;
+            -webkit-transform: translate3d(0,0,0);
+            -moz-transform: translate3d(0,0,0);
+            -ms-transform: translate3d(0,0,0);
+            -o-transform: translate3d(0,0,0);
+            transform: translate3d(0,0,0);
+            opacity: 1;
+        }
+
+        .fade.out{
+            opacity: 0;
+        }
+    </style>
+
+	<script src="/js/jquery.min.js"></script>
+	
+	<link rel="stylesheet" href="/css/highlight/solarized-white.css">
+	
+	<!-- UC Browser Compatible-->
+	<script>
+		var agent = navigator.userAgent.toLowerCase();
+		if(agent.indexOf('ucbrowser')>0) {
+			document.write('<link rel="stylesheet" href="/css/uc.css">');
+		   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+		}
+	</script>
+    
+    <!-- Custom Head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+</head>
+	
+	
+
+    <body id="scheme-Paradox">
+
+		
+        <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+				
+			
+			
+            <!-- Main Container -->
+            <main class="material-layout__content" id="main">
+				
+                <!-- Top Anchor -->
+                <div id="top"></div>
+				
+				
+                <!-- Hamburger Button -->
+                <button class="MD-burger-icon sidebar-toggle">
+                    <span class="MD-burger-layer"></span>
+                </button>
+				
+				
+                
+	<!-- Back Button -->
+<!--
+	<div class="material-back" id="backhome-div" tabindex="0">
+		<a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" href="#" onclick="window.history.back();return false;" target="_self" role="button" data-upgraded=",MaterialButton,MaterialRipple">
+			<i class="material-icons" role="presentation">arrow_back</i>
+			<span class="mdl-button__ripple-container">
+				<span class="mdl-ripple"></span>
+			</span>
+		</a>
+	</div>			
+-->
+	<!-- Left aligned menu below button -->
+	<button id="post-toc-trigger-btn"
+			class="mdl-button mdl-js-button mdl-button--icon">
+	  <i class="material-icons">format_list_numbered</i>
+	</button>
+
+	<ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
+		for="post-toc-trigger-btn">
+			
+			<ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#熵"><span class="post-toc-number">1.</span> <span class="post-toc-text">熵</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#最大熵原理"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">最大熵原理</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#最大熵模型"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">最大熵模型</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#最大熵模型与逻辑斯蒂回归模型"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">最大熵模型与逻辑斯蒂回归模型</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Reference"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">Reference</span></a></li></ol></li></ol>
+		
+<!--			<li class="mdl-menu__item">Some Action</li>-->
+	</ul>
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+		
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+	<!-- Paradox Post Header -->
+	
+		
+			<!-- Random Thumbnail -->
+			<div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+				<script>
+    
+    var randomNum;
+    randomNum = Math.floor(Math.random() * 8 + 1);
+    
+    $(".post_thumbnail-random").css('background-image', 'url(' + '/img/random/' + randomNum + '.png' + ')');
+    
+</script>
+
+		
+	
+        <p class="article-headline-p">
+            最大熵模型
+        </p>
+    </div>
+
+	
+
+				
+				
+					<!-- Paradox Post Info -->
+					<div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+    
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/zebra.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Mahome.liao</strong>
+        <span>6月 18, 2017</span>
+    </div>
+    
+    <div class="section-spacer"></div>
+	
+    <!-- Favorite -->
+<!--
+    <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+        <i class="material-icons" role="presentation">favorite</i>
+        <span class="visuallyhidden">favorites</span>
+    </button>
+-->
+    
+    <!-- Tags (bookmark) -->
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        
+    </ul>
+    
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+    
+    
+    
+    
+    <!-- Share Twitter -->
+    <a class="post_share-link" href="https://twitter.com/intent/tweet?text=最大熵模型&url=http://yoursite.com//2017/06/18/最大熵模型/index.html&via=Mahome.liao" target="_blank">
+        <li class="mdl-menu__item">
+            分享到 Twitter
+        </li>
+    </a>
+    
+    <!-- Share Google+ -->
+    <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com//2017/06/18/最大熵模型/index.html" target="_blank">
+        <li class="mdl-menu__item">
+            分享到 Google+
+        </li>
+    </a>
+    
+    <!-- Share Weibo -->
+    <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=最大熵模型&url=http://yoursite.com//2017/06/18/最大熵模型/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <li class="mdl-menu__item">
+            分享到微博
+        </li>
+    </a>
+</ul>
+</div>
+				
+
+                <!-- Post Content -->
+                <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+	
+		<p><img src="/2017/06/18/&#x6700;&#x5927;&#x71B5;&#x6A21;&#x578B;/&#x6700;&#x5927;&#x71B5;&#x9876;&#x90E8;&#x56FE;&#x7247;.jpg" alt="&#x9876;&#x90E8;&#x56FE;&#x7247;"></p>
+<h2 id="&#x71B5;"><a href="#&#x71B5;" class="headerlink" title="&#x71B5;"></a>&#x71B5;</h2><p><strong>&#x71B5;</strong></p>
+<blockquote>
+<p>&#x6DF7;&#x4E71;&#x5EA6;&#xFF0C;&#x5C31;&#x662F;&#x6982;&#x7387;&#x6700;&#x5927;&#x7684;&#x72B6;&#x6001;&#x3002;&#x8D8A;&#x6DF7;&#x4E71;(&#x65E0;&#x5E8F;)&#xFF0C;&#x8BF4;&#x660E;&#x8FD9;&#x4E2A;&#x72B6;&#x6001;&#x51FA;&#x73B0;&#x7684;&#x6982;&#x7387;&#x8D8A;&#x5927;&#x3002;<br>&#x201C;&#x4F60;&#x4EFB;&#x610F;&#x6254;&#x51FA;&#x4E00;&#x5806;&#x79EF;&#x6728;&#xFF0C;&#x51E0;&#x4E4E;&#x4E0D;&#x53EF;&#x80FD;&#x51FA;&#x73B0;&#x4E00;&#x4E2A;&#x623F;&#x5B50;&#xFF0C;&#x56E0;&#x4E3A;&#x8FD9;&#x4E2A;&#x6982;&#x7387;&#x592A;&#x4F4E;&#x4E86;&#x3002;&#x4E3A;&#x4EC0;&#x4E48;&#x51FA;&#x73B0;&#x623F;&#x5B50;&#x7684;&#x6982;&#x7387;&#x4F4E;&#x5462;&#xFF0C;&#x56E0;&#x4E3A;&#x4ED6;&#x7684;&#x72B6;&#x6001;&#x6570;&#x4F4E;&#x3002;&#x4EC0;&#x4E48;&#x662F;&#x72B6;&#x6001;&#x6570;&#xFF1A;&#x5F88;&#x7B80;&#x5355;&#x7684;&#xFF0C;&#x5047;&#x8BBE;&#x4F60;&#x6295;&#x63B7;10&#x679A;&#x9AB0;&#x5B50;&#xFF0C;&#x5168;&#x90E8;&#x662F;1&#x7684;&#x72B6;&#x6001;&#x6570;&#x53EA;&#x6709;1&#x4E2A;&#xFF0C;&#x56E0;&#x4E3A;&#x5FC5;&#x987B;&#x6240;&#x6709;&#x7684;&#x9AB0;&#x5B50;&#x90FD;&#x662F;1&#x3002;&#x800C;5&#x4E2A;&#x9AB0;&#x5B50;&#x662F;1&#xFF0C;5&#x4E2A;&#x9AB0;&#x5B50;&#x662F;2&#x7684;&#x72B6;&#x6001;&#x6570;&#x5C31;&#x8981;&#x591A;&#x5F97;&#x591A;&#xFF0C;&#x56E0;&#x4E3A;&#x53EA;&#x8981;&#x5728;10&#x4E2A;&#x91CC;&#x9762;&#x9009;&#x51FA;5&#x4E2A;&#x662F;1&#xFF0C;&#x5176;&#x4ED6;5&#x4E2A;&#x662F;2&#x5C31;&#x53EF;&#x4EE5;&#x4E86;&#xFF0C;&#x5C31;&#x662F;&#x7EC4;&#x5408;&#x6570;C(5,10);&#x201D;</p>
+</blockquote>
+<p>&#x6240;&#x4EE5;&#x5728;&#x5B9A;&#x4E49;&#x71B5;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5C31;&#x7528;&#x4E86;&#x72B6;&#x6001;&#x6570;&#x3002;&#x90A3;&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x53D6;&#x5BF9;&#x6570;&#x5462;&#xFF0C;&#x5927;&#x6982;&#x6709;&#x4E24;&#x4E2A;&#x539F;&#x56E0;&#xFF1A;<br>&#x7B2C;&#x4E00;&#xFF1A;&#x5FAE;&#x89C2;&#x7684;&#x72B6;&#x6001;&#x6570;&#x592A;&#x5927;&#x4E86;&#xFF0C;&#x6240;&#x4EE5;&#x53D6;&#x4E2A;&#x5BF9;&#x6570;,&#x800C;&#x4E14;&#x548C;&#x72B6;&#x6001;&#x6570;&#x662F;&#x6B63;&#x76F8;&#x5173;&#x3002;<br>&#x7B2C;&#x4E8C;&#xFF1A;&#x53D6;&#x4E2A;&#x5BF9;&#x6570;&#xFF0C;&#x8BF4;&#x660E;&#x5C31;&#x53EF;&#x4EE5;&#x7528;&#x5BF9;&#x5E94;&#x7684;&#x591A;&#x5C11;&#x4F4D;&#x6570;&#x636E;&#x53BB;&#x8868;&#x793A;&#x8FD9;&#x4E2A;&#x7ED3;&#x679C;&#xFF0C;&#x6211;&#x4EEC;&#x8BF4;&#x7684;bit&#x5176;&#x5B9E;&#x5C31;&#x662F;&#x53D6;2&#x7684;&#x5BF9;&#x6570;&#x7684;&#x3002;<br>&#x7B2C;&#x4E09;&#xFF1A;&#x53D6;&#x5BF9;&#x6570;&#xFF0C;&#x5219;&#x4EE5;&#x524D;&#x7684;&#x72B6;&#x6001;&#x6570;&#x5C31;&#x53EF;&#x4EE5;&#x7531;&#x4E58;&#x53D8;&#x4E3A;&#x52A0;&#x4E86;&#x3002;(&#x4E00;&#x4E2A;&#x9AB0;&#x5B50;$W=6$,&#x4E24;&#x4E2A;&#x9AB0;&#x5B50;$W^2 = 36$, &#x800C; $\ln (W^2) = 2*\ln(W)+\ln(W)$)  </p>
+<p>&#x6240;&#x4EE5;&#x5C31;&#x51FA;&#x73B0;&#x4E86;&#x4E2A;&#x516C;&#x5F0F;&#xFF1A;$$H = k * \ln(W)$$<br>&#x7269;&#x7406;&#x4E0A;&#x9762;&#x7684;&#x71B5;&#x589E;&#x5B9A;&#x5F8B;&#x53EF;&#x4EE5;&#x8FD9;&#x4E48;&#x7406;&#x89E3;:&#x56E0;&#x4E3A;&#x71B5;&#x8D8A;&#x5927;&#xFF0C;&#x8BF4;&#x660E;&#x8FD9;&#x4E2A;&#x968F;&#x673A;&#x4E8B;&#x4EF6;&#x7684;&#x72B6;&#x6001;&#x6570;&#x8D8A;&#x5927;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x6982;&#x7387;&#x8D8A;&#x5927;&#xFF0C;&#x6240;&#x4EE5;&#x4E00;&#x4E2A;&#x968F;&#x673A;&#x4E8B;&#x4EF6;&#x4F1A;&#x671D;&#x7740;&#x6982;&#x7387;&#x589E;&#x5927;&#x7684;&#x65B9;&#x5411;&#x53D8;&#x5316;&#x3002;  </p>
+<p><strong>&#x4EA4;&#x53C9;&#x71B5;&#x3001;&#x76F8;&#x5BF9;&#x71B5;</strong>  </p>
+<p>&#x4EA4;&#x53C9;&#x71B5;$$H(p,q)=-\sum p*\log(q)$$&#x8868;&#x793A;&#x7528;&#x5206;&#x5E03;q&#x6A21;&#x62DF;&#x771F;&#x5B9E;&#x5206;&#x5E03;p&#x6240;&#x9700;&#x7684;&#x4FE1;&#x606F;&#x3002;  </p>
+<p>&#x76F8;&#x5BF9;&#x71B5;&#x53C8;&#x79F0;KL&#x8DDD;&#x79BB;<br>$$KL(p||q)=H(p,q)-H(p,p)&#xFF0C;KL = -\int p(x) \ln q(x) dx - (-\int p(x) \ln p(x) dx) $$&#x8868;&#x793A;&#x7528;&#x5206;&#x5E03;q&#x6A21;&#x62DF;&#x771F;&#x5B9E;&#x5206;&#x5E03;p&#x76F8;&#x6BD4;&#x7528;p&#x6A21;&#x62DF;p&#xFF0C;&#x6240;&#x9700;&#x7684;&#x989D;&#x5916;&#x4FE1;&#x606F;&#xFF0C;&#x7528;&#x4E8E;&#x8861;&#x91CF;&#x4E24;&#x4E2A;&#x6982;&#x7387;&#x5206;&#x5E03;&#x4E4B;&#x95F4;&#x7684;&#x5DEE;&#x5F02;&#x3002;  </p>
+<p>&#x673A;&#x5668;&#x5B66;&#x4E60;&#x7684;&#x76EE;&#x7684;&#x5C31;&#x662F;&#x5E0C;&#x671B;$q(x)$&#x5C3D;&#x53EF;&#x80FD;&#x5730;&#x903C;&#x8FD1;&#x751A;&#x81F3;&#x7B49;&#x4E8E;$p(x)$&#xFF0C;&#x4ECE;&#x800C;&#x4F7F;&#x5F97;&#x76F8;&#x5BF9;&#x71B5;&#x63A5;&#x8FD1;&#x6700;&#x5C0F;&#x503C;0&#x3002;&#x7531;&#x4E8E;&#x771F;&#x5B9E;&#x7684;&#x6982;&#x7387;&#x5206;&#x5E03;&#x662F;&#x56FA;&#x5B9A;&#x7684;&#xFF0C;&#x76F8;&#x5BF9;&#x71B5;&#x516C;&#x5F0F;&#x7684;&#x540E;&#x534A;&#x90E8;&#x5206;$H(p,p)$&#x5C31;&#x6210;&#x4E86;&#x4E00;&#x4E2A;&#x5E38;&#x6570;&#x3002;&#x90A3;&#x4E48;&#x76F8;&#x5BF9;&#x71B5;&#x8FBE;&#x5230;&#x6700;&#x5C0F;&#x503C;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4E5F;&#x610F;&#x5473;&#x7740;&#x4EA4;&#x53C9;&#x71B5;&#x8FBE;&#x5230;&#x4E86;&#x6700;&#x5C0F;&#x503C;&#x3002;&#x5BF9;$q(x)$&#x7684;&#x4F18;&#x5316;&#x5C31;&#x7B49;&#x6548;&#x4E8E;&#x6C42;&#x4EA4;&#x53C9;&#x71B5;&#x7684;&#x6700;&#x5C0F;&#x503C;&#x3002;&#x53E6;&#x5916;&#xFF0C;&#x5BF9;&#x4EA4;&#x53C9;&#x71B5;&#x6C42;&#x6700;&#x5C0F;&#x503C;&#xFF0C;&#x4E5F;&#x7B49;&#x6548;&#x4E8E;&#x6C42;&#x6700;&#x5927;&#x4F3C;&#x7136;&#x4F30;&#x8BA1;&#xFF08;maximum likelihood estimation&#xFF09;&#x3002;</p>
+<p><br></p>
+<h3 id="&#x6700;&#x5927;&#x71B5;&#x539F;&#x7406;"><a href="#&#x6700;&#x5927;&#x71B5;&#x539F;&#x7406;" class="headerlink" title="&#x6700;&#x5927;&#x71B5;&#x539F;&#x7406;"></a>&#x6700;&#x5927;&#x71B5;&#x539F;&#x7406;</h3><p>&#x6700;&#x5927;&#x71B5;&#x539F;&#x7406;&#x662F;&#x6982;&#x7387;&#x6A21;&#x578B;&#x5B66;&#x4E60;&#x7684;&#x4E00;&#x4E2A;&#x51C6;&#x5219;&#x3002;&#x6700;&#x5927;&#x71B5;&#x539F;&#x7406;&#x8BA4;&#x4E3A;&#xFF0C;&#x71B5;&#x6700;&#x5927;&#x7684;&#x6A21;&#x578B;&#x662F;&#x6700;&#x597D;&#x7684;&#x6A21;&#x578B;&#x3002;<br>&#x5047;&#x8BBE;&#x79BB;&#x6563;&#x968F;&#x673A;&#x53D8;&#x91CF;$X$&#x7684;&#x6982;&#x7387;&#x5206;&#x5E03;&#x662F;$P(x)$&#xFF0C;&#x5219;&#x71B5;&#x662F;$$H(P)=-\sum P(x)\log P(x)$$<br>&#x5176;&#x4E2D;&#xFF0C;$0 \leq H(P) \leq \log |X| $&#xFF0C;$|X|$&#x662F;$X$&#x7684;&#x53D6;&#x503C;&#x4E2A;&#x6570;&#x3002;&#x5F53;&#x4E14;&#x4EC5;&#x5F53;$X$&#x7684;&#x5206;&#x5E03;&#x662F;&#x5747;&#x5300;&#x5206;&#x5E03;&#x65F6;&#x53F3;&#x8FB9;&#x7684;&#x7B49;&#x53F7;&#x6210;&#x7ACB;&#xFF0C;&#x6B64;&#x65F6;&#x71B5;&#x6700;&#x5927;&#x3002;  </p>
+<p>&#x6700;&#x5927;&#x71B5;&#x539F;&#x7406;&#x8BA4;&#x4E3A;&#xFF1A;</p>
+<blockquote>
+<p>&#x5728;&#x7EA6;&#x675F;&#x6761;&#x4EF6;&#x4E0B;&#xFF0C;&#x5728;&#x6CA1;&#x6709;&#x66F4;&#x591A;&#x4FE1;&#x606F;&#x7684;&#x6761;&#x4EF6;&#x5929;&#xFF0C;&#x90A3;&#x4E9B;&#x4E0D;&#x786E;&#x5B9A;&#x7684;&#x90E8;&#x5206;&#x90FD;&#x662F;&#x201D;&#x7B49;&#x53EF;&#x80FD;&#x7684;&#x201D;. &#x6240;&#x4EE5;&#xFF0C;&#x901A;&#x8FC7;&#x71B5;&#x7684;&#x6700;&#x5927;&#x5316;&#x6765;&#x8868;&#x793A;&#x7B49;&#x53EF;&#x80FD;&#x6027;&#x3002;&#x71B5;&#x662F;&#x4E00;&#x4E2A;&#x53EF;&#x4F18;&#x5316;&#x7684;&#x6570;&#x503C;&#x6307;&#x6807;&#x3002;</p>
+</blockquote>
+<h3 id="&#x6700;&#x5927;&#x71B5;&#x6A21;&#x578B;"><a href="#&#x6700;&#x5927;&#x71B5;&#x6A21;&#x578B;" class="headerlink" title="&#x6700;&#x5927;&#x71B5;&#x6A21;&#x578B;"></a>&#x6700;&#x5927;&#x71B5;&#x6A21;&#x578B;</h3><p>&#x5B9A;&#x4E49;&#x5728;&#x6761;&#x4EF6;&#x6982;&#x7387;&#x5206;&#x5E03;$P(Y|X)$&#x4E0A;&#x7684;&#x6761;&#x4EF6;&#x71B5;&#x4E3A;&#xFF1A;<br>$$H(P) = \sum_{x,y} P(x)P(y|x)\ln P(y|x)$$&#x5219;&#x6761;&#x4EF6;&#x71B5;&#x6700;&#x5927;&#x7684;&#x6A21;&#x578B;&#x79F0;&#x4E3A;&#x6700;&#x5927;&#x71B5;&#x6A21;&#x578B;&#x3002;  </p>
+<p><strong>&#x6700;&#x5927;&#x71B5;&#x6A21;&#x578B;&#x6C42;&#x89E3;</strong><br>&#x5C06;&#x7EA6;&#x675F;&#x6700;&#x4F18;&#x5316;&#x7684;&#x539F;&#x59CB;&#x95EE;&#x9898;&#x8F6C;&#x6362;&#x4E3A;&#x65E0;&#x7EA6;&#x675F;&#x6700;&#x4F18;&#x5316;&#x7684;&#x5BF9;&#x5076;&#x95EE;&#x9898;(&#x5F15;&#x8FDB;&#x62C9;&#x683C;&#x6717;&#x65E5;&#x51FD;&#x6570;)&#x3002;&#x6C42;&#x89E3;&#x5F97;&#xFF1A;<br>$$P_w(y|x) = \frac 1 {\sum_y \exp (\sum_{i=1}^n w_i f_i(x,y))} \exp {\sum_{i=1}^n w_i f_i(x,y)}$$</p>
+<p>&#x6700;&#x5927;&#x71B5;&#x6A21;&#x578B;&#x4E0E;&#x903B;&#x8F91;&#x65AF;&#x8482;&#x56DE;&#x5F52;&#x6A21;&#x578B;&#x6709;&#x7C7B;&#x4F3C;&#x7684;&#x5F62;&#x5F0F;&#xFF0C;&#x4ED6;&#x4EEC;&#x53C8;&#x79F0;&#x4E3A;&#x5BF9;&#x6570;&#x7EBF;&#x6027;&#x6A21;&#x578B;(log linear model).</p>
+<p><br></p>
+<h3 id="&#x6700;&#x5927;&#x71B5;&#x6A21;&#x578B;&#x4E0E;&#x903B;&#x8F91;&#x65AF;&#x8482;&#x56DE;&#x5F52;&#x6A21;&#x578B;"><a href="#&#x6700;&#x5927;&#x71B5;&#x6A21;&#x578B;&#x4E0E;&#x903B;&#x8F91;&#x65AF;&#x8482;&#x56DE;&#x5F52;&#x6A21;&#x578B;" class="headerlink" title="&#x6700;&#x5927;&#x71B5;&#x6A21;&#x578B;&#x4E0E;&#x903B;&#x8F91;&#x65AF;&#x8482;&#x56DE;&#x5F52;&#x6A21;&#x578B;"></a>&#x6700;&#x5927;&#x71B5;&#x6A21;&#x578B;&#x4E0E;&#x903B;&#x8F91;&#x65AF;&#x8482;&#x56DE;&#x5F52;&#x6A21;&#x578B;</h3><p>&#x6700;&#x5927;&#x71B5;&#x6A21;&#x578B;&#x5B9A;&#x4E49;&#x4E86;&#x5728;&#x7ED9;&#x5B9A;&#x8F93;&#x5165;&#x53D8;&#x91CF;$x$&#x65F6;&#xFF0C;&#x8F93;&#x51FA;&#x53D8;&#x91CF;$y$&#x7684;&#x6761;&#x4EF6;&#x5206;&#x5E03;&#xFF1A;<br>$$P_w(y|x) = \frac 1 {\sum_y \exp (\sum_{i=1}^n w_i f_i(x,y))} \exp {\sum_{i=1}^n w_i f_i(x,y)}$$</p>
+<p>&#x5047;&#x8BBE;y&#x4E3A;&#x4E8C;&#x5143;&#x53D8;&#x91CF;&#xFF0C;&#x5B9A;&#x4E49;&#x7279;&#x5F81;&#x51FD;&#x6570;&#x4E3A;:<br>$$f(x,y) = \begin{cases}<br>g(x), &amp; y=y_1 \\<br>0, &amp; y=y_0 \\<br>\end{cases}$$</p>
+<p>&#x5373;&#x4EC5;&#x5728;$y=y_1$&#x65F6;&#x62BD;&#x53D6;$x$&#x7684;&#x7279;&#x5F81;&#xFF0C;&#x5728;$y=y_0$&#x65F6;&#x4E0D;&#x62BD;&#x4EFB;&#x4F55;&#x7279;&#x5F81;&#xFF08;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;&#x5168;&#x4E3A;0&#x7684;&#x7279;&#x5F81;&#x5411;&#x91CF;&#xFF09;&#x3002;</p>
+<p>&#x7279;&#x5F81;&#x51FD;&#x6570;&#x5E26;&#x56DE;&#x6700;&#x5927;&#x71B5;&#x6A21;&#x578B;&#xFF1A;<br>$$\begin{align}<br>P_w(y_1|x)  &amp;= \frac {\exp {\sum_{i=1}^n w_i f_i(x,y_1)}}  {\exp (\sum_{i=1}^n w_i f_i(x,y_0)) + \exp (\sum_{i=1}^n w_i f_i(x,y_1))}\\<br>&amp;= \frac {\exp {\sum_{i=1}^n w_i g(x)}}  {1 + \exp (\sum_{i=1}^n w_i g(x))} \\<br>&amp;= \frac {1}  {1 + \exp (\sum_{i=1}^n -w_i g(x))}<br>\end{align}$$</p>
+<p><br></p>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><ul>
+<li>&#x300A;&#x7EDF;&#x8BA1;&#x5B66;&#x4E60;&#x65B9;&#x6CD5;&#x300B;&#x674E;&#x822A;</li>
+</ul>
+
+	
+	
+	
+	
+</div>
+				
+				
+
+                <!-- Post Comments -->
+                
+
+
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    
+    <!-- Prev Nav -->
+    
+        <a href="/2017/07/15/决策树/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2017/06/03/牛顿迭代/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+        </div>
+    </div>
+
+				
+				
+					<!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay "></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored  sidebar-fixed-left" role="navigation">
+	<div id="sidebar-main">
+	    <!-- Sidebar Header -->
+		<div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+    <i class="material-icons">clear_all</i>
+    <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/zebra.png" alt="Mahome.liao's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        liao.mahome@gmail.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+		<!-- Sidebar Navigation  -->
+		<ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+			
+                <li>
+                    <a href="#" target="_blank" title="Email Me">
+						<i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    <li id="sidebar-first-li">
+        <a href="/" target="_self">
+            <i class="material-icons sidebar-material-icons">home</i>
+             主页
+        </a>
+    </li>
+
+    <!-- I'm Feeling Lucky -->
+<!--
+    <li class="dropdown">
+        <a href="" target="_self">
+            <i class="material-icons sidebar-material-icons">explore</i>
+             sidebar.imlucky
+        </a>
+    </li>
+-->
+
+	
+    <!-- Archives  -->
+    <li class="dropdown">
+        <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+            <i class="material-icons sidebar-material-icons">inbox</i>
+             归档
+            <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+            <a class="sidebar_archives-link" href="/archives/2017/08/">八月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/07/">七月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/06/">六月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/02/">二月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/12/">十二月 2016<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/11/">十一月 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/10/">十月 2016<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/09/">九月 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/08/">八月 2016<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/07/">七月 2016<span class="sidebar_archives-count">3</span></a>
+        </ul>
+    </li>
+
+    <!-- Divider -->
+    <li class="divider"></li>
+
+
+    <!-- Pages  -->
+	
+
+    <!-- Article Numebr  -->
+    <li>
+        <a href="/archives">
+             文章总数
+             <span class="sidebar-badge">25</span>
+        </a>
+    </li>
+</ul>
+
+		<!-- Sidebar Divider -->
+		<div class="sidebar-divider"></div>
+
+		<!-- Sidebar Footer -->
+		<!-- 
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持。 :) 
+-->
+
+<!-- Theme Material -->
+<a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+	<div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+		主题 - Material
+		<span class="sidebar-badge badge-circle">i</span>
+	</div>
+</a>
+
+<!-- Help & Support -->
+<!--
+<a href="mailto:hiviosey@gmail.com" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+		sidebar.help
+		<span class="mdl-button__ripple-container">
+			<span class="mdl-ripple"></span>
+		</span>
+	</div>
+</a>
+-->
+
+<!-- Feedback -->
+<!--
+<a href="https://github.com/viosey/hexo-theme-material/issues" target="_blank" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+         sidebar.feedback
+                    <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+</a>
+-->
+
+<!-- Abount Theme -->
+<!--
+<a href="https://blog.viosey.com/index.php/Material.html" target="_blank" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+         sidebar.about_theme
+        <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+</a>-->
+
+	</div>
+    
+    <!-- Sidebar Sponsor -->
+    
+
+
+</aside>
+
+				
+				
+				
+					<!-- Footer Top Button -->
+					<div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+				
+				
+				<!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+	
+	
+		<!-- Paradox Footer Left Section -->
+		<div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+    <a href="https://twitter.com/twitter" target="view_window"><button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-twitter.png);">
+        <span class="visuallyhidden">Twitter</span>
+    </button></a>
+    
+    
+    <!-- Facebook -->
+    
+    <a href="https://www.facebook.com/facebook" target="view_window"><button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-facebook.png);">
+        <span class="visuallyhidden">Facebook</span>
+    </button></a>
+    
+    
+    <!-- Google + -->
+    
+    <a href="https://www.google.com/" target="view_window"><button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-gplus.png);">
+        <span class="visuallyhidden">Google Plus</span>
+    </button></a>
+    
+    
+    <!-- Weibo -->
+    
+    
+    
+    <!-- Instagram -->
+    
+    
+    
+    <!-- Tumblr -->
+    
+    
+    
+    <!-- Github -->
+    
+    
+</div>
+
+
+		<!--Copyright-->
+		<div id="copyright">Copyright&nbsp;©&nbsp;<script type="text/javascript">var fd = new Date();document.write(fd.getFullYear());</script>&nbsp;AI</div>
+
+		<!-- Paradox Footer Right Section -->
+
+		<!-- 
+		I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+		It will not impact the appearance and can give developers a lot of support :)
+
+		很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+		它不会影响美观并可以给开发者很大的支持。 :) 
+		-->
+
+		<div class="mdl-mini-footer--right-section">
+			<div>
+				<div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+				<div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+			</div>
+		</div>
+	
+</footer>
+                
+				<!-- Import File -->
+<script src="/js/highlight.min.js"></script>
+<script src="/js/js.min.js"></script>
+<script src="/js/nprogress.js"></script>
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    
+    $('#nprogress .bar').css({
+        'background': '#FF4081'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #FF4081, 0 0 15px #FF4081'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#FF4081',
+        'border-left-color': '#FF4081'
+    });
+    
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Swiftye -->
+
+
+<!-- Local Search-->
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $(".post-toc-wrap").parent(".mdl-menu__container").css("position", "fixed");
+    });
+</script>
+
+<!-- MathJax Load-->
+
+            </main>
+        </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+		
+    </body>
+		
+	
+</html>
