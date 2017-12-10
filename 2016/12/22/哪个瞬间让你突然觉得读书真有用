@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Title -->
+    
+    <title>
+        读书有用 | AI
+    </title>
+    
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/zebra.png">
+    <link rel="icon" sizes="192x192" href="/img/zebra.png">
+    <link rel="apple-touch-icon" href="/img/zebra.png">
+    
+    <!-- Meta & INfo -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="Mahome.liao">
+    <meta name="description" content="You know nothing.">
+    <meta name="keywords" content="跟着我走，你会降维">
+    
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+    
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="AI">
+    
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://yoursite.com">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="读书有用 | AI">
+    <meta property="og:description" content="You know nothing.">
+    
+     <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+        
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+    
+    <!-- Import CSS -->
+    <link rel="stylesheet" href="/css/material.min.css">
+    <link rel="stylesheet" href="/css/style.min.css">
+    <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+	body, html{
+		font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+	}
+	
+    a{
+        color: #00838F
+    }
+    
+    .mdl-card__media,
+    #search-label,
+    #search-form-label:after,
+    #scheme-Paradox .hot_tags-count,
+    #scheme-Paradox .sidebar_archives-count,
+    #scheme-Paradox .sidebar-colored .sidebar-header,
+    #scheme-Paradox .sidebar-colored .sidebar-badge{
+        background-color: #0097A7 !important
+    }
+    
+	/* Sidebar User Drop Down Menu Text Color */
+	#scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+    #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus{
+        color: #0097A7 !important
+    }
+    
+    #post_entry-right-info,
+    .sidebar-colored .sidebar-nav li:hover > a,
+    .sidebar-colored .sidebar-nav li:hover > a i,
+    .sidebar-colored .sidebar-nav li > a:hover,
+    .sidebar-colored .sidebar-nav li > a:hover i,
+    .sidebar-colored .sidebar-nav li > a:focus i,
+    .sidebar-colored .sidebar-nav > .open > a,
+    .sidebar-colored .sidebar-nav > .open > a:hover,
+    .sidebar-colored .sidebar-nav > .open > a:focus,
+    #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a{
+        color: #0097A7 !important
+    }
+    
+    .toTop{
+        background: #757575 !important
+    }
+		
+	.material-layout .material-post>.material-nav,
+	.material-layout .material-index>.material-nav,
+	.material-nav a{
+		color: #757575;
+	}
+		
+	#scheme-Paradox .MD-burger-layer {
+		background-color: #757575;
+	}
+
+	#scheme-Paradox #post-toc-trigger-btn{
+		color: #757575;
+	}
+	
+	.post-toc a:hover{
+		color: #00838F;
+		text-decoration: underline;
+	}
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+        body{
+            background-color: #F5F5F5
+        }
+		
+		/* blog_info bottom background */
+        #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+            background-color: #fff;
+        }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+        .fade {
+            transition: all 800ms linear;
+            -webkit-transform: translate3d(0,0,0);
+            -moz-transform: translate3d(0,0,0);
+            -ms-transform: translate3d(0,0,0);
+            -o-transform: translate3d(0,0,0);
+            transform: translate3d(0,0,0);
+            opacity: 1;
+        }
+
+        .fade.out{
+            opacity: 0;
+        }
+    </style>
+
+	<script src="/js/jquery.min.js"></script>
+	
+	<link rel="stylesheet" href="/css/highlight/solarized-white.css">
+	
+	<!-- UC Browser Compatible-->
+	<script>
+		var agent = navigator.userAgent.toLowerCase();
+		if(agent.indexOf('ucbrowser')>0) {
+			document.write('<link rel="stylesheet" href="/css/uc.css">');
+		   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+		}
+	</script>
+    
+    <!-- Custom Head --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+</head>
+	
+	
+
+    <body id="scheme-Paradox">
+
+		
+        <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+				
+			
+			
+            <!-- Main Container -->
+            <main class="material-layout__content" id="main">
+				
+                <!-- Top Anchor -->
+                <div id="top"></div>
+				
+				
+                <!-- Hamburger Button -->
+                <button class="MD-burger-icon sidebar-toggle">
+                    <span class="MD-burger-layer"></span>
+                </button>
+				
+				
+                
+	<!-- Back Button -->
+<!--
+	<div class="material-back" id="backhome-div" tabindex="0">
+		<a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" href="#" onclick="window.history.back();return false;" target="_self" role="button" data-upgraded=",MaterialButton,MaterialRipple">
+			<i class="material-icons" role="presentation">arrow_back</i>
+			<span class="mdl-button__ripple-container">
+				<span class="mdl-ripple"></span>
+			</span>
+		</a>
+	</div>			
+-->
+	<!-- Left aligned menu below button -->
+	<button id="post-toc-trigger-btn"
+			class="mdl-button mdl-js-button mdl-button--icon">
+	  <i class="material-icons">format_list_numbered</i>
+	</button>
+
+	<ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
+		for="post-toc-trigger-btn">
+			
+			<ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#哪个瞬间让你突然觉得读书真有用"><span class="post-toc-number">1.</span> <span class="post-toc-text">哪个瞬间让你突然觉得读书真有用?</span></a></li></ol>
+		
+<!--			<li class="mdl-menu__item">Some Action</li>-->
+	</ul>
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+		
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+	<!-- Paradox Post Header -->
+	
+		
+			<!-- Random Thumbnail -->
+			<div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+				<script>
+    
+    var randomNum;
+    randomNum = Math.floor(Math.random() * 8 + 1);
+    
+    $(".post_thumbnail-random").css('background-image', 'url(' + '/img/random/' + randomNum + '.png' + ')');
+    
+</script>
+
+		
+	
+        <p class="article-headline-p">
+            读书有用
+        </p>
+    </div>
+
+	
+
+				
+				
+					<!-- Paradox Post Info -->
+					<div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+    
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/zebra.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Mahome.liao</strong>
+        <span>12月 22, 2016</span>
+    </div>
+    
+    <div class="section-spacer"></div>
+	
+    <!-- Favorite -->
+<!--
+    <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+        <i class="material-icons" role="presentation">favorite</i>
+        <span class="visuallyhidden">favorites</span>
+    </button>
+-->
+    
+    <!-- Tags (bookmark) -->
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        
+    </ul>
+    
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+    
+    
+    
+    
+    <!-- Share Twitter -->
+    <a class="post_share-link" href="https://twitter.com/intent/tweet?text=读书有用&url=http://yoursite.com//2016/12/22/哪个瞬间让你突然觉得读书真有用&via=Mahome.liao" target="_blank">
+        <li class="mdl-menu__item">
+            分享到 Twitter
+        </li>
+    </a>
+    
+    <!-- Share Google+ -->
+    <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com//2016/12/22/哪个瞬间让你突然觉得读书真有用" target="_blank">
+        <li class="mdl-menu__item">
+            分享到 Google+
+        </li>
+    </a>
+    
+    <!-- Share Weibo -->
+    <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=读书有用&url=http://yoursite.com//2016/12/22/哪个瞬间让你突然觉得读书真有用&pic=&searchPic=false&style=simple" target="_blank">
+        <li class="mdl-menu__item">
+            分享到微博
+        </li>
+    </a>
+</ul>
+</div>
+				
+
+                <!-- Post Content -->
+                <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+	
+		<p>&gt;<br>&#x4F5C;&#x8005;&#xFF1A;&#x6708;&#x5149;&#x788E;&#x7247;Y<br>&#x94FE;&#x63A5;&#xFF1A;<a href="https://www.zhihu.com/question/35720340/answer/88529440" target="_blank" rel="external">https://www.zhihu.com/question/35720340/answer/88529440</a><br>&#x6765;&#x6E90;&#xFF1A;&#x77E5;&#x4E4E;<br>&#x8457;&#x4F5C;&#x6743;&#x5F52;&#x4F5C;&#x8005;&#x6240;&#x6709;&#xFF0C;&#x8F6C;&#x8F7D;&#x8BF7;&#x8054;&#x7CFB;&#x4F5C;&#x8005;&#x83B7;&#x5F97;&#x6388;&#x6743;&#x3002;</p>
+<p><img src="/2016/12/22/&#x54EA;&#x4E2A;&#x77AC;&#x95F4;&#x8BA9;&#x4F60;&#x7A81;&#x7136;&#x89C9;&#x5F97;&#x8BFB;&#x4E66;&#x771F;&#x6709;&#x7528;?/&#x8BFB;&#x4E66;&#x6709;&#x7528;/dushu1.jpg" alt="&apos;1&apos;"></p>
+<h3 id="&#x54EA;&#x4E2A;&#x77AC;&#x95F4;&#x8BA9;&#x4F60;&#x7A81;&#x7136;&#x89C9;&#x5F97;&#x8BFB;&#x4E66;&#x771F;&#x6709;&#x7528;"><a href="#&#x54EA;&#x4E2A;&#x77AC;&#x95F4;&#x8BA9;&#x4F60;&#x7A81;&#x7136;&#x89C9;&#x5F97;&#x8BFB;&#x4E66;&#x771F;&#x6709;&#x7528;" class="headerlink" title="&#x54EA;&#x4E2A;&#x77AC;&#x95F4;&#x8BA9;&#x4F60;&#x7A81;&#x7136;&#x89C9;&#x5F97;&#x8BFB;&#x4E66;&#x771F;&#x6709;&#x7528;?"></a>&#x54EA;&#x4E2A;&#x77AC;&#x95F4;&#x8BA9;&#x4F60;&#x7A81;&#x7136;&#x89C9;&#x5F97;&#x8BFB;&#x4E66;&#x771F;&#x6709;&#x7528;?</h3><p>&#x8FD9;&#x662F;&#x53F0;&#x6E7E;&#x5965;&#x7F8E;&#x5E7F;&#x544A;&#x516C;&#x53F8;&#x65E9;&#x5E74;&#x4E3A;&#x5929;&#x4E0B;&#x6587;&#x5316;&#x51FA;&#x7248;&#x516C;&#x53F8;25&#x5468;&#x5E74;&#x5E86;&#x6D3B;&#x52A8;&#x521B;&#x4F5C;&#x7684;&#x6587;&#x6848;&#xFF0C;&#x83B7;&#x4E1A;&#x754C;&#x8457;&#x540D;&#x7684;&#x521B;&#x610F;&#x5927;&#x5956;&#x3002;</p>
+<p>&#x201C;&#x4E0D;&#x77E5;&#x4F55;&#x65F6;&#x5F00;&#x59CB;&#xFF0C;&#x6211;&#x5BB3;&#x6015;&#x9605;&#x8BFB;&#x7684;&#x4EBA;&#x3002;&#x5C31;&#x50CF;&#x6211;&#x4EEC;&#x4E0D;&#x77E5;&#x9053;&#x51AC;&#x5929;&#x4ECE;&#x54EA;&#x5929;&#x5F00;&#x59CB;&#xFF0C;&#x53EA;&#x4F1A;&#x611F;&#x89C9;&#x591C;&#x7684;&#x9ED1;&#x8D8A;&#x6765;&#x8D8A;&#x6F2B;&#x957F;&#x3002;<br><br><br><br><br>&#x6211;&#x5BB3;&#x6015;&#x9605;&#x8BFB;&#x7684;&#x4EBA;&#x3002;&#x4E00;&#x8DDF;&#x4ED6;&#x4EEC;&#x8C08;&#x8BDD;&#xFF0C;&#x6211;&#x5C31;&#x50CF;&#x4E00;&#x4E2A;&#x900F;&#x660E;&#x7684;&#x4EBA;&#xFF0C;&#x82CD;&#x767D;&#x7684;&#x8111;&#x888B;&#x65E0;&#x6CD5;&#x9690;&#x85CF;&#x3002;&#x6211;&#x6240;&#x62E5;&#x6709;&#x7684;&#x5185;&#x6DB5;&#x662F;&#x4EC0;&#x4E48;&#xFF1F;&#x4E0D;&#x5C31;&#x662F;&#x4EBA;&#x4EBA;&#x80FD;&#x8131;&#x53E3;&#x800C;&#x51FA;&#xFF0C;&#x6E38;&#x8361;&#x5728;&#x7A7A;&#x6C14;&#x4E2D;&#x6700;&#x901A;&#x4FD7;&#x7684;&#x8BA4;&#x77E5;&#x5417;&#xFF1F;&#x50CF;&#x5FC3;&#x810F;&#x5728;&#x8EAB;&#x4F53;&#x7684;&#x5DE6;&#x8FB9;&#x3002;&#x6625;&#x5929;&#x4E4B;&#x540E;&#x662F;&#x590F;&#x5929;&#x3002;&#x7F8E;&#x56FD;&#x603B;&#x7EDF;&#x662F;&#x4E16;&#x754C;&#x4E0A;&#x6700;&#x6709;&#x6743;&#x529B;&#x7684;&#x4EBA;&#x3002;&#x4F46;&#x9605;&#x8BFB;&#x7684;&#x4EBA;&#x5728;&#x77E5;&#x8BC6;&#x91CC;&#x9068;&#x6E38;&#xFF0C;&#x80FD;&#x4ECE;&#x98DF;&#x8C31;&#x8BBA;&#x53CA;&#x7BA1;&#x7406;&#x5B66;&#xFF0C;&#x516B;&#x5366;&#x5468;&#x520A;&#x8BB2;&#x5230;&#x793E;&#x4F1A;&#x8D8B;&#x52BF;&#xFF0C;&#x751A;&#x81F3;&#x7A7A;&#x4E2D;&#x8DC3;&#x4E0B;&#x7684;&#x732B;&#xFF0C;&#x90FD;&#x80FD;&#x8BA9;&#x4ED6;&#x4EEC;&#x5BF9;&#x5EFA;&#x7B51;&#x9632;&#x9707;&#x7406;&#x8BBA;&#x4F83;&#x4F83;&#x800C;&#x8C08;&#x3002;&#x76F8;&#x8F83;&#x4E4B;&#x4E0B;&#xFF0C;&#x6211;&#x53EA;&#x662F;&#x4E00;&#x53F0;&#x5728;MP3&#x4E16;&#x4EE3;&#x7684;&#x5F55;&#x97F3;&#x673A;&#xFF1B;&#x8FC7;&#x6C14;&#x3001;&#x65E0;&#x6CD5;&#x8C03;&#x6574;&#x3002;&#x6211;&#x6700;&#x5F15;&#x4EE5;&#x4E3A;&#x50B2;&#x7684;&#x8BBA;&#x8FF0;&#xFF0C;&#x6050;&#x6015;&#x53EA;&#x662F;&#x4ED6;&#x591A;&#x5E74;&#x524D;&#x4E66;&#x67B6;&#x4E0A;&#x67D0;&#x672C;&#x4E66;&#x91CC;&#x7684;&#x67D0;&#x6BB5;&#x6587;&#x5B57;&#xFF0C;&#x800C;&#x4E14;&#xFF0C;&#x8FD8;&#x662F;&#x4E0D;&#x88AB;&#x8367;&#x5149;&#x7B14;&#x753B;&#x7EBF;&#x6CE8;&#x8BB0;&#x7684;&#x90A3;&#x4E00;&#x6BB5;&#x3002;<br><br><br><br><br>    &#x6211;&#x5BB3;&#x6015;&#x9605;&#x8BFB;&#x7684;&#x4EBA;&#x3002;&#x5F53;&#x4ED6;&#x4EEC;&#x9605;&#x8BFB;&#x65F6;&#xFF0C;&#x8138;&#x5C31;&#x85CF;&#x533F;&#x5728;&#x4E66;&#x540E;&#x9762;&#x3002;&#x4E66;&#x4E00;&#x653E;&#x4E0B;&#xFF0C;&#x5C31;&#x4EE5;&#x8D35;&#x65CF;&#x738B;&#x8005;&#x7684;&#x5F62;&#x8C61;&#x5728;&#x6211;&#x9762;&#x524D;&#x95EA;&#x8000;&#x3002;&#x4E3E;&#x624B;&#x6295;&#x8DB3;&#x90FD;&#x662F;&#x81EA;&#x5728;&#x98CE;&#x91C7;&#x3002;&#x8BA9;&#x6211;&#x660E;&#x4E86;&#xFF0C;&#x9605;&#x8BFB;&#x4E0D;&#x53EA;&#x662F;&#x77E5;&#x8BC6;&#xFF0C;&#x66F4;&#x662F;&#x9B54;&#x529B;&#x3002;&#x4ED6;&#x4EEC;&#x662F;&#x61C2;&#x7F8E;&#x5B66;&#x7684;&#x725B;&#x987F;&#x3002;&#x61C2;&#x4EBA;&#x7C7B;&#x5B66;&#x7684;&#x68B5;&#x8C37;&#x3002;&#x61C2;&#x5B59;&#x5B50;&#x5175;&#x6CD5;&#x7684;&#x7518;&#x5730;&#x3002;&#x8840;&#x6DB2;&#x91CC;&#x5145;&#x6EE1;&#x7B54;&#x6848;&#xFF0C;&#x8D8A;&#x6765;&#x8D8A;&#x5C11;&#x7684;&#x95EE;&#x9898;&#x80FD;&#x8BA9;&#x4ED6;&#x4EEC;&#x6050;&#x60E7;&#x3002;&#x5F77;&#x4F5B;&#x7AD9;&#x5728;&#x5DE8;&#x4EBA;&#x7684;&#x80A9;&#x7253;&#x4E0A;&#xFF0C;&#x4E60;&#x60EF;&#x4FEF;&#x89C6;&#x4E00;&#x5207;&#x3002;&#x90A3;&#x81EA;&#x4FE1;&#x4ECE;&#x5BB9;&#xFF0C;&#x662F;&#x8FD9;&#x4E16;&#x4E0A;&#x6700;&#x597D;&#x770B;&#x7684;&#x4E00;&#x5F20;&#x8138;&#x3002;<br><br><br><br><br>    &#x6211;&#x5BB3;&#x6015;&#x9605;&#x8BFB;&#x7684;&#x4EBA;&#x3002;&#x56E0;&#x4E3A;&#x4ED6;&#x4EEC;&#x5F88;&#x5E78;&#x8FD0;&#xFF1B;&#x5F53;&#x4F17;&#x4EBA;&#x62E5;&#x62B1;&#x5B64;&#x72EC;&#x3001;&#x6216;&#x88AB;&#x5BC2;&#x5BDE;&#x62E5;&#x62B1;&#x65F6;&#xFF0C;&#x4ED6;&#x4EEC;&#x7684;&#x751F;&#x547D;&#x5374;&#x6BEB;&#x4E0D;&#x5C01;&#x95ED;&#xFF0C;&#x4E0D;&#x7F3A;&#x4E4F;&#x670B;&#x53CB;&#x7684;&#x5FE0;&#x5B9E;&#x3001;&#x4E0D;&#x7F3A;&#x5C11;&#x5B89;&#x6170;&#x8005;&#x7684;&#x6E29;&#x67D4;&#xFF0C;&#x751A;&#x81F3;&#x8FDE;&#x4E92;&#x76F8;&#x8F83;&#x52B2;&#x7684;&#x5BF9;&#x624B;&#xFF0C;&#x90FD;&#x4E0D;&#x81F3;&#x532E;&#x4E4F;&#x3002;&#x4ED6;&#x4EEC;&#x4E00;&#x7FFB;&#x5F00;&#x4E66;&#xFF0C;&#x6709;&#x65F6;&#x4F1A;&#x56E0;&#x5FC3;&#x6709;&#x7075;&#x7280;&#xFF0C;&#x800C;&#x5927;&#x58F0;&#x8D5E;&#x53F9;&#xFF0C;&#x6709;&#x65F6;&#x53C8;&#x4F1A;&#x56E0;&#x7ACB;&#x573A;&#x4E0D;&#x540C;&#x800C;&#x9677;&#x5165;&#x6FC0;&#x8FA8;&#xFF0C;&#x6709;&#x65F6;&#x4F1A;&#x83B7;&#x5F97;&#x529D;&#x5BFC;&#x6216;&#x6170;&#x85C9;&#x3002;&#x8FD9;&#x4E00;&#x5207;&#x6BEB;&#x65E0;&#x4FDD;&#x7559;&#xFF0C;&#x53C8;&#x4E0D;&#x5E26;&#x6761;&#x4EF6;&#xFF0C;&#x662F;&#x5E26;&#x4EB2;&#x60C5;&#x7684;&#x7231;&#x60C5;&#xFF0C;&#x662F;&#x70ED;&#x604B;&#x4E2D;&#x7684;&#x53CB;&#x8C0A;&#x3002;&#x4E00;&#x672C;&#x4E00;&#x672C;&#x7684;&#x4E66;&#xFF0C;&#x5C31;&#x50CF;&#x4E00;&#x8282;&#x8282;&#x7684;&#x810A;&#x690E;&#xFF0C;&#x7A33;&#x7A33;&#x7684;&#x652F;&#x6301;&#x7740;&#x9605;&#x8BFB;&#x7684;&#x4EBA;&#x3002;&#x4F60;&#x770B;&#xFF0C;&#x4E66;&#x4E00;&#x6253;&#x5F00;&#xFF0C;&#x5C31;&#x6210;&#x4E3A;&#x4E00;&#x4E2A;&#x62E5;&#x62B1;&#x7684;&#x59FF;&#x5F0F;&#x3002;&#x8FD9;&#x4E00;&#x5207;&#xFF0C;&#x4E0D;&#x6B63;&#x662F;&#x6211;&#x4EEC;&#x6BD5;&#x751F;&#x82E6;&#x82E6;&#x627E;&#x5BFB;&#x7684;&#xFF1F;<br><br><br><br><br>    &#x6211;&#x5BB3;&#x6015;&#x9605;&#x8BFB;&#x7684;&#x4EBA;&#xFF0C;&#x4ED6;&#x4EEC;&#x603B;&#x662F;&#x4E0D;&#x77E5;&#x8DB3;&#x3002;&#x6709;&#x4EBA;&#x8BF4;&#xFF0C;&#x5973;&#x4EBA;&#x5B66;&#x4F1A;&#x9605;&#x8BFB;&#xFF0C;&#x4E16;&#x754C;&#x4E0A;&#x624D;&#x5192;&#x51FA;&#x5987;&#x5973;&#x95EE;&#x9898;&#xFF0C;&#x4E5F;&#x56E0;&#x4E3A;&#x5979;&#x4EEC;&#x5F00;&#x59CB;&#x6709;&#x4E86;&#x95EE;&#x9898;&#xFF0C;&#x5973;&#x4EBA;&#x66F4;&#x52A0;&#x8BFB;&#x4E66;&#x3002;&#x5C31;&#x8FDE;&#x7231;&#x56E0;&#x65AF;&#x5766;&#xFF1B;&#x8FD9;&#x4E2A;&#x4E16;&#x754C;&#x4E0A;&#x667A;&#x8005;&#x4E2D;&#x7684;&#x6700;&#x806A;&#x660E;&#x8005;&#xFF0C;&#x4E34;&#x7EC8;&#x524D;&#x90FD;&#x66FE;&#x8BF4;&#xFF1A;&#x300C;&#x6211;&#x770B;&#x6211;&#x81EA;&#x5DF1;&#xFF0C;&#x5C31;&#x50CF;&#x4E00;&#x4E2A;&#x5728;&#x6D77;&#x8FB9;&#x73A9;&#x800D;&#x7684;&#x5B69;&#x5B50;&#xFF0C;&#x627E;&#x5230;&#x4E00;&#x5757;&#x5149;&#x6ED1;&#x7684;&#x5C0F;&#x77F3;&#x5934;&#xFF0C;&#x5C31;&#x89C9;&#x5F97;&#x5F00;&#x5FC3;&#x3002;&#x540E;&#x6765;&#x6211;&#x624D;&#x77E5;&#x9053;&#x81EA;&#x5DF1;&#x9762;&#x5BF9;&#x7684;&#xFF0C;&#x8FD8;&#x6709;&#x4E00;&#x7247;&#x771F;&#x7406;&#x7684;&#x5927;&#x6D77;&#xFF0C;&#x90A3;&#x6CA1;&#x6709;&#x5C3D;&#x5934;&#x300D;&#x3002;&#x8BFB;&#x4E66;&#x4EBA;&#x603B;&#x662F;&#x4F4E;&#x5934;&#x770B;&#x4E66;&#xFF0C;&#x5FD9;&#x7740;&#x6D47;&#x704C;&#x81EA;&#x5DF1;&#x7684;&#x9965;&#x6E34;&#xFF0C;&#x4ED6;&#x4EEC;&#x8BA9;&#x81EA;&#x5DF1;&#x662F;&#x655E;&#x5F00;&#x7684;&#x6876;&#x5B50;&#xFF0C;&#x968F;&#x65F6;&#x51C6;&#x5907;&#x88C5;&#x5165;&#x66F4;&#x591A;&#x3001;&#x66F4;&#x591A;&#x3001;&#x66F4;&#x591A;&#x3002;&#x800C;&#x6211;&#x5462;&#xFF1F;&#x624B;&#x4E2D;&#x6293;&#x4F4F;&#x5C0F;&#x77F3;&#x5934;&#xFF0C;&#x53EA;&#x4E3A;&#x4E86;&#x65E0;&#x804A;&#x5730;&#x6253;&#x6C34;&#x6F02;&#x800C;&#x5DF2;&#x3002;&#x6709;&#x4E2A;&#x7B11;&#x8BDD;&#x8FD9;&#x6837;&#x8BF4;&#xFF1A;&#x4EBA;&#x6BCF;&#x5929;&#x65E9;&#x4E0A;&#x8D77;&#x5E8A;&#xFF0C;&#x53EA;&#x8981;&#x5F3A;&#x8FEB;&#x81EA;&#x5DF1;&#x541E;&#x4E00;&#x53EA;&#x87FE;&#x870D;&#xFF0C;&#x4E0D;&#x7BA1;&#x53D1;&#x751F;&#x4EC0;&#x4E48;&#xFF0C;&#x90FD;&#x4E0D;&#x518D;&#x5BB3;&#x6015;&#x3002;&#x6211;&#x60F3;&#xFF0C;&#x6211;&#x5FEB;&#x77E5;&#x9053;&#x87FE;&#x870D;&#x7684;&#x5473;&#x9053;&#x3002;<br><br><br><br><br>    &#x6211;&#x5BB3;&#x6015;&#x9605;&#x8BFB;&#x7684;&#x4EBA;&#x3002;&#x6211;&#x7948;&#x7977;&#x4ED6;&#x4EEC;&#x6C38;&#x8FDC;&#x4E0D;&#x77E5;&#x9053;&#x6211;&#x7684;&#x4E0D;&#x5B89;&#xFF0C;&#x514D;&#x5F97;&#x4ED6;&#x4EEC;&#x4F1A;&#x66F4;&#x8F7B;&#x6613;&#x51FB;&#x57AE;&#x6211;&#xFF0C;&#x751A;&#x81F3;&#x8FDE;&#x6253;&#x8D25;&#x6211;&#x7684;&#x610F;&#x613F;&#x90FD;&#x6CA1;&#x6709;&#x3002;&#x6211;&#x5982;&#x6B64;&#x5BB3;&#x6015;&#x9605;&#x8BFB;&#x7684;&#x4EBA;&#xFF0C;&#x56E0;&#x4E3A;&#x4ED6;&#x4EEC;&#x7684;&#x699C;&#x6837;&#x662F;&#x4F1F;&#x4EBA;&#xFF0C;&#x5C31;&#x7B97;&#x505A;&#x4E0D;&#x5230;&#xFF0C;&#x9000;&#x4E00;&#x6B65;&#x4E5F;&#x8FD8;&#x662F;&#x4E00;&#x4E2A;&#xFF0C;&#x6211;&#x8FDC;&#x4E0D;&#x53CA;&#x7684;&#x6210;&#x529F;&#x8005;&#x3002;&#x6211;&#x5BB3;&#x6015;&#x9605;&#x8BFB;&#x7684;&#x4EBA;&#xFF0C;&#x4ED6;&#x4EEC;&#x77E5;&#x9053;&#x300C;&#x65E0;&#x77E5;&#x300D;&#x5728;&#x5C0F;&#x5B69;&#x8EAB;&#x4E0A;&#x624D;&#x53EF;&#x7231;&#xFF0C;&#x800C;&#x6211;&#x5DF2;&#x7ECF;&#x662F;&#x4E00;&#x4E2A;&#x6210;&#x5E74;&#x7684;&#x4EBA;&#x3002;&#x6211;&#x5BB3;&#x6015;&#x9605;&#x8BFB;&#x7684;&#x4EBA;&#xFF0C;&#x56E0;&#x4E3A;&#x5927;&#x5BB6;&#x90FD;&#x559C;&#x6B22;&#x6709;&#x667A;&#x6167;&#x4EBA;&#x3002;&#x6211;&#x5BB3;&#x6015;&#x9605;&#x8BFB;&#x7684;&#x4EBA;&#xFF0C;&#x4ED6;&#x4EEC;&#x80FD;&#x907F;&#x514D;&#x6211;&#x8981;&#x7ECF;&#x5386;&#x7684;&#x5931;&#x8D25;&#x3002;&#x6211;&#x5BB3;&#x6015;&#x9605;&#x8BFB;&#x7684;&#x4EBA;&#xFF0C;&#x4ED6;&#x4EEC;&#x61C2;&#x5F97;&#x751F;&#x547D;&#x592A;&#x77ED;&#xFF0C;&#x4EBA;&#x603B;&#x662F;&#x806A;&#x660E;&#x5F97;&#x592A;&#x8FDF;&#x3002;&#x6211;&#x5BB3;&#x6015;&#x9605;&#x8BFB;&#x7684;&#x4EBA;&#xFF0C;&#x4ED6;&#x4EEC;&#x7684;&#x4E00;&#x5C0F;&#x65F6;&#xFF0C;&#x5C31;&#x662F;&#x6211;&#x7684;&#x4E00;&#x751F;&#x3002;&#x6211;&#x5BB3;&#x6015;&#x9605;&#x8BFB;&#x7684;&#x4EBA;&#xFF0C;<br><br><br><br><br>    &#x5C24;&#x5176;&#x662F;&#xFF0C;&#x8FD8;&#x5728;&#x9605;&#x8BFB;&#x7684;&#x4EBA;&#x3002;&#x201D;</p>
+
+	
+	
+	
+	
+</div>
+				
+				
+
+                <!-- Post Comments -->
+                
+
+
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    
+    <!-- Prev Nav -->
+    
+        <a href="/2016/12/27/GMM到EM/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2016/11/18/为什么我读书越多,越看不起周围的人/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+        </div>
+    </div>
+
+				
+				
+					<!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay "></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored  sidebar-fixed-left" role="navigation">
+	<div id="sidebar-main">
+	    <!-- Sidebar Header -->
+		<div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+    <i class="material-icons">clear_all</i>
+    <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/zebra.png" alt="Mahome.liao's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        liao.mahome@gmail.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+		<!-- Sidebar Navigation  -->
+		<ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+			
+                <li>
+                    <a href="#" target="_blank" title="Email Me">
+						<i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    <li id="sidebar-first-li">
+        <a href="/" target="_self">
+            <i class="material-icons sidebar-material-icons">home</i>
+             主页
+        </a>
+    </li>
+
+    <!-- I'm Feeling Lucky -->
+<!--
+    <li class="dropdown">
+        <a href="" target="_self">
+            <i class="material-icons sidebar-material-icons">explore</i>
+             sidebar.imlucky
+        </a>
+    </li>
+-->
+
+	
+    <!-- Archives  -->
+    <li class="dropdown">
+        <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+            <i class="material-icons sidebar-material-icons">inbox</i>
+             归档
+            <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+            <a class="sidebar_archives-link" href="/archives/2017/10/">十月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/08/">八月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/07/">七月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/06/">六月 2017<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/12/">十二月 2016<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/11/">十一月 2016<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/10/">十月 2016<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/09/">九月 2016<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/08/">八月 2016<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/07/">七月 2016<span class="sidebar_archives-count">3</span></a>
+        </ul>
+    </li>
+
+    <!-- Divider -->
+    <li class="divider"></li>
+
+
+    <!-- Pages  -->
+	
+
+    <!-- Article Numebr  -->
+    <li>
+        <a href="/archives">
+             文章总数
+             <span class="sidebar-badge">37</span>
+        </a>
+    </li>
+</ul>
+
+		<!-- Sidebar Divider -->
+		<div class="sidebar-divider"></div>
+
+		<!-- Sidebar Footer -->
+		<!-- 
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持。 :) 
+-->
+
+<!-- Theme Material -->
+<a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+	<div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+		主题 - Material
+		<span class="sidebar-badge badge-circle">i</span>
+	</div>
+</a>
+
+<!-- Help & Support -->
+<!--
+<a href="mailto:hiviosey@gmail.com" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+		sidebar.help
+		<span class="mdl-button__ripple-container">
+			<span class="mdl-ripple"></span>
+		</span>
+	</div>
+</a>
+-->
+
+<!-- Feedback -->
+<!--
+<a href="https://github.com/viosey/hexo-theme-material/issues" target="_blank" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+         sidebar.feedback
+                    <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+</a>
+-->
+
+<!-- Abount Theme -->
+<!--
+<a href="https://blog.viosey.com/index.php/Material.html" target="_blank" class="sidebar-footer-text-a">
+    <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+         sidebar.about_theme
+        <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+</a>-->
+
+	</div>
+    
+    <!-- Sidebar Sponsor -->
+    
+
+
+</aside>
+
+				
+				
+				
+					<!-- Footer Top Button -->
+					<div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+				
+				
+				<!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+	
+	
+		<!-- Paradox Footer Left Section -->
+		<div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+    <a href="https://twitter.com/twitter" target="view_window"><button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-twitter.png);">
+        <span class="visuallyhidden">Twitter</span>
+    </button></a>
+    
+    
+    <!-- Facebook -->
+    
+    <a href="https://www.facebook.com/facebook" target="view_window"><button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-facebook.png);">
+        <span class="visuallyhidden">Facebook</span>
+    </button></a>
+    
+    
+    <!-- Google + -->
+    
+    <a href="https://www.google.com/" target="view_window"><button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-gplus.png);">
+        <span class="visuallyhidden">Google Plus</span>
+    </button></a>
+    
+    
+    <!-- Weibo -->
+    
+    
+    
+    <!-- Instagram -->
+    
+    
+    
+    <!-- Tumblr -->
+    
+    
+    
+    <!-- Github -->
+    
+    
+</div>
+
+
+		<!--Copyright-->
+		<div id="copyright">Copyright&nbsp;©&nbsp;<script type="text/javascript">var fd = new Date();document.write(fd.getFullYear());</script>&nbsp;AI</div>
+
+		<!-- Paradox Footer Right Section -->
+
+		<!-- 
+		I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+		It will not impact the appearance and can give developers a lot of support :)
+
+		很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+		它不会影响美观并可以给开发者很大的支持。 :) 
+		-->
+
+		<div class="mdl-mini-footer--right-section">
+			<div>
+				<div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+				<div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+			</div>
+		</div>
+	
+</footer>
+                
+				<!-- Import File -->
+<script src="/js/highlight.min.js"></script>
+<script src="/js/js.min.js"></script>
+<script src="/js/nprogress.js"></script>
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    
+    $('#nprogress .bar').css({
+        'background': '#FF4081'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #FF4081, 0 0 15px #FF4081'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#FF4081',
+        'border-left-color': '#FF4081'
+    });
+    
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Swiftye -->
+
+
+<!-- Local Search-->
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $(".post-toc-wrap").parent(".mdl-menu__container").css("position", "fixed");
+    });
+</script>
+
+<!-- MathJax Load-->
+
+            </main>
+        </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+		
+    </body>
+		
+	
+</html>
