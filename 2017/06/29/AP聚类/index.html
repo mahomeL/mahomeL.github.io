@@ -4,7 +4,7 @@
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Title -->
     
     <title>
-        分类: 矩阵分解 | AI
+        AP聚类 | AI
     </title>
     
     <!-- Favicons -->
@@ -40,7 +40,7 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://yoursite.com">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="分类: 矩阵分解 | AI">
+    <meta property="og:title" content="AP聚类 | AI">
     <meta property="og:description" content="LIAOLUO knows nothing.">
     
      <!--[if lte IE 9]>
@@ -194,192 +194,202 @@
                 </button>
 				
 				
-                <!-- Index Module -->
-<div class="material-index mdl-grid">
-	
-		<!-- Paradox Header -->
-		<!-- Daily pic -->
-<div class="mdl-card daily-pic mdl-cell mdl-cell--8-col index-top-block">
-    
-    <!-- Pic & Slogan -->
-    <div class="mdl-card__media mdl-color-text--grey-50" style="background-image:url(/img/daily_pic.png)">
-        <p class="index-top-block-slogan"><a href="#">Hi, 跟着我走, 你会降维</a></p>
-    </div>
+                
+	<!-- Back Button -->
+<!--
+	<div class="material-back" id="backhome-div" tabindex="0">
+		<a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" href="#" onclick="window.history.back();return false;" target="_self" role="button" data-upgraded=",MaterialButton,MaterialRipple">
+			<i class="material-icons" role="presentation">arrow_back</i>
+			<span class="mdl-button__ripple-container">
+				<span class="mdl-ripple"></span>
+			</span>
+		</a>
+	</div>			
+-->
+	<!-- Left aligned menu below button -->
+	<button id="post-toc-trigger-btn"
+			class="mdl-button mdl-js-button mdl-button--icon">
+	  <i class="material-icons">format_list_numbered</i>
+	</button>
 
-    <!-- Avatar & Name -->
-    <div class="mdl-card__supporting-text meta mdl-color-text--grey-600">
-        <!-- Author Avatar -->
-        <div id="author-avatar">
-            <img src="/img/zebra.png" width="32px" height="32px" alt="avatar">
-        </div>
-        <div>
-            <strong>Mahome.liao</strong>
-        </div>
-    </div>
-</div>
-
-		<!-- Blog info -->
-<div class="mdl-card something-else mdl-cell mdl-cell--8-col mdl-cell--4-col-desktop index-top-block">
-	
-    <!-- Search -->
-	
-	<!-- Google -->
-	<div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable" method="post" action="">
-		<label id="search-label" class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--fab mdl-color--accent mdl-shadow--4dp" for="search">
-			<i class="material-icons mdl-color-text--white" role="presentation">search</i>
-		</label>
-
-		<form id="search-form" method="get" action="//google.com/search" accept-charset="UTF-8" class="mdl-textfield__expandable-holder" target="_blank">
-			<input class="mdl-textfield__input search-input" type="search" name="q" id="search" placeholder="">
-			<label id="search-form-label" class="mdl-textfield__label" for="search"></label>
+	<ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
+		for="post-toc-trigger-btn">
 			
-			<input type="hidden" name="sitesearch" value="http://yoursite.com">
-		</form>
-	</div>
-
-
-
-
-
-
-    <!-- LOGO -->
-    <div class="something-else-logo mdl-color--white mdl-color-text--grey-600">
-        <a href="null">
-            <img src="/img/zebra.png" alt="logo" />
-        </a>
-    </div>
-
-    <!-- Infomation -->
-    <div class="mdl-card__supporting-text meta meta--fill mdl-color-text--grey-600">
-        <!-- Blog Title -->
-        <div>
-            <strong>AI</strong>
-        </div>
-        <div class="section-spacer"></div>
-        
-        <!-- Pages -->
-        <button id="show-pages-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-            <i class="material-icons" role="presentation">view_carousel</i>
-            <span class="visuallyhidden">Pages</span>
-        </button>
-        <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right" for="show-pages-button">
-            
-        </ul>
-        
-        <!-- Menu -->
-        <button id="menubtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-            <i class="material-icons" role="presentation">more_vert</i>
-            <span class="visuallyhidden">show menu</span>
-        </button>
-        <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right" for="menubtn">
-            
-            <a class="index_share-link" href="null">
-                <li class="mdl-menu__item mdl-js-ripple-effect">
-                    文章 RSS
-                </li>
-            </a>
-            <a class="index_share-link" href="https://twitter.com/intent/tweet?text=AI&url=http://yoursite.com/&via=Mahome.liao" target="_blank">
-                <li class="mdl-menu__item mdl-js-ripple-effect">
-                    分享到 Twitter
-                </li>
-            </a>
-            <a class="index_share-link" href="https://plus.google.com/share?url=http://yoursite.com/" target="_blank">
-                <li class="mdl-menu__item mdl-js-ripple-effect">
-                    分享到 Google+
-                </li>
-            </a>
-            <a class="index_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=AI&url=http://yoursite.com/&pic=&searchPic=false&style=simple" target="_blank">
-                <li class="mdl-menu__item mdl-js-ripple-effect">
-                    分享到微博
-                </li>
-            </a>
-        </ul>
-    </div>
-</div>
-
-	
-    
-    
+			<ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#AP"><span class="post-toc-number">1.</span> <span class="post-toc-text">AP</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#降维"><span class="post-toc-number">2.</span> <span class="post-toc-text">降维</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#REF"><span class="post-toc-number">3.</span> <span class="post-toc-text">REF</span></a></li></ol>
 		
-			<!-- Paradox Thumbnail -->
-        	<div class="post_entry-module mdl-card mdl-cell mdl-cell--12-col fade out">
-    
-    <!-- Post Thumbnail -->
+<!--			<li class="mdl-menu__item">Some Action</li>-->
+	</ul>
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+		
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+	<!-- Paradox Post Header -->
 	
 		
 			<!-- Random Thumbnail -->
 			<div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-		
-	
-				
-		<!-- Post Title -->
-		<p class="article-headline-p"><a href="/2016/09/27/非负矩阵分解NMF/">非负矩阵分解NMF</a></p>
-	</div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-          
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2016/09/27/非负矩阵分解NMF/" target="_self">继续阅读</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/zebra.png" width="44px" height="44px" alt="Mahome.liao's avatar">
-            </div>
-            <div>
-                <strong>Mahome.liao</strong>
-                <span>9月 27, 2016</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/机器学习/">机器学习</a>, <a class="post_category-link" href="/categories/机器学习/矩阵分解/">矩阵分解</a>
-            </span>
-            
-            
-            
-            <!-- Post Views -->
-            <span class="post_entry-views">
-                
-            </span>
-        </div>
-    </div>
-            
-</div>
-
-		
-		
-    
-    
-	
-		<script>
+				<script>
     
     var randomNum;
+    randomNum = Math.floor(Math.random() * 6 + 1);
     
-    var locatePost = $(".something-else").next();
-    for(var i=0; i < 6; i++){
-        
-        randomNum = Math.floor(Math.random() * 6 + 1);
-        
-        locatePost.children(".post_thumbnail-random").attr('id', 'random_thumbnail-'+randomNum);
-        locatePost.children(".post_thumbnail-random").css('background-image', 'url(' + '/img/random/' + randomNum + '.png' + ')')
-        
-        locatePost = locatePost.next();
-    }
+    $(".post_thumbnail-random").css('background-image', 'url(' + '/img/random/' + randomNum + '.png' + ')');
     
 </script>
 
+		
+	
+        <p class="article-headline-p">
+            AP聚类
+        </p>
+    </div>
+
 	
 
+				
+				
+					<!-- Paradox Post Info -->
+					<div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+    
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/zebra.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Mahome.liao</strong>
+        <span>6月 29, 2017</span>
+    </div>
+    
+    <div class="section-spacer"></div>
+	
+    <!-- Favorite -->
+<!--
+    <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+        <i class="material-icons" role="presentation">favorite</i>
+        <span class="visuallyhidden">favorites</span>
+    </button>
+-->
+    
+    <!-- Tags (bookmark) -->
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        
+    </ul>
+    
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+    
+    
+    
+    
+    <!-- Share Twitter -->
+    <a class="post_share-link" href="https://twitter.com/intent/tweet?text=AP聚类&url=http://yoursite.com//2017/06/29/AP聚类/index.html&via=Mahome.liao" target="_blank">
+        <li class="mdl-menu__item">
+            分享到 Twitter
+        </li>
+    </a>
+    
+    <!-- Share Google+ -->
+    <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com//2017/06/29/AP聚类/index.html" target="_blank">
+        <li class="mdl-menu__item">
+            分享到 Google+
+        </li>
+    </a>
+    
+    <!-- Share Weibo -->
+    <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=AP聚类&url=http://yoursite.com//2017/06/29/AP聚类/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <li class="mdl-menu__item">
+            分享到微博
+        </li>
+    </a>
+</ul>
 </div>
+				
+
+                <!-- Post Content -->
+                <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+	
+		<h3 id="AP"><a href="#AP" class="headerlink" title="AP"></a>AP</h3><p>AP&#x7684;&#x8F93;&#x5165;&#x662F;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x95F4;&#x7684;&#x76F8;&#x4F3C;&#x5EA6;&#x77E9;&#x9635;&#xFF0C;S&#xFF0C;&#x5176;&#x4E2D;S(i,j)&#x8868;&#x793A;&#x8282;&#x70B9;i&#x548C;&#x8282;&#x70B9;j&#x4E4B;&#x95F4;&#x7684;&#x76F8;&#x4F3C;&#x5EA6;&#xFF0C;&#x4E5F;&#x8868;&#x660E;&#x4E86;&#xFF0C;j&#x4F5C;&#x4E3A;i&#x7684;&#x805A;&#x7C7B;&#x4E2D;&#x5FC3;&#x7684;&#x5408;&#x9002;&#x7A0B;&#x5EA6;&#xFF0C;&#x8FD9;&#x4E2A;&#x76F8;&#x4F3C;&#x5EA6;&#x7684;&#x8BA1;&#x7B97;&#x53EF;&#x4EE5;&#x6839;&#x636E;&#x5177;&#x4F53;&#x5E94;&#x7528;&#x573A;&#x666F;&#x3002;&#x5176;&#x4E2D;S(k,k)&#x8868;&#x793A;&#x8282;&#x70B9;k&#x4F5C;&#x4E3A;k&#x7684;&#x805A;&#x7C7B;&#x4E2D;&#x5FC3;&#x7684;&#x5408;&#x9002;&#x7A0B;&#x5EA6;&#xFF0C;&#x53EF;&#x4EE5;&#x7406;&#x89E3;&#x4E3A;&#xFF0C;&#x8282;&#x70B9;k&#x6210;&#x4E3A;&#x805A;&#x7C7B;&#x4E2D;&#x5FC3;&#x5408;&#x9002;&#x5EA6;&#xFF0C;&#x5728;&#x6700;&#x5F00;&#x59CB;&#x65F6;&#xFF0C;&#x8FD9;&#x4E2A;&#x503C;&#x662F;&#x521D;&#x59CB;&#x5316;&#x7684;&#x65F6;&#x5019;&#x4F7F;&#x7528;&#x8005;&#x7ED9;&#x5B9A;&#x7684;&#x503C;&#xFF0C;&#x4F1A;&#x5F71;&#x54CD;&#x5230;&#x6700;&#x540E;&#x805A;&#x7C7B;&#x7684;&#x6570;&#x91CF;&#x3002;</p>
+<p>AP&#x4E2D;&#x8282;&#x70B9;&#x95F4;&#x4F20;&#x9012;&#x7684;&#x6D88;&#x606F;&#x4E3A;&#x4E24;&#x7C7B;&#xFF1A;&#x5438;&#x5F15;&#x5EA6;&#x548C;&#x5F52;&#x5C5E;&#x5EA6;&#x3002;</p>
+<p>&#x9996;&#x5148;&#xFF0C;&#x5438;&#x5F15;&#x5EA6;&#x662F;&#x8282;&#x70B9;i&#x4F20;&#x9012;&#x5411;&#x8282;&#x70B9;k&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x4F20;&#x8FBE;&#x4E86;&#x8282;&#x70B9;k&#x5BF9;&#x8282;&#x70B9;i&#x7684;&#x5438;&#x5F15;&#x5EA6;&#xFF0C;&#x8BB0;&#x4E3A;r(i,k)&#xFF0C;&#x90A3;&#x4E48;&#x5982;&#x4F55;&#x6765;&#x8861;&#x91CF;&#x8FD9;&#x4E2A;&#x5438;&#x5F15;&#x5EA6;&#xFF0C;&#x5BF9;&#x4E8E;&#x5176;&#x4ED6;&#x8282;&#x70B9;k&#x2019;&#x6211;&#x4EEC;&#x6709;s(i,k&#x2019;)&#x8868;&#x793A;&#x8282;&#x70B9;k&#x2019;&#x4F5C;&#x4E3A;&#x8282;&#x70B9;i&#x7684;&#x805A;&#x7C7B;&#x4E2D;&#x5FC3;&#x7684;&#x5408;&#x9002;&#x5EA6;&#xFF0C;&#x90A3;&#x4E48;&#x518D;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;a(i,k&#x2019;)&#x8868;&#x793A;i&#x5BF9;&#x8282;&#x70B9;k&#x2019;&#x7684;&#x8BA4;&#x53EF;&#x7A0B;&#x5EA6;&#xFF08;&#x5F52;&#x5C5E;&#x5EA6;&#xFF09;&#xFF0C;&#x8FD9;&#x4E24;&#x4E2A;&#x503C;&#x76F8;&#x52A0;&#xFF0C;a(i,k&#x2019;) + s(i,k&#x2019;)&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x8BA1;&#x7B97;&#x51FA;&#x8282;&#x70B9;k&#x2019;&#x4F5C;&#x4E3A;&#x8282;&#x70B9;i&#x7684;&#x805A;&#x7C7B;&#x4E2D;&#x5FC3;&#x7684;&#x5408;&#x9002;&#x7A0B;&#x5EA6;&#x4E86;&#xFF0C;&#x8FD9;&#x91CC;&#xFF0C;&#x5728;&#x6240;&#x6709;&#x5176;&#x4ED6;&#x8282;&#x70B9;k&#x2019;&#x4E2D;&#xFF0C;&#x627E;&#x51FA;&#x6700;&#x5927;&#x7684;a(i,k&#x2019;) + s(i,k&#x2019;)&#xFF0C;&#x5373;max{a(i,k&#x2019;)+s(i,k&#x2019;)}&#xFF0C;&#x518D;&#x4F7F;&#x7528;s(i,k) - max{a(i,k&#x2019;)+s(i,k&#x2019;)} &#x5C31;&#x53EF;&#x4EE5;&#x5F97;&#x51FA;k&#x5BF9;i&#x7684;&#x5438;&#x5F15;&#x5EA6;&#x4E86;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x7B2C;&#x4E00;&#x4E2A;&#x516C;&#x5F0F;&#xFF1A;<br>$r(i,k) = s(i,k) - max\{a(i,k&#x2019;)+s(i,k&#x2019;)\} &#x5176;&#x4E2D;k != k&#x2019;$</p>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x8BA1;&#x7B97;&#x4E0A;&#x9762;&#x63D0;&#x5230;&#x7684;&#x5F52;&#x5C5E;&#x5EA6;a(i,k)&#xFF0C;&#x8868;&#x793A;&#x4E86;&#x8282;&#x70B9;i&#x9009;&#x62E9;&#x8282;&#x70B9;k&#x4F5C;&#x4E3A;&#x5B83;&#x7684;&#x805A;&#x7C7B;&#x4E2D;&#x5FC3;&#x7684;&#x5408;&#x9002;&#x7A0B;&#x5EA6;&#xFF0C;&#x8FD9;&#x91CC;&#x8981;&#x8003;&#x8651;&#x5230;&#x7684;&#x4E00;&#x4E2A;&#x601D;&#x60F3;&#x662F;&#xFF1A;&#x5982;&#x679C;&#x8282;&#x70B9;k&#x4F5C;&#x4E3A;&#x5176;&#x4ED6;&#x8282;&#x70B9;i&#x2019;&#x7684;&#x805A;&#x7C7B;&#x4E2D;&#x5FC3;&#x7684;&#x5408;&#x9002;&#x5EA6;&#x5F88;&#x5927;&#xFF0C;&#x90A3;&#x4E48;&#x8282;&#x70B9;k&#x4F5C;&#x4E3A;&#x8282;&#x70B9;i&#x7684;&#x805A;&#x7C7B;&#x4E2D;&#x5FC3;&#x7684;&#x5408;&#x9002;&#x5EA6;&#x4E5F;&#x53EF;&#x80FD;&#x4F1A;&#x8F83;&#x5927;&#xFF0C;&#x7531;&#x6B64;&#x5C31;&#x53EF;&#x4EE5;&#x5148;&#x8BA1;&#x7B97;&#x8282;&#x70B9;k&#x5BF9;&#x5176;&#x4ED6;&#x8282;&#x70B9;&#x7684;&#x5438;&#x5F15;&#x5EA6;&#xFF0C;r(i&#x2019;,k)&#xFF0C;&#x7136;&#x540E;&#x505A;&#x4E00;&#x4E2A;&#x7D2F;&#x52A0;&#x548C;&#x8868;&#x793A;&#x8282;&#x70B9;k&#x5BF9;&#x5176;&#x4ED6;&#x8282;&#x70B9;&#x7684;&#x5438;&#x5F15;&#x5EA6;&#xFF1A;$\sum max{0&#xFF0C;r(i&#x2019;,k)}$&#x7136;&#x540E;&#x518D;&#x52A0;&#x4E0A;r(k,k)&#x3002;</p>
+<p>&#x5176;&#x5B9E;r(k,k)&#xFF0C;&#x53CD;&#x5E94;&#x7684;&#x662F;&#x8282;&#x70B9;k&#x6709;&#x591A;&#x4E0D;&#x9002;&#x5408;&#x88AB;&#x5212;&#x5206;&#x5230;&#x5176;&#x4ED6;&#x805A;&#x7C7B;&#x4E2D;&#x5FC3;&#x4E0B;&#x53BB;&#xFF0C;&#x5C06;k&#x6709;&#x591A;&#x9002;&#x5408;&#x6210;&#x4E3A;&#x5176;&#x4ED6;&#x8282;&#x70B9;&#x7684;&#x805A;&#x7C7B;&#x4E2D;&#x5FC3;&#xFF1A;$\sum max\{0&#xFF0C;r(i&#x2019;,k)\}$&#x52A0;&#x4E0A;&#x5B83;&#x6709;&#x591A;&#x4E0D;&#x9002;&#x5408;&#x88AB;&#x5212;&#x5206;&#x5230;&#x5176;&#x4ED6;&#x805A;&#x7C7B;&#x4E2D;&#x5FC3;r(k,k)&#xFF0C;&#x5C31;&#x6709;&#x4E86;&#x8BA1;&#x7B97;&#x516C;&#x5F0F;&#xFF1A;<br>$a(i,k)=min\{0&#xFF0C;r(k,k)+\sum max\{0&#xFF0C;r(i&#x2019;,k)\}\}$</p>
+<p>&#x4E3A;&#x4E86;&#x4E0D;&#x8BA9;&#x8FD9;&#x4E2A;&#x503C;&#x8FC7;&#x5927;&#xFF0C;&#x5F71;&#x54CD;&#x6574;&#x4F53;&#x7ED3;&#x679C;&#xFF0C;&#x5C06;&#x8FD9;&#x4E2A;&#x503C;&#x63A7;&#x5236;&#x5728;0&#x4EE5;&#x4E0B;&#x3002;<br>&#x5176;&#x4E2D;a(k,k)&#x7684;&#x5B9A;&#x4E49;&#x7A0D;&#x5FAE;&#x6709;&#x4E9B;&#x4E0D;&#x4E00;&#x6837;&#xFF0C;&#x53EA;&#x7528;$\sum max\{0&#xFF0C;r(i&#x2019;,k)\}$&#x5C31;&#x53EF;&#x4EE5;&#x4E86;&#x4E3B;&#x8981;&#x53CD;&#x6620;k&#x4F5C;&#x4E3A;&#x805A;&#x7C7B;&#x4E2D;&#x5FC3;&#x7684;&#x80FD;&#x529B;&#x3002;</p>
+<hr>
+<p><img src="/2017/06/29/AP&#x805A;&#x7C7B;/ap.jpg" alt="&apos;ap&apos;"></p>
+<h3 id="&#x964D;&#x7EF4;"><a href="#&#x964D;&#x7EF4;" class="headerlink" title="&#x964D;&#x7EF4;"></a>&#x964D;&#x7EF4;</h3><p>s(i,k)&#x548C;a(i,k)&#x7C7B;&#x4F3C;&#xFF0C;&#x662F;xi&#x6709;&#x591A;&#x5408;&#x9002;&#x9009;xk&#x4F5C;&#x4E3A;&#x4E2D;&#x5FC3;&#x3002;</p>
+<p>r(i,k)&#x662F;xk&#x6709;&#x591A;&#x5408;&#x9002;&#x4F5C;&#x4E3A;xi&#x7684;&#x4E2D;&#x5FC3;&#x3002;r(i,k)&#x4ECE;k&#x5BF9;i&#x7684;&#x5438;&#x5F15;&#x7A0B;&#x5EA6;</p>
+<p>a(i,k)&#x662F;xi&#x6709;&#x591A;&#x5408;&#x9002;&#x9009;xk&#x4F5C;&#x4E3A;&#x4E2D;&#x5FC3;&#x3002;a(i,k)&#x4ECE;i&#x6D41;&#x5411;k&#x7684;&#x5408;&#x9002;&#x5EA6;</p>
+<p>&#x6CE8;&#x610F;&#xFF1A;&#x4E09;&#x8005;&#x90FD;&#x662F;&#x786E;&#x5B9A;xk&#x662F;&#x5426;&#x9002;&#x5408;&#x4F5C;&#x4E3A;xi&#x7684;&#x4E2D;&#x5FC3;&#x3002;</p>
+<p>$$r(i,k) = s(i,k) - max\{a(i,k&#x2019;)+s(i,k&#x2019;)\} ,k != k&#x2019;\\<br>a(i,k)=min\{0&#xFF0C;r(k,k)+\sum_{i&#x2019; \notin(i,k)} max\{0&#xFF0C;r(i&#x2019;,k)\}\}\\<br>a(k,k)=\sum_{i&#x2019;!=k} max\{0&#xFF0C;r(i&#x2019;,k)\})$$</p>
+<hr>
+<h3 id="REF"><a href="#REF" class="headerlink" title="REF"></a>REF</h3><blockquote>
+<p>wiki</p>
+<p>Brendan J. Frey; Delbert Dueck (2007). &#x201C;Clustering by passing messages between data points&#x201D; Science</p>
+</blockquote>
+
+	
+	
+	
+	
+</div>
+				
+				
+
+                <!-- Post Comments -->
+                
+
+
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    
+    <!-- Prev Nav -->
+    
+        <a href="/2017/07/25/中国现在多强大?/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2017/06/18/知识也不好吗/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+        </div>
+    </div>
 
 				
 				
